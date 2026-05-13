@@ -91,6 +91,29 @@ class TJCEngine:
         data = json.loads(text)
         data["patient_id"] = patient_id
         data["audited_at"] = datetime.now(timezone.utc).isoformat()
+
+        # Normalize LLM output variations
+        status_map = {
+            "non-compliant": "non_compliant",
+            "noncompliant": "non_compliant",
+            "not_compliant": "non_compliant",
+            "not compliant": "non_compliant",
+            "partial-compliant": "partial",
+            "partially-compliant": "partial",
+            "partially_compliant": "partial",
+            "partially compliant": "partial",
+            "partial_compliant": "partial",
+            "not-applicable": "not_applicable",
+            "not applicable": "not_applicable",
+            "n/a": "not_applicable",
+        }
+        for std in data.get("standards", []):
+            s = std.get("overall_status", "")
+            std["overall_status"] = status_map.get(s, s)
+            for finding in std.get("findings", []):
+                f = finding.get("status", "")
+                finding["status"] = status_map.get(f, f)
+
         return TJCAuditResult.model_validate(data)
 
     def _validate_audit(self, result: TJCAuditResult) -> None:

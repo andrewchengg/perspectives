@@ -9,7 +9,12 @@ from app.services.llm_client import LLMClient
 
 logger = logging.getLogger(__name__)
 
-VALID_LEVELS = {"1.0", "1.7", "2.1", "2.5", "2.7", "3.1", "3.5", "3.7", "4.0"}
+VALID_LEVELS = {
+    "1.5", "1.5_COE", "1.7", "1.7_COE",
+    "2.1", "2.5", "2.5_COE", "2.7", "2.7_COE",
+    "3.1", "3.5", "3.5_COE", "3.7", "3.7_BIO", "3.7_COE",
+    "4", "4_PSYCH",
+}
 
 
 class ASAMEngine:
@@ -103,41 +108,39 @@ class ASAMEngine:
                 VALID_LEVELS,
             )
 
-        if len(evaluation.dimensions) != 6:
-            logger.warning(
-                "Expected 6 ASAM dimensions, got %d", len(evaluation.dimensions)
-            )
-            return
-
         # Run the rule-based flowchart as a consistency check
-        from app.services.asam_flowchart import DimensionRatings, determine_loc
+        from app.services.asam_flowchart import SubdimensionResult, determine_loc
 
-        dims_by_num = {d.dimension_number: d for d in evaluation.dimensions}
-        ratings = DimensionRatings(
-            d1_withdrawal=dims_by_num[1].risk_rating,
-            d2_biomedical=dims_by_num[2].risk_rating,
-            d3_emotional=dims_by_num[3].risk_rating,
-            d4_readiness=dims_by_num[4].risk_rating,
-            d5_relapse=dims_by_num[5].risk_rating,
-            d6_environment=dims_by_num[6].risk_rating,
-        )
-        algorithmic = determine_loc(ratings)
-
-        if algorithmic.level != evaluation.recommended_level:
-            logger.warning(
-                "LLM recommended Level %s but flowchart algorithm suggests Level %s. "
-                "Algorithm pathway: %s. Algorithm rationale: %s",
-                evaluation.recommended_level,
-                algorithmic.level,
-                algorithmic.pathway,
-                algorithmic.rationale,
-            )
-
-        # Check citations exist for every dimension
+        subdim_results = []
         for dim in evaluation.dimensions:
-            if not dim.citations:
-                logger.warning(
-                    "Dimension %d (%s) has no citations",
-                    dim.dimension_number,
-                    dim.dimension_name,
+            for subdim in dim.subdimensions:
+                subdim_results.append(
+                    SubdimensionResult(
+                        dimension=dim.dimension_number,
+                        subdimension=subdim.name,
+                        risk_code=subdim.risk_rating_code,
+                        minimum_level=subdim.minimum_level,
+                    )
                 )
+
+        if subdim_results:
+            algorithmic = determine_loc(subdim_results)
+            if algorithmic.level != evaluation.recommended_level:
+                logger.warning(
+                    "LLM recommended Level %s but flowchart algorithm suggests Level %s. "
+                    "Algorithm rationale: %s",
+                    evaluation.recommended_level,
+                    algorithmic.level,
+                    algorithmic.rationale,
+                )
+
+        # Check citations exist for every subdimension
+        for dim in evaluation.dimensions:
+            for subdim in dim.subdimensions:
+                if not subdim.citations:
+                    logger.warning(
+                        "Dimension %d (%s) subdimension '%s' has no citations",
+                        dim.dimension_number,
+                        dim.dimension_name,
+                        subdim.name,
+                    )

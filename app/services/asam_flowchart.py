@@ -1,191 +1,248 @@
 """
-ASAM Level of Care Decision Flowchart — Reference Implementation
+ASAM Level of Care Determination — 4th Edition (Official)
 
-This is a rule-based implementation of the ASAM LOC determination algorithm
-based on the Optum San Diego LOC Determination Guidelines (May 2018) and
-ASAM 3rd/4th Edition criteria.
+Based on The ASAM Criteria, Fourth Edition, Volume 1: Adults.
+Level of Care Determination Rules (pp 279-281).
 
-This is NOT a replacement for the LLM-based evaluation. It serves as:
-1. A consistency check against the LLM's recommendation
-2. A reference for understanding the algorithm
-3. A fallback if the LLM produces invalid output
+The 4th Edition uses a TOP-DOWN DEDUCTIVE approach:
+1. Each subdimension maps to a minimum level of care code
+2. Start at the most intensive level (Level 4) and work down
+3. The highest minimum level across all subdimensions drives placement
 
-The LLM evaluation is superior because it can:
-- Extract dimensional ratings from unstructured clinical text
-- Apply clinical judgment to ambiguous cases
-- Provide citations and rationale
-- Handle cases that don't fit neatly into the matrix
+This module provides a rule-based implementation for consistency checking
+against the LLM's recommendation.
 """
 
-from dataclasses import dataclass
+import logging
+from dataclasses import dataclass, field
+
+logger = logging.getLogger(__name__)
+
+# Level hierarchy (most intensive to least)
+LEVEL_HIERARCHY = [
+    "4",
+    "4_PSYCH",
+    "3.7_BIO",
+    "3.7_COE",
+    "3.7",
+    "3.5_COE",
+    "3.5",
+    "3.1",
+    "2.7_COE",
+    "2.7",
+    "2.5_COE",
+    "2.5",
+    "2.1",
+    "1.7_COE",
+    "1.7",
+    "1.5_COE",
+    "1.5",
+]
+
+# Map risk rating codes to minimum levels
+RISK_CODE_TO_LEVEL = {
+    # Dimension 1
+    "4": "4",
+    "3B": "3.7_BIO",
+    "3A": "3.7",
+    "2": "2.7",
+    "1": "1.7",
+    "C": "3.7",
+    "B": "2.7",
+    "A": "1.7",
+    # Dimension 3 psychiatric
+    "3B_COE": "3.7_COE",
+    "3A_COE": "3.5_COE",
+    "2B_COE": "2.7_COE",
+    "2A_COE": "2.5_COE",
+    "1C_COE": "1.7_COE",
+    "1B": "1.7",
+    "1A_COE": "1.5_COE",
+    "1Z_COE": "1.5_COE",
+    # Dimension 4
+    "E": "3.5",
+    "D": "3.1",
+    # already have C, B, A above but for D4 they map differently
+    # Dimension 5
+    # D, C, B, A map to residential levels
+}
 
 
 @dataclass
-class DimensionRatings:
-    d1_withdrawal: int  # 0-4: Acute Intoxication / Withdrawal Potential
-    d2_biomedical: int  # 0-4: Biomedical Conditions
-    d3_emotional: int  # 0-4: Emotional / Behavioral / Cognitive
-    d4_readiness: int  # 0-4: Readiness to Change
-    d5_relapse: int  # 0-4: Relapse / Continued Use Potential
-    d6_environment: int  # 0-4: Recovery / Living Environment
-
-    def __post_init__(self):
-        for field_name, val in self.__dict__.items():
-            if not (0 <= val <= 4):
-                raise ValueError(f"{field_name} must be 0-4, got {val}")
+class SubdimensionResult:
+    dimension: int
+    subdimension: str
+    risk_code: str
+    minimum_level: str
 
 
 @dataclass
 class LOCRecommendation:
     level: str
     name: str
+    coe: bool
+    recovery_residence: bool
     rationale: str
-    pathway: str  # which step in the algorithm matched
+    steps: list[dict] = field(default_factory=list)
 
 
-def determine_loc(ratings: DimensionRatings) -> LOCRecommendation:
+def _level_rank(level: str) -> int:
+    """Return rank of a level (lower = more intensive)."""
+    try:
+        return LEVEL_HIERARCHY.index(level)
+    except ValueError:
+        return len(LEVEL_HIERARCHY)  # unknown levels rank lowest
+
+
+def _is_medically_managed(level: str) -> bool:
+    return any(level.startswith(x) for x in ["1.7", "2.7", "3.7"])
+
+
+def _is_residential(level: str) -> bool:
+    return any(level.startswith(x) for x in ["3.1", "3.5"])
+
+
+def _is_level3(level: str) -> bool:
+    return any(level.startswith(x) for x in ["3.1", "3.5", "3.7"])
+
+
+def _is_level2(level: str) -> bool:
+    return any(level.startswith(x) for x in ["2.1", "2.5", "2.7"])
+
+
+def _is_coe(level: str) -> bool:
+    return "COE" in level or "PSYCH" in level
+
+
+def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommendation:
     """
-    Walk through the ASAM LOC determination algorithm.
-
-    Decision tree based on:
-    - Optum San Diego ASAM LOC Determination Guidelines (May 2018)
-    - ASAM 3rd Edition dimensional admission criteria
-    - 4th Edition structural changes (Level 3.3 removed, 1.7/2.7 added)
-
-    Returns the LEAST RESTRICTIVE level that matches the pattern.
+    Apply the official ASAM 4th Edition LOC Determination Rules.
+    Top-down approach: start at Level 4, work down.
     """
-    d1 = ratings.d1_withdrawal
-    d2 = ratings.d2_biomedical
-    d3 = ratings.d3_emotional
-    d4 = ratings.d4_readiness
-    d5 = ratings.d5_relapse
-    d6 = ratings.d6_environment
+    steps = []
+    minimum_levels = [r.minimum_level for r in subdimension_results if r.minimum_level not in ("ANY", "0", "EVAL", "MOUD-C")]
 
-    # Step 1-2: Check Level 4.0 (Medically Managed Intensive Inpatient)
-    # Requires rating of 4 in at least one of D1, D2, or D3
-    # D4-D6 severity alone does NOT qualify
-    if d1 >= 4 or d2 >= 4 or d3 >= 4:
+    if not minimum_levels:
         return LOCRecommendation(
-            level="4.0",
-            name="Medically Managed Intensive Inpatient",
-            rationale=f"Rating of 4 (Very High) in D1={d1}, D2={d2}, D3={d3}. "
-            "Requires acute care hospital resources with 24-hour physician management.",
-            pathway="Step 2: Level 4.0 check",
-        )
-
-    # Step 3: Check Level 3.7 (Medically Monitored Intensive Inpatient)
-    # High severity (3+) in at least TWO dimensions, at least one in D1-D3
-    high_dims = sum(1 for d in [d1, d2, d3, d4, d5, d6] if d >= 3)
-    high_medical = sum(1 for d in [d1, d2, d3] if d >= 3)
-    if high_dims >= 2 and high_medical >= 1:
-        return LOCRecommendation(
-            level="3.7",
-            name="Medically Monitored Intensive Inpatient",
-            rationale=f"{high_dims} dimensions rated 3+ (including {high_medical} in D1-D3). "
-            "Interaction of severity requires 24-hour medical monitoring.",
-            pathway="Step 3: Level 3.7 check",
-        )
-
-    # Step 4: Check Level 3.5 (Clinically Managed High-Intensity Residential)
-    # D1/D2 low-moderate, D3 high, D4 high, D5/D6 high
-    if (d1 <= 2 or d2 <= 2) and d3 >= 3 and d4 >= 3 and (d5 >= 3 or d6 >= 3):
-        return LOCRecommendation(
-            level="3.5",
-            name="Clinically Managed High-Intensity Residential",
-            rationale=f"D3={d3} (severe psychiatric), D4={d4} (poor readiness), "
-            f"D5={d5}/D6={d6} (high relapse/environment risk). "
-            "Needs 24-hour therapeutic community with high clinical intensity.",
-            pathway="Step 4: Level 3.5 check",
-        )
-
-    # Step 5: Check Level 3.1 (Clinically Managed Low-Intensity Residential)
-    # D6 drives residential — hostile environment while clinical severity is manageable
-    if d1 <= 2 and d2 <= 2 and d3 <= 2 and d4 <= 2 and d5 in (2, 3) and d6 >= 3:
-        return LOCRecommendation(
-            level="3.1",
-            name="Clinically Managed Low-Intensity Residential",
-            rationale=f"D6={d6} (unsupportive/hostile environment) drives need for "
-            f"structured living. D5={d5} (relapse risk) but clinical dimensions "
-            "D1-D3 are manageable. Needs 24-hour structure, not intensive clinical.",
-            pathway="Step 5: Level 3.1 check",
-        )
-
-    # Step 6: Check Level 2.5 (Partial Hospitalization, 20+ hrs/week)
-    # D1-D3 warrant daily monitoring, moderate severity in 2/3 of D4-D6
-    d123_need_monitoring = sum(1 for d in [d1, d2, d3] if d >= 2)
-    d456_moderate = sum(1 for d in [d4, d5, d6] if d >= 2)
-    if d123_need_monitoring >= 1 and d456_moderate >= 2:
-        return LOCRecommendation(
-            level="2.5",
-            name="Partial Hospitalization Services",
-            rationale=f"D1-D3 warrant daily monitoring ({d123_need_monitoring} at 2+). "
-            f"{d456_moderate}/3 of D4-D6 at moderate+ severity. "
-            "Requires 20+ hours/week of structured treatment.",
-            pathway="Step 6: Level 2.5 check",
-        )
-
-    # Step 7: Check Level 2.1 (Intensive Outpatient, 9-19 hrs/week)
-    # D1-D2 low, D3 mild-moderate, at least one of D4/D5/D6 moderate-high
-    if d1 <= 1 and d2 <= 1 and d3 in (1, 2) and (d4 >= 2 or d5 >= 2 or d6 >= 2):
-        return LOCRecommendation(
-            level="2.1",
-            name="Intensive Outpatient Services",
-            rationale=f"D1={d1}, D2={d2} (low medical risk). D3={d3} (mild-moderate). "
-            f"D4={d4}/D5={d5}/D6={d6} (moderate+ in at least one). "
-            "Requires 9-19 hours/week structured treatment.",
-            pathway="Step 7: Level 2.1 check",
-        )
-
-    # Step 8: Check Level 1.0 (Outpatient, <9 hrs/week)
-    # ALL dimensions 0-1
-    if all(d <= 1 for d in [d1, d2, d3, d4, d5, d6]):
-        return LOCRecommendation(
-            level="1.0",
+            level="1.5",
             name="Outpatient Services",
-            rationale="All dimensions rated 0-1. Minimal severity across all domains. "
-            "Outpatient services (<9 hours/week) are sufficient.",
-            pathway="Step 8: Level 1.0 check",
+            coe=False,
+            recovery_residence=False,
+            rationale="No subdimension indicates specific level needs.",
+            steps=[{"step": 1, "result": "No specific needs identified"}],
         )
 
-    # Fallback: Pattern doesn't match cleanly — recommend Level 2.1 as safe default
-    # and flag for clinical review
+    has_coe = any(_is_coe(lvl) for lvl in minimum_levels)
+
+    # Step 1: Level 4 / 4 Psychiatric
+    has_level_4 = any(lvl == "4" for lvl in minimum_levels)
+    has_level_4_psych = any(lvl == "4_PSYCH" for lvl in minimum_levels)
+    has_3_7_bio = any(lvl == "3.7_BIO" for lvl in minimum_levels)
+
+    if has_level_4:
+        steps.append({"step": 1, "result": "Level 4 indicated", "rationale": "Subdimension requires Level 4"})
+        return LOCRecommendation(level="4", name="Medically Managed Intensive Inpatient", coe=False, recovery_residence=False,
+                                 rationale="At least one subdimension requires Level 4.", steps=steps)
+
+    if has_3_7_bio and has_coe:
+        steps.append({"step": 1, "result": "Level 4 indicated", "rationale": "Level 3.7 BIO + COE = Level 4"})
+        return LOCRecommendation(level="4", name="Medically Managed Intensive Inpatient", coe=True, recovery_residence=False,
+                                 rationale="Patient meets criteria for Level 3.7 BIO AND a COE level.", steps=steps)
+
+    if has_level_4_psych and not has_level_4 and not has_3_7_bio:
+        steps.append({"step": 1, "result": "Level 4 Psychiatric indicated"})
+        return LOCRecommendation(level="4_PSYCH", name="Medically Managed Inpatient Psychiatric", coe=True, recovery_residence=False,
+                                 rationale="Patient meets criteria for Level 4 Psychiatric.", steps=steps)
+
+    steps.append({"step": 1, "result": "Not indicated"})
+
+    # Step 2: Medically Managed (3.7 / 2.7 / 1.7)
+    needs_medical = any(_is_medically_managed(lvl) for lvl in minimum_levels)
+    if needs_medical:
+        needs_level_3 = any(_is_level3(lvl) for lvl in minimum_levels)
+        needs_level_2 = any(_is_level2(lvl) for lvl in minimum_levels)
+
+        if needs_level_3:
+            level = "3.7_BIO" if has_3_7_bio else "3.7"
+            steps.append({"step": 2, "result": f"Level {level} indicated", "rationale": "Medically managed + Level 3 need"})
+            return LOCRecommendation(level=level, name="Medically Monitored Intensive Inpatient", coe=has_coe, recovery_residence=False,
+                                     rationale="Requires medically managed care AND Level 3 services.", steps=steps)
+        elif needs_level_2:
+            steps.append({"step": 2, "result": "Level 2.7 indicated", "rationale": "Medically managed + Level 2 need"})
+            return LOCRecommendation(level="2.7", name="Medically Monitored Intensive Outpatient", coe=has_coe, recovery_residence=False,
+                                     rationale="Requires medically managed care AND Level 2 services.", steps=steps)
+        else:
+            steps.append({"step": 2, "result": "Level 1.7 indicated", "rationale": "Medically managed, no Level 2/3 need"})
+            return LOCRecommendation(level="1.7", name="Medically Monitored Outpatient", coe=has_coe, recovery_residence=False,
+                                     rationale="Requires medically managed care but no Level 2 or 3 services.", steps=steps)
+
+    steps.append({"step": 2, "result": "Not indicated"})
+
+    # Step 3: Residential (3.5 / 3.1)
+    needs_residential = any(_is_residential(lvl) for lvl in minimum_levels)
+    if needs_residential:
+        needs_3_5 = any(lvl.startswith("3.5") for lvl in minimum_levels)
+        # Also: any subdimension requiring minimum Level 2.5 bumps to 3.5
+        needs_2_5_plus = any(lvl.startswith("2.5") for lvl in minimum_levels)
+
+        if needs_3_5 or needs_2_5_plus:
+            level = "3.5_COE" if has_coe else "3.5"
+            steps.append({"step": 3, "result": f"Level {level} indicated"})
+            return LOCRecommendation(level=level, name="Clinically Managed High-Intensity Residential", coe=has_coe, recovery_residence=False,
+                                     rationale="Requires residential care with high clinical intensity.", steps=steps)
+        else:
+            level = "3.1"
+            steps.append({"step": 3, "result": "Level 3.1 indicated"})
+            return LOCRecommendation(level=level, name="Clinically Managed Low-Intensity Residential", coe=False, recovery_residence=False,
+                                     rationale="Requires residential structure but not high-intensity clinical.", steps=steps)
+
+    steps.append({"step": 3, "result": "Not indicated"})
+
+    # Step 4: Outpatient (2.5 / 2.1 / 1.5)
+    outpatient_levels = [lvl for lvl in minimum_levels if any(lvl.startswith(x) for x in ["2.5", "2.1", "1.5"])]
+    if outpatient_levels:
+        most_intensive = min(outpatient_levels, key=_level_rank)
+        base = most_intensive.split("_")[0]
+
+        # COE overlay
+        if has_coe and base in ("2.1", "1.5"):
+            # 2.1 + COE → 2.5 COE, per the rules
+            if base == "2.1":
+                base = "2.5"
+            level = f"{base}_COE"
+        elif has_coe:
+            level = f"{base}_COE"
+        else:
+            level = base
+
+        names = {
+            "2.5": "Partial Hospitalization Services",
+            "2.5_COE": "Partial Hospitalization, Co-occurring Enhanced",
+            "2.1": "Intensive Outpatient Services",
+            "1.5": "Outpatient Services",
+            "1.5_COE": "Outpatient Services, Co-occurring Enhanced",
+        }
+        steps.append({"step": 4, "result": f"Level {level} indicated"})
+
+        # Step 6: Recovery Residence check
+        rr_needed = any(r.minimum_level.startswith("RR") or (r.dimension == 5 and r.minimum_level == "A")
+                        for r in subdimension_results)
+
+        return LOCRecommendation(
+            level=level,
+            name=names.get(level, f"Level {level}"),
+            coe=has_coe,
+            recovery_residence=rr_needed,
+            rationale=f"Most intensive outpatient level indicated is {level}.",
+            steps=steps,
+        )
+
+    steps.append({"step": 4, "result": "Level 1.5 (default)"})
     return LOCRecommendation(
-        level="2.1",
-        name="Intensive Outpatient Services",
-        rationale=f"Pattern (D1={d1}, D2={d2}, D3={d3}, D4={d4}, D5={d5}, D6={d6}) "
-        "does not match a clean pathway. Defaulting to Level 2.1 (IOP) as the "
-        "least restrictive level above outpatient. Clinical review recommended.",
-        pathway="Fallback: no exact pathway match",
+        level="1.5",
+        name="Outpatient Services",
+        coe=False,
+        recovery_residence=False,
+        rationale="No subdimension indicates need above Level 1.5.",
+        steps=steps,
     )
-
-
-def check_withdrawal_management(
-    substance: str,
-    ciwa_ar: int | None = None,
-    severity: str = "mild",
-) -> str | None:
-    """
-    Determine withdrawal management level for a specific substance.
-    Returns WM level string or None if WM not indicated.
-    """
-    if substance.lower() == "alcohol" and ciwa_ar is not None:
-        if ciwa_ar < 10:
-            return "1-WM (Ambulatory, no extended monitoring)"
-        elif ciwa_ar <= 25:
-            return "2-WM (Ambulatory, extended monitoring)"
-        elif ciwa_ar >= 19:
-            return "3.7-WM or 4-WM (requires medical monitoring)"
-    elif substance.lower() == "opioids":
-        if severity == "mild":
-            return "1-WM (Ambulatory)"
-        elif severity == "moderate":
-            return "2-WM (Ambulatory, extended monitoring)"
-        elif severity == "severe":
-            return "3.7-WM (Medically Monitored Inpatient WM)"
-    elif substance.lower() == "stimulants":
-        if severity in ("mild", "moderate"):
-            return "1-WM or 2-WM (Ambulatory)"
-        elif severity == "severe":
-            return "3.2-WM or 3.7-WM (Residential/Inpatient)"
-
-    return None

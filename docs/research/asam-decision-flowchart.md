@@ -1,150 +1,147 @@
-# ASAM Level of Care Decision Flowchart
+# ASAM Level of Care Decision — 4th Edition (Official)
 
-## The Algorithm
-
-ASAM uses a two-stage process:
-
-1. Rate each of 6 dimensions on a 0-4 scale
-2. Match the pattern of ratings across dimensions to a level of care
-
-It is NOT "highest score wins." It's pattern-matching across all 6 dimensions.
+Source: The ASAM Criteria, Fourth Edition, Volume 1: Adults.
+Level of Care Assessment Guide v4.1.0.0.
 
 ---
 
-## The Decision Tree
+## How It Works
+
+The 4th Edition uses a **subdimensional minimum level** approach:
+
+1. Evaluate each subdimension across 5 clinical dimensions
+2. Each subdimension maps to a **minimum level of care code** (not a 0-4 number)
+3. Apply LOC Determination Rules **top-down** (most intensive first)
+4. Dimension 6 is a shared decision-making conversation, not scored
+
+## The Dimensions and Subdimensions
+
+### Dimension 1: Acute Intoxication and/or Withdrawal Potential (pp 212-229)
+
+- **1A: Intoxication and Associated Risks** → codes: 4, 3B, 3A, 2, ANY, 0
+- **1B: Withdrawal and Associated Risks** → codes: 4, 3B, 3A, 2, 1, EVAL, 0
+- **1C: Addiction Medication Needs** → codes: C, B, A, EVAL, ANY, MOUD-C
+
+### Dimension 2: Biomedical Conditions (pp 230-239)
+
+- **2A: Physical Health Concerns** → codes: 4, 3B, 3A, 2, 1, ANY, 0
+- **2B: Pregnancy-related Concerns** → codes: 4, 3, 2, 1, ANY, 0
+
+### Dimension 3: Emotional, Behavioral, or Cognitive Conditions (pp 240-254)
+
+- **3A: Active Psychiatric Symptoms** → codes: 4, 3B, 3A, 2B, 2A, 1C, 1B, 1A, ANY, 0
+- **3B: Persistent Disability** → codes: 1Z, ANY, 0
+
+### Dimension 4: Substance Use-related Risks (pp 255-271)
+
+- **4A: Likelihood of Engaging in Risky Substance Use** → codes: E, D, C, B, A
+- **4B: Likelihood of Engaging in Risky SUD-related Behaviors** → codes: E, D, C, B, A, 0
+
+### Dimension 5: Recovery Environment Interactions (pp 272-278)
+
+- **5A: Ability to Function Effectively in Current Environment** → codes: D, C, B, A, ANY, 0
+- **5B: Safety in Current Environment** → codes: A (recovery residence), 0
+- **5C: Support in Current Environment** → codes: B, A, ANY, 0
+
+### Dimension 6: Level of Care Selection (not scored)
+
+- Shared decision-making about willingness and ability to attend recommended level
+- Document any discrepancy between recommended and selected level
+
+## Risk Rating Code Meanings
+
+| Code   | Minimum Level                                                    |
+| ------ | ---------------------------------------------------------------- |
+| 4      | Level 4 (Medically Managed Intensive Inpatient)                  |
+| 3B     | Level 3.7 BIO (Medically Monitored, Biomedical Enhanced)         |
+| 3A     | Level 3.7 (Medically Monitored Intensive Inpatient)              |
+| 3A_COE | Level 3.5 COE                                                    |
+| 2B     | Level 2.7 COE                                                    |
+| 2A     | Level 2.5 COE                                                    |
+| 2      | Level 2.7                                                        |
+| 1C     | Level 1.7 COE                                                    |
+| 1B     | Level 1.7                                                        |
+| 1A     | Level 1.5 COE                                                    |
+| 1Z     | Level 1.5 COE (Persistent Disability)                            |
+| 1      | Level 1.7                                                        |
+| E      | Level 3.5 (Dimension 4/5)                                        |
+| D      | Level 3.1 (Dimension 4/5)                                        |
+| C      | Level 2.5 or Level 3.7 (context-dependent)                       |
+| B      | Level 2.1 or Level 2.7 (context-dependent)                       |
+| A      | Level 1.5 or Level 1.7 or Recovery Residence (context-dependent) |
+| ANY    | Any Level of Care                                                |
+| EVAL   | Prompt Evaluation (further assessment needed)                    |
+| MOUD-C | MOUD Continuation (flag need for medication-supporting program)  |
+| 0      | No Specific Needs                                                |
+
+## LOC Determination Rules (pp 279-281)
+
+Apply top-down, most intensive first:
 
 ```
-PATHWAY 1 --> LEVEL 1.0 (Outpatient)
-  IF rating = 0 or 1 in ALL six dimensions
-  THEN --> Level 1.0
+STEP 1: INPATIENT (Level 4 / Level 4 Psychiatric)
+  IF any subdimension = 4 → Level 4
+  IF 3.7 BIO + any COE → Level 4
+  IF Level 4 Psychiatric only (no 4 or 3.7 BIO) → Level 4 Psychiatric
 
-PATHWAY 2 --> LEVEL 2.1 (Intensive Outpatient)
-  IF rating = 0 or 1 in Dimensions 1 AND 2
-  AND rating = 1 or 2 in Dimension 3
-  AND rating = 2 or 3 in Dimensions 4, 5, OR 6
-  THEN --> Level 2.1
+STEP 2: MEDICALLY MANAGED (Level 3.7 / 2.7 / 1.7)
+  IF any subdimension needs medically managed care:
+    + any Level 3 need → Level 3.7 (or 3.7 BIO)
+    + any Level 2 need (no Level 3) → Level 2.7
+    + no Level 2 or 3 need → Level 1.7
 
-PATHWAY 3 --> LEVEL 3.1 (Low-Intensity Residential)
-  IF rating = 0-2 in Dimension 3
-  AND rating = 0-2 in Dimension 4
-  AND rating = 2 or 3 in Dimension 5
-  AND rating = 3-4 in Dimension 6
-  THEN --> Level 3.1
+STEP 3: CLINICALLY MANAGED RESIDENTIAL (Level 3.5 / 3.1)
+  IF any subdimension needs residential:
+    + any needs Level 3.5 or Level 2.5+ → Level 3.5
+    + no Level 3.5 need → Level 3.1
 
-PATHWAY 4 --> LEVEL 3.5 (High-Intensity Residential)
-  IF rating = 0-2 in Dimensions 1 OR 2
-  AND rating = 3 or 4 in Dimension 3
-  AND rating = 3 or 4 in Dimension 4
-  AND rating = 3 or 4 in Dimensions 5-6
-  THEN --> Level 3.5
+STEP 4: CLINICALLY MANAGED OUTPATIENT (Level 2.5 / 2.1 / 1.5)
+  What is the most intensive outpatient level indicated?
+    Level 2.5 → 2.5
+    Level 2.1 → 2.1
+    Level 1.5 → 1.5
 
-PATHWAY 5 --> LEVEL 3.7 (Medically Monitored Inpatient)
-  IF meets specifications in at least TWO of six dimensions,
-  at least one of which is in Dimension 1, 2, or 3
-  THEN --> Level 3.7
+STEP 5: CO-OCCURRING ENHANCED (COE) OVERLAY
+  IF any subdimension indicates COE → append COE to the level
+  Exceptions:
+    Level 4 + Level 4 Psychiatric → Level 4 (not 4 Psychiatric)
+    Level 3.7 BIO + COE → Level 4
+    Would be 3.1 + COE → Level 3.5 COE
+    Would be 2.1 + COE → Level 2.5 COE
 
-PATHWAY 6 --> LEVEL 4.0 (Medically Managed Inpatient)
-  IF rating = 4 in at least ONE of Dimensions 1, 2, or 3
-  THEN --> Level 4.0
-  EXCEPTION: Dimensions 4-6 alone do NOT qualify for Level 4
+STEP 6: RECOVERY RESIDENCE
+  IF outpatient recommended (1.5, 1.7, 2.1, 2.5, 2.7):
+    IF any D5 subdimension indicates recovery residence need
+    → Add recovery residence to recommendation
 
-PATHWAY 7 --> OTP/NTP (Opioid Treatment Program)
-  IF physiologically dependent on opioids (Dimension 1)
-  AND rating = 0 or 1 in Dimensions 2-4
-  AND rating = 3 in Dimension 5
-  AND rating = 0 or 1 in Dimension 6
-  THEN --> OTP/NTP
+STEP 7: DIMENSION 6 (Level of Care Selection)
+  Discuss with patient → document willingness → adjust if needed
 ```
 
-## Master Algorithm Steps
+## Valid Levels of Care (4th Edition)
 
-```
-STEP 1: EMERGENCY TRIAGE
-  Assess Dimensions 1, 2, 3 first (acute intoxication, biomedical, psychiatric)
-  IF any = 4 --> Consider Level 4.0 immediately
+| Level         | Name                                                                 |
+| ------------- | -------------------------------------------------------------------- |
+| 1.5           | Outpatient Services                                                  |
+| 1.5 COE       | Outpatient Services, Co-occurring Enhanced                           |
+| 1.7           | Medically Monitored Outpatient                                       |
+| 1.7 COE       | Medically Monitored Outpatient, Co-occurring Enhanced                |
+| 2.1           | Intensive Outpatient Services                                        |
+| 2.5           | Partial Hospitalization Services                                     |
+| 2.5 COE       | Partial Hospitalization, Co-occurring Enhanced                       |
+| 2.7           | Medically Monitored Intensive Outpatient                             |
+| 2.7 COE       | Medically Monitored Intensive Outpatient, Co-occurring Enhanced      |
+| 3.1           | Clinically Managed Low-Intensity Residential                         |
+| 3.5           | Clinically Managed High-Intensity Residential                        |
+| 3.5 COE       | Clinically Managed High-Intensity Residential, Co-occurring Enhanced |
+| 3.7           | Medically Monitored Intensive Inpatient                              |
+| 3.7 BIO       | Medically Monitored Intensive Inpatient, Biomedical Enhanced         |
+| 3.7 COE       | Medically Monitored Intensive Inpatient, Co-occurring Enhanced       |
+| 4             | Medically Managed Intensive Inpatient                                |
+| 4 Psychiatric | Medically Managed Inpatient Psychiatric                              |
 
-STEP 2: ASSIGN RISK RATINGS (0-4) for each dimension
+## Source
 
-STEP 3: APPLY LOC DETERMINATION RULES
-  Start at LEAST intensive level (1.0), check if patient fits
-  If no, move up to next level
-  Goal: LEAST restrictive effective level
-
-STEP 4: WITHDRAWAL MANAGEMENT OVERLAY
-  If active withdrawal, also determine WM level using substance-specific rules
-  CIWA-Ar for alcohol: <10 = 1-WM, 10-25 = 2-WM, >=19 = 3.7-WM or 4-WM
-
-STEP 5: SHARED DECISION-MAKING (Dimension 6)
-  Patient preferences, cultural factors, practical constraints
-  May modify final recommendation
-
-STEP 6: DOCUMENT AND JUSTIFY
-  If clinical judgment overrides algorithm, document rationale
-```
-
-## Dimension Severity Rating Scale
-
-### Dimension 1: Acute Intoxication/Withdrawal
-
-- 0: No withdrawal signs. CIWA-Ar <3. No intoxication
-- 1: Mild. CIWA-Ar 3-7. Not dangerous
-- 2: Moderate. CIWA-Ar 8-11. Some difficulty coping
-- 3: High. CIWA-Ar 12-15. Severe signs, possible danger
-- 4: Very High. CIWA-Ar >15. Seizures, DTs, life-threatening
-
-### Dimension 2: Biomedical Conditions
-
-- 0: No problems, stable
-- 1: Mild, wouldn't interfere with treatment
-- 2: May interfere with treatment. Non-life-threatening
-- 3: Severe but stable. Requires medical/nursing services
-- 4: Life-threatening
-
-### Dimension 3: Emotional/Behavioral/Cognitive
-
-- 0: No or stable mental health problems
-- 1: Sub-clinical. SI without plan. Mild symptoms
-- 2: SI/HI needing monitoring. Moderate role dysfunction
-- 3: Frequent harm impulses, not imminent. ADL impairment
-- 4: Severe unstable psych symptoms. Imminent danger
-
-### Dimension 4: Readiness to Change
-
-- 0: Actively engaged, committed, articulates goals
-- 1: Willing but ambivalent (Contemplation stage)
-- 2: Reluctant, complying to avoid consequences
-- 3: Inconsistent follow-through, minimal awareness
-- 4: Unable to follow through, in denial
-
-### Dimension 5: Relapse/Continued Use Potential
-
-- 0: Low risk. Good coping. No craving
-- 1: Minimal risk. Some craving, can resist. Sporadic use
-- 2: Impaired recognition. Regular use 1-2x/week
-- 3: Little recognition. Severe craving. Frequent use 3+/week
-- 4: No coping skills. Daily use. IV drug use. Treatment-resistant
-
-### Dimension 6: Recovery/Living Environment
-
-- 0: Supportive, drug-free home. No barriers
-- 1: Passive support. Some access to substances. Minor barriers
-- 2: Not supportive but can cope with clinical structure. Alone
-- 3: Not supportive, difficult even with structure. Household using
-- 4: Hostile/toxic. Homeless. Extreme barriers
-
-## Alcohol Withdrawal Management by CIWA-Ar
-
-| CIWA-Ar                                  | WM Level                                        |
-| ---------------------------------------- | ----------------------------------------------- |
-| <10                                      | 1-WM (Ambulatory, no extended monitoring)       |
-| 10-25                                    | 2-WM (Ambulatory, extended monitoring)          |
-| <8 at admission                          | 3.2-WM (Residential, if monitoring keeps it <8) |
-| >=19                                     | 3.7-WM or 4-WM depending on acuity              |
-| >=19 + hourly monitoring/IV/seizures/DTs | 4-WM                                            |
-
-## Sources
-
-- Optum San Diego ASAM LOC Determination Guidelines (May 2018)
-- GAIN-Q4 ASAM B Dimensions Placement Decision Tree (Chestnut Health, 2023)
-- NDBH Dimensional Admission Criteria (ASAM 3rd Ed licensed reprint)
-- Alameda County BHCS Severity Ratings (CIBHS)
+The ASAM Criteria, Fourth Edition, Volume 1: Adults.
+Level of Care Assessment Guide v4.1.0.0.
+American Society of Addiction Medicine, 2024.

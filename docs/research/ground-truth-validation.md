@@ -260,9 +260,9 @@ General NLP benchmarks (not TJC-specific):
 ### Legal Note
 
 - ASAM explicitly prohibits inputting their criteria into AI systems
-- Our prompts use publicly available state Medicaid interpretations
-  (Alameda County BHCS, Optum San Diego, Kentucky Hospital Association),
-  not ASAM's copyrighted text directly
+- Our prompts are based on the official ASAM 4th Edition Level of Care
+  Assessment Guide (publicly available PDF from asam.org) and describe
+  the assessment structure and LOC determination rules
 
 ---
 

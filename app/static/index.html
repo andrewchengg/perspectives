@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspectives Health — Clinical Intelligence</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f5f7fa;
+        color: #1a1a2e;
+      }
+
+      .header {
+        background: #1a1a2e;
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .header h1 {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .header span {
+        color: #8b8fa3;
+        font-size: 14px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+      .card h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+        color: #1a1a2e;
+      }
+      .card h3 {
+        font-size: 15px;
+        margin: 16px 0 8px;
+        color: #444;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: #4f46e5;
+        color: white;
+      }
+      .btn-primary:hover {
+        background: #4338ca;
+      }
+      .btn-primary:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+      }
+      .btn-secondary {
+        background: #e5e7eb;
+        color: #374151;
+      }
+      .btn-secondary:hover {
+        background: #d1d5db;
+      }
+      .btn-danger {
+        background: #ef4444;
+        color: white;
+      }
+      .btn-success {
+        background: #10b981;
+        color: white;
+      }
+
+      input,
+      select {
+        padding: 10px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 14px;
+        width: 100%;
+      }
+      input:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #6b7280;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .status {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+      }
+      .status-pass {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .status-fail {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .status-partial {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .progress-bar {
+        height: 8px;
+        background: #e5e7eb;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 8px 0;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.5s;
+      }
+
+      .finding {
+        border-left: 3px solid #e5e7eb;
+        padding: 8px 12px;
+        margin: 8px 0;
+        font-size: 13px;
+      }
+      .finding-pass {
+        border-color: #10b981;
+      }
+      .finding-fail {
+        border-color: #ef4444;
+      }
+      .finding-partial {
+        border-color: #f59e0b;
+      }
+
+      .dimension {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 14px;
+        margin: 10px 0;
+      }
+      .dimension-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .dimension-name {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .risk-code {
+        font-family: monospace;
+        background: #f3f4f6;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+
+      .citation {
+        background: #f8fafc;
+        border-left: 2px solid #4f46e5;
+        padding: 6px 10px;
+        margin: 4px 0;
+        font-size: 12px;
+        color: #64748b;
+      }
+      .citation strong {
+        color: #1e293b;
+      }
+
+      .loading {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        color: #6b7280;
+      }
+      .loading.active {
+        display: flex;
+      }
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #e5e7eb;
+        border-top-color: #4f46e5;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: #6b7280;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+      }
+      .tab.active {
+        color: #4f46e5;
+        border-bottom-color: #4f46e5;
+      }
+
+      .patient-info {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 16px;
+        background: #f8fafc;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      .patient-avatar {
+        width: 48px;
+        height: 48px;
+        background: #4f46e5;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .patient-details h3 {
+        font-size: 16px;
+      }
+      .patient-details p {
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      .gap-item {
+        padding: 10px;
+        margin: 6px 0;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+      .gap-critical {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+      }
+      .gap-major {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+      }
+      .gap-minor {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+      }
+
+      .hidden {
+        display: none;
+      }
+      .step {
+        padding: 6px 10px;
+        margin: 4px 0;
+        background: #f8fafc;
+        border-radius: 6px;
+        font-size: 13px;
+      }
+      .level-badge {
+        background: #4f46e5;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Perspectives Health</h1>
+      <span>Clinical Intelligence Platform</span>
+    </div>
+
+    <div class="container">
+      <!-- Extract Section -->
+      <div class="card" id="extract-card">
+        <h2>1. Extract Patient Data</h2>
+        <div class="grid">
+          <div>
+            <div class="form-group">
+              <label>SimplePractice Export Path</label>
+              <input
+                type="text"
+                id="export-path"
+                placeholder="/path/to/export/directory"
+              />
+            </div>
+            <div class="form-group">
+              <label>Client Name</label>
+              <input
+                type="text"
+                id="client-name"
+                placeholder="Jack Smith"
+                value="Jack Smith"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="parseExport()">
+              Parse Export
+            </button>
+            <div class="loading" id="extract-loading">
+              <div class="spinner"></div>
+              Extracting patient data...
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label>Or Extract Live from SimplePractice</label>
+              <input
+                type="text"
+                id="sp-email"
+                placeholder="SimplePractice email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                id="sp-password"
+                placeholder="SimplePractice password"
+              />
+            </div>
+            <button class="btn btn-secondary" onclick="extractLive()">
+              Extract from SimplePractice
+            </button>
+            <div class="loading" id="live-loading">
+              <div class="spinner"></div>
+              Logging in and extracting...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patient Info -->
+      <div class="card hidden" id="patient-card">
+        <div class="patient-info">
+          <div class="patient-avatar" id="patient-initials">JS</div>
+          <div class="patient-details">
+            <h3 id="patient-name">Jack Smith</h3>
+            <p id="patient-meta">DOB: 04/03/1994 | Gender: Male | Notes: 3</p>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="showTab('assessment')">
+            Assessment
+          </div>
+          <div class="tab" onclick="showTab('notes')">Progress Notes</div>
+        </div>
+
+        <div id="tab-assessment">
+          <div
+            id="assessment-content"
+            style="
+              font-size: 13px;
+              line-height: 1.6;
+              max-height: 300px;
+              overflow-y: auto;
+              white-space: pre-wrap;
+            "
+          ></div>
+        </div>
+        <div id="tab-notes" class="hidden">
+          <div id="notes-content"></div>
+        </div>
+      </div>
+
+      <!-- Analysis Buttons -->
+      <div class="card hidden" id="analysis-card">
+        <h2>2. Run Clinical Intelligence</h2>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button class="btn btn-primary" onclick="runASAM()">
+            Run ASAM Level of Care Evaluation
+          </button>
+          <button class="btn btn-primary" onclick="runTJC()">
+            Run TJC Compliance Audit
+          </button>
+        </div>
+        <div class="loading" id="asam-loading">
+          <div class="spinner"></div>
+          Evaluating across 6 ASAM dimensions (two-pass analysis)...
+        </div>
+        <div class="loading" id="tjc-loading">
+          <div class="spinner"></div>
+          Auditing against TJC CTS standards (two-pass analysis)...
+        </div>
+      </div>
+
+      <!-- ASAM Results -->
+      <div class="card hidden" id="asam-card">
+        <h2>ASAM Level of Care Evaluation</h2>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+          "
+        >
+          <span>Recommended Level:</span>
+          <span class="level-badge" id="asam-level">—</span>
+          <span
+            id="asam-level-name"
+            style="font-size: 14px; color: #6b7280"
+          ></span>
+        </div>
+        <div id="asam-dimensions"></div>
+        <h3>LOC Determination Steps</h3>
+        <div id="asam-steps"></div>
+        <h3>Clinical Summary</h3>
+        <p id="asam-summary" style="font-size: 13px; line-height: 1.6"></p>
+      </div>
+
+      <!-- TJC Results -->
+      <div class="card hidden" id="tjc-card">
+        <h2>TJC Compliance Audit</h2>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+          "
+        >
+          <span>Overall Compliance:</span>
+          <span class="level-badge" id="tjc-pct" style="background: #ef4444"
+            >—%</span
+          >
+        </div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            id="tjc-progress"
+            style="width: 0%; background: #ef4444"
+          ></div>
+        </div>
+        <div id="tjc-standards"></div>
+        <h3>Critical Gaps</h3>
+        <div id="tjc-gaps"></div>
+        <h3>Recommendations</h3>
+        <ul id="tjc-recs" style="font-size: 13px; padding-left: 20px"></ul>
+        <h3>Summary</h3>
+        <p id="tjc-summary" style="font-size: 13px; line-height: 1.6"></p>
+      </div>
+    </div>
+
+    <script>
+      const API = "";
+      let patientId = null;
+
+      async function parseExport() {
+        const path = document.getElementById("export-path").value;
+        const name = document.getElementById("client-name").value;
+        if (!path || !name) return alert("Enter export path and client name");
+
+        show("extract-loading");
+        try {
+          const res = await fetch(`${API}/api/v1/parse-export`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ export_path: path, client_name: name }),
+          });
+          const data = await res.json();
+          if (data.detail) throw new Error(data.detail);
+          displayPatient(data);
+        } catch (e) {
+          alert("Error: " + e.message);
+        }
+        hide("extract-loading");
+      }
+
+      async function extractLive() {
+        const name = document.getElementById("client-name").value;
+        const email = document.getElementById("sp-email").value;
+        const pw = document.getElementById("sp-password").value;
+        if (!name) return alert("Enter client name");
+
+        show("live-loading");
+        try {
+          const res = await fetch(`${API}/api/v1/extract`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              client_name: name,
+              email: email || null,
+              password: pw || null,
+            }),
+          });
+          const data = await res.json();
+          if (data.detail) throw new Error(data.detail);
+          displayPatient(data);
+        } catch (e) {
+          alert("Error: " + e.message);
+        }
+        hide("live-loading");
+      }
+
+      function displayPatient(data) {
+        const p = data.patient;
+        patientId = p.id;
+        document.getElementById("patient-initials").textContent = (
+          p.first_name[0] + p.last_name[0]
+        ).toUpperCase();
+        document.getElementById("patient-name").textContent =
+          `${p.first_name} ${p.last_name}`;
+        document.getElementById("patient-meta").textContent =
+          `DOB: ${p.date_of_birth} | Gender: ${p.gender} | Notes: ${data.progress_notes.length}`;
+
+        // Assessment
+        const a = data.assessment;
+        let aText = `Type: ${a.assessment_type}\nClinician: ${a.clinician.name}\nDate: ${a.assessment_date}\n\n`;
+        aText += `PRESENTING PROBLEM:\n${a.presenting_problem}\n\n`;
+        aText += `SUBSTANCE USE HISTORY:\n${a.substance_use_history}\n\n`;
+        aText += `MEDICAL HISTORY:\n${a.medical_history}\n\n`;
+        aText += `RISK ASSESSMENT:\n${a.risk_assessment}\n\n`;
+        aText += `SPIRITUAL/CULTURAL:\n${a.spiritual_cultural || "Not documented"}\n\n`;
+        aText += `STRENGTHS:\n${a.strengths || "Not documented"}`;
+        document.getElementById("assessment-content").textContent = aText;
+
+        // Notes
+        let notesHtml = "";
+        for (const n of data.progress_notes) {
+          notesHtml += `<div class="dimension"><div class="dimension-header">`;
+          notesHtml += `<span class="dimension-name">${n.note_format} — ${n.note_date}</span>`;
+          notesHtml += `<span class="risk-code">${n.cpt_code || ""} | ${n.session_duration_minutes || ""}min</span>`;
+          notesHtml += `</div><div style="font-size:13px;margin-top:8px;">`;
+          for (const [section, text] of Object.entries(n.sections)) {
+            notesHtml += `<p><strong>${section.toUpperCase()}:</strong> ${text.substring(0, 300)}${text.length > 300 ? "..." : ""}</p>`;
+          }
+          notesHtml += `</div></div>`;
+        }
+        document.getElementById("notes-content").innerHTML = notesHtml;
+
+        document.getElementById("patient-card").classList.remove("hidden");
+        document.getElementById("analysis-card").classList.remove("hidden");
+
+        // Store patient data for DB lookup
+        window._patientData = data;
+      }
+
+      async function runASAM() {
+        // First we need the DB patient ID
+        if (!patientId) return alert("Extract patient first");
+        show("asam-loading");
+
+        try {
+          // Try to find patient in DB by getting all patients
+          const listRes = await fetch(
+            `${API}/api/v1/patients/${patientId}/extract`,
+          );
+          let dbId = patientId;
+          if (!listRes.ok) {
+            // Patient might not be in DB yet with this ID, use the extraction data directly
+            // The parse-export endpoint should have persisted it
+            alert(
+              "Patient not found in database. Try parsing the export first.",
+            );
+            hide("asam-loading");
+            return;
+          }
+
+          const res = await fetch(
+            `${API}/api/v1/patients/${dbId}/asam-evaluation`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+            },
+          );
+          const data = await res.json();
+          if (data.detail) throw new Error(data.detail);
+          displayASAM(data);
+        } catch (e) {
+          alert("ASAM Error: " + e.message);
+        }
+        hide("asam-loading");
+      }
+
+      async function runTJC() {
+        if (!patientId) return alert("Extract patient first");
+        show("tjc-loading");
+
+        try {
+          const listRes = await fetch(
+            `${API}/api/v1/patients/${patientId}/extract`,
+          );
+          let dbId = patientId;
+          if (!listRes.ok) {
+            alert("Patient not found in database.");
+            hide("tjc-loading");
+            return;
+          }
+
+          const res = await fetch(`${API}/api/v1/patients/${dbId}/tjc-audit`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          if (data.detail) throw new Error(data.detail);
+          displayTJC(data);
+        } catch (e) {
+          alert("TJC Error: " + e.message);
+        }
+        hide("tjc-loading");
+      }
+
+      function displayASAM(data) {
+        document.getElementById("asam-level").textContent =
+          data.recommended_level;
+        document.getElementById("asam-level-name").textContent =
+          data.recommended_level_name;
+
+        let dimsHtml = "";
+        for (const dim of data.dimensions) {
+          dimsHtml += `<div class="dimension"><div class="dimension-header">`;
+          dimsHtml += `<span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span>`;
+          dimsHtml += `</div>`;
+          if (dim.subdimensions) {
+            for (const sub of dim.subdimensions) {
+              dimsHtml += `<div style="margin:6px 0 2px 12px;font-size:13px;">`;
+              dimsHtml += `<span class="risk-code">${sub.risk_rating_code}</span> `;
+              dimsHtml += `<strong>${sub.name}</strong> → ${sub.minimum_level}`;
+              dimsHtml += `<div style="color:#6b7280;margin-top:2px;">${sub.rationale.substring(0, 200)}</div>`;
+              if (sub.citations && sub.citations.length > 0) {
+                for (const c of sub.citations.slice(0, 2)) {
+                  dimsHtml += `<div class="citation"><strong>${c.source}:</strong> "${c.text.substring(0, 150)}"</div>`;
+                }
+              }
+              dimsHtml += `</div>`;
+            }
+          }
+          dimsHtml += `</div>`;
+        }
+        document.getElementById("asam-dimensions").innerHTML = dimsHtml;
+
+        let stepsHtml = "";
+        if (data.loc_determination_steps) {
+          for (const s of data.loc_determination_steps) {
+            stepsHtml += `<div class="step"><strong>Step ${s.step}:</strong> ${s.description} → <em>${s.result}</em></div>`;
+          }
+        }
+        document.getElementById("asam-steps").innerHTML = stepsHtml;
+        document.getElementById("asam-summary").textContent =
+          data.clinical_summary;
+        document.getElementById("asam-card").classList.remove("hidden");
+      }
+
+      function displayTJC(data) {
+        const pct = data.overall_compliance_percentage;
+        const color = pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444";
+        document.getElementById("tjc-pct").textContent = pct.toFixed(1) + "%";
+        document.getElementById("tjc-pct").style.background = color;
+        document.getElementById("tjc-progress").style.width = pct + "%";
+        document.getElementById("tjc-progress").style.background = color;
+
+        let stdsHtml = "";
+        for (const std of data.standards) {
+          const statusClass =
+            std.overall_status === "compliant"
+              ? "pass"
+              : std.overall_status === "non_compliant"
+                ? "fail"
+                : "partial";
+          stdsHtml += `<div class="dimension"><div class="dimension-header">`;
+          stdsHtml += `<span class="dimension-name">${std.standard_id} — ${std.standard_name}</span>`;
+          stdsHtml += `<span class="status status-${statusClass}">${std.compliance_percentage}%</span>`;
+          stdsHtml += `</div>`;
+          for (const f of std.findings) {
+            const fClass =
+              f.status === "pass"
+                ? "pass"
+                : f.status === "fail"
+                  ? "fail"
+                  : "partial";
+            stdsHtml += `<div class="finding finding-${fClass}">`;
+            stdsHtml += `<strong>${f.element}:</strong> ${f.finding.substring(0, 200)}`;
+            if (f.remediation)
+              stdsHtml += `<div style="color:#4f46e5;margin-top:4px;font-size:12px;">Fix: ${f.remediation}</div>`;
+            stdsHtml += `</div>`;
+          }
+          stdsHtml += `</div>`;
+        }
+        document.getElementById("tjc-standards").innerHTML = stdsHtml;
+
+        let gapsHtml = "";
+        for (const g of data.critical_gaps) {
+          gapsHtml += `<div class="gap-item gap-${g.severity}">`;
+          gapsHtml += `<strong>[${g.severity.toUpperCase()}]</strong> ${g.standard} ${g.element}: ${g.description}`;
+          gapsHtml += `</div>`;
+        }
+        document.getElementById("tjc-gaps").innerHTML = gapsHtml;
+
+        let recsHtml = "";
+        for (const r of data.recommendations) {
+          recsHtml += `<li style="margin-bottom:6px;">${r}</li>`;
+        }
+        document.getElementById("tjc-recs").innerHTML = recsHtml;
+        document.getElementById("tjc-summary").textContent = data.audit_summary;
+        document.getElementById("tjc-card").classList.remove("hidden");
+      }
+
+      function showTab(tab) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        document.getElementById("tab-assessment").classList.add("hidden");
+        document.getElementById("tab-notes").classList.add("hidden");
+        event.target.classList.add("active");
+        document.getElementById("tab-" + tab).classList.remove("hidden");
+      }
+
+      function show(id) {
+        document.getElementById(id).classList.add("active");
+      }
+      function hide(id) {
+        document.getElementById(id).classList.remove("active");
+      }
+    </script>
+  </body>
+</html>

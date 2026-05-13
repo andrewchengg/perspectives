@@ -1,6 +1,9 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import asam, extraction, tjc
 from app.db.database import engine
@@ -29,3 +32,8 @@ app.include_router(tjc.router, prefix="/api/v1", tags=["tjc"])
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+@app.get("/")
+async def root():
+    return FileResponse(Path(__file__).parent / "static" / "index.html")

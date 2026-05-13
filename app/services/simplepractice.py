@@ -48,6 +48,65 @@ logger = logging.getLogger(__name__)
 SP_LOGIN_URL = "https://secure.simplepractice.com/users/sign_in"
 SP_BASE_URL = "https://secure.simplepractice.com"
 
+# Self-healing selectors: ranked lists of CSS selectors per UI element.
+# If the primary selector breaks (SimplePractice UI update), the next one is tried.
+# When all fail, a screenshot is saved for debugging.
+SELECTORS = {
+    "email_input": [
+        "#user_email",
+        'input[name="user[email]"]',
+        'input[type="email"]',
+        'input[type="text"][name*="email"]',
+    ],
+    "password_input": [
+        "#user_password",
+        'input[name="user[password]"]',
+        'input[type="password"]',
+    ],
+    "login_submit": [
+        "#submitBtn",
+        'button[type="submit"]',
+        'input[type="submit"]',
+        'button:has-text("Sign in")',
+        'button:has-text("Log in")',
+    ],
+    "ready_for_download": [
+        'button:has-text("Ready for download")',
+        'button.button-link:has-text("Ready")',
+        'button.button-link:has-text("download")',
+        'td.is-last-column button',
+        '.ember-view button.button-link',
+    ],
+    "start_export": [
+        'button:has-text("Start export")',
+        'button:has-text("New export")',
+        'a:has-text("Start export")',
+        'button.primary:has-text("export")',
+    ],
+    "all_clients": [
+        'text="All clients in the practice"',
+        'button:has-text("All clients")',
+        'div:has-text("All clients in the practice")',
+    ],
+    "complete_export": [
+        'text="Complete"',
+        'label:has-text("Complete")',
+        'input[type="radio"][value="complete"]',
+        'div:has-text("Includes client contact info and all documentation")',
+    ],
+    "export_submit": [
+        'button:has-text("Export"):not([disabled])',
+        'button.primary:has-text("Export"):not([disabled])',
+        'button[type="submit"]:has-text("Export")',
+    ],
+    "swal_dismiss": [
+        ".swal2-confirm",
+        ".swal2-actions button",
+        'button:has-text("OK")',
+        'button:has-text("Got it")',
+    ],
+}
+
 
 class SimplePracticeExtractor:
     """Extracts patient data from SimplePractice programmatically."""
@@ -55,6 +114,54 @@ class SimplePracticeExtractor:
     def __init__(self, download_dir: str | None = None):
         self._download_dir = download_dir or tempfile.mkdtemp(prefix="sp_export_")
         self._cookies: list[dict] = []
+
+    async def _resilient_find(self, page, element_name: str, timeout: int = 5000):
+        """
+        Self-healing element finder. Tries each selector in SELECTORS[element_name]
+        in order until one matches. If all fail, takes a screenshot for debugging.
+
+        Returns the first matching locator, or raises RuntimeError.
+        """
+        selectors = SELECTORS.get(element_name, [])
+        if not selectors:
+            raise ValueError(f"No selectors defined for element: {element_name}")
+
+        for i, selector in enumerate(selectors):
+            locator = page.locator(selector)
+            try:
+                count = await locator.count()
+                if count > 0:
+                    if i > 0:
+                        logger.warning(
+                            "Primary selector for '%s' failed. "
+                            "Used fallback #%d: %s",
+                            element_name, i + 1, selector,
+                        )
+                    return locator
+            except Exception:
+                continue
+
+        # All selectors failed — save screenshot for debugging
+        screenshot_path = f"/tmp/sp_failed_{element_name}.png"
+        await page.screenshot(path=screenshot_path, full_page=True)
+        logger.error(
+            "All %d selectors failed for '%s'. Screenshot: %s. Selectors tried: %s",
+            len(selectors), element_name, screenshot_path, selectors,
+        )
+        raise RuntimeError(
+            f"Could not find element '{element_name}' on page {page.url}. "
+            f"Tried {len(selectors)} selectors. Screenshot saved to {screenshot_path}"
+        )
+
+    async def _resilient_click(self, page, element_name: str, **kwargs):
+        """Find element using self-healing selectors and click it."""
+        locator = await self._resilient_find(page, element_name)
+        await locator.first.click(**kwargs)
+
+    async def _resilient_fill(self, page, element_name: str, value: str):
+        """Find element using self-healing selectors and fill it."""
+        locator = await self._resilient_find(page, element_name)
+        await locator.first.fill(value)
 
     async def extract(
         self,
@@ -111,11 +218,18 @@ class SimplePracticeExtractor:
         logger.info("Login page: %s", page.url)
 
         # Fill credentials on account.simplepractice.com
-        # Actual field IDs: #user_email, #user_password, #submitBtn
-        await page.fill('#user_email', email)
-        await page.fill('#user_password', password)
-        await page.click('#submitBtn')
-        await page.wait_for_load_state("networkidle", timeout=30000)
+        await self._resilient_fill(page, "email_input", email)
+        await self._resilient_fill(page, "password_input", password)
+        await self._resilient_click(page, "login_submit")
+
+        # Wait for SAML redirect back to secure.simplepractice.com
+        # The login posts to account.simplepractice.com, which returns a
+        # SAMLResponse that redirects to secure.simplepractice.com
+        try:
+            await page.wait_for_url("**/secure.simplepractice.com/**", timeout=30000)
+        except Exception:
+            # May still be on account page (2FA, error, slow redirect)
+            await page.wait_for_load_state("networkidle", timeout=15000)
 
         # Handle 2FA if needed
         if "verification" in page.url.lower() or "two_factor" in page.url.lower():
@@ -159,39 +273,35 @@ class SimplePracticeExtractor:
         logger.info("On data export page: %s", page.url)
 
         # Dismiss any SweetAlert popups that might be blocking
-        swal = page.locator('.swal2-container')
-        if await swal.count() > 0:
+        try:
+            swal_btn = await self._resilient_find(page, "swal_dismiss")
             logger.info("Dismissing popup dialog...")
-            confirm_btn = page.locator('.swal2-confirm, .swal2-actions button')
-            if await confirm_btn.count() > 0:
-                await confirm_btn.first.click()
-            else:
-                await page.keyboard.press("Escape")
+            await swal_btn.first.click()
             await page.wait_for_timeout(1000)
+        except RuntimeError:
+            pass  # No popup — continue
 
         # Check if there's already a "Ready for download" export
-        ready_link = page.locator('button:has-text("Ready for download")')
-        if await ready_link.count() > 0:
+        try:
+            ready_btn = await self._resilient_find(page, "ready_for_download")
             logger.info("Found existing export ready for download!")
-            return await self._download_export(page, ready_link.first)
+            return await self._download_export(page, ready_btn.first)
+        except RuntimeError:
+            logger.info("No existing export found. Triggering new export...")
 
-        # No existing export — trigger a new one
         # Step A: Click "Start export"
         logger.info("Clicking 'Start export'...")
-        start_btn = page.locator('button:has-text("Start export")')
-        await start_btn.click()
+        await self._resilient_click(page, "start_export")
         await page.wait_for_timeout(2000)
 
         # Step B: Click "All clients in the practice"
         logger.info("Selecting 'All clients in the practice'...")
-        all_clients = page.locator('text="All clients in the practice"')
-        await all_clients.click()
+        await self._resilient_click(page, "all_clients")
         await page.wait_for_timeout(2000)
 
-        # Step C: Click "Complete" to select export type (enables Export button)
+        # Step C: Click "Complete" export type (enables Export button)
         logger.info("Selecting 'Complete' export type...")
-        complete_label = page.locator('text="Complete"')
-        await complete_label.first.click()
+        await self._resilient_click(page, "complete_export")
         await page.wait_for_timeout(1000)
 
         # Step D: Uncheck password if checked
@@ -203,8 +313,8 @@ class SimplePracticeExtractor:
 
         # Step E: Click "Export"
         logger.info("Clicking 'Export'...")
-        export_btn = page.locator('button:has-text("Export"):not([disabled])')
-        await export_btn.last.click(timeout=10000)
+        export_locator = await self._resilient_find(page, "export_submit")
+        await export_locator.last.click(timeout=10000)
         await page.wait_for_timeout(3000)
 
         # Step F: Poll until "Ready for download" appears
@@ -224,12 +334,12 @@ class SimplePracticeExtractor:
             )
             await page.wait_for_timeout(5000)
 
-            ready_link = page.locator('button:has-text("Ready for download")')
-            if await ready_link.count() > 0:
+            try:
+                ready_btn = await self._resilient_find(page, "ready_for_download")
                 logger.info("Export ready after %d seconds.", elapsed)
-                return await self._download_export(page, ready_link.first)
-
-            logger.info("Export not ready yet (%ds elapsed)...", elapsed)
+                return await self._download_export(page, ready_btn.first)
+            except RuntimeError:
+                logger.info("Export not ready yet (%ds elapsed)...", elapsed)
 
         raise RuntimeError(f"Export did not complete within {max_wait} seconds")
 

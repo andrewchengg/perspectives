@@ -111,15 +111,10 @@ class SimplePracticeExtractor:
         logger.info("Login page: %s", page.url)
 
         # Fill credentials on account.simplepractice.com
-        await page.fill(
-            'input[type="email"], input[name="email"], #email, input[name="account[email]"]',
-            email,
-        )
-        await page.fill(
-            'input[type="password"], input[name="password"], #password, input[name="account[password]"]',
-            password,
-        )
-        await page.click('button[type="submit"], input[type="submit"]')
+        # Actual field IDs: #user_email, #user_password, #submitBtn
+        await page.fill('#user_email', email)
+        await page.fill('#user_password', password)
+        await page.click('#submitBtn')
         await page.wait_for_load_state("networkidle", timeout=30000)
 
         # Handle 2FA if needed
@@ -145,90 +140,76 @@ class SimplePracticeExtractor:
 
     async def _trigger_export(self, page, client_name: str) -> Path:
         """
-        Navigate to Settings > Practice > Data export, trigger a single-client
-        export, wait for it, and download the ZIP.
+        Navigate to data export page, trigger a single-client export,
+        wait for it, and download the ZIP.
+
+        Actual SimplePractice URLs (discovered from live account):
+        - Settings: /practice_settings/basic_info
+        - Data export: /practice_settings/data_exports
         """
-        # Navigate to data export page
-        logger.info("Navigating to data export settings...")
-        await page.goto(f"{SP_BASE_URL}/settings", wait_until="networkidle")
-        await page.wait_for_timeout(2000)
-
-        # Click through to Data Export
-        # SimplePractice settings has sections — look for "Practice" then "Data export"
-        export_link = page.locator('a:has-text("Data export"), a:has-text("Data Export")')
-        if await export_link.count() > 0:
-            await export_link.first.click()
-            await page.wait_for_load_state("networkidle")
-        else:
-            # Try direct URL
-            await page.goto(
-                f"{SP_BASE_URL}/settings/practice/data-export",
-                wait_until="networkidle",
-            )
-
-        await page.wait_for_timeout(2000)
+        # Navigate directly to data export page
+        logger.info("Navigating to data export page...")
+        await page.goto(
+            f"{SP_BASE_URL}/practice_settings/data_exports",
+            wait_until="domcontentloaded",
+            timeout=60000,
+        )
+        # Wait for the SPA to fully render
+        await page.wait_for_timeout(5000)
         logger.info("On data export page: %s", page.url)
 
-        # Click "Start export" or "New export" button
-        start_btn = page.locator(
-            'button:has-text("Start export"), '
-            'button:has-text("New export"), '
-            'a:has-text("Start export"), '
-            'button:has-text("Export")'
-        )
-        if await start_btn.count() > 0:
-            await start_btn.first.click()
-            await page.wait_for_timeout(2000)
-
-        # Select "One client" scope
-        one_client = page.locator(
-            'label:has-text("One client"), '
-            'input[value="one_client"], '
-            'label:has-text("one client"), '
-            'div:has-text("One client")'
-        )
-        if await one_client.count() > 0:
-            await one_client.first.click()
+        # Dismiss any SweetAlert popups that might be blocking
+        swal = page.locator('.swal2-container')
+        if await swal.count() > 0:
+            logger.info("Dismissing popup dialog...")
+            confirm_btn = page.locator('.swal2-confirm, .swal2-actions button')
+            if await confirm_btn.count() > 0:
+                await confirm_btn.first.click()
+            else:
+                await page.keyboard.press("Escape")
             await page.wait_for_timeout(1000)
 
-        # Search for and select the client
-        client_search = page.locator(
-            'input[placeholder*="client"], '
-            'input[placeholder*="Client"], '
-            'input[placeholder*="Search"], '
-            'input[type="search"]'
-        )
-        if await client_search.count() > 0:
-            await client_search.first.fill(client_name)
-            await page.wait_for_timeout(1500)
-            # Click the matching result
-            result = page.locator(f'text="{client_name}"')
-            if await result.count() > 0:
-                await result.first.click()
+        # Check if there's already a "Ready for download" export
+        ready_link = page.locator('button:has-text("Ready for download")')
+        if await ready_link.count() > 0:
+            logger.info("Found existing export ready for download!")
+            return await self._download_export(page, ready_link.first)
+
+        # No existing export — trigger a new one
+        # Step A: Click "Start export"
+        logger.info("Clicking 'Start export'...")
+        start_btn = page.locator('button:has-text("Start export")')
+        await start_btn.click()
+        await page.wait_for_timeout(2000)
+
+        # Step B: Click "All clients in the practice"
+        logger.info("Selecting 'All clients in the practice'...")
+        all_clients = page.locator('text="All clients in the practice"')
+        await all_clients.click()
+        await page.wait_for_timeout(2000)
+
+        # Step C: Click "Complete" to select export type (enables Export button)
+        logger.info("Selecting 'Complete' export type...")
+        complete_label = page.locator('text="Complete"')
+        await complete_label.first.click()
+        await page.wait_for_timeout(1000)
+
+        # Step D: Uncheck password if checked
+        checkbox = page.locator('input[type="checkbox"]')
+        if await checkbox.count() > 0:
+            if await checkbox.first.is_checked():
+                await checkbox.first.uncheck()
                 await page.wait_for_timeout(500)
 
-        # Select "Sessions" or "Complete" export type
-        sessions_option = page.locator(
-            'label:has-text("Sessions"), '
-            'label:has-text("Complete"), '
-            'input[value="sessions"]'
-        )
-        if await sessions_option.count() > 0:
-            await sessions_option.first.click()
-            await page.wait_for_timeout(500)
+        # Step E: Click "Export"
+        logger.info("Clicking 'Export'...")
+        export_btn = page.locator('button:has-text("Export"):not([disabled])')
+        await export_btn.last.click(timeout=10000)
+        await page.wait_for_timeout(3000)
 
-        # Click the export/submit button
-        submit_btn = page.locator(
-            'button:has-text("Export"), '
-            'button:has-text("Start"), '
-            'button[type="submit"]'
-        )
-        if await submit_btn.count() > 0:
-            await submit_btn.first.click()
-
-        # Wait for export to generate — poll the page for "Ready for download"
+        # Step F: Poll until "Ready for download" appears
         logger.info("Waiting for export to generate...")
-        max_wait = 300  # 5 minutes max
+        max_wait = 300
         elapsed = 0
         poll_interval = 10
 
@@ -236,40 +217,40 @@ class SimplePracticeExtractor:
             await page.wait_for_timeout(poll_interval * 1000)
             elapsed += poll_interval
 
-            # Refresh the page to check status
-            await page.reload(wait_until="networkidle")
-
-            # Look for download link
-            download_link = page.locator(
-                'a:has-text("Download"), '
-                'a:has-text("Ready"), '
-                'button:has-text("Download")'
+            await page.goto(
+                f"{SP_BASE_URL}/practice_settings/data_exports",
+                wait_until="domcontentloaded",
+                timeout=60000,
             )
-            if await download_link.count() > 0:
+            await page.wait_for_timeout(5000)
+
+            ready_link = page.locator('button:has-text("Ready for download")')
+            if await ready_link.count() > 0:
                 logger.info("Export ready after %d seconds.", elapsed)
-
-                # Click download and capture the file
-                async with page.expect_download() as download_info:
-                    await download_link.first.click()
-                download = await download_info.value
-
-                # Save to our download directory
-                save_path = os.path.join(self._download_dir, download.suggested_filename)
-                await download.save_as(save_path)
-                logger.info("Downloaded export to: %s", save_path)
-
-                # Unzip if it's a ZIP
-                if save_path.endswith(".zip"):
-                    extract_dir = save_path.replace(".zip", "")
-                    with zipfile.ZipFile(save_path, "r") as zf:
-                        zf.extractall(extract_dir)
-                    return Path(extract_dir)
-
-                return Path(save_path)
+                return await self._download_export(page, ready_link.first)
 
             logger.info("Export not ready yet (%ds elapsed)...", elapsed)
 
         raise RuntimeError(f"Export did not complete within {max_wait} seconds")
+
+    async def _download_export(self, page, download_link) -> Path:
+        """Click a download link, save the file, and unzip if needed."""
+        async with page.expect_download() as download_info:
+            await download_link.click()
+        download = await download_info.value
+
+        save_path = os.path.join(self._download_dir, download.suggested_filename)
+        await download.save_as(save_path)
+        logger.info("Downloaded export to: %s", save_path)
+
+        # Unzip if it's a ZIP
+        if save_path.endswith(".zip"):
+            extract_dir = save_path.replace(".zip", "")
+            with zipfile.ZipFile(save_path, "r") as zf:
+                zf.extractall(extract_dir)
+            return Path(extract_dir)
+
+        return Path(save_path)
 
     def _parse_export(self, export_path: Path, client_name: str) -> PatientExtraction:
         """Parse an exported SimplePractice directory into structured data."""

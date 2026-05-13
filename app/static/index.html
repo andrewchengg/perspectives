@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perspectives Health — Clinical Intelligence</title>
+    <title>Perspectives — Clinical Intelligence</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -11,26 +15,107 @@
         box-sizing: border-box;
       }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: #f5f7fa;
-        color: #1a1a2e;
+        font-family:
+          "Inter",
+          -apple-system,
+          sans-serif;
+        background: #0f1729;
+        color: #e2e8f0;
+        min-height: 100vh;
       }
 
-      .header {
-        background: #1a1a2e;
-        color: white;
-        padding: 20px 40px;
+      /* Nav */
+      .nav {
         display: flex;
         align-items: center;
-        gap: 16px;
+        justify-content: space-between;
+        padding: 16px 40px;
+        background: rgba(15, 23, 41, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
-      .header h1 {
-        font-size: 22px;
-        font-weight: 600;
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
       }
-      .header span {
-        color: #8b8fa3;
-        font-size: 14px;
+      .nav-brand svg {
+        width: 28px;
+        height: 28px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 8px;
+      }
+      .nav-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 40px 60px;
+        background: linear-gradient(
+          135deg,
+          #0f1729 0%,
+          #1e3a5f 50%,
+          #2d5a87 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: white;
+        line-height: 1.1;
+        max-width: 700px;
+        position: relative;
+      }
+      .hero p {
+        font-size: 18px;
+        color: #94a3b8;
+        margin-top: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        position: relative;
+      }
+      .hero-gradient {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(79, 70, 229, 0.15) 0%,
+          transparent 70%
+        );
       }
 
       .container {
@@ -39,22 +124,37 @@
         padding: 30px 20px;
       }
 
+      /* Cards */
       .card {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        padding: 24px;
+        background: #1a2332;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 28px;
         margin-bottom: 20px;
       }
       .card h2 {
         font-size: 18px;
+        font-weight: 700;
         margin-bottom: 16px;
-        color: #1a1a2e;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .card h2 .badge {
+        background: #4f46e5;
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 600;
       }
       .card h3 {
-        font-size: 15px;
-        margin: 16px 0 8px;
-        color: #444;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 20px 0 10px;
+        color: #cbd5e1;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       .grid {
@@ -68,54 +168,68 @@
         }
       }
 
+      /* Buttons */
       .btn {
-        padding: 10px 20px;
+        padding: 11px 22px;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s;
+        font-family: "Inter", sans-serif;
       }
       .btn-primary {
+        background: white;
+        color: #0f1729;
+      }
+      .btn-primary:hover {
+        background: #e2e8f0;
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .btn-secondary:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .btn-accent {
         background: #4f46e5;
         color: white;
       }
-      .btn-primary:hover {
+      .btn-accent:hover {
         background: #4338ca;
+        transform: translateY(-1px);
       }
-      .btn-primary:disabled {
-        background: #9ca3af;
+      .btn:disabled {
+        opacity: 0.4;
         cursor: not-allowed;
-      }
-      .btn-secondary {
-        background: #e5e7eb;
-        color: #374151;
-      }
-      .btn-secondary:hover {
-        background: #d1d5db;
-      }
-      .btn-danger {
-        background: #ef4444;
-        color: white;
-      }
-      .btn-success {
-        background: #10b981;
-        color: white;
+        transform: none;
       }
 
-      input,
-      select {
-        padding: 10px 14px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
+      /* Inputs */
+      input {
+        padding: 11px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
         font-size: 14px;
         width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+      }
+      input::placeholder {
+        color: #475569;
       }
       input:focus {
         outline: none;
         border-color: #4f46e5;
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        background: rgba(79, 70, 229, 0.05);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
       }
 
       .form-group {
@@ -123,52 +237,57 @@
       }
       .form-group label {
         display: block;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 600;
-        color: #6b7280;
-        margin-bottom: 4px;
+        color: #64748b;
+        margin-bottom: 6px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
       }
 
+      /* Status */
       .status {
-        padding: 4px 10px;
+        padding: 4px 12px;
         border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 11px;
+        font-weight: 700;
         display: inline-block;
+        letter-spacing: 0.3px;
       }
       .status-pass {
-        background: #d1fae5;
-        color: #065f46;
+        background: rgba(16, 185, 129, 0.15);
+        color: #34d399;
       }
       .status-fail {
-        background: #fee2e2;
-        color: #991b1b;
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
       }
       .status-partial {
-        background: #fef3c7;
-        color: #92400e;
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
       }
 
       .progress-bar {
-        height: 8px;
-        background: #e5e7eb;
-        border-radius: 4px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 3px;
         overflow: hidden;
-        margin: 8px 0;
+        margin: 10px 0;
       }
       .progress-fill {
         height: 100%;
-        border-radius: 4px;
-        transition: width 0.5s;
+        border-radius: 3px;
+        transition: width 0.8s ease-out;
       }
 
+      /* Findings */
       .finding {
-        border-left: 3px solid #e5e7eb;
-        padding: 8px 12px;
+        border-left: 3px solid rgba(255, 255, 255, 0.1);
+        padding: 10px 14px;
         margin: 8px 0;
         font-size: 13px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0 8px 8px 0;
       }
       .finding-pass {
         border-color: #10b981;
@@ -180,11 +299,13 @@
         border-color: #f59e0b;
       }
 
+      /* Dimensions */
       .dimension {
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 16px;
         margin: 10px 0;
+        background: rgba(255, 255, 255, 0.02);
       }
       .dimension-header {
         display: flex;
@@ -194,43 +315,50 @@
       .dimension-name {
         font-weight: 600;
         font-size: 14px;
+        color: #e2e8f0;
       }
       .risk-code {
-        font-family: monospace;
-        background: #f3f4f6;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 13px;
+        font-family: "JetBrains Mono", monospace;
+        background: rgba(79, 70, 229, 0.15);
+        color: #a5b4fc;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
       }
 
       .citation {
-        background: #f8fafc;
+        background: rgba(79, 70, 229, 0.06);
         border-left: 2px solid #4f46e5;
-        padding: 6px 10px;
-        margin: 4px 0;
+        padding: 8px 12px;
+        margin: 6px 0;
         font-size: 12px;
-        color: #64748b;
+        color: #94a3b8;
+        border-radius: 0 6px 6px 0;
       }
       .citation strong {
-        color: #1e293b;
+        color: #cbd5e1;
       }
 
+      /* Loading */
       .loading {
         display: none;
         align-items: center;
-        gap: 8px;
-        color: #6b7280;
+        gap: 10px;
+        color: #64748b;
+        margin-top: 12px;
+        font-size: 13px;
       }
       .loading.active {
         display: flex;
       }
       .spinner {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #e5e7eb;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
         border-top-color: #4f46e5;
         border-radius: 50%;
-        animation: spin 0.8s linear infinite;
+        animation: spin 0.7s linear infinite;
       }
       @keyframes spin {
         to {
@@ -238,104 +366,175 @@
         }
       }
 
+      /* Tabs */
       .tabs {
         display: flex;
-        gap: 4px;
+        gap: 2px;
         margin-bottom: 20px;
-        border-bottom: 2px solid #e5e7eb;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        padding: 4px;
       }
       .tab {
-        padding: 10px 20px;
+        padding: 9px 18px;
         cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        color: #6b7280;
-        border-bottom: 2px solid transparent;
-        margin-bottom: -2px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #64748b;
+        border-radius: 8px;
+        transition: all 0.2s;
       }
       .tab.active {
-        color: #4f46e5;
-        border-bottom-color: #4f46e5;
+        color: white;
+        background: rgba(79, 70, 229, 0.3);
+      }
+      .tab:hover:not(.active) {
+        color: #94a3b8;
       }
 
+      /* Patient */
       .patient-info {
         display: flex;
-        gap: 20px;
+        gap: 16px;
         align-items: center;
         padding: 16px;
-        background: #f8fafc;
-        border-radius: 8px;
+        background: rgba(79, 70, 229, 0.06);
+        border: 1px solid rgba(79, 70, 229, 0.15);
+        border-radius: 12px;
         margin-bottom: 16px;
       }
       .patient-avatar {
         width: 48px;
         height: 48px;
-        background: #4f46e5;
-        border-radius: 50%;
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 17px;
       }
       .patient-details h3 {
         font-size: 16px;
+        color: white;
       }
       .patient-details p {
         font-size: 13px;
-        color: #6b7280;
+        color: #64748b;
       }
 
+      /* Gaps */
       .gap-item {
-        padding: 10px;
+        padding: 12px 14px;
         margin: 6px 0;
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 13px;
       }
       .gap-critical {
-        background: #fef2f2;
-        border: 1px solid #fecaca;
+        background: rgba(239, 68, 68, 0.08);
+        border: 1px solid rgba(239, 68, 68, 0.2);
       }
       .gap-major {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
+        background: rgba(245, 158, 11, 0.08);
+        border: 1px solid rgba(245, 158, 11, 0.2);
       }
       .gap-minor {
-        background: #f0fdf4;
-        border: 1px solid #bbf7d0;
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.2);
       }
 
       .hidden {
         display: none;
       }
       .step {
-        padding: 6px 10px;
+        padding: 8px 12px;
         margin: 4px 0;
-        background: #f8fafc;
-        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
         font-size: 13px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
       }
       .level-badge {
-        background: #4f46e5;
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
         color: white;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 16px;
-        font-weight: 700;
+        padding: 8px 20px;
+        border-radius: 24px;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+        margin: 24px 0;
+      }
+
+      /* Metric cards */
+      .metrics {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .metric {
+        flex: 1;
+        min-width: 140px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        text-align: center;
+      }
+      .metric-value {
+        font-size: 28px;
+        font-weight: 800;
+        color: white;
+      }
+      .metric-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 4px;
       }
     </style>
   </head>
   <body>
-    <div class="header">
-      <h1>Perspectives Health</h1>
-      <span>Clinical Intelligence Platform</span>
+    <nav class="nav">
+      <div class="nav-brand">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <rect x="3" y="3" width="7" height="18" rx="1.5" />
+          <rect x="14" y="3" width="7" height="10" rx="1.5" />
+          <rect x="14" y="16" width="7" height="5" rx="1.5" />
+        </svg>
+        Perspectives
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">Dashboard</a>
+        <a href="/docs">API Docs</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-gradient"></div>
+      <h1>AI-powered clinical intelligence</h1>
+      <p>
+        Extract patient data from SimplePractice, evaluate ASAM Level of Care,
+        and audit TJC compliance — all in one place.
+      </p>
     </div>
 
     <div class="container">
-      <!-- Extract Section -->
+      <!-- Extract -->
       <div class="card" id="extract-card">
-        <h2>1. Extract Patient Data</h2>
+        <h2><span class="badge">1</span> Extract Patient Data</h2>
         <div class="grid">
           <div>
             <div class="form-group">
@@ -390,7 +589,7 @@
         </div>
       </div>
 
-      <!-- Patient Info -->
+      <!-- Patient -->
       <div class="card hidden" id="patient-card">
         <div class="patient-info">
           <div class="patient-avatar" id="patient-initials">JS</div>
@@ -399,23 +598,22 @@
             <p id="patient-meta">DOB: 04/03/1994 | Gender: Male | Notes: 3</p>
           </div>
         </div>
-
         <div class="tabs">
           <div class="tab active" onclick="showTab('assessment')">
             Assessment
           </div>
           <div class="tab" onclick="showTab('notes')">Progress Notes</div>
         </div>
-
         <div id="tab-assessment">
           <div
             id="assessment-content"
             style="
               font-size: 13px;
-              line-height: 1.6;
+              line-height: 1.7;
               max-height: 300px;
               overflow-y: auto;
               white-space: pre-wrap;
+              color: #94a3b8;
             "
           ></div>
         </div>
@@ -424,28 +622,28 @@
         </div>
       </div>
 
-      <!-- Analysis Buttons -->
+      <!-- Analysis -->
       <div class="card hidden" id="analysis-card">
-        <h2>2. Run Clinical Intelligence</h2>
+        <h2><span class="badge">2</span> Run Clinical Intelligence</h2>
         <div style="display: flex; gap: 12px; flex-wrap: wrap">
-          <button class="btn btn-primary" onclick="runASAM()">
-            Run ASAM Level of Care Evaluation
+          <button class="btn btn-accent" onclick="runASAM()">
+            Run ASAM Evaluation
           </button>
-          <button class="btn btn-primary" onclick="runTJC()">
+          <button class="btn btn-accent" onclick="runTJC()">
             Run TJC Compliance Audit
           </button>
         </div>
         <div class="loading" id="asam-loading">
           <div class="spinner"></div>
-          Evaluating across 6 ASAM dimensions (two-pass analysis)...
+          Evaluating across ASAM dimensions...
         </div>
         <div class="loading" id="tjc-loading">
           <div class="spinner"></div>
-          Auditing against TJC CTS standards (two-pass analysis)...
+          Auditing against TJC CTS standards...
         </div>
       </div>
 
-      <!-- ASAM Results -->
+      <!-- ASAM -->
       <div class="card hidden" id="asam-card">
         <h2>ASAM Level of Care Evaluation</h2>
         <div
@@ -453,24 +651,29 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
           "
         >
-          <span>Recommended Level:</span>
+          <span style="color: #64748b">Recommended Level:</span>
           <span class="level-badge" id="asam-level">—</span>
           <span
             id="asam-level-name"
-            style="font-size: 14px; color: #6b7280"
+            style="font-size: 14px; color: #94a3b8"
           ></span>
         </div>
         <div id="asam-dimensions"></div>
+        <div class="divider"></div>
         <h3>LOC Determination Steps</h3>
         <div id="asam-steps"></div>
+        <div class="divider"></div>
         <h3>Clinical Summary</h3>
-        <p id="asam-summary" style="font-size: 13px; line-height: 1.6"></p>
+        <p
+          id="asam-summary"
+          style="font-size: 13px; line-height: 1.7; color: #94a3b8"
+        ></p>
       </div>
 
-      <!-- TJC Results -->
+      <!-- TJC -->
       <div class="card hidden" id="tjc-card">
         <h2>TJC Compliance Audit</h2>
         <div
@@ -478,11 +681,14 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
           "
         >
-          <span>Overall Compliance:</span>
-          <span class="level-badge" id="tjc-pct" style="background: #ef4444"
+          <span style="color: #64748b">Overall Compliance:</span>
+          <span
+            class="level-badge"
+            id="tjc-pct"
+            style="background: linear-gradient(135deg, #ef4444, #dc2626)"
             >—%</span
           >
         </div>
@@ -494,12 +700,26 @@
           ></div>
         </div>
         <div id="tjc-standards"></div>
+        <div class="divider"></div>
         <h3>Critical Gaps</h3>
         <div id="tjc-gaps"></div>
+        <div class="divider"></div>
         <h3>Recommendations</h3>
-        <ul id="tjc-recs" style="font-size: 13px; padding-left: 20px"></ul>
+        <ul
+          id="tjc-recs"
+          style="
+            font-size: 13px;
+            padding-left: 20px;
+            color: #94a3b8;
+            line-height: 1.8;
+          "
+        ></ul>
+        <div class="divider"></div>
         <h3>Summary</h3>
-        <p id="tjc-summary" style="font-size: 13px; line-height: 1.6"></p>
+        <p
+          id="tjc-summary"
+          style="font-size: 13px; line-height: 1.7; color: #94a3b8"
+        ></p>
       </div>
     </div>
 
@@ -511,7 +731,6 @@
         const path = document.getElementById("export-path").value;
         const name = document.getElementById("client-name").value;
         if (!path || !name) return alert("Enter export path and client name");
-
         show("extract-loading");
         try {
           const res = await fetch(`${API}/api/v1/parse-export`, {
@@ -533,7 +752,6 @@
         const email = document.getElementById("sp-email").value;
         const pw = document.getElementById("sp-password").value;
         if (!name) return alert("Enter client name");
-
         show("live-loading");
         try {
           const res = await fetch(`${API}/api/v1/extract`, {
@@ -564,66 +782,35 @@
           `${p.first_name} ${p.last_name}`;
         document.getElementById("patient-meta").textContent =
           `DOB: ${p.date_of_birth} | Gender: ${p.gender} | Notes: ${data.progress_notes.length}`;
-
-        // Assessment
         const a = data.assessment;
-        let aText = `Type: ${a.assessment_type}\nClinician: ${a.clinician.name}\nDate: ${a.assessment_date}\n\n`;
-        aText += `PRESENTING PROBLEM:\n${a.presenting_problem}\n\n`;
-        aText += `SUBSTANCE USE HISTORY:\n${a.substance_use_history}\n\n`;
-        aText += `MEDICAL HISTORY:\n${a.medical_history}\n\n`;
-        aText += `RISK ASSESSMENT:\n${a.risk_assessment}\n\n`;
-        aText += `SPIRITUAL/CULTURAL:\n${a.spiritual_cultural || "Not documented"}\n\n`;
-        aText += `STRENGTHS:\n${a.strengths || "Not documented"}`;
+        let aText = `Clinician: ${a.clinician.name} | Date: ${a.assessment_date}\n\nPRESENTING PROBLEM:\n${a.presenting_problem}\n\nSUBSTANCE USE HISTORY:\n${a.substance_use_history}\n\nMEDICAL HISTORY:\n${a.medical_history}\n\nRISK ASSESSMENT:\n${a.risk_assessment}\n\nSPIRITUAL/CULTURAL:\n${a.spiritual_cultural || "Not documented"}\n\nSTRENGTHS:\n${a.strengths || "Not documented"}`;
         document.getElementById("assessment-content").textContent = aText;
-
-        // Notes
-        let notesHtml = "";
+        let nh = "";
         for (const n of data.progress_notes) {
-          notesHtml += `<div class="dimension"><div class="dimension-header">`;
-          notesHtml += `<span class="dimension-name">${n.note_format} — ${n.note_date}</span>`;
-          notesHtml += `<span class="risk-code">${n.cpt_code || ""} | ${n.session_duration_minutes || ""}min</span>`;
-          notesHtml += `</div><div style="font-size:13px;margin-top:8px;">`;
-          for (const [section, text] of Object.entries(n.sections)) {
-            notesHtml += `<p><strong>${section.toUpperCase()}:</strong> ${text.substring(0, 300)}${text.length > 300 ? "..." : ""}</p>`;
+          nh += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">${n.note_format} — ${n.note_date}</span><span class="risk-code">${n.cpt_code || ""} | ${n.session_duration_minutes || ""}min</span></div><div style="font-size:13px;margin-top:10px;color:#94a3b8;">`;
+          for (const [s, t] of Object.entries(n.sections)) {
+            nh += `<p style="margin-bottom:8px;"><strong style="color:#cbd5e1;">${s.toUpperCase()}:</strong> ${t.substring(0, 300)}${t.length > 300 ? "..." : ""}</p>`;
           }
-          notesHtml += `</div></div>`;
+          nh += "</div></div>";
         }
-        document.getElementById("notes-content").innerHTML = notesHtml;
-
+        document.getElementById("notes-content").innerHTML = nh;
         document.getElementById("patient-card").classList.remove("hidden");
         document.getElementById("analysis-card").classList.remove("hidden");
-
-        // Store patient data for DB lookup
-        window._patientData = data;
       }
 
       async function runASAM() {
-        // First we need the DB patient ID
         if (!patientId) return alert("Extract patient first");
         show("asam-loading");
-
         try {
-          // Try to find patient in DB by getting all patients
-          const listRes = await fetch(
-            `${API}/api/v1/patients/${patientId}/extract`,
-          );
-          let dbId = patientId;
-          if (!listRes.ok) {
-            // Patient might not be in DB yet with this ID, use the extraction data directly
-            // The parse-export endpoint should have persisted it
-            alert(
-              "Patient not found in database. Try parsing the export first.",
-            );
+          const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
+          if (!r.ok) {
+            alert("Patient not in DB.");
             hide("asam-loading");
             return;
           }
-
           const res = await fetch(
-            `${API}/api/v1/patients/${dbId}/asam-evaluation`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-            },
+            `${API}/api/v1/patients/${patientId}/asam-evaluation`,
+            { method: "POST", headers: { "Content-Type": "application/json" } },
           );
           const data = await res.json();
           if (data.detail) throw new Error(data.detail);
@@ -637,22 +824,17 @@
       async function runTJC() {
         if (!patientId) return alert("Extract patient first");
         show("tjc-loading");
-
         try {
-          const listRes = await fetch(
-            `${API}/api/v1/patients/${patientId}/extract`,
-          );
-          let dbId = patientId;
-          if (!listRes.ok) {
-            alert("Patient not found in database.");
+          const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
+          if (!r.ok) {
+            alert("Patient not in DB.");
             hide("tjc-loading");
             return;
           }
-
-          const res = await fetch(`${API}/api/v1/patients/${dbId}/tjc-audit`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-          });
+          const res = await fetch(
+            `${API}/api/v1/patients/${patientId}/tjc-audit`,
+            { method: "POST", headers: { "Content-Type": "application/json" } },
+          );
           const data = await res.json();
           if (data.detail) throw new Error(data.detail);
           displayTJC(data);
@@ -667,37 +849,31 @@
           data.recommended_level;
         document.getElementById("asam-level-name").textContent =
           data.recommended_level_name;
-
-        let dimsHtml = "";
+        let h = "";
         for (const dim of data.dimensions) {
-          dimsHtml += `<div class="dimension"><div class="dimension-header">`;
-          dimsHtml += `<span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span>`;
-          dimsHtml += `</div>`;
+          h += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span></div>`;
           if (dim.subdimensions) {
             for (const sub of dim.subdimensions) {
-              dimsHtml += `<div style="margin:6px 0 2px 12px;font-size:13px;">`;
-              dimsHtml += `<span class="risk-code">${sub.risk_rating_code}</span> `;
-              dimsHtml += `<strong>${sub.name}</strong> → ${sub.minimum_level}`;
-              dimsHtml += `<div style="color:#6b7280;margin-top:2px;">${sub.rationale.substring(0, 200)}</div>`;
-              if (sub.citations && sub.citations.length > 0) {
+              h += `<div style="margin:8px 0 4px 12px;font-size:13px;"><span class="risk-code">${sub.risk_rating_code}</span> <strong style="color:#e2e8f0;">${sub.name}</strong> <span style="color:#64748b;">→ ${sub.minimum_level}</span>`;
+              h += `<div style="color:#64748b;margin-top:4px;">${sub.rationale.substring(0, 250)}</div>`;
+              if (sub.citations?.length > 0) {
                 for (const c of sub.citations.slice(0, 2)) {
-                  dimsHtml += `<div class="citation"><strong>${c.source}:</strong> "${c.text.substring(0, 150)}"</div>`;
+                  h += `<div class="citation"><strong>${c.source}:</strong> "${c.text.substring(0, 150)}"</div>`;
                 }
               }
-              dimsHtml += `</div>`;
+              h += "</div>";
             }
           }
-          dimsHtml += `</div>`;
+          h += "</div>";
         }
-        document.getElementById("asam-dimensions").innerHTML = dimsHtml;
-
-        let stepsHtml = "";
+        document.getElementById("asam-dimensions").innerHTML = h;
+        let sh = "";
         if (data.loc_determination_steps) {
           for (const s of data.loc_determination_steps) {
-            stepsHtml += `<div class="step"><strong>Step ${s.step}:</strong> ${s.description} → <em>${s.result}</em></div>`;
+            sh += `<div class="step"><strong>Step ${s.step}:</strong> ${s.description} → <em style="color:#a5b4fc;">${s.result}</em></div>`;
           }
         }
-        document.getElementById("asam-steps").innerHTML = stepsHtml;
+        document.getElementById("asam-steps").innerHTML = sh;
         document.getElementById("asam-summary").textContent =
           data.clinical_summary;
         document.getElementById("asam-card").classList.remove("hidden");
@@ -707,52 +883,44 @@
         const pct = data.overall_compliance_percentage;
         const color = pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444";
         document.getElementById("tjc-pct").textContent = pct.toFixed(1) + "%";
-        document.getElementById("tjc-pct").style.background = color;
+        document.getElementById("tjc-pct").style.background =
+          `linear-gradient(135deg, ${color}, ${color}dd)`;
         document.getElementById("tjc-progress").style.width = pct + "%";
         document.getElementById("tjc-progress").style.background = color;
-
-        let stdsHtml = "";
+        let h = "";
         for (const std of data.standards) {
-          const statusClass =
+          const sc =
             std.overall_status === "compliant"
               ? "pass"
               : std.overall_status === "non_compliant"
                 ? "fail"
                 : "partial";
-          stdsHtml += `<div class="dimension"><div class="dimension-header">`;
-          stdsHtml += `<span class="dimension-name">${std.standard_id} — ${std.standard_name}</span>`;
-          stdsHtml += `<span class="status status-${statusClass}">${std.compliance_percentage}%</span>`;
-          stdsHtml += `</div>`;
+          h += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">${std.standard_id} — ${std.standard_name}</span><span class="status status-${sc}">${std.compliance_percentage}%</span></div>`;
           for (const f of std.findings) {
-            const fClass =
+            const fc =
               f.status === "pass"
                 ? "pass"
                 : f.status === "fail"
                   ? "fail"
                   : "partial";
-            stdsHtml += `<div class="finding finding-${fClass}">`;
-            stdsHtml += `<strong>${f.element}:</strong> ${f.finding.substring(0, 200)}`;
+            h += `<div class="finding finding-${fc}"><strong>${f.element}:</strong> ${f.finding.substring(0, 250)}`;
             if (f.remediation)
-              stdsHtml += `<div style="color:#4f46e5;margin-top:4px;font-size:12px;">Fix: ${f.remediation}</div>`;
-            stdsHtml += `</div>`;
+              h += `<div style="color:#a5b4fc;margin-top:4px;font-size:12px;">Fix: ${f.remediation}</div>`;
+            h += "</div>";
           }
-          stdsHtml += `</div>`;
+          h += "</div>";
         }
-        document.getElementById("tjc-standards").innerHTML = stdsHtml;
-
-        let gapsHtml = "";
+        document.getElementById("tjc-standards").innerHTML = h;
+        let gh = "";
         for (const g of data.critical_gaps) {
-          gapsHtml += `<div class="gap-item gap-${g.severity}">`;
-          gapsHtml += `<strong>[${g.severity.toUpperCase()}]</strong> ${g.standard} ${g.element}: ${g.description}`;
-          gapsHtml += `</div>`;
+          gh += `<div class="gap-item gap-${g.severity}"><strong>[${g.severity.toUpperCase()}]</strong> ${g.standard} ${g.element}: ${g.description}</div>`;
         }
-        document.getElementById("tjc-gaps").innerHTML = gapsHtml;
-
-        let recsHtml = "";
+        document.getElementById("tjc-gaps").innerHTML = gh;
+        let rh = "";
         for (const r of data.recommendations) {
-          recsHtml += `<li style="margin-bottom:6px;">${r}</li>`;
+          rh += `<li>${r}</li>`;
         }
-        document.getElementById("tjc-recs").innerHTML = recsHtml;
+        document.getElementById("tjc-recs").innerHTML = rh;
         document.getElementById("tjc-summary").textContent = data.audit_summary;
         document.getElementById("tjc-card").classList.remove("hidden");
       }
@@ -766,7 +934,6 @@
         event.target.classList.add("active");
         document.getElementById("tab-" + tab).classList.remove("hidden");
       }
-
       function show(id) {
         document.getElementById(id).classList.add("active");
       }

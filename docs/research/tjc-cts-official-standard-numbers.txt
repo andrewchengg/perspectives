@@ -1,0 +1,71 @@
+# Official TJC CTS Standard Numbers
+# Source: https://publicstandards.tools.jointcommission.org/6.DOMESTIC
+# Program: Behavioral Health Care and Human Services
+# Effective: March 1, 2026
+# Total: 133 CTS standards
+
+## CTS.01 — Entry to Care (5 standards)
+CTS.01.01.01
+CTS.01.02.01
+CTS.01.03.01
+CTS.01.03.03
+CTS.01.04.01
+
+## CTS.02 — Screening and Assessment (25 standards)
+CTS.02.01.01
+CTS.02.01.03
+CTS.02.01.05
+CTS.02.01.06
+CTS.02.01.07
+CTS.02.01.09
+CTS.02.01.11
+CTS.02.01.13
+CTS.02.01.15
+CTS.02.01.17
+CTS.02.02.01
+CTS.02.02.05
+CTS.02.02.07
+CTS.02.02.09
+CTS.02.03.01
+CTS.02.03.03
+CTS.02.03.05
+CTS.02.03.07
+CTS.02.03.09
+CTS.02.03.11
+CTS.02.03.13
+CTS.02.03.15
+CTS.02.04.01 through CTS.02.04.25 (13 standards — Foster Care section)
+CTS.02.05.01
+
+## CTS.03 — Treatment Planning (8 standards)
+CTS.03.01.01
+CTS.03.01.03
+CTS.03.01.05
+CTS.03.01.07
+CTS.03.01.09
+CTS.03.02.01
+CTS.03.02.03
+CTS.03.02.05
+
+## CTS.04 — Provision of Care (40 standards)
+CTS.04.01.01
+CTS.04.01.03
+CTS.04.01.07
+CTS.04.02.01 through CTS.04.02.33 (17 standards)
+CTS.04.03.01 through CTS.04.03.43 (20 standards)
+
+## CTS.05 — Special Behavioral Procedures (20 standards)
+CTS.05.01.01
+CTS.05.02.01
+CTS.05.03.01
+CTS.05.04.01 through CTS.05.04.17 (9 standards — Individualized Behavioral Contingencies)
+CTS.05.05.01 through CTS.05.05.21 (11 standards)
+
+## CTS.06 — Continuity of Care (14 standards)
+CTS.06.01.01 through CTS.06.01.19 (10 standards)
+CTS.06.02.01 through CTS.06.02.07 (4 standards)
+
+## CTS.07 (3 standards)
+CTS.07.01.01
+CTS.07.01.02
+CTS.07.01.03

@@ -1,0 +1,783 @@
+APR.01.01.01: The organization submits information to The Joint Commission as required.
+
+APR.01.02.01: The organization provides accurate information throughout the accreditation process.
+
+APR.01.03.01: The organization reports any changes in the information provided in the application for accreditation and any changes made between surveys.
+
+APR.02.01.01: The organization permits the performance of a survey at The Joint Commission's discretion.
+
+APR.05.01.01: The organization allows The Joint Commission to review the results of external evaluations from publicly recognized bodies.
+
+APR.06.01.01: Applicants and accredited organizations do not use Joint Commission employees to provide accreditation-related consulting services.
+
+APR.07.01.01: The organization accepts the presence of Joint Commission surveyor management staff or a Board of Commissioners member in the role of observer of an on-site survey.
+
+APR.08.01.01: The organization accurately represents its accreditation status and the programs and services to which Joint Commission accreditation applies.
+
+APR.09.01.01: The organization notifies the public it serves about how to contact its organization management and The Joint Commission to report concerns about safety of the individual served and quality of care.
+Note: Methods of notice may include, but are not limited to, distribution of information about The Joint Commission, including contact information in published materials such as brochures and/or posting this information on the organization's website.
+
+APR.09.02.01: Any person who provides care, treatment, or services can report concerns about safety or the quality of care to The Joint Commission without retaliatory action from the organization.
+
+APR.09.04.01: The organization provides care, treatment, services, and an environment that pose no risk of an “Immediate Threat to Health or Safety.” 
+
+CTS.01.01.01: The organization accepts for care, treatment, or services only those individuals whose identified care, treatment, or service needs it can meet.
+
+CTS.01.02.01: An organization that maintains waiting lists manages them in accordance with established organizational procedure and law and regulation.
+
+CTS.01.03.01: The organization develops a preliminary plan for care, treatment, or services, when needed.
+Note: For child welfare agencies, this plan might include a safety plan.
+
+CTS.01.03.03: For child welfare: The agency develops a safety plan with the family's input.
+
+CTS.01.04.01: For organizations that serve adults with serious mental illness: The organization supports the adult’s decisions (psychiatric advance directive) about how care, treatment, or services are to be delivered during times when the adult is unable to make such decisions. (See also RI.01.05.01, EPs 1, 4, 5, 8, 10)
+
+CTS.02.01.01: The organization has a screening procedure for the early detection of risk of imminent harm to self or others.
+
+CTS.02.01.03: The organization performs screenings and assessments as defined by the organization's policy.
+
+CTS.02.01.05: For organizations providing care, treatment, or services in non-24-hour settings: The organization implements a written process requiring a physical health screening to determine the individual's need for a medical history and physical examination.
+Note 1: This standard does not apply to traditional or treatment foster care. (For more information, refer to Standard CTS.02.04.01)
+Note 2: If the organization conducts a physical examination on all individuals served, it is in compliance with this s
+
+CTS.02.01.06: For organizations providing residential care: The organization screens all individuals served to determine the individual’s need for a medical history and physical examination.
+Note 1: This standard does not apply to traditional or treatment foster care or emergency shelters. (For more information, refer to Standard CTS.02.04.01)
+Note 2: If the organization conducts a physical examination on all individuals served, it is in compliance with this standard.
+Note 3: \"Residential care\" includes res
+
+CTS.02.01.07: The organization completes a physical health assessment, including a medical history and physical examination.
+Note: This standard does not apply to traditional or treatment foster care.
+
+CTS.02.01.09: The organization screens all individuals served for physical pain.
+
+CTS.02.01.11: The organization screens all individuals served for their nutritional status.
+
+CTS.02.01.13: As relevant to the needs, preferences, interests, and goals of the individual served, the organization screens for the educational status of the individual served.
+
+CTS.02.01.15: As relevant to care, treatment, or services, the organization screens for the legal issues of the individual served.
+
+CTS.02.01.17: As relevant to the needs, preferences, interests, and goals of the individual served, the organization screens for the vocational status of the individual served.
+
+CTS.02.02.01: The organization collects assessment data on each individual served.
+
+CTS.02.02.05: The organization identifies individuals who may have experienced trauma, abuse, neglect, or exploitation.
+
+CTS.02.02.07: The organization reassesses individuals served, as needed.
+Note: The scope and intensity of any further assessments are based on the individual's functioning; the setting; the individual's preferences for care, treatment, or services; and the individual's response to care, treatment, or services provided. Each individual may be reassessed for many reasons, including the following:
+- To evaluate their response to care, treatment, or services
+- To respond to a significant change in status and/or d
+
+CTS.02.02.09: The organization has a process to provide medical histories, physical examinations, and diagnostic and laboratory tests.
+
+CTS.02.03.01: For organizations providing care, treatment, or services to a child or youth: The organization facilitates and coordinates family or guardian involvement throughout the assessment process.
+
+CTS.02.03.03: For organizations providing care, treatment, or services to a child or youth: The organization assesses the needs of children or youth.
+
+CTS.02.03.05: For organizations providing care, treatment, or services to individuals with intellectual and developmental disabilities: The organization assesses the needs of the individual.
+
+CTS.02.03.07: For organizations providing care, treatment, or services to individuals with addictions: The assessment includes the individual's history of addictive behaviors.
+
+CTS.02.03.09: For organizations providing care, treatment, or services to individuals with eating disorders: The organization assesses the individual’s food-related behaviors. (For more information, refer to Standard CTS.04.02.17)
+Note: This standard applies to all individuals with eating disorders regardless of setting.
+
+CTS.02.03.11: For organizations that provide eating disorders care, treatment, or services: The organization conducts additional assessments for individuals with eating disorders.
+
+CTS.02.03.13: For organizations providing care, treatment, or services to individuals with addictions: The individual served is placed in the appropriate level of care.
+
+CTS.02.03.15: For organizations providing care, treatment, or services to individuals with addictions: The organization uses drug testing to promote safety and quality of care.
+
+CTS.02.04.01: For child welfare: The agency screens and assesses each individual to determine needed services and/or placement.
+
+CTS.02.04.03: For child welfare: The agency develops criteria to match a foster or respite home to an individual.
+
+CTS.02.04.05: For child welfare: The agency assesses each prospective resource parent to determine their eligibility. 
+
+CTS.02.04.07: For child welfare: The agency assesses the needs of the family of origin to promote family preservation and/or reunification.
+
+CTS.02.04.09: For child welfare: The agency uses a defined process to determine out-of-home placement decisions.
+
+CTS.02.04.11: For child welfare: The agency defines and uses criteria to determine the need for foster and/or respite care services.
+
+CTS.02.04.13: For child welfare: The agency defines and uses criteria to identify prospective resource parents.
+
+CTS.02.04.15: For child welfare: The agency develops and uses criteria to determine the number of individuals that can be placed in each foster and/or respite care home.
+
+CTS.02.04.17: For child welfare: The agency uses guidelines in making placement decisions.
+
+CTS.02.04.19: For child welfare: The agency determines the competence of and how to select foster parents and/or respite caregivers.
+
+CTS.02.04.21: For child welfare: Resource parents providing treatment foster care services receive ongoing training, support, and supervision to maintain safe care for the individual in treatment foster care.
+
+CTS.02.04.23: For child welfare: The agency conducts a comprehensive home study of prospective adoptive parents.
+
+CTS.02.04.25: For child welfare: The child protective services agency conducts intakes and investigations according to its policies and procedures.
+
+CTS.02.05.01: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC screens for unsafe substance use.
+
+CTS.03.01.01: The organization bases the planned care, treatment, or services on the needs, strengths, preferences, and goals of the individual served.
+
+CTS.03.01.03: The organization has a plan for care, treatment, or services that reflects the assessed needs, strengths, preferences, and goals of the individual served.
+
+CTS.03.01.05: The plan for care, treatment, or services addresses the family’s involvement.
+
+CTS.03.01.07: When individuals served need additional care, treatment, or services not offered by the organization, referrals are made and documented in the clinical/case record. (For more information, refer to Standard CTS.04.01.01.)
+
+CTS.03.01.09: The organization assesses the outcomes of care, treatment, or services provided to the individual served.
+
+CTS.03.02.01: For organizations providing care, treatment, or services to individuals with intellectual and developmental disabilities: The organization addresses the needs, strengths, preferences, and goals of individuals.
+
+CTS.03.02.03: For child welfare: The agency develops and periodically reviews its case plans.
+
+CTS.03.02.05: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC plans for care, treatment, or services for veterans.
+
+CTS.04.01.01: The organization coordinates the care, treatment, or services provided to an individual served as part of the plan for care, treatment, or services and in a manner consistent with the organization's scope of care, treatment, or services. (For more information, refer to Standard CTS.03.01.07.)
+
+CTS.04.01.03: The individual served receives education and training specific to the individual's needs and abilities consistent with the care, treatment, or services provided.
+Note: This standard does not apply to academic education.
+
+CTS.04.01.07: For organizations that elect The Joint Commission Behavioral Health Home option: The organization provides excellent access to integrated care, treatment, or services.
+
+CTS.04.02.01: For organizations providing care, treatment, or services to individuals with intellectual and developmental disabilities: The organization recognizes the personal preferences of the individual served and addresses them to the extent feasible.
+
+CTS.04.02.03: For organizations providing care, treatment, or services to individuals with intellectual and developmental disabilities: The organization provides for the health maintenance of all individuals with intellectual and developmental disabilities, including early detection and remediation of health needs.
+
+CTS.04.02.05: For organizations providing care, treatment, or services to individuals with intellectual and developmental disabilities: The organization records the use of assistive technology in the clinical/case record.
+
+CTS.04.02.06: For child welfare: Prospective parents receive education and training on relevant topics in the adoption process.
+
+CTS.04.02.07: For child welfare: Parents receive information and education to meet the needs of the individuals placed in their care.
+
+CTS.04.02.08: For child welfare: The agency facilitates safe, dignified transfers of placement for individuals served.
+
+CTS.04.02.09: For child welfare: The respite caregiver receives information needed to meet the needs of the individual placed in their care.
+
+CTS.04.02.11: For organizations providing care, treatment, or services to children or youth: The plan for care, treatment, or services reflects needed educational services for every child or youth whose care, treatment, or services cause a significant absence from school.
+
+CTS.04.02.13: For organizations providing care, treatment, or services to children or youth: The organization provides academic education to children and youth as needed.
+
+CTS.04.02.15: For organizations providing care, treatment, or services to children or youth: The organization facilitates educational continuity for children and youth.
+
+CTS.04.02.16: For organizations that provide eating disorders care, treatment, or services: The organization provides additional care, treatment, or services that support the needs of individuals with eating disorders.
+
+CTS.04.02.17: For organizations providing care, treatment, or services to individuals with eating disorders: The organization monitors the individual’s weight and food-related behaviors. (Refer to CTS.02.03.09 for more information)
+Note: This standard applies to all individuals with eating disorders regardless of setting.
+
+CTS.04.02.18: For organizations that provide 24-hour eating disorders care, treatment, or services: The organization supervises individuals served as needed.
+
+CTS.04.02.19: The organization provides basic prevention, screening, and physical health care services.
+Note: This standard is applicable only to organizations that directly provide primary physical health care either at their own facility or by contracting with another organization to provide primary physical health care on behalf of the organization. It applies whether the organization provides this service to all the individuals it serves or to only a distinct population of individuals.
+
+CTS.04.02.21: The organization provides basic prevention, screening, and physical health care services to individuals served through a referral agreement with a primary physical health care provider.
+Note: This standard is applicable only to organizations that have a formal agreement to refer individuals to a particular organization for primary physical health care. It applies whether the organization provides this service to all the individuals it serves or to only a distinct population of individuals.
+
+CTS.04.02.23: For organizations that elect The Joint Commission Behavioral Health Home option: The organization provides or facilitates the provision of prevention, screening, and primary physical health care, treatment, or services as part of integrated care.
+
+CTS.04.02.25: For organizations that elect The Joint Commission Behavioral Health Home option: The organization is accountable for facilitating the provision of integrated care to the individual served.
+
+CTS.04.02.27: For organizations that elect The Joint Commission Behavioral Health Home option: The integrated care team works in partnership with the individual served to support the continuity of care and the provision of comprehensive and coordinated care, treatment, or services.
+
+CTS.04.02.29: For organizations that provide eating disorders care, treatment, or services: The multidisciplinary care, treatment, or services team supports the continuity and provision of care, treatment, or services.
+
+CTS.04.02.31: For child welfare: The agency follows its policies on family visitations.
+
+CTS.04.02.33: For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: The organization provides evidence-based treatment for opioid use disorder, including medications for opioid use disorder.
+
+CTS.04.03.01: For organizations providing employment assistance: The organization assists the individual served in preparing for, gaining, maintaining, and/or improving employment, in accordance with the plan for care, treatment, or services.
+
+CTS.04.03.03: For organizations that provide vocational rehabilitation services: The organization monitors changes in the local job market to facilitate employment of the individual served.
+
+CTS.04.03.05: For organizations that provide vocational rehabilitation services: The organization assists the individual served in determining  needs, skills, preferences, and goals related to training and securing employment.
+
+CTS.04.03.13: For organizations that provide vocational rehabilitation services: The organization assists the individual served to gain employment if such a goal is part of the individual’s plan for care, treatment, or services.
+
+CTS.04.03.15: For 24-hour settings: In accordance with the needs of the individual served, good standards of personal hygiene and grooming are taught and maintained, particularly bathing, brushing teeth, caring for hair and nails, and using the toilet, with due regard for privacy.
+
+CTS.04.03.17: For organizations that use activity therapies: Activity therapies that are used to support achievement of a specific goal(s) are incorporated into the plan for care, treatment, or services.
+
+CTS.04.03.19: For 24-hour settings: The organization provides recreational and diversional activities.
+
+CTS.04.03.21: For organizations that use animal-assisted therapy: The therapy is provided safely and in accordance with the individual’s plan of care, treatment, or services.
+Note: Animal-assisted therapy is distinct from having pets in the organization. This standard does not apply to pets kept in the organization.
+
+CTS.04.03.23: For organizations that conduct outdoor/wilderness experiences: The organization safely conducts outdoor/wilderness experiences.
+Note: This standard refers to an activity conducted for therapeutic reasons in remote areas away from the organization’s premises (for example, a wilderness experience). It does not refer to daily activities that may be conducted outside, such as going to community parks, participating in park district activities, and visiting the zoo.
+
+CTS.04.03.25: For organizations that conduct outdoor/wilderness experiences: Organizations determine that staff who engage in an outdoor/wilderness experience are qualified and competent.
+Note 1: This standard refers to an activity conducted for therapeutic reasons in remote areas away from the organization’s premises (for example, a wilderness experience). It does not refer to daily activities that may be conducted outside, such as going to community parks, participating in park district activities, and visi
+
+CTS.04.03.27: For organizations providing family support services: The plan for care, treatment, or services identifies the role of families.
+Note: Family support is distinct from family therapy and family counseling.
+
+CTS.04.03.29: For organizations providing family support services: Family members are offered information, assistance, and education as needed to facilitate their roles and participation in meeting the needs of the individual served.
+Note: Family support is distinct from family therapy and family counseling.
+
+CTS.04.03.31: For organizations providing peer support: The plan for care, treatment, or services addresses the involvement of peer support when provided.
+
+CTS.04.03.33: For organizations providing food services: The organization has a process for preparing and/or distributing food and nutrition products.
+
+CTS.04.03.35: The organization responds to medical emergencies according to organization policy and procedures.
+
+CTS.04.03.37: For child welfare: The program delivers care, treatment, or services according to law and regulation.
+Note: This standard applies only to qualified residential treatment programs.
+
+CTS.04.03.39: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC has policies and procedures for providing a continuum of crisis prevention, response, and postvention services.
+
+CTS.04.03.41: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC provides and/or coordinates care across the spectrum of health and social services.
+
+CTS.04.03.43: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC is responsible for care, treatment, or services for members of the US Armed Forces and veterans.
+
+CTS.05.01.01: The organization prohibits the use of any procedure that physically harms or is a psychological risk to the individual served.
+
+CTS.05.02.01: For organizations that use exclusionary time-out: Time-out for behavioral reasons is provided safely and based on the needs of the individual served.
+
+CTS.05.03.01: For organizations that use level systems: Level systems that apply to a group are individualized.
+Note: This standard applies to any service or program that groups individuals served by their needs and behaviors and then uses methodologies such as level systems, group contingencies, and group consequences that are associated with privileges and restrictions. Organizations inform staff, individuals served, and families of the use of these methodologies.
+
+CTS.05.04.01: For organizations that use individualized behavioral contingencies: Individualized behavioral contingencies are used in accordance with a process established by care, treatment, or services leaders.
+
+CTS.05.04.03: For organizations that use individualized behavioral contingencies: Individuals served and, as appropriate, their families participate in selecting the individualized behavioral contingencies used for the individual.
+
+CTS.05.04.05: For organizations that use individualized behavioral contingencies: Individualized behavioral contingencies are based on an assessment of the individual served and the target behavior.
+
+CTS.05.04.07: For organizations that use individualized behavioral contingencies: Individualized behavioral contingencies support the acquisition and reinforcement of adaptive/replacement behaviors.
+
+CTS.05.04.09: For organizations that use individualized behavioral contingencies: An individualized behavioral contingencies plan is aligned with the needs of the individual served and assessment results and is documented in the clinical/case record in accordance with the organization's policy.
+
+CTS.05.04.11: For organizations that use individualized behavioral contingencies: Each individualized behavioral contingencies plan that includes the use of aversive contingencies is reviewed and approved by both a clinical leader(s) and a person(s) external to the organization.
+
+CTS.05.04.13: For organizations that use individualized behavioral contingencies: Qualified and competent staff design and review the individualized behavioral contingencies plans.
+Note: Requirements for assessing competence appear in the “Human Resources Management” (HRM) chapter.
+
+CTS.05.04.15: For organizations that use individualized behavioral contingencies: Staff involved in implementing the individualized behavioral contingencies plan are trained, competent, and supervised.
+Note: Requirements for assessing competence appear in the “Human Resources Management” (HRM) chapter.
+
+CTS.05.04.17: For organizations that use behavioral contingencies: The organization collects and analyzes data about the individual’s responses to the individual's behavioral contingencies in order to monitor and improve the use of behavioral contingencies.
+
+CTS.05.05.01: For organizations that use restraint or seclusion: The organization has written policies and procedures that guide the use of restraint or seclusion.
+
+CTS.05.05.03: For organizations that use restraint or seclusion: Adequate staffing is maintained to promote therapeutic interventions that decrease the use of restraint and seclusion and maximize safety when restraint or seclusion is used.  
+Note: Requirements related to ongoing education and the continuous assessment of staff competence are addressed in the “Human Resources Management” (HRM) chapter.
+
+CTS.05.05.05: For organizations that use restraint or seclusion: Staff are trained and competent to minimize the use of restraint and seclusion and, when use is indicated, to use restraint or seclusion safely.
+
+CTS.05.05.07: For organizations that use restraint or seclusion: The organization takes action to reduce the need for restraint and seclusion. 
+
+CTS.05.05.09: For organizations that use restraint or seclusion: The organization assesses and monitors the individual in restraint or seclusion.
+
+CTS.05.05.11: For organizations that use restraint or seclusion: The organization initiates restraint or seclusion based on an individual order. 
+
+CTS.05.05.13: For organizations that use restraint or seclusion: The organization evaluates and reevaluates the individual in restraint or seclusion.
+
+CTS.05.05.15: For organizations that use restraint or seclusion: Restraint and seclusion use are discontinued when the individual served meets the behavior criteria for discontinuation.
+
+CTS.05.05.17: For organizations that use restraint or seclusion: The individual served and staff participate in a debriefing about the restraint or seclusion episode.
+
+CTS.05.05.19: For organizations that use restraint or seclusion: The organization documents the use of restraint or seclusion.
+
+CTS.05.05.21: For organizations that use restraint or seclusion: The organization collects data on the use of restraint and seclusion.
+
+CTS.06.01.01: For organizations providing case management/care coordination services: Case management/care coordination services are based on the individual's needs, preferences, goals, and community resources available to the individual.
+
+CTS.06.01.03: For organizations providing community integration services: The individual served, with assistance from the organization, determines their needs and wants for education, training, and support to help their progress toward independent living and community integration.
+
+CTS.06.01.05: For organizations that elect The Joint Commission Behavioral Health Home option: Case management/care coordination services are based on the needs, preferences, and goals of the individual served and on the community resources available.
+
+CTS.06.01.07: For organizations that elect The Joint Commission Behavioral Health Home option: The individual served, with assistance from the organization, determines their needs, preferences, and goals regarding training and support to help them progress toward independent living and community integration.
+
+CTS.06.01.09: For organizations providing case management of housing support services to homeless individuals: The organization places individuals served into housing that is affordable and readily available.
+
+CTS.06.01.11: For organizations providing case management of housing support services to homeless individuals: The organization places a minimum of contingencies on individuals served.
+
+CTS.06.01.13: For organizations providing case management of housing support services to homeless individuals: The organization offers an array of services to individuals who are receiving housing support services.
+
+CTS.06.01.15: For organizations directly providing both housing support services and behavioral or physical health care, treatment, or services to homeless individuals: A multidisciplinary care, treatment, or services team coordinates the provision of care, treatment, or services.
+
+CTS.06.01.17: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC provides care coordination through established partnerships with other providers.
+
+CTS.06.01.19: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC is responsible for high-quality, targeted case management services.
+
+CTS.06.02.01: Continuity of care, treatment, or services is maintained when an individual served is transferred or after discharge/termination of care, treatment, or services. 
+
+CTS.06.02.03: When an individual served is transferred or discharged or when care, treatment, or services are terminated, the organization bases the decision on the assessed needs of the individual and the organization's capabilities. 
+
+CTS.06.02.05: Pertinent information related to care, treatment, or services is exchanged with other providers when an individual served is transferred or discharged or when care, treatment, or services are terminated. 
+
+CTS.06.02.07: For child welfare: The agency follows written policies and procedures on case closing practices.
+
+CTS.06.03.01: For organizations that provide care, treatment, or services to young adults with life transition needs: The organization assists young adults with their life transitions in accordance with their needs.
+
+CTS.07.01.01: For organizations that provide prevention and wellness promotion services: The organization's prevention and wellness promotion services are planned.
+
+CTS.07.01.02: For organizations that provide prevention and wellness promotion services: The organization’s prevention and wellness promotion services are managed.
+
+CTS.07.01.03: For organizations that provide prevention and wellness promotion services: The organization’s prevention and wellness promotion services are evaluated.
+
+EC.01.01.01: The organization plans activities that minimize risks in the environment of care. 
+Note: One or more persons can be assigned to manage risks associated with the management plans described in this standard.
+
+EC.02.01.01: The organization manages safety and security risks.
+
+EC.02.01.03: The organization prohibits smoking except in specific circumstances.
+
+EC.02.01.05: For child welfare: The agency places individuals in foster care in physically safe environments.
+Note: This standard applies to foster care agencies that make placement decisions.
+
+EC.02.02.01: The organization manages risks related to hazardous materials.
+
+EC.02.03.01: The organization manages fire risks.
+
+EC.02.03.03: The organization conducts fire drills.
+
+EC.02.03.05: The organization maintains fire safety equipment and fire safety building features. 
+Note: This standard does not require organizations to have the types of fire safety equipment and building features described in the elements of performance of this standard. However, if these types of equipment or features exist within the building, then the following maintenance, testing, and inspection requirements apply.
+
+EC.02.04.03: The organization inspects, tests, and maintains medical equipment.
+
+EC.02.05.01: The organization manages risks associated with its utility systems.
+
+EC.02.05.03: The organization has a reliable emergency electrical power source.
+
+EC.02.05.05: The organization inspects, tests, and maintains utility systems. 
+Note: At times, maintenance is performed by an external service. In these cases, organizations are not required to possess maintenance documentation but have access to such documentation during survey and as needed.
+
+EC.02.05.07: The organization inspects, tests, and maintains emergency power systems. 
+Note: This standard does not require organizations to have the types of emergency power equipment described in the elements of performance of this standard. However, if these types of emergency equipment exist within the building, then the following maintenance, testing, and inspection requirements apply. This does not apply to generators used only for convenience purposes.
+
+EC.02.06.01: The organization establishes and maintains a safe, functional environment.
+
+EC.02.06.03: The organization establishes and maintains a safe and functional dining environment when food is provided.
+
+EC.02.06.05: The organization manages its space during demolition, renovation, or new construction. 
+Note: These elements of performance are applicable to all occupancy types.
+
+EC.03.01.01: Staff are familiar with their roles and responsibilities relative to the environment of care.
+
+EC.04.01.01: The organization collects information to monitor conditions in the environment.
+
+EC.04.01.03: The organization analyzes identified environment of care issues.
+
+EC.04.01.05: The organization improves its environment of care.
+
+EM.10.01.01: The organization’s leader(s) provides oversight and support of emergency management activities.
+
+EM.11.01.01: The organization conducts a hazard vulnerability analysis (HVA) utilizing an all-hazards approach.
+
+EM.12.01.01: The organization develops an emergency operations plan (EOP) based on an all-hazards approach.
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing an emergency operations plan.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.01: The organization has a communications plan that addresses how it will communicate during an emergency.
+Note 1: The organization considers prioritized hazards identified as part of its hazard vulnerability analysis when developing a communications plan.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.03: The organization has a staffing plan for managing all staff and volunteers during an emergency or disaster incident.
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a staffing plan.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.05: The organization has a plan for providing care, treatment, or services during an emergency or disaster incident.
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a plan for care, treatment, or services.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.07: The organization has a plan for safety and security measures to take during an emergency or disaster incident.
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a plan for safety and security.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.09: The organization has a plan for managing resources and assets during an emergency or disaster incident.
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a plan for resources and assets.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.12.02.11: The organization has a plan for managing utility systems during an emergency or disaster incident. 
+Note 1: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a plan for utilities management.
+Note 2: In the event of an emergency, some organizations may be unable to safely provide care, treatment, and services and would close until conditions allow safe operations.
+
+EM.14.01.01: The organization has a disaster recovery plan.
+Note: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing a disaster recovery plan.
+
+EM.15.01.01: The organization provides emergency management education and training.
+Note: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing education and training.
+
+EM.16.01.01: The organization conducts annual exercises to test its emergency operations plan and response procedures.
+Note: The organization considers its prioritized hazards identified as part of its hazard vulnerability analysis when developing emergency exercises.
+
+EM.17.01.01: The organization evaluates and revises its emergency operations plan.
+
+HRM.01.01.01: The organization develops written job descriptions.
+
+HRM.01.01.03: The organization determines how staff function within the organization.
+
+HRM.01.02.01: The organization verifies and evaluates staff qualifications.
+
+HRM.01.03.01: The organization provides orientation to staff.
+
+HRM.01.04.01: Staff are supervised effectively.
+
+HRM.01.05.01: Staff participate in education and training.
+
+HRM.01.06.01: Staff are competent to perform their job duties and responsibilities.
+
+HRM.01.06.03: Staff who assess individuals with substance abuse, dependence, and other addictive behaviors and who plan services for and deliver services to these individuals have specific competencies.
+
+HRM.01.06.05: Staff who provide care, treatment, or services to children or youth have specific competencies.
+
+HRM.01.06.07: Security or correctional staff responsible for conducting activities customarily performed by clinical staff have specific competencies.
+
+HRM.01.06.09: For organizations that provide care, treatment, or services to individuals with intellectual and/or developmental disabilities: Staff responsible for providing services for persons with intellectual disabilities have specific competencies.
+
+HRM.01.06.11: For organizations providing case management of housing support services to homeless individuals: Staff who provide care, treatment, or services to individuals in housing support services programs have specific competencies.
+
+HRM.01.07.01: The organization evaluates staff performance.
+
+IC.04.01.01: The organization establishes processes for the prevention and control of infections and communicable diseases.
+
+IC.06.01.01: The organization implements activities for the prevention and control of infections and communicable diseases.
+
+IM.01.01.01: The organization plans for managing information.
+
+IM.01.01.03: The organization plans for continuity of its information management processes.
+
+IM.02.01.01: The organization protects the privacy of clinical/case information.
+
+IM.02.01.03: The organization maintains the security and integrity of an individual's clinical/case information.
+
+IM.02.02.01: The organization effectively manages the collection of clinical/case information.
+
+IM.02.02.03: The organization retrieves, disseminates, and transmits clinical/case information in useful formats.
+
+IM.02.03.01: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC’s health information system includes but is not limited to electronic health records.
+
+IM.03.01.01: Knowledge-based information resources are available, current, and authoritative.
+
+LD.01.01.01: The organization has a leadership structure.
+
+LD.01.03.01: Governance is ultimately accountable for the safety and quality of care, treatment, or services.
+
+LD.01.04.01: A chief executive manages the organization.
+
+LD.01.07.01: Leaders have the knowledge needed for their roles in the organization or they seek guidance to fulfill their roles. 
+Note: Knowledge includes evidence-based and leading practices (including trauma-informed, recovery, and resilience practices) related to the care, treatment, or services provided by the organization.
+
+LD.02.01.01: The mission, vision, and goals of the organization support the safety and quality of care, treatment, or services.
+
+LD.02.03.01: Leaders regularly communicate with each other on issues of safety and quality.
+
+LD.03.01.01: Leaders create and maintain a culture of safety and quality throughout the organization.
+
+LD.03.02.01: The organization uses data and information to guide decisions and to understand variation in the performance of processes supporting safety and quality.
+
+LD.03.03.01: Leaders use organizationwide planning to establish structures and processes that focus on safety and quality.
+
+LD.03.04.01: The organization communicates information related to safety and quality to those who need it, including staff, individuals served, families, and external interested parties.
+
+LD.03.05.01: Leaders manage change to improve the performance of the organization.
+
+LD.03.06.01: Those who work in the organization are focused on improving safety and quality.
+
+LD.03.06.03: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC develops and maintains a community needs assessment and staffing plan.
+
+LD.03.07.01: Leaders establish priorities for performance improvement. (Refer to the \"Performance Improvement\" [PI] chapter.)
+
+LD.03.08.01: New or modified services or processes are well designed.
+
+LD.03.09.01: The organization has an organizationwide, integrated safety program for individuals served.
+
+LD.03.10.01: For organizations that elect The Joint Commission Behavioral Health Home option: The organization uses clinical practice guidelines and/or evidence-based practices to evaluate and treat specific diagnoses, conditions, or symptoms for both physical and behavioral health care.
+Note: Clinical practice guidelines and evidence-based practices include nationally recognized guidelines and practices, as well as guidelines and practices developed by individual organizations to address their particular ci
+
+LD.04.01.01: The organization complies with law and regulation.
+
+LD.04.01.03: The organization develops an annual operating budget and, when needed, a long-term capital expenditure plan.
+
+LD.04.01.05: The organization effectively manages its programs or services.
+
+LD.04.01.07: The organization has policies and procedures that guide and support care, treatment, or services.
+
+LD.04.01.08: For child welfare: Staff caseloads are consistent with the level of care, treatment, or services provided to recipients of foster care.
+
+LD.04.01.09: Policies and procedures guide the provision of programs or services and define the goals and scope of programs or services offered.
+
+LD.04.01.11: The organization makes space and equipment available as needed for the provision of care, treatment, or services. 
+Note: This standard is applicable only to those settings that are under the control of the behavioral health care organization.
+
+LD.04.01.13: For child welfare: The agency is compliant with provisions related to the Indian Child Welfare Act.
+
+LD.04.01.15: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC maintains liability or malpractice insurance adequate for the staffing and scope of services provided.
+
+LD.04.01.17: For Certified Community Behavioral Health Clinics (CCBHCs): The CCBHC has sliding-scale fees for care, treatment, or services offered.
+
+LD.04.02.01: The leaders address any conflict of interest that affects or has the potential to affect the safety or quality of care, treatment, or services.
+
+LD.04.02.03: Ethical principles guide the organization’s business practices.
+
+LD.04.02.07: For child welfare: The adoption agency conducts ethical business practices.
+
+LD.04.03.01: The organization provides services that meet needs of the individual served.
+
+LD.04.03.05: Services are defined through the collaboration of the organization’s leaders with leaders of the various communities served by the organization and other external organizations.
+
+LD.04.03.07: Individuals with comparable needs receive the same standard of care, treatment, or services throughout the organization.
+
+LD.04.03.09: Care, treatment, or services provided through contractual agreement are provided safely and effectively.
+
+LS.01.01.01: The organization designs and manages the physical environment to comply with the Life Safety Code. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements for four or more individuals served as a required part of their care, treatment, or services.
+
+LS.01.02.01: The organization protects occupants during periods when the Life Safety Code is not met or during periods of construction. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements for four or more individuals served as a required part of their care, treatment, or services.
+
+LS.02.01.10: Building and fire protection features are designed and maintained to minimize the effects of fire, smoke, and heat. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.20: The organization maintains the integrity of the means of egress. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.30: The organization provides and maintains building features to protect individuals from the hazards of fire and smoke. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.34: The organization provides and maintains fire alarm systems.
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.35: The organization provides and maintains systems for extinguishing fires.
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.40: The organization provides and maintains special features to protect individuals from the hazards of fire and smoke. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.50: The organization provides and maintains building services to protect individuals from the hazards of fire and smoke. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.02.01.70: The organization provides and maintains operating features that conform to fire and smoke prevention requirements. 
+Note: This standard applies to behavioral health care settings that provide sleeping arrangements as a required part of their care, treatment, or services and that lock doors to prohibit individuals served from leaving the building or space.
+
+LS.04.01.20: The organization maintains the integrity of the means of escape. 
+Note 1: This standard applies to small behavioral health care settings that provide sleeping arrangements for 4 to 16 individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply. 
+Note 3: See Standard EC.02.03.03 for fire drill requirements.
+
+LS.04.01.30: The organization maintains and protects vertical openings, fire alarm systems, and separation of sleeping rooms. 
+Note 1: This standard applies to small behavioral health care settings that provide sleeping arrangements for 4 to 16 individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.04.01.50: The organization provides and maintains building services to protect individuals from the hazards of fire and smoke. 
+Note 1: This standard applies to small behavioral health care settings that provide sleeping arrangements for 4 to 16 individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.04.02.20: The organization maintains the integrity of the means of egress. 
+Note 1: This standard applies to large behavioral health care settings that provide sleeping arrangements for 17 or more individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.04.02.30: The organization provides and maintains building features to protect individuals from the hazards of fire and smoke. 
+Note 1: This standard applies to large behavioral health care settings that provide sleeping arrangements for 17 or more individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.04.02.40: The organization provides and maintains special features to protect individuals from the hazards of fire and smoke. 
+Note 1: This standard applies to large behavioral health care settings that provide sleeping arrangements for 17 or more individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.04.02.50: The organization provides and maintains building services that protect individuals from the hazards of fire and smoke. 
+Note 1: This standard applies to large behavioral health care settings that provide sleeping arrangements for 17 or more individuals served as a required part of their care, treatment, or services.
+Note 2: If the organization locks doors so that individuals served are prohibited from leaving the building or space, then Standards LS.02.01.10 through LS.02.01.70 apply.
+
+LS.05.01.10: Building and fire protection features are designed and maintained to minimize the effects of fire, smoke, and heat.
+Note: This standard applies to buildings that are business occupancies where individuals receive services.
+
+LS.05.01.20: The organization maintains the integrity of the means of egress.
+Note: This standard applies to buildings that are business occupancies where individuals receive services.
+
+LS.05.01.30: The organization provides and maintains building features to protect individuals from the hazards of fire and smoke.
+Note: This standard applies to buildings that are business occupancies where individuals receive services.
+
+LS.05.01.34: The organization provides and maintains fire alarm systems.
+Note: This standard applies to buildings that are business occupancies where individuals receive services.
+
+LS.05.01.35: The organization provides and maintains equipment for extinguishing fires.
+Note: This standard applies to buildings that are business occupancies where individuals receive services.
+
+MM.01.01.01: The organization plans its medication management processes.
+Note: This standard is applicable to organizations that engage in any of the medication management processes.
+
+MM.01.01.03: The organization safely manages high-alert and hazardous medications.
+Note: This standard is applicable to organizations that engage in any of the medication management processes.
+
+MM.01.01.05: The organization monitors the use of psychotropic medications.
+
+MM.01.02.01: The organization addresses the safe use of look-alike/sound-alike medications.
+
+MM.02.01.01: The organization selects and procures medications.
+Note: This standard is applicable only to organizations that operate a pharmacy.
+
+MM.03.01.01: The organization safely stores medications.
+Note: This standard is applicable only to organizations that store medications at their sites.
+
+MM.03.01.03: The organization safely manages emergency medications and supplies.
+
+MM.03.01.05: The organization safely controls medications brought into the organization by individuals served, their families, or prescribers.
+Note: This standard is applicable only to organizations in which staff administer medications or self-administration of medications is allowed within the organization’s facilities.
+
+MM.04.01.01: Medication orders are clear and accurate.
+Note: This standard is applicable only to organizations that prescribe medications. The elements of performance in this standard do not apply to prescriptions written by a prescriber who is not affiliated with the organization.
+
+MM.05.01.01: The organization reviews the appropriateness of all medication orders for medications to be dispensed in the organization.
+Note: This standard is applicable only to organizations that operate a pharmacy.
+
+MM.05.01.07: The organization safely prepares medications for administration.
+Note: This standard is applicable only to organizations that prepare medications for administration.
+
+MM.05.01.09: Medications are labeled. 
+Note: This standard is applicable only to organizations that dispense or administer medications.
+
+MM.05.01.11: The organization safely dispenses medications.
+Note: This standard is applicable only to organizations that operate a pharmacy.
+
+MM.05.01.13: The organization safely obtains medications when the pharmacy is closed.
+Note: This standard is applicable only to organizations that operate a pharmacy.
+
+MM.05.01.15: For organizations that do not operate a pharmacy but administer medications: The organization safely obtains prescribed medications.
+
+MM.05.01.17: Organizations that operate a pharmacy or distribute sample medications follow a process to retrieve recalled or discontinued medications.
+
+MM.05.01.19: The organization safely manages unused, expired, or returned medications.
+Note: This standard is applicable only to organizations that administer medications.
+
+MM.06.01.01: The organization safely administers medications.
+Note: This standard is applicable only to organizations that administer medications.
+
+MM.06.01.03: Self-administered medications are administered safely and accurately. 
+Note: The term \"self-administered medication(s)\" may refer to medications administered by a family member.
+
+MM.06.01.05: The organization safely manages investigational medications.
+Note 1: This standard is applicable only to organizations that use investigational medications.
+Note 2: Refer to the Glossary for the definition of investigational medications.
+
+MM.07.01.01: The organization monitors individuals served to determine the effects of their medication(s).
+Note: This standard is applicable only to organizations that prescribe or administer medications.
+
+MM.07.01.03: The organization responds to actual or potential adverse medication events, significant adverse medication reactions, and medication errors.
+Note 1: This standard is applicable only to organizations that prescribe or administer medications.
+Note 2: See the Glossary for definitions of \"adverse medication event\" and \"significant adverse medication reaction.\"
+
+MM.08.01.01: The organization evaluates the effectiveness of its medication management system.
+Note 1: This evaluation includes reconciling medication information. (Refer to NPSG.03.06.01 for more information)
+Note 2: This standard is applicable only to organizations that prescribe, dispense, or administer medications.
+
+NPSG.01.01.01: Use at least two identifiers when providing care, treatment, or services.
+Note: Treatments covered by this goal include high-risk interventions and certain high-risk medications (for example, methadone). In some settings, use of visual recognition as an identifier is acceptable. Such settings include those that regularly serve an individual (for example, therapy) or serve only a few individuals (for example, a group home). These are settings in which the individual stays for an extended period o
+
+NPSG.03.06.01: Maintain and communicate accurate medication information for the individual served.
+
+NPSG.07.01.01: Comply with either the current Centers for Disease Control and Prevention (CDC) hand hygiene guidelines and/or the current World Health Organization (WHO) hand hygiene guidelines.
+Note: This standard applies only to organizations that provide physical care.
+
+NPSG.15.01.01: Reduce the risk for suicide.
+
+NPSG.16.01.01: Improving health outcomes for all the individuals served by the organization is a quality and safety priority.
+
+OTP.01.01.01: The opioid treatment program establishes criteria and a process for admitting patients to the program.
+
+OTP.01.01.03: The opioid treatment program has a process for admitting patients to interim treatment.
+
+OTP.01.02.01: Patients receive required assessments and examinations.
+
+OTP.01.03.01: The opioid treatment program develops a patient-centered plan of care.
+
+OTP.02.01.01: Opioid treatment program staff are qualified.
+
+OTP.03.01.01: The opioid treatment program designates a program sponsor and a medical director.
+
+OTP.03.02.01: The opioid treatment program complies with law and regulation.
+
+OTP.03.03.01: The opioid treatment program is managed effectively.
+
+OTP.03.04.01: The opioid treatment program provides services and referrals to meet patient's needs.
+
+OTP.04.01.01: The opioid treatment program has a diversion control plan.
+
+OTP.04.02.01: The opioid treatment program safely administers and dispenses medications.
+
+OTP.04.03.01: The opioid treatment program safely dispenses take-home medication.
+
+OTP.05.01.01: The opioid treatment program has a recordkeeping system.
+
+OTP.06.01.01: The opioid treatment program obtains the patient's informed consent.
+
+PI.01.01.01: The organization collects data to monitor its performance.
+
+PI.02.01.01: The organization has a performance improvement plan.
+
+PI.03.01.01: The organization compiles and analyzes data.
+
+PI.04.01.01: The organization improves performance.
+
+RC.01.01.01: The organization maintains complete and accurate clinical/case records.
+
+RC.01.02.01: Entries in the clinical/case record are authenticated.
+
+RC.01.03.01: Documentation in the clinical/case record is entered in a timely manner.
+
+RC.01.04.01: The organization audits its clinical/case records.
+
+RC.01.05.01: The organization retains its clinical/case records.
+
+RC.02.01.01: The clinical/case record contains information that reflects the care, treatment, or services provided to the individual served.
+
+RC.02.03.07: Qualified staff receive and record verbal orders.
+Note: Verbal orders may include medication, laboratory tests, dietary, or restraint and seclusion.
+
+RC.02.04.01: The clinical/case record of the individual served contains discharge information.
+
+RC.03.01.01: For child welfare: The agency defines and maintains information specific to the individual served and their family for continuity of care and initiation of improvement in its performance.
+
+RC.03.01.03: For child welfare: The agency maintains foster family information.
+
+RI.01.01.01: The organization respects the rights of the individual served.
+
+RI.01.01.03: The organization respects the right of the individual served to receive information in a manner the individual understands.
+
+RI.01.02.01: The organization respects the right of the individual served to collaborate in decisions about their care, treatment, or services.
+
+RI.01.03.01: The organization honors the right of the individual served to give or withhold informed consent.
+
+RI.01.03.05: The organization protects the individual served and respects the individual's rights during research, investigation, and clinical trials.
+Note: This standard applies when organizations conduct or permit individuals served to participate in research investigations or clinical trials.
+
+RI.01.04.01: The organization respects the right of the individual served to receive information about the staff responsible for the individual's care, treatment, or services.
+
+RI.01.04.03: For organizations that elect The Joint Commission Behavioral Health Home option: The organization provides individuals served with information about the functions and services of the behavioral health home.
+
+RI.01.05.01: For organizations that elect The Joint Commission Behavioral Health Home option: The organization addresses decisions made by the individual served about physical health care, treatment, or services received at the end of life. (For more information, refer to Standard CTS.01.04.01.)
+
+RI.01.06.03: The individual served has the right to be free from neglect; exploitation; and verbal, mental, physical, and sexual abuse.
+
+RI.01.06.05: The individual served has the right to an environment that preserves dignity and contributes to a positive self-image.
+
+RI.01.06.07: Individuals served have a right to exercise citizenship privileges.
+
+RI.01.07.01: The individual served and their family have the right to have complaints reviewed by the organization.
+
+RI.01.07.03: The individual served has the right to access protective and advocacy services.
+
+RI.01.07.07: The organization protects the rights of individuals served who work for or on behalf of the organization.
+Note: This standard is applicable only to organizations that permit individuals served to work for or on behalf of the organization.
+
+RI.01.07.09: Individuals served receive information about the organization providing vocational rehabilitation services.
+
+RI.02.01.01: The organization informs the individual served about the individual's responsibilities related to their care, treatment, or services.
+
+RI.03.01.01: For child welfare: The foster care agency respects the rights of individuals in foster care.
+
+RI.03.01.03: For child welfare: The rights of the family of origin are respected.
+
+RI.03.01.05: For child welfare: The agency providing foster care services respects the rights of the foster family.
+
+WT.01.01.01: Policies and procedures for waived tests are established, current, approved, and readily available.
+
+WT.02.01.01: The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate identifies the staff responsible for performing and supervising waived testing. 
+Note 1: Responsible staff may be employees of the organization, contracted staff, or employees of a contracted service. 
+Note 2: Responsible staff may be identified within job descriptions or by listing job titles or individual names.
+
+WT.03.01.01: Staff performing waived tests are competent.
+
+WT.04.01.01: The organization performs quality control checks for waived testing on each procedure.
+Note: Internal quality controls may include electronic, liquid, or control zone. External quality controls may include electronic or liquid.
+
+WT.05.01.01: The organization maintains records for waived testing.
+

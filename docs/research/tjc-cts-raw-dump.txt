@@ -1,0 +1,16 @@
+CTS.04.02.19: pertains to organizations that provide primary physical health care to individuals served—either directly or through a contracted service. For more information on contracted services, refer to Standard LD.04.03.09.\n\nStandard
+CTS.04.02.21: pertains to behavioral health care organizations and human services agencies that have a formal agreement (such as a memorandum of understanding or letter of agreement) with another organization to refer individuals served to that organization for primary physical health care. In this case, the primary physical health care organization is not providing physical health care on the behalf of the behavioral health care organization or human services agency; rather, it has agreed to provide primary 
+CTS.05.04.01: Through
+CTS.03.01.01: Through
+CTS.06.02.01: Through
+CTS.06.01.09: Through
+CTS.07.01.01: Through
+CTS.04.01.01: and
+CTS.04.03.01: Through
+CTS.04.03.23: and
+CTS.04.03.25: assist organizations in eliminating or reducing the possibility of injury or harm from an outdoor/wilderness experience.\",\"stdIntroHdrDs\":\"Introduction to Standards
+CTS.04.03.23: and
+CTS.04.02.19: and
+CTS.02.01.01: Through
+CTS.05.01.01: Through
+CTS.02.03.09: for more information)\\r\\nNote: This standard applies to all individuals with eating disorders regardless of setting.\"},\"30588.DOMESTIC\":{\"$primaryKey\":\"30588.DOMESTIC\",\"stdPrimaryKey\":\"14043.DOMESTIC\",\"stdTx\":\"For organizations that serve adults with serious mental illness: The organization supports the adult’s decisions (psychiatric advance directive) about how care, treatment, or services are to be delivered during times when the adult is unable to make such decisions. (See als

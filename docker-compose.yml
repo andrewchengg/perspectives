@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: perspectives
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # The "VM" — runs headless Chromium for EMR extraction + the API
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/perspectives
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-4-20250514}
+      SP_EMAIL: ${SP_EMAIL}
+      SP_PASSWORD: ${SP_PASSWORD}
+    # The container has Playwright + Chromium installed
+    # It can log into SimplePractice and extract data autonomously
+
+volumes:
+  pgdata:

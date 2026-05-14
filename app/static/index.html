@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perspectives — Clinical Intelligence</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -14,931 +14,2718 @@
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
-        font-family:
-          "Inter",
-          -apple-system,
-          sans-serif;
-        background: #0f1729;
-        color: #e2e8f0;
-        min-height: 100vh;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: #0a0a0a;
+        color: #e4e4e7;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        background-image: url("/static/bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
       }
 
-      /* Nav */
-      .nav {
+      /* ── Sidebar ── */
+      .sidebar {
+        width: 260px;
+        min-width: 260px;
+        height: 100vh;
+        background: rgba(15, 15, 20, 0.45);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+        backdrop-filter: blur(28px) saturate(1.4);
+        -webkit-backdrop-filter: blur(28px) saturate(1.4);
+      }
+      .sidebar-brand {
+        padding: 22px 20px 18px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 16px 40px;
-        background: rgba(15, 23, 41, 0.8);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
-      .nav-brand {
+      .sidebar-brand img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+      .sidebar-brand span {
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        letter-spacing: -0.3px;
+      }
+      .sidebar-section {
+        padding: 16px 12px 6px;
+      }
+      .sidebar-section-title {
+        font-size: 10px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.25);
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        padding: 0 8px 8px;
+      }
+      .sidebar-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 18px;
-        font-weight: 700;
-        color: white;
-      }
-      .nav-brand svg {
-        width: 28px;
-        height: 28px;
-      }
-      .nav-links {
-        display: flex;
-        gap: 8px;
-      }
-      .nav-links a {
-        color: #94a3b8;
-        text-decoration: none;
+        padding: 9px 12px;
+        border-radius: 10px;
         font-size: 13px;
         font-weight: 500;
-        padding: 8px 14px;
-        border-radius: 8px;
-        transition: all 0.2s;
+        color: rgba(255, 255, 255, 0.45);
+        cursor: pointer;
+        transition: all 0.15s;
+        margin-bottom: 2px;
       }
-      .nav-links a:hover,
-      .nav-links a.active {
+      .sidebar-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .sidebar-item.active {
+        background: rgba(255, 255, 255, 0.1);
         color: white;
-        background: rgba(255, 255, 255, 0.08);
       }
-
-      /* Hero */
-      .hero {
-        padding: 80px 40px 60px;
-        background: linear-gradient(
-          135deg,
-          #0f1729 0%,
-          #1e3a5f 50%,
-          #2d5a87 100%
-        );
-        position: relative;
-        overflow: hidden;
+      .sidebar-item svg {
+        width: 16px;
+        height: 16px;
+        opacity: 0.6;
+        flex-shrink: 0;
       }
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      .sidebar-item.active svg {
+        opacity: 1;
       }
-      .hero h1 {
-        font-size: 48px;
-        font-weight: 800;
-        color: white;
-        line-height: 1.1;
-        max-width: 700px;
-        position: relative;
-      }
-      .hero p {
-        font-size: 18px;
-        color: #94a3b8;
-        margin-top: 20px;
-        max-width: 600px;
-        line-height: 1.6;
-        position: relative;
-      }
-      .hero-gradient {
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(79, 70, 229, 0.15) 0%,
-          transparent 70%
-        );
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 30px 20px;
-      }
-
-      /* Cards */
-      .card {
-        background: #1a2332;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 16px;
-        padding: 28px;
-        margin-bottom: 20px;
-      }
-      .card h2 {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: white;
+      .sidebar-patient {
         display: flex;
         align-items: center;
         gap: 10px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.15s;
+        margin-bottom: 2px;
       }
-      .card h2 .badge {
-        background: #4f46e5;
+      .sidebar-patient:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .sidebar-patient.active {
+        background: rgba(59, 130, 246, 0.1);
+      }
+      .sidebar-patient-avatar {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
         font-size: 11px;
-        padding: 3px 10px;
-        border-radius: 20px;
-        font-weight: 600;
+        flex-shrink: 0;
       }
-      .card h3 {
-        font-size: 14px;
+      .sidebar-patient-info {
+        overflow: hidden;
+      }
+      .sidebar-patient-name {
+        font-size: 13px;
         font-weight: 600;
-        margin: 20px 0 10px;
-        color: #cbd5e1;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.8);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .sidebar-patient-meta {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 1px;
+      }
+      .sidebar-notes {
+        padding: 0 0 0 44px;
+      }
+      .sidebar-note-item {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.15s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .sidebar-note-item:hover {
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .sidebar-note-item.active {
+        color: #93c5fd;
+        background: rgba(59, 130, 246, 0.08);
+      }
+      .sidebar-spacer {
+        flex: 1;
+      }
+      .sidebar-footer {
+        padding: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .sidebar-footer a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.3);
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+      .sidebar-footer a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .sidebar-footer a svg {
+        width: 14px;
+        height: 14px;
       }
 
-      .grid {
+      /* ── Main ── */
+      .main {
+        flex: 1;
+        height: 100vh;
+        overflow-y: auto;
+        background-image: url("/static/bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      .main::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 260px;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 0;
+        pointer-events: none;
+      }
+      .main-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 36px 48px;
+      }
+
+      /* ── Views + transitions ── */
+      .view {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .view.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* ── Extract View ── */
+      .extract-header h1 {
+        font-size: 28px;
+        font-weight: 800;
+        color: white;
+        letter-spacing: -0.8px;
+      }
+      .extract-header p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 6px;
+      }
+      .extract-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 18px;
+        margin-top: 24px;
       }
-      @media (max-width: 768px) {
-        .grid {
+      @media (max-width: 800px) {
+        .extract-grid {
           grid-template-columns: 1fr;
         }
       }
 
-      /* Buttons */
-      .btn {
-        padding: 11px 22px;
-        border: none;
-        border-radius: 10px;
+      /* ── Cards ── */
+      .card {
+        background: rgba(15, 15, 20, 0.55);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .card h2 {
         font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card h3 {
+        font-size: 10px;
         font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-family: "Inter", sans-serif;
-      }
-      .btn-primary {
-        background: white;
-        color: #0f1729;
-      }
-      .btn-primary:hover {
-        background: #e2e8f0;
-        transform: translateY(-1px);
-      }
-      .btn-secondary {
-        background: transparent;
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .btn-secondary:hover {
-        border-color: rgba(255, 255, 255, 0.4);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .btn-accent {
-        background: #4f46e5;
-        color: white;
-      }
-      .btn-accent:hover {
-        background: #4338ca;
-        transform: translateY(-1px);
-      }
-      .btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        transform: none;
+        margin: 18px 0 8px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
       }
 
-      /* Inputs */
-      input {
-        padding: 11px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        font-size: 14px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        color: white;
-        font-family: "Inter", sans-serif;
-        transition: all 0.2s;
-      }
-      input::placeholder {
-        color: #475569;
-      }
-      input:focus {
-        outline: none;
-        border-color: #4f46e5;
-        background: rgba(79, 70, 229, 0.05);
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
-      }
-
+      /* ── Form ── */
       .form-group {
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
       .form-group label {
         display: block;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 600;
-        color: #64748b;
-        margin-bottom: 6px;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 5px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.2px;
       }
-
-      /* Status */
-      .status {
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 700;
-        display: inline-block;
-        letter-spacing: 0.3px;
-      }
-      .status-pass {
-        background: rgba(16, 185, 129, 0.15);
-        color: #34d399;
-      }
-      .status-fail {
-        background: rgba(239, 68, 68, 0.15);
-        color: #f87171;
-      }
-      .status-partial {
-        background: rgba(245, 158, 11, 0.15);
-        color: #fbbf24;
-      }
-
-      .progress-bar {
-        height: 6px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 3px;
-        overflow: hidden;
-        margin: 10px 0;
-      }
-      .progress-fill {
-        height: 100%;
-        border-radius: 3px;
-        transition: width 0.8s ease-out;
-      }
-
-      /* Findings */
-      .finding {
-        border-left: 3px solid rgba(255, 255, 255, 0.1);
+      input,
+      select {
         padding: 10px 14px;
-        margin: 8px 0;
-        font-size: 13px;
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 0 8px 8px 0;
-      }
-      .finding-pass {
-        border-color: #10b981;
-      }
-      .finding-fail {
-        border-color: #ef4444;
-      }
-      .finding-partial {
-        border-color: #f59e0b;
-      }
-
-      /* Dimensions */
-      .dimension {
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 12px;
-        padding: 16px;
-        margin: 10px 0;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .dimension-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .dimension-name {
-        font-weight: 600;
-        font-size: 14px;
-        color: #e2e8f0;
-      }
-      .risk-code {
-        font-family: "JetBrains Mono", monospace;
-        background: rgba(79, 70, 229, 0.15);
-        color: #a5b4fc;
-        padding: 3px 10px;
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      .citation {
-        background: rgba(79, 70, 229, 0.06);
-        border-left: 2px solid #4f46e5;
-        padding: 8px 12px;
-        margin: 6px 0;
-        font-size: 12px;
-        color: #94a3b8;
-        border-radius: 0 6px 6px 0;
-      }
-      .citation strong {
-        color: #cbd5e1;
-      }
-
-      /* Loading */
-      .loading {
-        display: none;
-        align-items: center;
-        gap: 10px;
-        color: #64748b;
-        margin-top: 12px;
-        font-size: 13px;
-      }
-      .loading.active {
-        display: flex;
-      }
-      .spinner {
-        width: 18px;
-        height: 18px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-top-color: #4f46e5;
-        border-radius: 50%;
-        animation: spin 0.7s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Tabs */
-      .tabs {
-        display: flex;
-        gap: 2px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.04);
         border-radius: 10px;
-        padding: 4px;
-      }
-      .tab {
-        padding: 9px 18px;
-        cursor: pointer;
         font-size: 13px;
-        font-weight: 600;
-        color: #64748b;
-        border-radius: 8px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        border: 1px solid rgba(255, 255, 255, 0.08);
         transition: all 0.2s;
       }
-      .tab.active {
-        color: white;
-        background: rgba(79, 70, 229, 0.3);
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.2);
       }
-      .tab:hover:not(.active) {
-        color: #94a3b8;
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: rgba(59, 130, 246, 0.5);
+        background: rgba(59, 130, 246, 0.06);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
-      /* Patient */
-      .patient-info {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        padding: 16px;
-        background: rgba(79, 70, 229, 0.06);
-        border: 1px solid rgba(79, 70, 229, 0.15);
-        border-radius: 12px;
-        margin-bottom: 16px;
+      /* ── Buttons ── */
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: "Plus Jakarta Sans", sans-serif;
       }
-      .patient-avatar {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      .btn-primary {
+        background: white;
+        color: #111;
+      }
+      .btn-primary:hover {
+        background: #f0f0f0;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .btn-accent {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .btn-accent:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-1px);
+      }
+      .btn-sm {
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+      .btn-block {
+        width: 100%;
+      }
+      .btn-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-icon svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ── Status ── */
+      .status {
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        display: inline-block;
+      }
+      .status-pass {
+        background: rgba(52, 211, 153, 0.12);
+        color: #6ee7b7;
+        border: 1px solid rgba(52, 211, 153, 0.2);
+      }
+      .status-fail {
+        background: rgba(248, 113, 113, 0.12);
+        color: #fca5a5;
+        border: 1px solid rgba(248, 113, 113, 0.2);
+      }
+      .status-partial {
+        background: rgba(251, 191, 36, 0.12);
+        color: #fde68a;
+        border: 1px solid rgba(251, 191, 36, 0.2);
+      }
+
+      /* ── Patient Header ── */
+      .patient-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .patient-header-avatar {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
         border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 700;
-        font-size: 17px;
-      }
-      .patient-details h3 {
-        font-size: 16px;
-        color: white;
-      }
-      .patient-details p {
-        font-size: 13px;
-        color: #64748b;
-      }
-
-      /* Gaps */
-      .gap-item {
-        padding: 12px 14px;
-        margin: 6px 0;
-        border-radius: 10px;
-        font-size: 13px;
-      }
-      .gap-critical {
-        background: rgba(239, 68, 68, 0.08);
-        border: 1px solid rgba(239, 68, 68, 0.2);
-      }
-      .gap-major {
-        background: rgba(245, 158, 11, 0.08);
-        border: 1px solid rgba(245, 158, 11, 0.2);
-      }
-      .gap-minor {
-        background: rgba(16, 185, 129, 0.08);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-      }
-
-      .hidden {
-        display: none;
-      }
-      .step {
-        padding: 8px 12px;
-        margin: 4px 0;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 8px;
-        font-size: 13px;
-        border: 1px solid rgba(255, 255, 255, 0.04);
-      }
-      .level-badge {
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 24px;
         font-size: 18px;
+      }
+      .patient-header h1 {
+        font-size: 24px;
         font-weight: 800;
-        letter-spacing: 0.5px;
+        color: white;
+        letter-spacing: -0.5px;
+      }
+      .patient-header p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 2px;
       }
 
-      .divider {
-        height: 1px;
-        background: rgba(255, 255, 255, 0.06);
-        margin: 24px 0;
-      }
-
-      /* Metric cards */
-      .metrics {
+      /* ── Stats Cards ── */
+      .stats-row {
         display: flex;
         gap: 12px;
         margin-bottom: 20px;
         flex-wrap: wrap;
       }
-      .metric {
+      .stat-card {
         flex: 1;
-        min-width: 140px;
-        padding: 16px;
-        background: rgba(255, 255, 255, 0.03);
+        min-width: 120px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 12px;
-        text-align: center;
       }
-      .metric-value {
-        font-size: 28px;
+      .stat-value {
+        font-size: 22px;
         font-weight: 800;
         color: white;
       }
-      .metric-label {
-        font-size: 11px;
-        color: #64748b;
+      .stat-label {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.3);
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-top: 4px;
+        margin-top: 2px;
+      }
+
+      .patient-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        padding: 3px;
+      }
+      .tab {
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .tab.active {
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* ── Content ── */
+      .text-block {
+        font-size: 12px;
+        line-height: 1.7;
+        max-height: 400px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        color: rgba(255, 255, 255, 0.4);
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+      }
+      .dimension {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 14px;
+        margin: 8px 0;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .dimension-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+      }
+      .dimension-name {
+        font-weight: 600;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .dimension-toggle {
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 18px;
+        transition: transform 0.2s;
+      }
+      .dimension-toggle.open {
+        transform: rotate(180deg);
+      }
+      .dimension-body {
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .dimension-body.collapsed {
+        max-height: 0 !important;
+      }
+      .risk-code {
+        font-family: monospace;
+        background: rgba(59, 130, 246, 0.12);
+        color: #93c5fd;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+      .citation {
+        background: rgba(59, 130, 246, 0.04);
+        border-left: 2px solid rgba(59, 130, 246, 0.3);
+        padding: 6px 10px;
+        margin: 4px 0;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        border-radius: 0 8px 8px 0;
+      }
+      .citation strong {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .finding {
+        border-left: 2px solid rgba(255, 255, 255, 0.08);
+        padding: 8px 12px;
+        margin: 6px 0;
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0 10px 10px 0;
+        line-height: 1.6;
+      }
+      .finding-pass {
+        border-color: rgba(52, 211, 153, 0.5);
+      }
+      .finding-fail {
+        border-color: rgba(248, 113, 113, 0.5);
+      }
+      .finding-partial {
+        border-color: rgba(251, 191, 36, 0.5);
+      }
+      .step {
+        padding: 6px 10px;
+        margin: 3px 0;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 8px;
+        font-size: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .level-badge {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 6px 18px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 800;
+      }
+      .progress-bar {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 1s ease-out;
+      }
+      .gap-item {
+        padding: 10px 12px;
+        margin: 5px 0;
+        border-radius: 10px;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .gap-critical {
+        background: rgba(248, 113, 113, 0.06);
+        border: 1px solid rgba(248, 113, 113, 0.15);
+      }
+      .gap-major {
+        background: rgba(251, 191, 36, 0.06);
+        border: 1px solid rgba(251, 191, 36, 0.15);
+      }
+      .gap-minor {
+        background: rgba(52, 211, 153, 0.06);
+        border: 1px solid rgba(52, 211, 153, 0.15);
+      }
+      .divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05);
+        margin: 20px 0;
+      }
+      .qa-section {
+        margin-top: 16px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+      }
+      .qa-section h4 {
+        font-size: 11px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+      .qa-item {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        padding: 3px 0;
+        line-height: 1.5;
+      }
+
+      /* ── QA Agent Terminal ── */
+      .qa-terminal {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        margin-top: 16px;
+        overflow: hidden;
+      }
+      .qa-terminal-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .qa-terminal-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .qa-terminal-dot.red {
+        background: #f87171;
+      }
+      .qa-terminal-dot.yellow {
+        background: #fbbf24;
+      }
+      .qa-terminal-dot.green {
+        background: #34d399;
+      }
+      .qa-terminal-title {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.4);
+        margin-left: 6px;
+        flex: 1;
+      }
+      .qa-terminal-badge {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: 10px;
+      }
+      .qa-terminal-body {
+        padding: 14px 16px;
+        max-height: 500px;
+        overflow-y: auto;
+        font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+        font-size: 11px;
+        line-height: 1.8;
+      }
+      .qa-line {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .qa-line-icon {
+        flex-shrink: 0;
+        width: 16px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.8;
+      }
+      .qa-line-text {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .qa-line-text strong {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .qa-line.verified .qa-line-text {
+        color: rgba(52, 211, 153, 0.7);
+      }
+      .qa-line.fixed .qa-line-text {
+        color: rgba(59, 130, 246, 0.8);
+      }
+      .qa-line.failed .qa-line-text {
+        color: rgba(248, 113, 113, 0.7);
+      }
+      .qa-line.unsupported .qa-line-text {
+        color: rgba(251, 191, 36, 0.7);
+      }
+      .qa-line.header .qa-line-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 600;
+      }
+      .qa-line.dim .qa-line-text {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .qa-stats-row {
+        display: flex;
+        gap: 16px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .qa-stat {
+        text-align: center;
+      }
+      .qa-stat-value {
+        font-size: 18px;
+        font-weight: 800;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .qa-stat-label {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* ── Doc Report View ── */
+      .doc-report {
+        background: rgba(15, 15, 20, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 36px 40px;
+        max-width: 720px;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 2;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .doc-report h1 {
+        font-size: 20px;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 4px;
+        letter-spacing: -0.3px;
+      }
+      .doc-report h2 {
+        font-size: 15px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 28px 0 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .doc-report h3 {
+        font-size: 13px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 18px 0 4px;
+      }
+      .doc-report p {
+        margin: 6px 0;
+      }
+      .doc-report .doc-meta {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 20px;
+      }
+      .doc-sentence {
+        border-radius: 3px;
+        padding: 0 2px;
+        transition: all 0.15s;
+        cursor: default;
+        position: relative;
+      }
+      .doc-sentence.verified {
+        border-bottom: 2px solid rgba(52, 211, 153, 0.4);
+        cursor: pointer;
+      }
+      .doc-sentence.verified:hover {
+        background: rgba(52, 211, 153, 0.08);
+        border-color: rgba(52, 211, 153, 0.8);
+      }
+      .doc-sentence.partial {
+        border-bottom: 2px solid rgba(251, 191, 36, 0.4);
+        cursor: pointer;
+      }
+      .doc-sentence.partial:hover {
+        background: rgba(251, 191, 36, 0.08);
+        border-color: rgba(251, 191, 36, 0.8);
+      }
+      .doc-sentence.not_found {
+        border-bottom: 2px solid rgba(248, 113, 113, 0.4);
+        cursor: pointer;
+      }
+      .doc-sentence.not_found:hover {
+        background: rgba(248, 113, 113, 0.08);
+        border-color: rgba(248, 113, 113, 0.8);
+      }
+      .doc-sentence.unverified {
+        opacity: 0.5;
+      }
+      .doc-tooltip {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 0;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 11px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.7);
+        white-space: nowrap;
+        max-width: 400px;
+        white-space: normal;
+        z-index: 50;
+        pointer-events: none;
+      }
+      .doc-sentence:hover .doc-tooltip {
+        display: block;
+      }
+      .doc-legend {
+        display: flex;
+        gap: 16px;
+        margin: 16px 0;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .doc-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .doc-legend-swatch {
+        width: 20px;
+        height: 3px;
+        border-radius: 2px;
+      }
+
+      /* ── Linked Evidence ── */
+      .evidence-link {
+        cursor: pointer;
+        border-bottom: 1px dashed rgba(59, 130, 246, 0.4);
+        transition: all 0.15s;
+      }
+      .evidence-link:hover {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.8);
+      }
+      .evidence-link.verified {
+        border-color: rgba(52, 211, 153, 0.5);
+      }
+      .evidence-link.verified:hover {
+        background: rgba(52, 211, 153, 0.1);
+      }
+      .evidence-link.not_found {
+        border-color: rgba(248, 113, 113, 0.5);
+      }
+      .evidence-link.not_found:hover {
+        background: rgba(248, 113, 113, 0.1);
+      }
+
+      .source-viewer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 480px;
+        max-height: 50vh;
+        background: rgba(10, 10, 15, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px 0 0 0;
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        z-index: 100;
+        display: none;
+        flex-direction: column;
+        box-shadow: -4px -4px 30px rgba(0, 0, 0, 0.5);
+      }
+      .source-viewer.open {
+        display: flex;
+      }
+      .source-viewer-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        flex-shrink: 0;
+      }
+      .source-viewer-header span {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        flex: 1;
+      }
+      .source-viewer-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        font-size: 16px;
+        padding: 2px 6px;
+      }
+      .source-viewer-close:hover {
+        color: white;
+      }
+      .source-viewer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        font-size: 12px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.4);
+        white-space: pre-wrap;
+        font-family: "SF Mono", "Fira Code", monospace;
+      }
+      .source-highlight {
+        background: rgba(59, 130, 246, 0.25);
+        color: white;
+        border-radius: 3px;
+        padding: 1px 2px;
+        outline: 1px solid rgba(59, 130, 246, 0.5);
+      }
+      .source-highlight-verified {
+        background: rgba(52, 211, 153, 0.2);
+        outline-color: rgba(52, 211, 153, 0.5);
+      }
+      .source-highlight-failed {
+        background: rgba(248, 113, 113, 0.2);
+        outline-color: rgba(248, 113, 113, 0.5);
+      }
+      .evidence-badge {
+        display: inline-block;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 6px;
+        margin-left: 4px;
+        vertical-align: middle;
+      }
+      .evidence-badge-verified {
+        background: rgba(52, 211, 153, 0.15);
+        color: #6ee7b7;
+      }
+      .evidence-badge-partial {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fde68a;
+      }
+      .evidence-badge-failed {
+        background: rgba(248, 113, 113, 0.15);
+        color: #fca5a5;
+      }
+
+      /* ── Loading / Progress Ring ── */
+      .loading {
+        display: none;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 12px;
+        font-size: 12px;
+      }
+      .loading.active {
+        display: flex;
+      }
+      .progress-ring {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .progress-ring circle {
+        fill: none;
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+      .progress-ring .bg {
+        stroke: rgba(255, 255, 255, 0.06);
+      }
+      .progress-ring .fg {
+        stroke: #3b82f6;
+        stroke-dasharray: 70;
+        stroke-dashoffset: 70;
+        animation:
+          ring-spin 1.2s linear infinite,
+          ring-dash 1.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+      @keyframes ring-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes ring-dash {
+        0% {
+          stroke-dashoffset: 70;
+        }
+        50% {
+          stroke-dashoffset: 20;
+        }
+        100% {
+          stroke-dashoffset: 70;
+        }
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      /* ── Toast ── */
+      .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .toast {
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        color: white;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        transform: translateX(120%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        max-width: 360px;
+      }
+      .toast.show {
+        transform: translateX(0);
+      }
+      .toast-success {
+        background: rgba(22, 101, 52, 0.85);
+        border-color: rgba(52, 211, 153, 0.2);
+      }
+      .toast-info {
+        background: rgba(30, 58, 138, 0.85);
+        border-color: rgba(59, 130, 246, 0.2);
+      }
+      .toast-warning {
+        background: rgba(113, 63, 18, 0.85);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .toast-error {
+        background: rgba(127, 29, 29, 0.85);
+        border-color: rgba(248, 113, 113, 0.2);
+      }
+
+      /* ── Activity Log ── */
+      .log-item {
+        padding: 6px 12px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.35);
+        border-left: 2px solid rgba(255, 255, 255, 0.06);
+        margin: 0 0 4px 8px;
+      }
+      .log-item .log-time {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.2);
+        margin-top: 1px;
+      }
+      .log-item.log-extract {
+        border-color: rgba(52, 211, 153, 0.4);
+      }
+      .log-item.log-asam {
+        border-color: rgba(59, 130, 246, 0.4);
+      }
+      .log-item.log-tjc {
+        border-color: rgba(251, 191, 36, 0.4);
       }
     </style>
   </head>
   <body>
-    <nav class="nav">
-      <div class="nav-brand">
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Source Viewer (Linked Evidence) -->
+    <div class="source-viewer" id="source-viewer">
+      <div class="source-viewer-header">
         <svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
+          style="width: 14px; height: 14px; color: rgba(59, 130, 246, 0.7)"
         >
-          <rect x="3" y="3" width="7" height="18" rx="1.5" />
-          <rect x="14" y="3" width="7" height="10" rx="1.5" />
-          <rect x="14" y="16" width="7" height="5" rx="1.5" />
+          <path
+            d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+          />
+          <path
+            d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+          />
         </svg>
-        Perspectives
+        <span id="source-viewer-title">Linked Evidence — Source Document</span>
+        <button class="source-viewer-close" onclick="closeSourceViewer()">
+          &times;
+        </button>
       </div>
-      <div class="nav-links">
-        <a href="#" class="active">Dashboard</a>
-        <a href="/docs">API Docs</a>
-      </div>
-    </nav>
-
-    <div class="hero">
-      <div class="hero-gradient"></div>
-      <h1>AI-powered clinical intelligence</h1>
-      <p>
-        Extract patient data from SimplePractice, evaluate ASAM Level of Care,
-        and audit TJC compliance — all in one place.
-      </p>
+      <div class="source-viewer-body" id="source-viewer-body"></div>
     </div>
 
-    <div class="container">
-      <!-- Extract -->
-      <div class="card" id="extract-card">
-        <h2><span class="badge">1</span> Extract Patient Data</h2>
-        <div class="grid">
-          <div>
-            <div class="form-group">
-              <label>SimplePractice Export Path</label>
-              <input
-                type="text"
-                id="export-path"
-                placeholder="/path/to/export/directory"
-              />
-            </div>
-            <div class="form-group">
-              <label>Client Name</label>
-              <input
-                type="text"
-                id="client-name"
-                placeholder="Jack Smith"
-                value="Jack Smith"
-              />
-            </div>
-            <button class="btn btn-primary" onclick="parseExport()">
-              Parse Export
-            </button>
-            <div class="loading" id="extract-loading">
-              <div class="spinner"></div>
-              Extracting patient data...
-            </div>
-          </div>
-          <div>
-            <div class="form-group">
-              <label>Or Extract Live from SimplePractice</label>
-              <input
-                type="text"
-                id="sp-email"
-                placeholder="SimplePractice email"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                id="sp-password"
-                placeholder="SimplePractice password"
-              />
-            </div>
-            <button class="btn btn-secondary" onclick="extractLive()">
-              Extract from SimplePractice
-            </button>
-            <div class="loading" id="live-loading">
-              <div class="spinner"></div>
-              Logging in and extracting...
-            </div>
-          </div>
-        </div>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/static/logo.png" alt="Perspectives" />
+        <span>Perspectives</span>
       </div>
-
-      <!-- Patient -->
-      <div class="card hidden" id="patient-card">
-        <div class="patient-info">
-          <div class="patient-avatar" id="patient-initials">JS</div>
-          <div class="patient-details">
-            <h3 id="patient-name">Jack Smith</h3>
-            <p id="patient-meta">DOB: 04/03/1994 | Gender: Male | Notes: 3</p>
-          </div>
-        </div>
-        <div class="tabs">
-          <div class="tab active" onclick="showTab('assessment')">
-            Assessment
-          </div>
-          <div class="tab" onclick="showTab('notes')">Progress Notes</div>
-        </div>
-        <div id="tab-assessment">
-          <div
-            id="assessment-content"
-            style="
-              font-size: 13px;
-              line-height: 1.7;
-              max-height: 300px;
-              overflow-y: auto;
-              white-space: pre-wrap;
-              color: #94a3b8;
-            "
-          ></div>
-        </div>
-        <div id="tab-notes" class="hidden">
-          <div id="notes-content"></div>
-        </div>
-      </div>
-
-      <!-- Analysis -->
-      <div class="card hidden" id="analysis-card">
-        <h2><span class="badge">2</span> Run Clinical Intelligence</h2>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap">
-          <button class="btn btn-accent" onclick="runASAM()">
-            Run ASAM Evaluation
-          </button>
-          <button class="btn btn-accent" onclick="runTJC()">
-            Run TJC Compliance Audit
-          </button>
-        </div>
-        <div class="loading" id="asam-loading">
-          <div class="spinner"></div>
-          Evaluating across ASAM dimensions...
-        </div>
-        <div class="loading" id="tjc-loading">
-          <div class="spinner"></div>
-          Auditing against TJC CTS standards...
-        </div>
-      </div>
-
-      <!-- ASAM -->
-      <div class="card hidden" id="asam-card">
-        <h2>ASAM Level of Care Evaluation</h2>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Menu</div>
         <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-          "
+          class="sidebar-item active"
+          onclick="showView('extract')"
+          id="nav-extract"
         >
-          <span style="color: #64748b">Recommended Level:</span>
-          <span class="level-badge" id="asam-level">—</span>
-          <span
-            id="asam-level-name"
-            style="font-size: 14px; color: #94a3b8"
-          ></span>
-        </div>
-        <div id="asam-dimensions"></div>
-        <div class="divider"></div>
-        <h3>LOC Determination Steps</h3>
-        <div id="asam-steps"></div>
-        <div class="divider"></div>
-        <h3>Clinical Summary</h3>
-        <p
-          id="asam-summary"
-          style="font-size: 13px; line-height: 1.7; color: #94a3b8"
-        ></p>
-      </div>
-
-      <!-- TJC -->
-      <div class="card hidden" id="tjc-card">
-        <h2>TJC Compliance Audit</h2>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 12px;
-          "
-        >
-          <span style="color: #64748b">Overall Compliance:</span>
-          <span
-            class="level-badge"
-            id="tjc-pct"
-            style="background: linear-gradient(135deg, #ef4444, #dc2626)"
-            >—%</span
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Extract Data
         </div>
-        <div class="progress-bar">
+      </div>
+      <div class="sidebar-section" id="patients-section">
+        <div class="sidebar-section-title">Patients</div>
+        <div id="patient-list">
           <div
-            class="progress-fill"
-            id="tjc-progress"
-            style="width: 0%; background: #ef4444"
-          ></div>
+            style="
+              padding: 8px 12px;
+              font-size: 11px;
+              color: rgba(255, 255, 255, 0.15);
+            "
+          >
+            No patients extracted yet
+          </div>
         </div>
-        <div id="tjc-standards"></div>
-        <div class="divider"></div>
-        <h3>Critical Gaps</h3>
-        <div id="tjc-gaps"></div>
-        <div class="divider"></div>
-        <h3>Recommendations</h3>
-        <ul
-          id="tjc-recs"
-          style="
-            font-size: 13px;
-            padding-left: 20px;
-            color: #94a3b8;
-            line-height: 1.8;
-          "
-        ></ul>
-        <div class="divider"></div>
-        <h3>Summary</h3>
-        <p
-          id="tjc-summary"
-          style="font-size: 13px; line-height: 1.7; color: #94a3b8"
-        ></p>
+      </div>
+      <div class="sidebar-section" id="activity-section">
+        <div class="sidebar-section-title">Activity Log</div>
+        <div id="activity-log" style="max-height: 200px; overflow-y: auto">
+          <div
+            style="
+              padding: 8px 12px;
+              font-size: 11px;
+              color: rgba(255, 255, 255, 0.15);
+            "
+          >
+            No activity yet
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <a href="/docs"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" /></svg
+          >API Documentation</a
+        >
+        <a href="/health"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg
+          >Health Check</a
+        >
+      </div>
+    </aside>
+
+    <!-- ── Main Content ── -->
+    <div class="main">
+      <div class="main-content">
+        <!-- ── Extract View ── -->
+        <div class="view active" id="view-extract">
+          <div class="extract-header">
+            <h1>Extract Patient Data</h1>
+            <p>Import clinical data from SimplePractice EMR</p>
+          </div>
+          <div class="extract-grid">
+            <div class="card">
+              <h2>From Export</h2>
+              <div class="form-group">
+                <label>Export Path</label
+                ><input
+                  type="text"
+                  id="export-path"
+                  placeholder="/path/to/simplepractice/export"
+                />
+              </div>
+              <div class="form-group">
+                <label>Client Name</label
+                ><input
+                  type="text"
+                  id="client-name"
+                  placeholder="Jack Smith"
+                  value="Jack Smith"
+                />
+              </div>
+              <button class="btn btn-primary btn-block" onclick="parseExport()">
+                Parse Export
+              </button>
+              <div class="loading" id="extract-loading">
+                <svg class="progress-ring" viewBox="0 0 28 28">
+                  <circle class="bg" cx="14" cy="14" r="11" />
+                  <circle class="fg" cx="14" cy="14" r="11" />
+                </svg>
+                Extracting clinical data...
+              </div>
+            </div>
+            <div class="card">
+              <h2>Live Extraction</h2>
+              <div class="form-group">
+                <label>SimplePractice Email</label
+                ><input
+                  type="text"
+                  id="sp-email"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div class="form-group">
+                <label>Password</label
+                ><input
+                  type="password"
+                  id="sp-password"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-group">
+                <label>Client Name</label
+                ><input
+                  type="text"
+                  id="client-name-live"
+                  placeholder="Jack Smith"
+                  value="Jack Smith"
+                />
+              </div>
+              <button
+                class="btn btn-secondary btn-block"
+                onclick="extractLive()"
+              >
+                Extract from SimplePractice
+              </button>
+              <div class="loading" id="live-loading">
+                <svg class="progress-ring" viewBox="0 0 28 28">
+                  <circle class="bg" cx="14" cy="14" r="11" />
+                  <circle class="fg" cx="14" cy="14" r="11" />
+                </svg>
+                Logging into SimplePractice...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Patient View ── -->
+        <div class="view" id="view-patient">
+          <div class="patient-header">
+            <div class="patient-header-avatar" id="patient-initials">JS</div>
+            <div>
+              <h1 id="patient-name">Jack Smith</h1>
+              <p id="patient-meta">DOB: 04/03/1994 | Male | 3 notes</p>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="stats-row" id="stats-row">
+            <div class="stat-card">
+              <div class="stat-value" id="stat-notes">0</div>
+              <div class="stat-label">Progress Notes</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-dx">0</div>
+              <div class="stat-label">Diagnoses</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-last">--</div>
+              <div class="stat-label">Last Note</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-days">--</div>
+              <div class="stat-label">Days in Care</div>
+            </div>
+          </div>
+
+          <div class="patient-actions">
+            <button class="btn btn-accent btn-icon" onclick="runASAM()">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              Run ASAM Evaluation
+            </button>
+            <button class="btn btn-accent btn-icon" onclick="runTJC()">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 11l3 3L22 4" />
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                />
+              </svg>
+              Run TJC Audit
+            </button>
+            <button
+              class="btn btn-secondary btn-sm btn-icon"
+              onclick="downloadJSON()"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Export JSON
+            </button>
+          </div>
+
+          <div class="loading" id="asam-loading">
+            <svg class="progress-ring" viewBox="0 0 28 28">
+              <circle class="bg" cx="14" cy="14" r="11" />
+              <circle class="fg" cx="14" cy="14" r="11" />
+            </svg>
+            Running ASAM evaluation + agentic QA (verify → fix → verify)...
+          </div>
+          <div class="loading" id="tjc-loading">
+            <svg class="progress-ring" viewBox="0 0 28 28">
+              <circle class="bg" cx="14" cy="14" r="11" />
+              <circle class="fg" cx="14" cy="14" r="11" />
+            </svg>
+            Running TJC audit + agentic QA (verify → fix → verify)...
+          </div>
+
+          <div class="tabs" id="patient-tabs">
+            <div class="tab active" onclick="showTab('assessment')">
+              Assessment
+            </div>
+            <div class="tab" onclick="showTab('notes')">Progress Notes</div>
+            <div class="tab hidden" id="tab-btn-asam" onclick="showTab('asam')">
+              ASAM
+            </div>
+            <div class="tab hidden" id="tab-btn-tjc" onclick="showTab('tjc')">
+              TJC Audit
+            </div>
+            <div
+              class="tab hidden"
+              id="tab-btn-report"
+              onclick="showTab('report')"
+            >
+              Report
+            </div>
+          </div>
+
+          <div id="tab-assessment">
+            <div class="text-block" id="assessment-content"></div>
+          </div>
+          <div id="tab-notes" class="hidden">
+            <div id="notes-content"></div>
+          </div>
+
+          <div id="tab-asam" class="hidden">
+            <div class="card" style="margin-bottom: 18px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 18px;
+                "
+              >
+                <span style="color: rgba(255, 255, 255, 0.4); font-size: 13px"
+                  >Recommended:</span
+                >
+                <span class="level-badge" id="asam-level">--</span>
+                <span
+                  id="asam-level-name"
+                  style="font-size: 13px; color: rgba(255, 255, 255, 0.4)"
+                ></span>
+              </div>
+              <div id="asam-dimensions"></div>
+              <div class="divider"></div>
+              <h3>Determination Steps</h3>
+              <div id="asam-steps"></div>
+              <div class="divider"></div>
+              <h3>Summary</h3>
+              <p
+                id="asam-summary"
+                style="
+                  font-size: 12px;
+                  line-height: 1.7;
+                  color: rgba(255, 255, 255, 0.4);
+                "
+              ></p>
+              <div class="hidden" id="asam-qa">
+                <div class="qa-terminal">
+                  <div class="qa-terminal-header">
+                    <div class="qa-terminal-dot red"></div>
+                    <div class="qa-terminal-dot yellow"></div>
+                    <div class="qa-terminal-dot green"></div>
+                    <span class="qa-terminal-title"
+                      >QA Agent — Claim Verification</span
+                    >
+                    <span
+                      class="qa-terminal-badge"
+                      id="asam-qa-badge"
+                      style="
+                        background: rgba(52, 211, 153, 0.15);
+                        color: #6ee7b7;
+                      "
+                      >--</span
+                    >
+                  </div>
+                  <div class="qa-terminal-body" id="asam-qa-terminal"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tab-tjc" class="hidden">
+            <div class="card" style="margin-bottom: 18px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 10px;
+                "
+              >
+                <span style="color: rgba(255, 255, 255, 0.4); font-size: 13px"
+                  >Compliance:</span
+                >
+                <span
+                  class="level-badge"
+                  id="tjc-pct"
+                  style="
+                    background: rgba(248, 113, 113, 0.15);
+                    border-color: rgba(248, 113, 113, 0.3);
+                  "
+                  >--%</span
+                >
+              </div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  id="tjc-progress"
+                  style="width: 0%; background: #f87171"
+                ></div>
+              </div>
+              <div id="tjc-standards"></div>
+              <div class="divider"></div>
+              <h3>Critical Gaps</h3>
+              <div id="tjc-gaps"></div>
+              <div class="divider"></div>
+              <h3>Recommendations</h3>
+              <ul
+                id="tjc-recs"
+                style="
+                  font-size: 12px;
+                  padding-left: 18px;
+                  color: rgba(255, 255, 255, 0.4);
+                  line-height: 1.8;
+                "
+              ></ul>
+              <div class="divider"></div>
+              <h3>Summary</h3>
+              <p
+                id="tjc-summary"
+                style="
+                  font-size: 12px;
+                  line-height: 1.7;
+                  color: rgba(255, 255, 255, 0.4);
+                "
+              ></p>
+              <div class="hidden" id="tjc-qa">
+                <div class="qa-terminal">
+                  <div class="qa-terminal-header">
+                    <div class="qa-terminal-dot red"></div>
+                    <div class="qa-terminal-dot yellow"></div>
+                    <div class="qa-terminal-dot green"></div>
+                    <span class="qa-terminal-title"
+                      >QA Agent — Claim Verification</span
+                    >
+                    <span
+                      class="qa-terminal-badge"
+                      id="tjc-qa-badge"
+                      style="
+                        background: rgba(52, 211, 153, 0.15);
+                        color: #6ee7b7;
+                      "
+                      >--</span
+                    >
+                  </div>
+                  <div class="qa-terminal-body" id="tjc-qa-terminal"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tab-report" class="hidden">
+            <div class="doc-report" id="report-content">
+              <p style="color: rgba(255, 255, 255, 0.2)">
+                Run an ASAM or TJC evaluation to generate a report.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <script>
       const API = "";
       let patientId = null;
+      let currentData = null;
+      let lastASAM = null;
+      let lastTJC = null;
+      let currentSourceDoc = null;
+      let currentLinkedEvidence = [];
 
+      /* ── Toast ── */
+      function toast(message, type = "info") {
+        const container = document.getElementById("toast-container");
+        const el = document.createElement("div");
+        el.className = `toast toast-${type}`;
+        el.textContent = message;
+        container.appendChild(el);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => el.classList.add("show")),
+        );
+        setTimeout(() => {
+          el.classList.remove("show");
+          setTimeout(() => el.remove(), 300);
+        }, 3500);
+      }
+
+      /* ── Activity Log ── */
+      function logActivity(type, message) {
+        const log = document.getElementById("activity-log");
+        if (log.querySelector("div[style]")) log.innerHTML = "";
+        const now = new Date();
+        const time = now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const date = now.toLocaleDateString([], {
+          month: "short",
+          day: "numeric",
+        });
+        const item = document.createElement("div");
+        item.className = "log-item log-" + type;
+        item.innerHTML = `${message}<div class="log-time">${date}, ${time}</div>`;
+        log.prepend(item);
+      }
+
+      /* ── Navigation ── */
+      function showView(view) {
+        document.querySelectorAll(".view").forEach((v) => {
+          v.classList.remove("active");
+        });
+        document
+          .querySelectorAll(".sidebar-item")
+          .forEach((i) => i.classList.remove("active"));
+        // Small delay for fade effect
+        setTimeout(() => {
+          document.getElementById("view-" + view).classList.add("active");
+        }, 30);
+        const nav = document.getElementById("nav-" + view);
+        if (nav) nav.classList.add("active");
+      }
+
+      function selectPatient(id) {
+        patientId = id;
+        showView("patient");
+        document
+          .querySelectorAll(".sidebar-patient")
+          .forEach((p) => p.classList.toggle("active", p.dataset.id === id));
+        document
+          .querySelectorAll(".sidebar-item")
+          .forEach((i) => i.classList.remove("active"));
+      }
+
+      /* ── Collapsible Dimensions ── */
+      function toggleDimension(el) {
+        const body = el.nextElementSibling;
+        const toggle = el.querySelector(".dimension-toggle");
+        body.classList.toggle("collapsed");
+        toggle.classList.toggle("open");
+      }
+
+      /* ── JSON Export ── */
+      function downloadJSON() {
+        const payload = {};
+        if (currentData) payload.extraction = currentData;
+        if (lastASAM) payload.asam_evaluation = lastASAM;
+        if (lastTJC) payload.tjc_audit = lastTJC;
+        if (!Object.keys(payload).length)
+          return toast("No data to export", "warning");
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {
+          type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `perspectives_${patientId || "export"}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        toast("JSON exported successfully", "success");
+        logActivity("extract", "Exported JSON sample");
+      }
+
+      /* ── Extract ── */
       async function parseExport() {
-        const path = document.getElementById("export-path").value;
-        const name = document.getElementById("client-name").value;
-        if (!path || !name) return alert("Enter export path and client name");
+        const p = document.getElementById("export-path").value;
+        const n = document.getElementById("client-name").value;
+        if (!p || !n)
+          return toast("Enter export path and client name", "warning");
         show("extract-loading");
         try {
-          const res = await fetch(`${API}/api/v1/parse-export`, {
+          const r = await fetch(`${API}/api/v1/parse-export`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ export_path: path, client_name: name }),
+            body: JSON.stringify({ export_path: p, client_name: n }),
           });
-          const data = await res.json();
-          if (data.detail) throw new Error(data.detail);
-          displayPatient(data);
+          const d = await r.json();
+          if (d.detail) throw new Error(d.detail);
+          onExtracted(d);
         } catch (e) {
-          alert("Error: " + e.message);
+          toast(e.message, "error");
         }
         hide("extract-loading");
       }
 
       async function extractLive() {
-        const name = document.getElementById("client-name").value;
-        const email = document.getElementById("sp-email").value;
-        const pw = document.getElementById("sp-password").value;
-        if (!name) return alert("Enter client name");
+        const n = document.getElementById("client-name-live").value;
+        const e = document.getElementById("sp-email").value;
+        const p = document.getElementById("sp-password").value;
+        if (!n) return toast("Enter client name", "warning");
         show("live-loading");
         try {
-          const res = await fetch(`${API}/api/v1/extract`, {
+          const r = await fetch(`${API}/api/v1/extract`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              client_name: name,
-              email: email || null,
-              password: pw || null,
+              client_name: n,
+              email: e || null,
+              password: p || null,
             }),
           });
-          const data = await res.json();
-          if (data.detail) throw new Error(data.detail);
-          displayPatient(data);
+          const d = await r.json();
+          if (d.detail) throw new Error(d.detail);
+          onExtracted(d);
         } catch (e) {
-          alert("Error: " + e.message);
+          toast(e.message, "error");
         }
         hide("live-loading");
       }
 
-      function displayPatient(data) {
-        const p = data.patient;
+      function onExtracted(d) {
+        currentData = d;
+        lastASAM = null;
+        lastTJC = null;
+        const p = d.patient;
         patientId = p.id;
+
+        const list = document.getElementById("patient-list");
+        if (list.querySelector("div[style]")) list.innerHTML = "";
+
+        const existing = list.querySelector(`[data-id="${p.id}"]`);
+        if (!existing) {
+          const initials = (p.first_name[0] + p.last_name[0]).toUpperCase();
+          let html = `<div class="sidebar-patient active" data-id="${p.id}" onclick="selectPatient('${p.id}')">
+            <div class="sidebar-patient-avatar">${initials}</div>
+            <div class="sidebar-patient-info">
+              <div class="sidebar-patient-name">${p.first_name} ${p.last_name}</div>
+              <div class="sidebar-patient-meta">${p.date_of_birth} | ${d.progress_notes.length} notes</div>
+            </div>
+          </div>
+          <div class="sidebar-notes" data-patient="${p.id}">
+            <div class="sidebar-note-item" onclick="selectPatient('${p.id}');showTab('assessment')">Assessment</div>`;
+          for (const note of d.progress_notes)
+            html += `<div class="sidebar-note-item" onclick="selectPatient('${p.id}');showTab('notes')">${note.note_format} - ${note.note_date}</div>`;
+          html += `</div>`;
+          list.insertAdjacentHTML("beforeend", html);
+        }
+
+        displayPatient(d);
+        showView("patient");
+        toast(
+          `Extracted ${p.first_name} ${p.last_name} — ${d.progress_notes.length} notes`,
+          "success",
+        );
+        logActivity(
+          "extract",
+          `Extracted ${p.first_name} ${p.last_name} — ${d.progress_notes.length} notes`,
+        );
+      }
+
+      function displayPatient(d) {
+        const p = d.patient;
         document.getElementById("patient-initials").textContent = (
           p.first_name[0] + p.last_name[0]
         ).toUpperCase();
         document.getElementById("patient-name").textContent =
           `${p.first_name} ${p.last_name}`;
         document.getElementById("patient-meta").textContent =
-          `DOB: ${p.date_of_birth} | Gender: ${p.gender} | Notes: ${data.progress_notes.length}`;
-        const a = data.assessment;
-        let aText = `Clinician: ${a.clinician.name} | Date: ${a.assessment_date}\n\nPRESENTING PROBLEM:\n${a.presenting_problem}\n\nSUBSTANCE USE HISTORY:\n${a.substance_use_history}\n\nMEDICAL HISTORY:\n${a.medical_history}\n\nRISK ASSESSMENT:\n${a.risk_assessment}\n\nSPIRITUAL/CULTURAL:\n${a.spiritual_cultural || "Not documented"}\n\nSTRENGTHS:\n${a.strengths || "Not documented"}`;
-        document.getElementById("assessment-content").textContent = aText;
-        let nh = "";
-        for (const n of data.progress_notes) {
-          nh += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">${n.note_format} — ${n.note_date}</span><span class="risk-code">${n.cpt_code || ""} | ${n.session_duration_minutes || ""}min</span></div><div style="font-size:13px;margin-top:10px;color:#94a3b8;">`;
-          for (const [s, t] of Object.entries(n.sections)) {
-            nh += `<p style="margin-bottom:8px;"><strong style="color:#cbd5e1;">${s.toUpperCase()}:</strong> ${t.substring(0, 300)}${t.length > 300 ? "..." : ""}</p>`;
-          }
-          nh += "</div></div>";
-        }
-        document.getElementById("notes-content").innerHTML = nh;
-        document.getElementById("patient-card").classList.remove("hidden");
-        document.getElementById("analysis-card").classList.remove("hidden");
-      }
+          `DOB: ${p.date_of_birth} | ${p.gender} | ${d.progress_notes.length} notes`;
 
-      async function runASAM() {
-        if (!patientId) return alert("Extract patient first");
-        show("asam-loading");
-        try {
-          const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
-          if (!r.ok) {
-            alert("Patient not in DB.");
-            hide("asam-loading");
-            return;
-          }
-          const res = await fetch(
-            `${API}/api/v1/patients/${patientId}/asam-evaluation`,
-            { method: "POST", headers: { "Content-Type": "application/json" } },
-          );
-          const data = await res.json();
-          if (data.detail) throw new Error(data.detail);
-          displayASAM(data);
-        } catch (e) {
-          alert("ASAM Error: " + e.message);
+        // Stats
+        document.getElementById("stat-notes").textContent =
+          d.progress_notes.length;
+        document.getElementById("stat-dx").textContent =
+          p.diagnoses?.length || 0;
+        if (d.progress_notes.length > 0) {
+          const lastDate =
+            d.progress_notes[d.progress_notes.length - 1].note_date;
+          document.getElementById("stat-last").textContent = lastDate;
+          const admit = new Date(p.admission_date);
+          const last = new Date(lastDate);
+          const days = Math.max(1, Math.round((last - admit) / 86400000));
+          document.getElementById("stat-days").textContent = days;
         }
-        hide("asam-loading");
-      }
 
-      async function runTJC() {
-        if (!patientId) return alert("Extract patient first");
-        show("tjc-loading");
-        try {
-          const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
-          if (!r.ok) {
-            alert("Patient not in DB.");
-            hide("tjc-loading");
-            return;
-          }
-          const res = await fetch(
-            `${API}/api/v1/patients/${patientId}/tjc-audit`,
-            { method: "POST", headers: { "Content-Type": "application/json" } },
-          );
-          const data = await res.json();
-          if (data.detail) throw new Error(data.detail);
-          displayTJC(data);
-        } catch (e) {
-          alert("TJC Error: " + e.message);
-        }
-        hide("tjc-loading");
-      }
+        const a = d.assessment;
+        document.getElementById("assessment-content").textContent =
+          `Clinician: ${a.clinician.name} | ${a.assessment_date}\n\nPRESENTING PROBLEM:\n${a.presenting_problem}\n\nSUBSTANCE USE:\n${a.substance_use_history}\n\nMEDICAL:\n${a.medical_history}\n\nRISK:\n${a.risk_assessment}\n\nSPIRITUAL/CULTURAL:\n${a.spiritual_cultural || "Not documented"}\n\nSTRENGTHS:\n${a.strengths || "Not documented"}`;
 
-      function displayASAM(data) {
-        document.getElementById("asam-level").textContent =
-          data.recommended_level;
-        document.getElementById("asam-level-name").textContent =
-          data.recommended_level_name;
         let h = "";
-        for (const dim of data.dimensions) {
-          h += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span></div>`;
-          if (dim.subdimensions) {
-            for (const sub of dim.subdimensions) {
-              h += `<div style="margin:8px 0 4px 12px;font-size:13px;"><span class="risk-code">${sub.risk_rating_code}</span> <strong style="color:#e2e8f0;">${sub.name}</strong> <span style="color:#64748b;">→ ${sub.minimum_level}</span>`;
-              h += `<div style="color:#64748b;margin-top:4px;">${sub.rationale.substring(0, 250)}</div>`;
-              if (sub.citations?.length > 0) {
-                for (const c of sub.citations.slice(0, 2)) {
-                  h += `<div class="citation"><strong>${c.source}:</strong> "${c.text.substring(0, 150)}"</div>`;
-                }
+        for (const n of d.progress_notes) {
+          h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${n.note_format} — ${n.note_date}</span><span class="dimension-toggle open">&#9662;</span></div><div class="dimension-body"><div style="font-size:12px;margin-top:8px;color:rgba(255,255,255,0.4);">`;
+          for (const [s, t] of Object.entries(n.sections))
+            h += `<p style="margin-bottom:6px;"><strong style="color:rgba(255,255,255,0.6);">${s.toUpperCase()}:</strong> ${t.substring(0, 250)}${t.length > 250 ? "..." : ""}</p>`;
+          h += "</div></div></div>";
+        }
+        document.getElementById("notes-content").innerHTML = h;
+
+        document.getElementById("tab-btn-asam").classList.add("hidden");
+        document.getElementById("tab-btn-tjc").classList.add("hidden");
+        document.getElementById("tab-btn-report").classList.add("hidden");
+        document.getElementById("tab-asam").classList.add("hidden");
+        document.getElementById("tab-tjc").classList.add("hidden");
+        document.getElementById("tab-report").classList.add("hidden");
+        showTab("assessment");
+      }
+
+      /* ── ASAM ── */
+      async function runASAM() {
+        if (!patientId) return toast("Extract patient data first", "warning");
+        const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
+        if (!r.ok)
+          return toast(
+            "Patient not found in database. Re-extract first.",
+            "error",
+          );
+
+        // Show terminal and switch to ASAM tab
+        document.getElementById("tab-btn-asam").classList.remove("hidden");
+        showTab("asam");
+        document.getElementById("asam-qa").classList.remove("hidden");
+        const terminal = document.getElementById("asam-qa-terminal");
+        const badge = document.getElementById("asam-qa-badge");
+        terminal.innerHTML = "";
+        badge.textContent = "running...";
+        badge.style.color = "#93c5fd";
+        badge.style.background = "rgba(59,130,246,0.15)";
+
+        // Reset display areas
+        document.getElementById("asam-level").textContent = "--";
+        document.getElementById("asam-level-name").textContent = "";
+        document.getElementById("asam-dimensions").innerHTML = "";
+        document.getElementById("asam-steps").innerHTML = "";
+        document.getElementById("asam-summary").textContent = "";
+
+        // Stream SSE
+        try {
+          const res = await fetch(
+            `${API}/api/v1/patients/${patientId}/asam-evaluation/stream`,
+            { method: "POST" },
+          );
+          const reader = res.body.getReader();
+          const decoder = new TextDecoder();
+          let buffer = "";
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+
+            const lines = buffer.split("\n");
+            buffer = lines.pop();
+
+            let eventType = null;
+            for (const l of lines) {
+              if (l.startsWith("event: ")) eventType = l.substring(7);
+              else if (l.startsWith("data: ") && eventType) {
+                try {
+                  const data = JSON.parse(l.substring(6));
+                  renderAgentEvent(terminal, eventType, data, "asam");
+                  terminal.scrollTop = terminal.scrollHeight;
+
+                  // Render the full ASAM report as soon as generation completes
+                  if (eventType === "initial_result" && data.evaluation) {
+                    displayASAM({ ...data.evaluation, qa_agent: null });
+                  }
+
+                  if (eventType === "complete") {
+                    lastASAM = {
+                      ...data.evaluation,
+                      source_document: data.source_document,
+                      linked_evidence: data.linked_evidence,
+                      qa_agent: {
+                        accuracy: data.accuracy,
+                        claims: data.claims,
+                        trace: [],
+                        unresolved_claims: [],
+                      },
+                    };
+                    currentSourceDoc = data.source_document;
+                    currentLinkedEvidence = data.linked_evidence || [];
+                    displayASAM({
+                      ...data.evaluation,
+                      qa_agent: null,
+                      linked_evidence: data.linked_evidence,
+                      source_document: data.source_document,
+                    });
+
+                    // Update badge
+                    const pct = (data.accuracy * 100).toFixed(1);
+                    const color =
+                      data.accuracy >= 0.9
+                        ? "#6ee7b7"
+                        : data.accuracy >= 0.7
+                          ? "#fde68a"
+                          : "#fca5a5";
+                    const bg =
+                      data.accuracy >= 0.9
+                        ? "rgba(52,211,153,0.15)"
+                        : data.accuracy >= 0.7
+                          ? "rgba(251,191,36,0.15)"
+                          : "rgba(248,113,113,0.15)";
+                    badge.textContent = `${pct}% verified`;
+                    badge.style.color = color;
+                    badge.style.background = bg;
+
+                    // Stats row
+                    const c = data.claims;
+                    terminal.innerHTML += `<div class="qa-stats-row">
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:${color}">${pct}%</div><div class="qa-stat-label">Accuracy</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#6ee7b7">${c.verified}</div><div class="qa-stat-label">Verified</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#93c5fd">${c.fixed}</div><div class="qa-stat-label">Fixed</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#fde68a">${c.unsupported}</div><div class="qa-stat-label">Unsupported</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#fca5a5">${c.failed}</div><div class="qa-stat-label">Failed</div></div>
+                    </div>`;
+
+                    buildDocReport("asam", data);
+                    toast(
+                      `ASAM complete — Level ${data.evaluation.recommended_level}`,
+                      "success",
+                    );
+                    logActivity(
+                      "asam",
+                      `ASAM — Level ${data.evaluation.recommended_level} (${pct}% verified)`,
+                    );
+                  }
+                } catch (e) {}
+                eventType = null;
               }
-              h += "</div>";
             }
           }
-          h += "</div>";
+        } catch (e) {
+          toast("ASAM stream error: " + e.message, "error");
+        }
+      }
+
+      function displayASAM(d) {
+        document.getElementById("asam-level").textContent = d.recommended_level;
+        document.getElementById("asam-level-name").textContent =
+          d.recommended_level_name;
+        let h = "";
+        for (const dim of d.dimensions) {
+          h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span><span class="dimension-toggle open">&#9662;</span></div><div class="dimension-body">`;
+          if (dim.subdimensions)
+            for (const s of dim.subdimensions) {
+              h += `<div style="margin:6px 0 2px 10px;font-size:12px;"><span class="risk-code">${s.risk_rating_code}</span> <strong style="color:rgba(255,255,255,0.7);">${s.name}</strong> <span style="color:rgba(255,255,255,0.25);">&rarr; ${s.minimum_level}</span><div style="color:rgba(255,255,255,0.3);margin-top:3px;">${s.rationale.substring(0, 220)}</div>`;
+              if (s.citations?.length)
+                for (const c of s.citations.slice(0, 2)) {
+                  const ev = findEvidence(c.text);
+                  const cls = ev
+                    ? `evidence-link ${ev.verdict}`
+                    : "evidence-link";
+                  const badge = ev
+                    ? `<span class="evidence-badge evidence-badge-${ev.verdict === "verified" ? "verified" : ev.verdict === "partial" ? "partial" : "failed"}">${ev.verdict === "verified" ? "linked" : ev.verdict}</span>`
+                    : "";
+                  const onclick =
+                    ev && ev.source_start != null
+                      ? `onclick="showEvidence(${ev.source_start}, ${ev.source_end}, '${ev.verdict}')"`
+                      : "";
+                  h += `<div class="citation ${cls}" ${onclick}><strong>${c.source}:</strong> "${c.text.substring(0, 130)}"${badge}</div>`;
+                }
+              h += "</div>";
+            }
+          h += "</div></div>";
         }
         document.getElementById("asam-dimensions").innerHTML = h;
         let sh = "";
-        if (data.loc_determination_steps) {
-          for (const s of data.loc_determination_steps) {
-            sh += `<div class="step"><strong>Step ${s.step}:</strong> ${s.description} → <em style="color:#a5b4fc;">${s.result}</em></div>`;
-          }
-        }
+        if (d.loc_determination_steps)
+          for (const s of d.loc_determination_steps)
+            sh += `<div class="step"><strong>Step ${s.step}:</strong> ${s.description} &rarr; <em style="color:rgba(255,255,255,0.6);">${s.result}</em></div>`;
         document.getElementById("asam-steps").innerHTML = sh;
         document.getElementById("asam-summary").textContent =
-          data.clinical_summary;
-        document.getElementById("asam-card").classList.remove("hidden");
+          d.clinical_summary;
+        if (d.qa_agent) {
+          document.getElementById("asam-qa").classList.remove("hidden");
+          renderQATerminal("asam", d.qa_agent);
+        }
+        document.getElementById("tab-btn-asam").classList.remove("hidden");
+        showTab("asam");
+        logActivity("asam", `ASAM evaluation — Level ${d.recommended_level}`);
       }
 
-      function displayTJC(data) {
-        const pct = data.overall_compliance_percentage;
-        const color = pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444";
-        document.getElementById("tjc-pct").textContent = pct.toFixed(1) + "%";
-        document.getElementById("tjc-pct").style.background =
-          `linear-gradient(135deg, ${color}, ${color}dd)`;
-        document.getElementById("tjc-progress").style.width = pct + "%";
-        document.getElementById("tjc-progress").style.background = color;
+      /* ── TJC ── */
+      async function runTJC() {
+        if (!patientId) return toast("Extract patient data first", "warning");
+        const r = await fetch(`${API}/api/v1/patients/${patientId}/extract`);
+        if (!r.ok)
+          return toast(
+            "Patient not found in database. Re-extract first.",
+            "error",
+          );
+
+        document.getElementById("tab-btn-tjc").classList.remove("hidden");
+        showTab("tjc");
+        document.getElementById("tjc-qa").classList.remove("hidden");
+        const terminal = document.getElementById("tjc-qa-terminal");
+        const badge = document.getElementById("tjc-qa-badge");
+        terminal.innerHTML = "";
+        badge.textContent = "running...";
+        badge.style.color = "#93c5fd";
+        badge.style.background = "rgba(59,130,246,0.15)";
+
+        document.getElementById("tjc-pct").textContent = "--%";
+        document.getElementById("tjc-progress").style.width = "0%";
+        document.getElementById("tjc-standards").innerHTML = "";
+        document.getElementById("tjc-gaps").innerHTML = "";
+        document.getElementById("tjc-recs").innerHTML = "";
+        document.getElementById("tjc-summary").textContent = "";
+
+        try {
+          const res = await fetch(
+            `${API}/api/v1/patients/${patientId}/tjc-audit/stream`,
+            { method: "POST" },
+          );
+          const reader = res.body.getReader();
+          const decoder = new TextDecoder();
+          let buffer = "";
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+
+            const lines = buffer.split("\n");
+            buffer = lines.pop();
+
+            let eventType = null;
+            for (const l of lines) {
+              if (l.startsWith("event: ")) eventType = l.substring(7);
+              else if (l.startsWith("data: ") && eventType) {
+                try {
+                  const data = JSON.parse(l.substring(6));
+                  renderAgentEvent(terminal, eventType, data, "tjc");
+                  terminal.scrollTop = terminal.scrollHeight;
+
+                  // Render the full TJC report as soon as generation completes
+                  if (eventType === "initial_result" && data.audit) {
+                    displayTJC({ ...data.audit, qa_agent: null });
+                  }
+
+                  if (eventType === "complete") {
+                    lastTJC = {
+                      ...data.audit,
+                      source_document: data.source_document,
+                      linked_evidence: data.linked_evidence,
+                    };
+                    currentSourceDoc = data.source_document;
+                    currentLinkedEvidence = data.linked_evidence || [];
+                    displayTJC({
+                      ...data.audit,
+                      qa_agent: null,
+                      linked_evidence: data.linked_evidence,
+                      source_document: data.source_document,
+                    });
+
+                    const pct = (data.accuracy * 100).toFixed(1);
+                    const color =
+                      data.accuracy >= 0.9
+                        ? "#6ee7b7"
+                        : data.accuracy >= 0.7
+                          ? "#fde68a"
+                          : "#fca5a5";
+                    const bg =
+                      data.accuracy >= 0.9
+                        ? "rgba(52,211,153,0.15)"
+                        : data.accuracy >= 0.7
+                          ? "rgba(251,191,36,0.15)"
+                          : "rgba(248,113,113,0.15)";
+                    badge.textContent = `${pct}% verified`;
+                    badge.style.color = color;
+                    badge.style.background = bg;
+
+                    const c = data.claims;
+                    terminal.innerHTML += `<div class="qa-stats-row">
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:${color}">${pct}%</div><div class="qa-stat-label">Accuracy</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#6ee7b7">${c.verified}</div><div class="qa-stat-label">Verified</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#93c5fd">${c.fixed}</div><div class="qa-stat-label">Fixed</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#fde68a">${c.unsupported}</div><div class="qa-stat-label">Unsupported</div></div>
+                      <div class="qa-stat"><div class="qa-stat-value" style="color:#fca5a5">${c.failed}</div><div class="qa-stat-label">Failed</div></div>
+                    </div>`;
+
+                    buildDocReport("tjc", data);
+                    const compPct = data.audit.overall_compliance_percentage;
+                    toast(
+                      `TJC complete — ${compPct.toFixed(1)}% compliance`,
+                      compPct >= 80 ? "success" : "warning",
+                    );
+                    logActivity(
+                      "tjc",
+                      `TJC audit — ${compPct.toFixed(1)}% compliance (${pct}% verified)`,
+                    );
+                  }
+                } catch (e) {}
+                eventType = null;
+              }
+            }
+          }
+        } catch (e) {
+          toast("TJC stream error: " + e.message, "error");
+        }
+      }
+
+      function displayTJC(d) {
+        const p = d.overall_compliance_percentage;
+        const c = p >= 80 ? "#6ee7b7" : p >= 50 ? "#fde68a" : "#fca5a5";
+        const cb = p >= 80 ? "rgba(52,211,153," : "rgba(248,113,113,";
+        document.getElementById("tjc-pct").textContent = p.toFixed(1) + "%";
+        document.getElementById("tjc-pct").style.background = `${cb}0.15)`;
+        document.getElementById("tjc-pct").style.borderColor = `${cb}0.3)`;
+        document.getElementById("tjc-progress").style.width = p + "%";
+        document.getElementById("tjc-progress").style.background = c;
         let h = "";
-        for (const std of data.standards) {
+        for (const s of d.standards) {
           const sc =
-            std.overall_status === "compliant"
+            s.overall_status === "compliant"
               ? "pass"
-              : std.overall_status === "non_compliant"
+              : s.overall_status === "non_compliant"
                 ? "fail"
                 : "partial";
-          h += `<div class="dimension"><div class="dimension-header"><span class="dimension-name">${std.standard_id} — ${std.standard_name}</span><span class="status status-${sc}">${std.compliance_percentage}%</span></div>`;
-          for (const f of std.findings) {
+          h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${s.standard_id} — ${s.standard_name}</span><div><span class="status status-${sc}">${s.compliance_percentage}%</span> <span class="dimension-toggle open">&#9662;</span></div></div><div class="dimension-body">`;
+          for (const f of s.findings) {
             const fc =
               f.status === "pass"
                 ? "pass"
                 : f.status === "fail"
                   ? "fail"
                   : "partial";
-            h += `<div class="finding finding-${fc}"><strong>${f.element}:</strong> ${f.finding.substring(0, 250)}`;
+            h += `<div class="finding finding-${fc}"><strong>${f.element}:</strong> ${f.finding.substring(0, 220)}`;
+            if (f.citations?.length)
+              for (const c of f.citations.slice(0, 2)) {
+                const ev = findEvidence(c.text);
+                const cls = ev
+                  ? `evidence-link ${ev.verdict}`
+                  : "evidence-link";
+                const badge = ev
+                  ? `<span class="evidence-badge evidence-badge-${ev.verdict === "verified" ? "verified" : ev.verdict === "partial" ? "partial" : "failed"}">${ev.verdict === "verified" ? "linked" : ev.verdict}</span>`
+                  : "";
+                const onclick =
+                  ev && ev.source_start != null
+                    ? `onclick="showEvidence(${ev.source_start}, ${ev.source_end}, '${ev.verdict}')"`
+                    : "";
+                h += `<div class="citation ${cls}" ${onclick} style="margin:4px 0;"><strong>${c.source}:</strong> "${c.text.substring(0, 120)}"${badge}</div>`;
+              }
             if (f.remediation)
-              h += `<div style="color:#a5b4fc;margin-top:4px;font-size:12px;">Fix: ${f.remediation}</div>`;
+              h += `<div style="color:rgba(255,255,255,0.5);margin-top:3px;font-size:11px;">&rarr; ${f.remediation}</div>`;
             h += "</div>";
           }
-          h += "</div>";
+          h += "</div></div>";
         }
         document.getElementById("tjc-standards").innerHTML = h;
-        let gh = "";
-        for (const g of data.critical_gaps) {
-          gh += `<div class="gap-item gap-${g.severity}"><strong>[${g.severity.toUpperCase()}]</strong> ${g.standard} ${g.element}: ${g.description}</div>`;
+        let g = "";
+        for (const x of d.critical_gaps)
+          g += `<div class="gap-item gap-${x.severity}"><strong>[${x.severity.toUpperCase()}]</strong> ${x.standard} ${x.element}: ${x.description}</div>`;
+        document.getElementById("tjc-gaps").innerHTML = g;
+        let r = "";
+        for (const x of d.recommendations) r += `<li>${x}</li>`;
+        document.getElementById("tjc-recs").innerHTML = r;
+        document.getElementById("tjc-summary").textContent = d.audit_summary;
+        if (d.qa_agent) {
+          document.getElementById("tjc-qa").classList.remove("hidden");
+          renderQATerminal("tjc", d.qa_agent);
         }
-        document.getElementById("tjc-gaps").innerHTML = gh;
-        let rh = "";
-        for (const r of data.recommendations) {
-          rh += `<li>${r}</li>`;
-        }
-        document.getElementById("tjc-recs").innerHTML = rh;
-        document.getElementById("tjc-summary").textContent = data.audit_summary;
-        document.getElementById("tjc-card").classList.remove("hidden");
+        document.getElementById("tab-btn-tjc").classList.remove("hidden");
+        showTab("tjc");
+        logActivity(
+          "tjc",
+          `TJC audit — ${d.overall_compliance_percentage.toFixed(1)}% compliance`,
+        );
       }
 
-      function showTab(tab) {
+      /* ── Tabs ── */
+      function showTab(t) {
         document
-          .querySelectorAll(".tab")
-          .forEach((t) => t.classList.remove("active"));
-        document.getElementById("tab-assessment").classList.add("hidden");
-        document.getElementById("tab-notes").classList.add("hidden");
-        event.target.classList.add("active");
-        document.getElementById("tab-" + tab).classList.remove("hidden");
+          .querySelectorAll("#patient-tabs .tab")
+          .forEach((x) => x.classList.remove("active"));
+        ["assessment", "notes", "asam", "tjc", "report"].forEach((id) =>
+          document.getElementById("tab-" + id).classList.add("hidden"),
+        );
+        document.getElementById("tab-" + t).classList.remove("hidden");
+        document.querySelectorAll("#patient-tabs .tab").forEach((x) => {
+          const txt = x.textContent.trim();
+          if (
+            (t === "assessment" && txt === "Assessment") ||
+            (t === "notes" && txt === "Progress Notes") ||
+            (t === "asam" && txt === "ASAM") ||
+            (t === "tjc" && txt === "TJC Audit") ||
+            (t === "report" && txt === "Report")
+          )
+            x.classList.add("active");
+        });
       }
-      function show(id) {
-        document.getElementById(id).classList.add("active");
+
+      function show(i) {
+        document.getElementById(i).classList.add("active");
       }
-      function hide(id) {
-        document.getElementById(id).classList.remove("active");
+      function hide(i) {
+        document.getElementById(i).classList.remove("active");
+      }
+
+      /* ── Auto-load patients from DB on page load ── */
+      async function loadPatients() {
+        try {
+          const r = await fetch(`${API}/api/v1/patients`);
+          if (!r.ok) return;
+          const patients = await r.json();
+          if (!patients.length) return;
+          const list = document.getElementById("patient-list");
+          list.innerHTML = "";
+          for (const p of patients) {
+            const initials = (p.first_name[0] + p.last_name[0]).toUpperCase();
+            list.insertAdjacentHTML(
+              "beforeend",
+              `<div class="sidebar-patient" data-id="${p.id}" onclick="loadAndSelect('${p.id}')">
+              <div class="sidebar-patient-avatar">${initials}</div>
+              <div class="sidebar-patient-info">
+                <div class="sidebar-patient-name">${p.first_name} ${p.last_name}</div>
+                <div class="sidebar-patient-meta">${p.date_of_birth} | ${p.note_count} notes</div>
+              </div>
+            </div>`,
+            );
+          }
+        } catch (e) {
+          /* silent */
+        }
+      }
+
+      async function loadAndSelect(id) {
+        try {
+          const r = await fetch(`${API}/api/v1/patients/${id}/extract`);
+          if (!r.ok) return toast("Failed to load patient", "error");
+          const d = await r.json();
+          currentData = d;
+          patientId = id;
+          displayPatient(d);
+          showView("patient");
+          document
+            .querySelectorAll(".sidebar-patient")
+            .forEach((p) => p.classList.toggle("active", p.dataset.id === id));
+          document
+            .querySelectorAll(".sidebar-item")
+            .forEach((i) => i.classList.remove("active"));
+          // Also add note items to sidebar if not already there
+          const list = document.getElementById("patient-list");
+          if (!list.querySelector(`.sidebar-notes[data-patient="${id}"]`)) {
+            let html = `<div class="sidebar-notes" data-patient="${id}">
+              <div class="sidebar-note-item" onclick="loadAndSelect('${id}');showTab('assessment')">Assessment</div>`;
+            for (const note of d.progress_notes)
+              html += `<div class="sidebar-note-item" onclick="loadAndSelect('${id}');showTab('notes')">${note.note_format} - ${note.note_date}</div>`;
+            html += `</div>`;
+            const patientEl = list.querySelector(`[data-id="${id}"]`);
+            if (patientEl) patientEl.insertAdjacentHTML("afterend", html);
+          }
+        } catch (e) {
+          toast("Error loading patient: " + e.message, "error");
+        }
+      }
+
+      // Load on page init
+      loadPatients();
+
+      /* ── Agent Event Renderer (Claude Code style) ── */
+      function renderAgentEvent(terminal, event, data, type) {
+        switch (event) {
+          case "agent_start":
+            terminal.innerHTML += line(
+              "header",
+              "$",
+              `<strong>${escHtml(data.message)}</strong>`,
+            );
+            if (data.detail)
+              terminal.innerHTML += line(
+                "dim",
+                " ",
+                `  ${escHtml(data.detail)}`,
+              );
+            break;
+
+          case "thinking":
+            terminal.innerHTML += `<div class="qa-line" style="margin:4px 0"><span class="qa-line-icon" style="color:rgba(168,85,247,0.7)">⟡</span><span class="qa-line-text" style="color:rgba(168,85,247,0.7);font-style:italic">${escHtml(data.message)}</span></div>`;
+            break;
+
+          case "tool_call": {
+            const toolIcons = {
+              llm_call: "⚡",
+              decompose: "◇",
+              verify_citations: "🔍",
+              fix_claims: "🔧",
+              reconstruct: "⟲",
+              final_verify: "✓",
+            };
+            const ic = toolIcons[data.tool] || "▸";
+            terminal.innerHTML += `<div class="qa-line" style="margin:3px 0"><span class="qa-line-icon">${ic}</span><span class="qa-line-text"><strong style="color:#93c5fd">${escHtml(data.tool)}</strong> ${escHtml(data.description)}</span></div>`;
+            if (data.detail)
+              terminal.innerHTML += line(
+                "dim",
+                " ",
+                `  ${escHtml(data.detail)}`,
+              );
+            break;
+          }
+
+          case "tool_result":
+            terminal.innerHTML += `<div class="qa-line" style="margin:2px 0"><span class="qa-line-icon" style="color:rgba(255,255,255,0.2)">↳</span><span class="qa-line-text" style="color:rgba(255,255,255,0.45)">${escHtml(data.result)}</span></div>`;
+            break;
+
+          case "claim_verified":
+            terminal.innerHTML += `<div class="qa-line verified" style="margin:1px 0;padding-left:8px"><span class="qa-line-icon" style="color:#34d399">✓</span><span class="qa-line-text"><strong>${escHtml(data.location)}</strong> <span style="color:rgba(52,211,153,0.5)">(${(data.score * 100).toFixed(0)}%)</span> <span style="color:rgba(255,255,255,0.25)">"${escHtml((data.snippet || "").substring(0, 60))}"</span></span></div>`;
+            break;
+
+          case "claim_failed": {
+            const fIcon =
+              data.issue_type === "hallucination"
+                ? "✗"
+                : data.issue_type === "negation_flip"
+                  ? "⚠"
+                  : "~";
+            const fColor =
+              data.issue_type === "hallucination"
+                ? "#f87171"
+                : data.issue_type === "negation_flip"
+                  ? "#f87171"
+                  : "#fbbf24";
+            terminal.innerHTML += `<div class="qa-line failed" style="margin:1px 0;padding-left:8px"><span class="qa-line-icon" style="color:${fColor}">${fIcon}</span><span class="qa-line-text" style="color:${fColor}"><strong>${escHtml(data.location)}</strong> [${escHtml(data.issue_type)}] "${escHtml((data.snippet || "").substring(0, 45))}" <span style="opacity:0.7">— ${escHtml((data.issue || "").substring(0, 70))}</span></span></div>`;
+            break;
+          }
+
+          case "search":
+            terminal.innerHTML += `<div class="qa-line" style="margin:1px 0;padding-left:16px"><span class="qa-line-icon" style="color:rgba(251,191,36,0.6)">↳</span><span class="qa-line-text" style="color:rgba(255,255,255,0.3)">${escHtml(data.description)}</span></div>`;
+            break;
+
+          case "claim_fixed":
+            terminal.innerHTML += `<div class="qa-line fixed" style="margin:2px 0;padding-left:8px"><span class="qa-line-icon" style="color:#60a5fa">✎</span><span class="qa-line-text"><strong style="color:#60a5fa">${escHtml(data.location)}</strong> <span style="color:rgba(248,113,113,0.5);text-decoration:line-through">"${escHtml((data.old_text || "").substring(0, 40))}"</span> → <span style="color:rgba(52,211,153,0.8)">"${escHtml((data.new_text || "").substring(0, 50))}"</span></span></div>`;
+            break;
+
+          case "claim_unsupported":
+            terminal.innerHTML += `<div class="qa-line unsupported" style="margin:2px 0;padding-left:8px"><span class="qa-line-icon" style="color:#fbbf24">○</span><span class="qa-line-text"><strong>${escHtml(data.location)}</strong> — ${escHtml(data.reason || "no evidence in source")}</span></div>`;
+            break;
+
+          case "verify_summary": {
+            const pct = (data.accuracy * 100).toFixed(0);
+            const vc =
+              data.verified >= data.total * 0.9
+                ? "#34d399"
+                : data.verified >= data.total * 0.7
+                  ? "#fbbf24"
+                  : "#f87171";
+            terminal.innerHTML += `<div style="margin:6px 0 4px 0;padding:6px 12px;background:rgba(255,255,255,0.03);border-radius:8px;font-size:11px;display:flex;gap:16px;align-items:center"><span style="color:${vc};font-weight:700">${pct}%</span><span style="color:rgba(52,211,153,0.7)">✓ ${data.verified} verified</span>${data.failed ? `<span style="color:rgba(248,113,113,0.7)">✗ ${data.failed} failed</span>` : ""}${data.unsupported ? `<span style="color:rgba(251,191,36,0.7)">○ ${data.unsupported} unsupported</span>` : ""}<span style="color:rgba(255,255,255,0.2)">of ${data.total} claims</span></div>`;
+            break;
+          }
+
+          case "iteration":
+            if (data.phase === "start")
+              terminal.innerHTML += `<div style="margin:10px 0 4px 0;padding:4px 0;border-top:1px solid rgba(255,255,255,0.06)"><div class="qa-line header"><span class="qa-line-icon">▸</span><span class="qa-line-text"><strong>${escHtml(data.message)}</strong></span></div></div>`;
+            else if (data.phase === "complete")
+              terminal.innerHTML += line(
+                "dim",
+                " ",
+                `  ${escHtml(data.message)}`,
+              );
+            break;
+        }
+      }
+
+      /* ── QA Agent Terminal Renderer (fallback for non-streamed) ── */
+      function renderQATerminal(type, qa) {
+        const terminal = document.getElementById(`${type}-qa-terminal`);
+        const badge = document.getElementById(`${type}-qa-badge`);
+        const pct = (qa.accuracy * 100).toFixed(1);
+        const c = qa.claims;
+
+        const color =
+          qa.accuracy >= 0.9
+            ? "#6ee7b7"
+            : qa.accuracy >= 0.7
+              ? "#fde68a"
+              : "#fca5a5";
+        const bg =
+          qa.accuracy >= 0.9
+            ? "rgba(52,211,153,0.15)"
+            : qa.accuracy >= 0.7
+              ? "rgba(251,191,36,0.15)"
+              : "rgba(248,113,113,0.15)";
+        badge.textContent = `${pct}% verified`;
+        badge.style.color = color;
+        badge.style.background = bg;
+
+        let html = "";
+        html += line("header", ">", `QA Agent — ${c.total} claims extracted`);
+        html += line("dim", " ", "");
+
+        // Trace each iteration
+        for (const iter of qa.trace) {
+          html += line(
+            "header",
+            "~",
+            `Iteration ${iter.iteration}${iter.iteration === 0 ? " (initial generation)" : ""}`,
+          );
+          html += line(
+            "verified",
+            "+",
+            `${iter.verified} claims verified against source`,
+          );
+
+          if (iter.pending > 0)
+            html += line(
+              "failed",
+              "!",
+              `${iter.pending} claims failed verification`,
+            );
+          if (iter.unsupported > 0)
+            html += line(
+              "unsupported",
+              "?",
+              `${iter.unsupported} claims unsupported by source`,
+            );
+
+          // Show specific issues
+          if (iter.issues) {
+            for (const issue of iter.issues.slice(0, 8)) {
+              const icon =
+                issue.type === "hallucination"
+                  ? "x"
+                  : issue.type === "negation_flip"
+                    ? "!"
+                    : issue.type === "weak_match"
+                      ? "~"
+                      : "?";
+              const cls =
+                issue.type === "hallucination"
+                  ? "failed"
+                  : issue.type === "negation_flip"
+                    ? "failed"
+                    : "unsupported";
+              html += line(
+                cls,
+                icon,
+                `<strong>[${issue.type}]</strong> ${escHtml(issue.id)}: ${escHtml((issue.issue || "").substring(0, 120))}`,
+              );
+            }
+            if (iter.issues.length > 8)
+              html += line(
+                "dim",
+                " ",
+                `... and ${iter.issues.length - 8} more`,
+              );
+          }
+
+          // Show fixes
+          if (iter.fixes_applied > 0)
+            html += line(
+              "fixed",
+              "*",
+              `${iter.fixes_applied} claims fixed by agent`,
+            );
+          if (iter.still_broken > 0)
+            html += line(
+              "failed",
+              "x",
+              `${iter.still_broken} claims still broken`,
+            );
+          if (iter.marked_unsupported > 0)
+            html += line(
+              "unsupported",
+              "-",
+              `${iter.marked_unsupported} claims marked unsupported`,
+            );
+
+          html += line("dim", " ", "");
+        }
+
+        // Unresolved claims
+        if (qa.unresolved_claims?.length > 0) {
+          html += line(
+            "header",
+            "!",
+            `Unresolved claims (${qa.unresolved_claims.length}):`,
+          );
+          for (const claim of qa.unresolved_claims.slice(0, 10)) {
+            const cls =
+              claim.verdict === "unsupported"
+                ? "unsupported"
+                : claim.verdict === "fixed"
+                  ? "fixed"
+                  : "failed";
+            const icon =
+              claim.verdict === "unsupported"
+                ? "?"
+                : claim.verdict === "fixed"
+                  ? "*"
+                  : "x";
+            html += line(
+              cls,
+              icon,
+              `<strong>${escHtml(claim.location)}</strong> [${claim.verdict}] ${escHtml((claim.issue || "").substring(0, 100))}`,
+            );
+          }
+          if (qa.unresolved_claims.length > 10)
+            html += line(
+              "dim",
+              " ",
+              `... and ${qa.unresolved_claims.length - 10} more`,
+            );
+          html += line("dim", " ", "");
+        }
+
+        // Final summary
+        html += line("header", ">", "Final Results");
+        html += `<div class="qa-stats-row">
+          <div class="qa-stat"><div class="qa-stat-value" style="color:${color}">${pct}%</div><div class="qa-stat-label">Accuracy</div></div>
+          <div class="qa-stat"><div class="qa-stat-value" style="color:#6ee7b7">${c.verified}</div><div class="qa-stat-label">Verified</div></div>
+          <div class="qa-stat"><div class="qa-stat-value" style="color:#93c5fd">${c.fixed}</div><div class="qa-stat-label">Fixed</div></div>
+          <div class="qa-stat"><div class="qa-stat-value" style="color:#fde68a">${c.unsupported}</div><div class="qa-stat-label">Unsupported</div></div>
+          <div class="qa-stat"><div class="qa-stat-value" style="color:#fca5a5">${c.failed}</div><div class="qa-stat-label">Failed</div></div>
+          <div class="qa-stat"><div class="qa-stat-value" style="color:rgba(255,255,255,0.5)">${qa.iterations}</div><div class="qa-stat-label">Iterations</div></div>
+        </div>`;
+
+        terminal.innerHTML = html;
+      }
+
+      function line(cls, icon, text) {
+        return `<div class="qa-line ${cls}"><span class="qa-line-icon">${escHtml(icon)}</span><span class="qa-line-text">${text}</span></div>`;
+      }
+
+      function escHtml(s) {
+        const d = document.createElement("div");
+        d.textContent = s || "";
+        return d.innerHTML;
+      }
+
+      /* ── Linked Evidence ── */
+      function findEvidence(citedText) {
+        if (!currentLinkedEvidence.length) return null;
+        const ct = (citedText || "")
+          .toLowerCase()
+          .trim()
+          .replace(/^["']+|["']+$/g, "");
+        return (
+          currentLinkedEvidence.find((e) => {
+            const et = (e.cited_text || "")
+              .toLowerCase()
+              .trim()
+              .replace(/^["']+|["']+$/g, "");
+            return (
+              et === ct ||
+              ct.startsWith(et.substring(0, 40)) ||
+              et.startsWith(ct.substring(0, 40))
+            );
+          }) || null
+        );
+      }
+
+      function showEvidence(start, end, verdict) {
+        if (!currentSourceDoc) return;
+        const viewer = document.getElementById("source-viewer");
+        const body = document.getElementById("source-viewer-body");
+        const title = document.getElementById("source-viewer-title");
+
+        // Build the source text with the matched region highlighted
+        const before = escHtml(
+          currentSourceDoc.substring(Math.max(0, start - 300), start),
+        );
+        const match = escHtml(currentSourceDoc.substring(start, end));
+        const after = escHtml(
+          currentSourceDoc.substring(
+            end,
+            Math.min(currentSourceDoc.length, end + 300),
+          ),
+        );
+
+        const hlClass =
+          verdict === "verified"
+            ? "source-highlight source-highlight-verified"
+            : verdict === "partial"
+              ? "source-highlight"
+              : "source-highlight source-highlight-failed";
+
+        body.innerHTML = `${before}<span class="${hlClass}" id="evidence-target">${match}</span>${after}`;
+        title.textContent = `Linked Evidence — ${verdict === "verified" ? "Verified" : verdict === "partial" ? "Partial Match" : "Not Found"} in Source`;
+        viewer.classList.add("open");
+
+        // Scroll to highlighted text
+        setTimeout(() => {
+          const target = document.getElementById("evidence-target");
+          if (target)
+            target.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      }
+
+      function closeSourceViewer() {
+        document.getElementById("source-viewer").classList.remove("open");
+      }
+
+      /* ── Doc-Style Report Builder ── */
+      function buildDocReport(type, data) {
+        const el = document.getElementById("report-content");
+        document.getElementById("tab-btn-report").classList.remove("hidden");
+
+        if (type === "asam") {
+          const d = data.evaluation || data;
+          const patient = currentData?.patient;
+          const name = patient
+            ? `${patient.first_name} ${patient.last_name}`
+            : "Patient";
+
+          let html = `<h1>ASAM Level of Care Assessment</h1>`;
+          html += `<div class="doc-meta">${name} | ${patient?.date_of_birth || ""} | Generated ${new Date().toLocaleDateString()}</div>`;
+          html += `<div class="doc-legend"><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#34d399"></div> Verified in source</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#fbbf24"></div> Partial match</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#f87171"></div> Not found in source</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:rgba(255,255,255,0.15)"></div> No citation</div></div>`;
+
+          html += `<p><strong>Recommended Level of Care:</strong> ${wrapSentence(`Level ${d.recommended_level} — ${d.recommended_level_name}`, null)}</p>`;
+
+          for (const dim of d.dimensions || []) {
+            html += `<h2>Dimension ${dim.dimension_number}: ${dim.dimension_name}</h2>`;
+            for (const sub of dim.subdimensions || []) {
+              html += `<h3>${sub.name} — Risk: ${sub.risk_rating_code} → ${sub.minimum_level}</h3>`;
+              html += `<p>${wrapWithEvidence(sub.rationale, sub.citations)}</p>`;
+            }
+          }
+
+          if (d.loc_determination_steps?.length) {
+            html += `<h2>Level of Care Determination</h2>`;
+            for (const step of d.loc_determination_steps) {
+              html += `<p><strong>Step ${step.step}:</strong> ${step.description} — ${wrapSentence(step.result, null)}</p>`;
+            }
+          }
+
+          html += `<h2>Clinical Summary</h2>`;
+          html += `<p>${wrapSentence(d.clinical_summary || "", null)}</p>`;
+
+          if (d.dimension_6_notes) {
+            html += `<h2>Dimension 6: Person-Centered Considerations</h2>`;
+            html += `<p>${wrapSentence(d.dimension_6_notes, null)}</p>`;
+          }
+
+          el.innerHTML = html;
+        } else if (type === "tjc") {
+          const d = data.audit || data;
+          const patient = currentData?.patient;
+          const name = patient
+            ? `${patient.first_name} ${patient.last_name}`
+            : "Patient";
+
+          let html = `<h1>TJC Compliance Audit Report</h1>`;
+          html += `<div class="doc-meta">${name} | ${patient?.date_of_birth || ""} | Overall Compliance: ${d.overall_compliance_percentage?.toFixed(1)}% | Generated ${new Date().toLocaleDateString()}</div>`;
+          html += `<div class="doc-legend"><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#34d399"></div> Verified in source</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#fbbf24"></div> Partial match</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:#f87171"></div> Not found</div><div class="doc-legend-item"><div class="doc-legend-swatch" style="background:rgba(255,255,255,0.15)"></div> No citation</div></div>`;
+
+          for (const std of d.standards || []) {
+            html += `<h2>${std.standard_id}: ${std.standard_name} (${std.compliance_percentage?.toFixed(0)}%)</h2>`;
+            for (const f of std.findings || []) {
+              const statusIcon =
+                f.status === "pass"
+                  ? '<span style="color:#34d399">PASS</span>'
+                  : f.status === "fail"
+                    ? '<span style="color:#f87171">FAIL</span>'
+                    : '<span style="color:#fbbf24">PARTIAL</span>';
+              html += `<h3>${f.element} — ${statusIcon}</h3>`;
+              html += `<p>${wrapWithEvidence(f.finding, f.citations)}</p>`;
+              if (f.remediation)
+                html += `<p style="color:rgba(251,191,36,0.7);font-size:13px">Remediation: ${escHtml(f.remediation)}</p>`;
+            }
+          }
+
+          if (d.critical_gaps?.length) {
+            html += `<h2>Critical Gaps</h2>`;
+            for (const g of d.critical_gaps) {
+              html += `<p><strong style="color:#f87171">[${g.severity.toUpperCase()}]</strong> ${g.standard} ${g.element}: ${escHtml(g.description)}</p>`;
+            }
+          }
+
+          html += `<h2>Summary</h2>`;
+          html += `<p>${wrapSentence(d.audit_summary || "", null)}</p>`;
+
+          el.innerHTML = html;
+        }
+      }
+
+      function wrapWithEvidence(text, citations) {
+        if (!text) return "";
+        // Split the text into sentences, then for each citation wrap the matching part
+        let result = escHtml(text);
+
+        if (citations?.length) {
+          for (const c of citations) {
+            const ev = findEvidence(c.text);
+            const verdict = ev?.verdict || "unverified";
+            const score = ev?.score ? (ev.score * 100).toFixed(0) + "%" : "";
+            const start = ev?.source_start;
+            const end = ev?.source_end;
+            const onclick =
+              start != null
+                ? `onclick="showEvidence(${start}, ${end}, '${verdict}')"`
+                : "";
+            const tooltipText =
+              verdict === "verified"
+                ? `Verified in source (${score})`
+                : verdict === "partial"
+                  ? `Partial match (${score})`
+                  : verdict === "not_found"
+                    ? "Not found in source — possible hallucination"
+                    : "No verification data";
+            const sourceSnippet = ev?.source_text
+              ? escHtml(ev.source_text.substring(0, 80))
+              : "";
+
+            // Wrap the cited quote inline
+            const quoteSafe = escHtml(c.text.substring(0, 80));
+            const span = `<span class="doc-sentence ${verdict}" ${onclick}>"${quoteSafe}"<span class="doc-tooltip"><strong>${verdict.toUpperCase()}</strong> ${score ? "— " + score + " match" : ""}<br>${sourceSnippet ? 'Source: "' + sourceSnippet + '..."' : "Click to view source"}</span></span>`;
+
+            result += `<br><span style="font-size:12px;color:rgba(255,255,255,0.3);margin-left:8px">${escHtml(c.source)}: ${span}</span>`;
+          }
+        }
+
+        return result;
+      }
+
+      function wrapSentence(text, evidence) {
+        if (!text) return "";
+        return escHtml(text);
       }
     </script>
   </body>

@@ -1,8 +1,14 @@
 """
-TJC Section-by-Section Prompts
+TJC Section-by-Section Prompts — Verbatim from Joint Commission Public Standards Database
 
-Instead of one massive prompt with 39 standards, we split into focused sections.
+Instead of one massive prompt with 41 standards, we split into focused sections.
 Each section gets its own LLM call with only its relevant EPs.
+
+All EP text is verbatim from: docs/research/tjc-all-standards-with-eps.txt
+Source: Joint Commission Public Standards Database, March 2026 edition.
+Program: Behavioral Health Care and Human Services
+
+41 standards, 104 EPs — filtered to chart-auditable items only.
 """
 
 TJC_SECTION_SYSTEM = """\
@@ -57,220 +63,218 @@ RULES:
 - overall_status: all pass = "compliant", all fail = "non_compliant", mixed = "partial"
 """
 
-# --- Section definitions ---
+# --- Section definitions (verbatim EP text) ---
 
 SECTIONS = [
     {
         "id": "screening",
         "name": "Screening (CTS.02.01)",
         "standards": """\
-CTS.02.01.01: Screening for risk of imminent harm to self or others.
-  EP 1: The screening procedure determines the need for immediate intervention.
-  EP 2: The organization follows its process for responding when immediate risk of harm is identified.
+CTS.02.01.01: The organization has a screening procedure for the early detection of risk of imminent harm to self or others.
+  EP 1: The screening procedure determines the need for immediate intervention to protect the individual served or others.
+  EP 2: The organization follows its process for responding when an immediate risk of harm to self or others is identified.
 
-CTS.02.01.03: Screenings and assessments performed per policy.
-  EP 1: The organization assesses each individual in accordance with policy.
-  EP 2: Assessment conducted within the time frame specified by needs, policy, and law/regulation.
-  EP 3: The organization collects information during screenings/assessments about the individual's perception of needs and goals; physical health; psychological, social, spiritual, and cultural factors; strengths; and risk factors.
+CTS.02.01.03: The organization performs screenings and assessments as defined by the organization's policy.
+  EP 1: The organization assesses each individual served in accordance with organization policy.
+  EP 2: The organization conducts each individual's assessment within the time frame specified by the needs of the individual served, organization policy, and law and regulation.
+  EP 3: The organization collects information during screenings and/or assessments about the following: The individual's perceptions of their needs, preferences, and goals for care, treatment, or services; When indicated and available, the family's perceptions and preferences for care, treatment, or services.
 
 CTS.02.01.05: Physical health screening.
-  EP 1: Follows written physical health screening process to determine whether individual needs a medical history and physical examination.
+  EP 1: For organizations providing care, treatment, or services in non-24-hour settings: The organization follows its written physical health screening process to determine whether an individual served is in need of a medical history and physical examination that is based on the population(s) served and, at a minimum, includes the following: Data to be collected; Time frame for completion of the screening; Screening triggers that indicate the need for a medical history and physical examination.
 
-CTS.02.01.09: Screens all individuals for physical pain.
-  EP 1: Screens to identify those for whom a pain assessment is indicated.
-  EP 2: Individuals for whom a physical pain assessment is indicated are either assessed and treated by the organization or referred for assessment.
+CTS.02.01.09: The organization screens all individuals served for physical pain.
+  EP 1: The organization screens all individuals served to identify those for whom a physical pain assessment is indicated.
+  EP 2: Individuals for whom a physical pain assessment is indicated are either assessed and treated by the organization or referred for assessment or treatment.
 
-CTS.02.01.11: Screens all individuals for nutritional status.
-  EP 1: Screens to identify those for whom a nutritional assessment is indicated.
-  EP 2: Individuals for whom a nutritional assessment is indicated are either assessed and treated by the organization or referred.
-  EP 3: For organizations that assess nutritional status, the assessment identifies those who may be at moderate or high nutritional risk.
+CTS.02.01.11: The organization screens all individuals served for their nutritional status.
+  EP 1: The organization screens all individuals served to identify those for whom a nutritional assessment is indicated. At a minimum, the screening includes questions about the following: Food allergies; Weight loss or gain of 10 pounds or more in the last 3 months; Decrease in food intake and/or appetite; Dental problems; Eating habits or behaviors that may be indicators of an eating disorder, such as bingeing or inducing vomiting.
+  EP 2: Individuals for whom a nutritional assessment is indicated are either assessed and treated by the organization or referred for assessment or treatment.
+  EP 3: For organizations that assess nutritional status, the assessment identifies those individuals who may be at moderate or high nutritional risk.
 
-CTS.02.01.15: Screens for legal issues as relevant.
-  EP 1: Identifies individuals for whom a legal assessment is indicated.
-  EP 3: For organizations that assess legal status, information collected includes at least: legal history, current legal status, pending charges, probation/parole status, and legal issues affecting treatment.""",
+CTS.02.01.15: As relevant to care, treatment, or services, the organization screens for the legal issues of the individual served.
+  EP 1: A screening identifies individuals for whom a legal assessment is indicated, and the individuals who are identified are either assessed by the organization or referred for assessment.
+  EP 3: For organizations that assess the legal status of the individual, the information to be collected includes at least the following: A legal history; A preliminary discussion to determine how much the individual's legal situation will influence their progress in care, treatment, or services, and the urgency of the legal situation; The relationship between the presenting conditions and legal involvement.""",
     },
     {
         "id": "assessment",
         "name": "Assessment (CTS.02.02-03)",
         "standards": """\
-CTS.02.02.01: Collects assessment data on each individual.
-  EP 1: Collects information about the individual's needs, strengths, preferences, and goals.
-  EP 3: Assessment data on emotional and behavioral functioning.
-  EP 4: Assessment data include the individual's short- and long-term goals.
-  EP 5: When indicated, evaluations conducted: mental status, psychological, psychiatric, intellectual, neuropsychological.
-  EP 6: Family members invited to participate in the assessment process.
+CTS.02.02.01: The organization collects assessment data on each individual served.
+  EP 1: The organization collects information about the individual's needs, strengths, preferences, and goals.
+  EP 3: As relevant to care, treatment, or services, the assessment data collected about the individual's emotional and behavioral functioning include at least the following: History of emotional functioning; History of behavioral functioning; Addictive behaviors as a primary or a co-occurring condition(s), including the use of alcohol, other drugs, gambling, or other addictive behaviors by the individual served and family members; Current emotional functioning; Current behavioral functioning.
+  EP 4: The assessment data collected include the individual's short- and long-term personal goal(s).
+  EP 5: When indicated, the following evaluations are conducted: Mental status; Psychological; Psychiatric; Intellectual and cognitive functioning.
+  EP 6: Family members are invited to participate in the assessment process as relevant to the care, treatment, or services provided, and the age and preference of the individual served.
 
-CTS.02.02.05: Identifies individuals who may have experienced trauma, abuse, neglect, or exploitation.
-  EP 2: Identifies during initial screening/assessment and on an ongoing basis.
-  EP 3: Assesses or refers the individual for assessment.
+CTS.02.02.05: The organization identifies individuals who may have experienced trauma, abuse, neglect, or exploitation.
+  EP 2: The organization identifies individuals who may have experienced trauma, abuse, neglect, or exploitation during initial screening and assessment and on an ongoing basis.
+  EP 3: The organization assesses the individual who may have experienced trauma, abuse, neglect, or exploitation or refers the individual for such assessment.
 
-CTS.02.02.07: Reassesses individuals as needed.
+CTS.02.02.07: Reassessment.
   EP 1: The organization reassesses each individual served, as needed.
 
-CTS.02.02.09: Medical histories, physical exams, and lab tests.
-  EP 5 (SUD): Toxicological specimens collected with trust/respect while preventing falsification.
-  EP 15 (SUD): When initiating medications for SUD, medical assessments and testing follow current national guidelines.
+CTS.02.02.09: The organization has a process to provide medical histories, physical examinations, and diagnostic and laboratory tests.
+  EP 5: For organizations providing care, treatment, or services to individuals with addictions: The program collects toxicological specimens in a manner that demonstrates trust and respect while taking reasonable steps to prevent falsification of samples.
+  EP 15: For programs providing medications for substance use disorders: When initiating medications for substance use disorders, the program makes certain that medical assessments and testing are done according to current national guidelines established for the treatment being used.
 
-CTS.02.03.07 (SUD): Assessment includes history of addictive behaviors.
-  EP 1: Obtains history of alcohol use, drug use, nicotine use, and other addictive behaviors including: age of onset, method of acquiring substance, duration, patterns of use (continuous/episodic/binge), frequency, amounts, and route of substance taken.
-  EP 2: Assessment includes: consequences of substance use, physical problems related to use, family substance use history, spirituality and cultural factors, readiness to change, current living arrangements.
-  EP 7: Assessments contain: previous care/treatment/services, response to previous treatment, current risks and history of risks related to substance use, relapse history, acute intoxication/withdrawal potential, readiness to change, current living arrangements and options for supportive living environment.
+CTS.02.03.07: For organizations providing care, treatment, or services to individuals with addictions: The assessment includes the individual's history of addictive behaviors.
+  EP 1: For organizations providing care, treatment, or services to individuals with addictions: The organization obtains the individual's history of alcohol use, drug use, nicotine use, and other addictive behaviors. The history includes the following information: Age of onset; Method of acquiring substance; Duration; Patterns of use (for example, continuous, episodic, binge); Frequency, amounts, and route of the substance that is taken.
+  EP 2: For organizations providing care, treatment, or services to individuals with addictions: The assessment includes the following: Consequences of substance use; Physical problems related to use; Family substance use history; Spirituality and cultural factors; Readiness to change; Current living arrangements.
+  EP 7: For organizations providing care, treatment, or services to individuals with addictions: Assessments of the individual served contain information about the following: Previous care, treatment, or services; Response to previous care, treatment, or services; Current risks and history of risks related to substance use (likelihood of engaging in substance use or substance use-related behaviors that carry significant risk for serious medical, psychological, social, or financial/legal consequences); Acute intoxication and/or withdrawal potential; Needs related to medications for substance use disorders.
 
-CTS.02.03.13 (SUD): Individual placed in appropriate level of care.
-  EP 1: Uses an evidence-based, multidimensional admission assessment (e.g., ASAM Criteria, LOCUS) including mental health, medical, and substance-use history for placement at appropriate level of care.
+CTS.02.03.13: For organizations providing care, treatment, or services to individuals with addictions: The individual served is placed in the appropriate level of care.
+  EP 1: For organizations providing care, treatment, or services to individuals with addictions: The organization uses an evidence-based, multidimensional admission assessment that includes, at a minimum, mental health, medical, and substance-use history for placement of the individual at the appropriate level of care.
 
-CTS.02.03.15 (SUD): Drug testing to promote safety and quality.
-  EP 1: Follows written policy on performing drug testing.
-  EP 2: Documents in clinical record: reason for testing, results, and actions based on results.""",
+CTS.02.03.15: For organizations providing care, treatment, or services to individuals with addictions: The organization uses drug testing to promote safety and quality of care.
+  EP 1: For organizations providing care, treatment, or services to individuals with addictions: The organization follows its written policy on performing drug testing.
+  EP 2: For organizations providing care, treatment, or services to individuals with addictions: The organization documents in the individual's clinical/case record the reason for drug testing, the results, and actions based on the results.""",
     },
     {
         "id": "treatment_planning",
         "name": "Treatment Planning (CTS.03)",
         "standards": """\
-CTS.03.01.01: Plan based on needs, strengths, preferences, and goals.
-  EP 1: In collaboration with the individual and family, care decisions are based on information collected about needs, strengths, preferences, goals.
-  EP 2: Decisions are collaborative and interdisciplinary when more than one discipline is involved.
-  EP 4: Planning includes interventions and services necessary to meet goals.
+CTS.03.01.01: The organization bases the planned care, treatment, or services on the needs, strengths, preferences, and goals of the individual served.
+  EP 1: In collaboration with the individual served and, as appropriate, their family, the organization makes care, treatment, or service decisions that are based on information it has collected about the individual's needs, strengths, preferences, and goals.
+  EP 2: Care, treatment, or service decisions are collaborative and interdisciplinary when more than one discipline is involved in the care, treatment, or services of the individual served.
+  EP 4: Planning for care, treatment, or services includes interventions and services necessary to meet the identified goals.
 
-CTS.03.01.03: Plan reflects assessed needs, strengths, preferences, goals.
-  EP 1: Develops a plan reflecting assessed needs, strengths, preferences, goals.
-  EP 2: Plan includes: Goals expressed in a manner that captures the individual's words or ideas; Goals that build on the individual's strengths; Factors supporting transition to community integration; Criteria and process for expected discharge/termination.
-  EP 3: Objectives of the plan meet the following criteria: Based on identified goals; Include identified steps to achieve the goal(s); Sufficiently specific to assess progress; Expressed in terms that provide indices of progress.
-  EP 4: Reevaluates and revises goals/objectives based on changes in needs, preferences, goals, and response to treatment.
-  EP 5: Reasons for deferring a goal or objective are documented.
-  EP 6: Care provided according to the plan.
-  EP 14 (SUD): Develops plan at time of admission reflecting assessed needs, strengths, preferences, and goals.
+CTS.03.01.03: The organization has a plan for care, treatment, or services that reflects the assessed needs, strengths, preferences, and goals of the individual served.
+  EP 1: The organization develops a plan for care, treatment, or services that reflects the assessed needs, strengths, preferences, and goals of the individual served.
+  EP 2: The plan for care, treatment, or services includes the following: Goals that are expressed in a manner that captures the individual's words or ideas; Goals that build on the individual's strengths; Factors that support the transition to community integration when identified as a need during assessment; The criteria and process for the individual's expected successful transfer and/or discharge/termination of services, which the organization discusses with the individual.
+  EP 3: The objectives of the plan for care, treatment, or services meet the following criteria: They are based on identified goals; They include identified steps to achieve the goal(s); They are sufficiently specific to assess the progress of the individual served; They are expressed in terms that provide indices of progress.
+  EP 4: The organization reevaluates and, when necessary, revises the goals and objectives of the plan for care, treatment, or services based on change(s) in the individual's needs, preferences, and goals and the individual's response to care, treatment, or services. If no change(s) occurs, the goals and objectives are reevaluated at a specified time interval established by organization policy.
+  EP 5: Reasons for deferring a goal, or the objectives leading toward or related to a goal, are documented.
+  EP 6: The organization provides care, treatment, or services for each individual served according to the plan for care, treatment, or services.
+  EP 14: For organizations providing care, treatment, or services to individuals with addictions: The organization develops a plan for care, treatment, or services at the time of admission or entry into care that reflects the assessed needs, strengths, preferences, and goals of the individual served.
 
-CTS.03.01.05: Plan addresses family involvement.
-  EP 1: Family involved in developing the plan upon consent (adults) or per law/regulation (minors). Family participation documented.
+CTS.03.01.05: The plan for care, treatment, or services addresses the family's involvement.
+  EP 1: The family of the individual served is involved in developing the plan for care, treatment, or services upon consent from the individual (if an adult) or in accordance with law and regulation (if a minor), unless such participation is contraindicated. Family participation is documented.
 
-CTS.03.01.07: Referrals documented.
-  EP 1: When the organization does not directly provide needed services, it refers to an outside source. Referrals documented in clinical record.
-  EP 2: Concurrent care from outside sources that is integral to meeting goals is addressed in the plan.
+CTS.03.01.07: When individuals served need additional care, treatment, or services not offered by the organization, referrals are made and documented in the clinical/case record.
+  EP 1: When the organization does not directly provide care, treatment, or services needed by the individual served, it refers the individual to an outside source. Referrals are documented in the clinical/case record.
+  EP 2: Concurrent care, treatment, or services provided by an outside source that are integral to meeting goals and objectives are addressed in the plan for care, treatment, or services.
 
-CTS.03.01.09: Measurement-based care outcomes.
-  EP 1: Uses a standardized tool or instrument to monitor progress in achieving care, treatment, or service goals.
-  EP 2: Gathers and analyzes data from standardized monitoring. Results used to inform goals and objectives of the plan as needed.
-  EP 3: Evaluates outcomes by aggregating and analyzing monitoring data.""",
+CTS.03.01.09: The organization assesses the outcomes of care, treatment, or services provided to the individual served.
+  EP 1: The organization uses a standardized tool or instrument to monitor the individual's progress in achieving the individual's care, treatment, or service goals.
+  EP 2: The organization gathers and analyzes the data generated through standardized monitoring, and the results are used to inform the goals and objectives of the individual's plan for care, treatment, or services as needed.
+  EP 3: The organization evaluates the outcomes of care, treatment, or services provided to the population(s) it serves by aggregating and analyzing the data gathered through the standardized monitoring effort.""",
     },
     {
         "id": "provision",
         "name": "Provision of Care (CTS.04)",
         "standards": """\
-CTS.04.01.01: Coordinates care as part of the plan.
-  EP 1: Coordinates care provided through internal resources.
-  EP 5: When external resources needed, participates in coordinating care.
-  EP 6: Process to receive/share relevant information for coordination and continuity when individuals are referred.
+CTS.04.01.01: The organization coordinates the care, treatment, or services provided to an individual served as part of the plan for care, treatment, or services and in a manner consistent with the organization's scope of care, treatment, or services.
+  EP 1: The organization coordinates the care, treatment, or services provided through internal resources to an individual served.
+  EP 5: When external resources are needed, the organization participates in coordinating care, treatment, or services with these resources.
+  EP 6: The organization has a process to receive or share relevant information about the individual served to facilitate coordination and continuity when individuals are referred to other care, treatment, or service providers.
 
-CTS.04.01.03: Individual receives education specific to needs.
-  EP 1: Education based on needs and abilities.
-  EP 2: Learning needs assessment addresses cultural/religious beliefs, emotional barriers, motivation, cognitive limitations, communication barriers.
-  EP 4: Individual educated about: safe/effective use of medications, nutrition, safe/effective use of medical equipment, pain management, habilitation/rehabilitation techniques, community resources, how to obtain further treatment, and responsibilities in care.
-  EP 5: Content of education presented in an understandable manner.
+CTS.04.01.03: The individual served receives education and training specific to the individual's needs and abilities consistent with the care, treatment, or services provided.
+  EP 1: Education provided is based on the needs and abilities of the individual served.
+  EP 2: The assessment of learning needs addresses the individual's cultural and religious beliefs, emotional barriers, desire and motivation to learn, physical or cognitive limitations, and barriers to communication.
+  EP 4: Based on the assessed needs and abilities of the individual served and the organization's scope of care, treatment, or services, the individual is educated about the following: The plan for care, treatment, or services; Basic health practices and safety; The safe and effective use of medications; Nutrition interventions, modified diets, and oral health, as needed; Habilitation or rehabilitation techniques to help them reach the maximum level of independence possible.
+  EP 5: The content of the education provided to the individual served is presented in an understandable manner.
   EP 7: The individual's comprehension of the education provided is evaluated.
 
-CTS.04.02.33 (SUD): Evidence-based OUD treatment.
-  EP 1: Offers individuals with OUD medication to treat opioid use disorder (MOUD) as part of mutually agreed treatment plan.
-  EP 2: If providing a referral for MOUD, the organization coordinates care and confirms initiation and continuation of medication.
-  EP 3: If initiating MOUD, informs individual about dangers of abrupt discontinuation.
+CTS.04.02.33: For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: The organization provides evidence-based treatment for opioid use disorder, including medications for opioid use disorder.
+  EP 1: For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: As indicated by evidence-based practice, the organization offers individuals served who have an opioid use disorder medication to treat opioid use disorder (MOUD) as part of their mutually agreed upon treatment plan. The MOUD can be provided by the organization, through contractual agreement, or through a referral.
+  EP 2: For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: If the organization provides a referral for medication to treat opioid use disorder, the organization coordinates their care and confirms initiation and continuation of medication.
+  EP 3: For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: If the organization initiates medications for opioid use disorder, the organization informs the individual served about the dangers of abrupt discontinuation of treatment if they leave the organization for any reason, including but not limited to requiring a different level of care or transferring to a different facility.
 
-CTS.04.03.35: Medical emergency response.
-  EP 8 (SUD): Provides information on how to obtain naloxone for opioid overdose.""",
+CTS.04.03.35: The organization responds to medical emergencies according to organization policy and procedures.
+  EP 8: For organizations providing care, treatment, or services to individuals with addictions: The organization provides information on how to obtain life-saving medication in the case of opioid overdose.""",
     },
     {
         "id": "continuity",
         "name": "Continuity of Care (CTS.06) + Safety (NPSG.15)",
         "standards": """\
-CTS.06.02.01: Continuity maintained at transfer/discharge.
-  EP 1: Process for addressing continuity after transfer, discharge, or termination of services.
-  EP 4 (SUD): Discharge planning addresses referrals for continuing outpatient care after last dose of medication and plan for re-entry to treatment if relapse occurs.
+CTS.06.02.01: Continuity of care, treatment, or services is maintained when an individual served is transferred or after discharge/termination of care, treatment, or services.
+  EP 1: The organization has a process for addressing the continuity of care, treatment, or services after transfer, discharge, or termination of care, treatment, or services that includes the following: The transfer of responsibility for care, treatment, or services for the individual served; The reason(s) for transfer, discharge, or termination of care, treatment, or services; Mechanisms for internal and external transfer; Identification of the person who has accountability and responsibility for the safety and well-being of the individual served during a transfer.
+  EP 4: For programs providing medications for substance use disorders: The discharge planning process addresses referrals for continuing outpatient care after the last dose of medication and the plan for re-entry to treatment if relapse occurs.
 
-CTS.06.02.03: Discharge decisions based on assessed needs.
-  EP 1: Identifies physical and psychosocial needs for continuing care.
-  EP 2: Individuals told in timely manner of need to plan for discharge.
-  EP 3: Planning involves the individual, family, and staff.
-  EP 4: When transferred, information provided includes: reason for transfer, individual's physical/psychosocial needs, and summary of care provided.
-  EP 5: Discusses discharge plans with individual and family.
-  EP 6: Discharge information provided includes: diagnoses, treatment course, medication reconciliation, aftercare plans.
-  EP 7: Individual educated about how to obtain further care.
-  EP 8: Organization arranges for or helps arrange continuing care.
-  EP 9: Discharge instructions provided in form individual can understand.
+CTS.06.02.03: When an individual served is transferred or discharged or when care, treatment, or services are terminated, the organization bases the decision on the assessed needs of the individual and the organization's capabilities.
+  EP 1: The organization identifies the physical and psychosocial needs for continuing care of the individual served.
+  EP 2: Individuals served are told in a timely manner of the need to plan for discharge or transfer to another organization or level of care, treatment, or services.
+  EP 3: Planning for transfer, discharge, or termination of care, treatment, or services involves the individual served, their family, if applicable, and staff.
+  EP 4: When the individual served is transferred, information provided to the individual includes the following: The reason they are being transferred; Alternatives to transfer, if any.
+  EP 5: The organization discusses plans for transfer, discharge, or termination of care, treatment, or services, or changes in these plans, with the individual served and, with the individual's consent, their family. If the individual is a child or youth, the organization acts in accordance with law and regulation.
+  EP 6: When the individual served is discharged or care, treatment, or services are terminated, information provided to the individual and, if applicable, their family includes the following: The reason(s) the individual is being discharged or care, treatment, or services are being terminated; The anticipated need for continued care, treatment, or services after discharge or termination of care, treatment, or services.
+  EP 7: When indicated, the individual served is educated about how to obtain further care, treatment, or services to meet their identified needs.
+  EP 8: When indicated and before discharge or termination of care, treatment, or services, the organization arranges for or helps the family arrange for care, treatment, or services needed to meet the needs of the individual served after discharge.
+  EP 9: The organization provides the individual served and the individual's family, if applicable, discharge or termination of care, treatment, or services instructions in a form the individual can understand.
 
-CTS.06.02.05: Information exchanged with other providers.
-  EP 1: Communicates pertinent information to receiving organization/provider.
-  EP 2: Information shared includes: reason for transfer/discharge, individual's physical/psychosocial needs, summary of care provided, and community resources/referrals.
+CTS.06.02.05: Pertinent information related to care, treatment, or services is exchanged with other providers when an individual served is transferred or discharged or when care, treatment, or services are terminated.
+  EP 1: The organization communicates pertinent information to any organization or provider to which the individual served is transferred or discharged.
+  EP 2: The information shared includes the following: The reason(s) for transfer, discharge, or termination of care, treatment, or services; Relevant biopsychosocial status at transfer, discharge, or termination of care, treatment, or services; A summary of care, treatment, or services provided and progress made toward goals; Community resources or referrals provided to the individual served.
 
 NPSG.15.01.01: Reduce the risk for suicide.
-  EP 1: Environmental risk assessment for suicide attempt features.
-  EP 2: Screen ALL individuals for suicidal ideation using a validated screening tool.
-  EP 3: Use evidence-based process to conduct suicide assessment for those screening positive. Directly asks about ideation, plan, intent, behaviors, risk factors, and protective factors.
-  EP 4: Document overall level of risk for suicide AND the plan to mitigate the risk.
-  EP 5: Follow written policies for care of at-risk individuals including: staff training, guidelines for reassessment, monitoring of high-risk individuals.
-  EP 6: Follow policies for counseling and follow-up care at discharge for individuals at risk for suicide.""",
+  EP 1: The organization conducts an environmental risk assessment that identifies features in the physical environment that could be used to attempt suicide and takes necessary action to minimize the risk(s) (for example, removal of anchor points, door hinges, and hooks that can be used for hanging).
+  EP 2: Screen all individuals served for suicidal ideation using a validated screening tool.
+  EP 3: Use an evidence-based process to conduct a suicide assessment of individuals served who have screened positive for suicidal ideation. The assessment directly asks about suicidal ideation, plan, intent, suicidal or self-harm behaviors, risk factors, and protective factors.
+  EP 4: Document individuals' overall level of risk for suicide and the plan to mitigate the risk for suicide.
+  EP 5: Follow written policies and procedures addressing the care of individuals served identified as at risk for suicide. At a minimum, these should include the following: Training and competence assessment of staff who care for individuals served at risk for suicide; Guidelines for reassessment; Monitoring individuals served who are at high risk for suicide.
+  EP 6: Follow written policies and procedures for counseling and follow-up care at discharge for individuals served identified as at risk for suicide.""",
     },
     {
         "id": "rights_records_meds",
         "name": "Rights (RI) + Records (RC) + Medications (NPSG.03, MM) + Equity (NPSG.16)",
         "standards": """\
-RI.01.01.01: Organization respects the rights of the individual served.
-  EP 2: Individual informed of their rights (signed acknowledgment in chart).
-  EP 3: If disoriented at entry, re-informed when able to understand.
-  EP 6: Respects cultural and personal values, beliefs, and preferences.
+RI.01.01.01: The organization respects the rights of the individual served.
+  EP 2: The organization informs the individual served of the individual's rights.
+  EP 3: If an individual served is disoriented or lacks capacity to understand rights at the time of entry, they are informed again when they are able to understand.
+  EP 6: The organization respects the cultural and personal values, beliefs, and preferences of the individual served.
 
-RI.01.01.03: Right to receive information in understandable manner.
-  EP 1: Information provided tailored to individual's language and ability.
-  EP 2: Interpreting and translation services provided as necessary.
-  EP 3: Communication accommodations for vision, speech, hearing, or cognitive impairments.
+RI.01.01.03: The organization respects the right of the individual served to receive information in a manner the individual understands.
+  EP 1: The organization provides information to the individual served in a manner tailored to the individual's language and ability to understand.
+  EP 2: The organization provides interpreting and translation services, as necessary.
+  EP 3: The organization communicates with the individual served who has vision, speech, hearing, or cognitive impairments in a manner that meets the needs of that individual.
 
-RI.01.02.01: Right to collaborate in care decisions.
-  EP 1: Individual involved in making decisions about their care.
-  EP 4: Right to refuse care documented; individual informed of consequences.
+RI.01.02.01: The organization respects the right of the individual served to collaborate in decisions about their care, treatment, or services.
+  EP 1: The organization involves the individual served in making decisions about their care, treatment, or services.
+  EP 4: The organization respects the right of the individual served or surrogate decision-maker to refuse care, treatment, or services in accordance with law and regulation.
 
-RI.01.03.01: Informed consent.
-  EP 2: Informed consent process documented, including discussion of: proposed care/services, goals, benefits, risks, and reasonable alternatives.
+RI.01.03.01: The organization honors the right of the individual served to give or withhold informed consent.
+  EP 2: The informed consent process includes a discussion about the following: The proposed care, treatment, or services for the individual served; The goals and potential benefits and risks of the proposed care, treatment, or services; Reasonable alternatives to the individual's proposed care, treatment, or services. The discussion encompasses risks and benefits related to the alternatives and the risks related to not receiving the proposed care, treatment, or services.
 
-RI.01.04.01: Right to know staff responsible for care.
-  EP 1: Individual informed of name of primary staff member and other staff providing care.
+RI.01.04.01: The organization respects the right of the individual served to receive information about the staff responsible for the individual's care, treatment, or services.
+  EP 1: The organization informs the individual served of the following: The name of the staff member who has primary responsibility for the individual's care, treatment, or services; The name of the staff member(s) who will provide the individual's care, treatment, or services.
 
-RC.01.01.01: Complete and accurate clinical records.
-  EP 5: Record includes required clinical content: information supporting diagnosis, justifying care provided, documenting course and results.
-  EP 6: Uses standardized formats.
-  EP 7: All entries dated.
+RC.01.01.01: The organization maintains complete and accurate clinical/case records.
+  EP 5: The clinical/case record includes the following: Information needed to support the diagnosis or condition of the individual served; Information needed to justify the care, treatment, or services provided to the individual served; Information that documents the course and result of the care, treatment, or services provided to the individual served; Information about the care, treatment, or services provided to the individual served that promotes continuity among staff and providers.
+  EP 6: The organization uses standardized formats to document the care, treatment, or services it provides to individuals served.
+  EP 7: All entries in the clinical/case record are dated.
 
-RC.01.02.01: Entries authenticated.
-  EP 3: Author of each entry identified.
-  EP 4: Entry authenticated by author (signature, electronic, or initials with credentials).
+RC.01.02.01: Entries in the clinical/case record are authenticated.
+  EP 3: The author of each clinical/case record entry is identified in the clinical/case record.
+  EP 4: Entries in the clinical/case record are authenticated by the author. Information introduced into the clinical/case record through transcription or dictation is authenticated by the author.
 
-RC.01.03.01: Timely documentation.
-  EP 2: Follows written policy requiring timely entry.
+RC.01.03.01: Documentation in the clinical/case record is entered in a timely manner.
+  EP 2: The organization follows its written policy requiring timely entry of information into the clinical/case record of the individual served.
 
-RC.02.01.01: Record contains required demographics and clinical information.
-  EP 1: Demographics include: name, address, DOB, sex, family/representative contact info, preferred language, special communication needs.
-  EP 4: Additional information as appropriate: advance directives, informed consent, consent for admission, documentation of family involvement, unusual occurrences.
+RC.02.01.01: The clinical/case record contains information that reflects the care, treatment, or services provided to the individual served.
+  EP 1: The clinical/case record contains the following demographic information: The name, address, date of birth, and sex of the individual served; The name and contact information for the individual's family and any legally authorized representative; The preferred language and any special communication needs of the individual served.
+  EP 4: As needed to provide care, treatment, or services, the clinical/case record contains the following additional information: Any advance directives; Any informed consent; Any documentation of protective services; Any documentation of consent by the individual served, family, or guardian for admission; care, treatment, or services; evaluation; continuing care; or research; Any records of communication with the individual served, such as telephone calls or e-mail; Any documentation of involvement in care, treatment, or services by the individual served and, when necessary, their family; Any information on unusual occurrences, such as complications; accidents or injuries to the individual served; procedures that place the individual served at risk or cause pain; other illnesses or conditions that affect care, treatment, or services; or the death of the individual served; Any indications for and episodes of special procedures.
 
-RC.02.04.01: Discharge information in record.
-  EP 3: Discharge summary includes: reason for acceptance, care/services provided, condition at discharge, information given to patient/family (written instructions, medications, follow-up care).
+RC.02.04.01: The clinical/case record of the individual served contains discharge information.
+  EP 3: The clinical/case record contains the following: A concise discharge summary that includes the reason(s) for acceptance for care, treatment, or services; The care, treatment, or services provided; The condition at discharge of the individual served; Information provided to the individual served and their family (for example, written discharge instructions; medication taken by the individual; follow-up care, treatment, or services).
 
-NPSG.03.06.01: Maintain and communicate accurate medication information.
-  EP 1: Obtain and/or update current medication list at first contact and when medications change.
-  EP 2: Define types of medication information collected (name, dose, route, frequency, purpose).
-  EP 4: Provide written medication information to individual at end of encounter or discharge.
-  EP 5: Explain importance of managing medication information to individual.
+NPSG.03.06.01: Maintain and communicate accurate medication information for the individual served.
+  EP 1: Obtain and/or update information on the medications the individual served is currently taking. This information is documented in a list or other format that is useful to those who manage medications.
+  EP 2: Define the types of medication information (for example, name, dose, route, frequency, purpose) to be collected in non-24-hour settings based on situations of individuals served and characteristics of different settings.
+  EP 4: For organizations that prescribe medications: Provide the individual served (or family as needed) with written information on the medications the individual should be taking at the end of the encounter (for example, name, dose, route, frequency, purpose).
+  EP 5: For organizations that prescribe medications: Explain the importance of managing medication information to the individual served.
 
-NPSG.16.01.01: Improving health outcomes for all individuals served.
-  EP 2: Assess health-related social needs (HRSNs) and provide information about community resources.
+NPSG.16.01.01: Improving health outcomes for all the individuals served by the organization is a quality and safety priority.
+  EP 2: The organization assesses the health-related social needs (HRSNs) of the individual served and provides information about community resources and support services.
 
-MM.01.01.01: Medication management planning.
-  EP 1: Staff in medication management process have access to: age, sex, diagnoses/conditions, allergies, sensitivities, current medications, height/weight when necessary, drug/alcohol use, pregnancy/lactation info.
+MM.01.01.01: The organization plans its medication management processes.
+  EP 1: For organizations that engage in any aspect of the medication management process: The organization follows a written policy that describes that the following information about the individual served is accessible to staff who participate in the medication management process: Age; Sex; Diagnoses/conditions; Allergies; Sensitivities; Height and weight (when necessary); Drug and alcohol use and abuse; Current medications; Pregnancy and lactation information (when necessary); Any additional information required by the organization.
 
-MM.04.01.01: Clear and accurate medication orders.
-  EP 9: Diagnosis, condition, or indication exists for each medication ordered.
+MM.04.01.01: Medication orders are clear and accurate.
+  EP 9: For organizations that prescribe medications: A diagnosis, condition, or indication for use exists for each medication ordered.
 
-MM.07.01.01: Monitoring for medication effects.
-  EP 1: Monitor side effects and effectiveness as reported by individual or family.
-  EP 2: Monitor response based on clinical record and individual's response.
-
-""",
+MM.07.01.01: The organization monitors individuals served to determine the effects of their medication(s).
+  EP 1: For organizations that prescribe or administer medications: The organization monitors the side effects and effectiveness of the medications, as reported by the individual served or their family.
+  EP 2: For organizations that prescribe or administer medications: The organization monitors the response of the individual served to their medications by taking into account information from the clinical/case record, and the individual's response.""",
     },
 ]
 

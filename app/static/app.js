@@ -329,6 +329,8 @@ function onExtracted(d) {
     "extract",
     `Extracted ${p.first_name} ${p.last_name} — ${d.progress_notes.length} notes`,
   );
+  // Refresh the patients grid so new patient shows up without page reload
+  loadPatients();
 }
 
 function displayPatient(d) {
@@ -500,65 +502,73 @@ async function runASAM() {
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
 
-      const lines = buffer.split("\n");
-      buffer = lines.pop();
+      const events = buffer.split("\n\n");
+      buffer = events.pop();
 
-      let eventType = null;
-      for (const l of lines) {
-        if (l.startsWith("event: ")) eventType = l.substring(7);
-        else if (l.startsWith("data: ") && eventType) {
-          try {
-            const data = JSON.parse(l.substring(6));
-            renderAgentEvent(terminal, eventType, data, "asam");
-            terminal.scrollTop = terminal.scrollHeight;
+      for (const block of events) {
+        if (!block.trim()) continue;
+        let eventType = null;
+        let dataStr = "";
+        for (const line of block.split("\n")) {
+          if (line.startsWith("event: ")) eventType = line.substring(7);
+          else if (line.startsWith("data: ")) dataStr += line.substring(6);
+        }
+        if (!eventType || !dataStr) continue;
+        let data;
+        try {
+          data = JSON.parse(dataStr);
+        } catch {
+          continue;
+        }
 
-            // Render the full ASAM report as soon as generation completes
-            if (eventType === "initial_result" && data.evaluation) {
-              displayASAM({ ...data.evaluation, qa_agent: null });
-            }
+        try {
+          renderAgentEvent(terminal, eventType, data, "asam");
+          terminal.scrollTop = terminal.scrollHeight;
 
-            if (eventType === "complete") {
-              lastASAM = {
-                ...data.evaluation,
-                source_document: data.source_document,
-                linked_evidence: data.linked_evidence,
-                qa_agent: {
-                  accuracy: data.accuracy,
-                  claims: data.claims,
-                  trace: [],
-                  unresolved_claims: [],
-                },
-              };
-              currentSourceDoc = data.source_document;
-              currentLinkedEvidence = data.linked_evidence || [];
-              displayASAM({
-                ...data.evaluation,
-                qa_agent: null,
-                linked_evidence: data.linked_evidence,
-                source_document: data.source_document,
-              });
+          if (eventType === "initial_result" && data.evaluation) {
+            displayASAM({ ...data.evaluation, qa_agent: null });
+          }
 
-              // Update badge
-              const pct = (data.accuracy * 100).toFixed(1);
-              const color =
-                data.accuracy >= 0.9
-                  ? "#6ee7b7"
-                  : data.accuracy >= 0.7
-                    ? "#fde68a"
-                    : "#fca5a5";
-              const bg =
-                data.accuracy >= 0.9
-                  ? "rgba(52,211,153,0.15)"
-                  : data.accuracy >= 0.7
-                    ? "rgba(251,191,36,0.15)"
-                    : "rgba(248,113,113,0.15)";
-              badge.textContent = `${pct}% verified`;
-              badge.style.color = color;
-              badge.style.background = bg;
+          if (eventType === "complete") {
+            lastASAM = {
+              ...data.evaluation,
+              source_document: data.source_document,
+              linked_evidence: data.linked_evidence,
+              qa_agent: {
+                accuracy: data.accuracy,
+                claims: data.claims,
+                trace: [],
+                unresolved_claims: [],
+              },
+            };
+            currentSourceDoc = data.source_document;
+            currentLinkedEvidence = data.linked_evidence || [];
+            displayASAM({
+              ...data.evaluation,
+              qa_agent: null,
+              linked_evidence: data.linked_evidence,
+              source_document: data.source_document,
+            });
 
-              // Stats row
-              const c = data.claims;
-              terminal.innerHTML += `<div class="qa-stats-row">
+            const pct = (data.accuracy * 100).toFixed(1);
+            const color =
+              data.accuracy >= 0.9
+                ? "#6ee7b7"
+                : data.accuracy >= 0.7
+                  ? "#fde68a"
+                  : "#fca5a5";
+            const bg =
+              data.accuracy >= 0.9
+                ? "rgba(52,211,153,0.15)"
+                : data.accuracy >= 0.7
+                  ? "rgba(251,191,36,0.15)"
+                  : "rgba(248,113,113,0.15)";
+            badge.textContent = `${pct}% verified`;
+            badge.style.color = color;
+            badge.style.background = bg;
+
+            const c = data.claims;
+            terminal.innerHTML += `<div class="qa-stats-row">
                 <div class="qa-stat"><div class="qa-stat-value" style="color:${color}">${pct}%</div><div class="qa-stat-label">Accuracy</div></div>
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#6ee7b7">${c.verified}</div><div class="qa-stat-label">Verified</div></div>
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#93c5fd">${c.fixed}</div><div class="qa-stat-label">Fixed</div></div>
@@ -566,19 +576,19 @@ async function runASAM() {
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#fca5a5">${c.failed}</div><div class="qa-stat-label">Failed</div></div>
               </div>`;
 
-              buildDocReport("asam", data);
-              toast(
-                `ASAM complete — Level ${data.evaluation.recommended_level}`,
-                "success",
-              );
-              logActivity(
-                "asam",
-                `ASAM — Level ${data.evaluation.recommended_level} (${pct}% verified)`,
-              );
-              loadHistory(patientId);
-            }
-          } catch (e) {}
-          eventType = null;
+            buildDocReport("asam", data);
+            toast(
+              `ASAM complete — Level ${data.evaluation.recommended_level}`,
+              "success",
+            );
+            logActivity(
+              "asam",
+              `ASAM — Level ${data.evaluation.recommended_level} (${pct}% verified)`,
+            );
+            loadHistory(patientId);
+          }
+        } catch (e) {
+          console.error("ASAM event error:", e);
         }
       }
     }
@@ -677,57 +687,68 @@ async function runTJC() {
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
 
-      const lines = buffer.split("\n");
-      buffer = lines.pop();
+      // SSE events are separated by \n\n
+      const events = buffer.split("\n\n");
+      buffer = events.pop(); // keep incomplete last chunk
 
-      let eventType = null;
-      for (const l of lines) {
-        if (l.startsWith("event: ")) eventType = l.substring(7);
-        else if (l.startsWith("data: ") && eventType) {
-          try {
-            const data = JSON.parse(l.substring(6));
-            renderAgentEvent(terminal, eventType, data, "tjc");
-            terminal.scrollTop = terminal.scrollHeight;
+      for (const block of events) {
+        if (!block.trim()) continue;
+        let eventType = null;
+        let dataStr = "";
+        for (const line of block.split("\n")) {
+          if (line.startsWith("event: ")) eventType = line.substring(7);
+          else if (line.startsWith("data: ")) dataStr += line.substring(6);
+        }
+        if (!eventType || !dataStr) continue;
+        let data;
+        try {
+          data = JSON.parse(dataStr);
+        } catch {
+          continue;
+        }
 
-            // Render the full TJC report as soon as generation completes
-            if (eventType === "initial_result" && data.audit) {
-              displayTJC({ ...data.audit, qa_agent: null });
-            }
+        try {
+          renderAgentEvent(terminal, eventType, data, "tjc");
+          terminal.scrollTop = terminal.scrollHeight;
 
-            if (eventType === "complete") {
-              lastTJC = {
-                ...data.audit,
-                source_document: data.source_document,
-                linked_evidence: data.linked_evidence,
-              };
-              currentSourceDoc = data.source_document;
-              currentLinkedEvidence = data.linked_evidence || [];
-              displayTJC({
-                ...data.audit,
-                qa_agent: null,
-                linked_evidence: data.linked_evidence,
-                source_document: data.source_document,
-              });
+          if (eventType === "initial_result" && data.audit) {
+            displayTJC({ ...data.audit, qa_agent: null });
+          }
 
-              const pct = (data.accuracy * 100).toFixed(1);
-              const color =
-                data.accuracy >= 0.9
-                  ? "#6ee7b7"
-                  : data.accuracy >= 0.7
-                    ? "#fde68a"
-                    : "#fca5a5";
-              const bg =
-                data.accuracy >= 0.9
-                  ? "rgba(52,211,153,0.15)"
-                  : data.accuracy >= 0.7
-                    ? "rgba(251,191,36,0.15)"
-                    : "rgba(248,113,113,0.15)";
-              badge.textContent = `${pct}% verified`;
-              badge.style.color = color;
-              badge.style.background = bg;
+          if (eventType === "complete") {
+            lastTJC = {
+              ...data.audit,
+              source_document: data.source_document,
+              linked_evidence: data.linked_evidence,
+            };
+            currentSourceDoc = data.source_document;
+            currentLinkedEvidence = data.linked_evidence || [];
+            displayTJC({
+              ...data.audit,
+              qa_agent: null,
+              linked_evidence: data.linked_evidence,
+              source_document: data.source_document,
+            });
 
-              const c = data.claims;
-              terminal.innerHTML += `<div class="qa-stats-row">
+            const pct = (data.accuracy * 100).toFixed(1);
+            const color =
+              data.accuracy >= 0.9
+                ? "#6ee7b7"
+                : data.accuracy >= 0.7
+                  ? "#fde68a"
+                  : "#fca5a5";
+            const bg =
+              data.accuracy >= 0.9
+                ? "rgba(52,211,153,0.15)"
+                : data.accuracy >= 0.7
+                  ? "rgba(251,191,36,0.15)"
+                  : "rgba(248,113,113,0.15)";
+            badge.textContent = `${pct}% verified`;
+            badge.style.color = color;
+            badge.style.background = bg;
+
+            const c = data.claims;
+            terminal.innerHTML += `<div class="qa-stats-row">
                 <div class="qa-stat"><div class="qa-stat-value" style="color:${color}">${pct}%</div><div class="qa-stat-label">Accuracy</div></div>
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#6ee7b7">${c.verified}</div><div class="qa-stat-label">Verified</div></div>
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#93c5fd">${c.fixed}</div><div class="qa-stat-label">Fixed</div></div>
@@ -735,20 +756,20 @@ async function runTJC() {
                 <div class="qa-stat"><div class="qa-stat-value" style="color:#fca5a5">${c.failed}</div><div class="qa-stat-label">Failed</div></div>
               </div>`;
 
-              buildDocReport("tjc", data);
-              const compPct = data.audit.overall_compliance_percentage;
-              toast(
-                `TJC complete — ${compPct.toFixed(1)}% compliance`,
-                compPct >= 80 ? "success" : "warning",
-              );
-              logActivity(
-                "tjc",
-                `TJC audit — ${compPct.toFixed(1)}% compliance (${pct}% verified)`,
-              );
-              loadHistory(patientId);
-            }
-          } catch (e) {}
-          eventType = null;
+            buildDocReport("tjc", data);
+            const compPct = data.audit.overall_compliance_percentage ?? 0;
+            toast(
+              `TJC complete — ${compPct.toFixed(1)}% compliance`,
+              compPct >= 80 ? "success" : "warning",
+            );
+            logActivity(
+              "tjc",
+              `TJC audit — ${compPct.toFixed(1)}% compliance (${pct}% verified)`,
+            );
+            loadHistory(patientId);
+          }
+        } catch (e) {
+          console.error("TJC event error:", e);
         }
       }
     }
@@ -758,7 +779,11 @@ async function runTJC() {
 }
 
 function displayTJC(d) {
-  const p = d.overall_compliance_percentage;
+  if (!d || !d.standards) {
+    console.error("displayTJC: no data or standards", d);
+    return;
+  }
+  const p = d.overall_compliance_percentage ?? 0;
   const c = p >= 80 ? "#6ee7b7" : p >= 50 ? "#fde68a" : "#fca5a5";
   const cb = p >= 80 ? "rgba(52,211,153," : "rgba(248,113,113,";
   document.getElementById("tjc-pct").textContent = p.toFixed(1) + "%";
@@ -774,7 +799,10 @@ function displayTJC(d) {
         : s.overall_status === "non_compliant"
           ? "fail"
           : "partial";
-    h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${s.standard_id} — ${s.standard_name}</span><div><span class="status status-${sc}">${s.compliance_percentage}%</span> <span class="dimension-toggle open">&#9662;</span></div></div><div class="dimension-body">`;
+    const passCount = s.findings.filter((f) => f.status === "pass").length;
+    const totalCount = s.findings.length;
+    const epLabel = `${passCount}/${totalCount} EPs`;
+    h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${s.standard_id} — ${s.standard_name}</span><div><span class="status status-${sc}">${epLabel}</span> <span class="dimension-toggle open">&#9662;</span></div></div><div class="dimension-body">`;
     for (const f of s.findings) {
       const fc =
         f.status === "pass" ? "pass" : f.status === "fail" ? "fail" : "partial";

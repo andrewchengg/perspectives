@@ -5,6 +5,8 @@ from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from sqlalchemy import select
+
 from app.api.dependencies import get_llm_client
 from app.api.routes.extraction import get_patient_data
 from app.db.database import get_db
@@ -105,3 +107,58 @@ async def audit_tjc_stream(
             "X-Accel-Buffering": "no",
         },
     )
+
+
+@router.get("/patients/{patient_id}/tjc-history")
+async def list_tjc_history(
+    patient_id: str,
+    db: AsyncSession = Depends(get_db),
+):
+    """List all past TJC audits for a patient."""
+    result = await db.execute(
+        select(TJCAuditModel)
+        .where(TJCAuditModel.patient_id == patient_id)
+        .order_by(TJCAuditModel.audited_at.desc())
+    )
+    audits = result.scalars().all()
+    return [
+        {
+            "id": a.id,
+            "audited_at": str(a.audited_at),
+            "overall_compliance_pct": a.overall_compliance_pct,
+            "qa_accuracy": a.qa_accuracy,
+            "qa_iterations": a.qa_iterations,
+        }
+        for a in audits
+    ]
+
+
+@router.get("/patients/{patient_id}/tjc-history/{audit_id}")
+async def get_tjc_audit(
+    patient_id: str,
+    audit_id: str,
+    db: AsyncSession = Depends(get_db),
+):
+    """Load a specific past TJC audit."""
+    result = await db.execute(
+        select(TJCAuditModel)
+        .where(TJCAuditModel.id == audit_id)
+        .where(TJCAuditModel.patient_id == patient_id)
+    )
+    a = result.scalar_one_or_none()
+    if not a:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Audit not found")
+
+    return {
+        **(a.full_audit_json or {}),
+        "source_document": a.source_document,
+        "linked_evidence": a.linked_evidence_json,
+        "qa_agent": {
+            "accuracy": a.qa_accuracy,
+            "claims": a.qa_claims_json,
+            "iterations": a.qa_iterations,
+            "trace": [],
+            "unresolved_claims": [],
+        },
+    }

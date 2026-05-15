@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.api.routes import asam, extraction, tjc
+from app.api.routes import asam, chat, extraction, tjc
 from app.db.database import engine
 from app.db.models import Base
 
@@ -24,9 +24,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
 app.include_router(extraction.router, prefix="/api/v1", tags=["extraction"])
 app.include_router(asam.router, prefix="/api/v1", tags=["asam"])
 app.include_router(tjc.router, prefix="/api/v1", tags=["tjc"])
+app.include_router(chat.router, prefix="/api/v1", tags=["chat"])
 
 
 @app.get("/health")

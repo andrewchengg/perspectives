@@ -92,32 +92,40 @@ class TJCEngine:
         data["patient_id"] = patient_id
         data["audited_at"] = datetime.now(timezone.utc).isoformat()
 
-        # Normalize LLM output variations
-        status_map = {
-            "non-compliant": "non_compliant",
-            "noncompliant": "non_compliant",
-            "not_compliant": "non_compliant",
-            "not compliant": "non_compliant",
-            "partial-compliant": "partial",
-            "partially-compliant": "partial",
-            "partially_compliant": "partial",
-            "partially compliant": "partial",
-            "partial_compliant": "partial",
-            "not-applicable": "not_applicable",
-            "not applicable": "not_applicable",
-            "n/a": "not_applicable",
-        }
+        # Normalize LLM output — fuzzy match status values
+        def normalize_status(s: str) -> str:
+            s = s.lower().strip()
+            if s in ("compliant", "pass", "met"):
+                return "compliant"
+            if "non" in s or "fail" in s or "not" in s or "unmet" in s:
+                return "non_compliant"
+            if "partial" in s:
+                return "partial"
+            if "n/a" in s or "applicable" in s:
+                return "not_applicable"
+            return s
+
+        def normalize_finding_status(s: str) -> str:
+            s = s.lower().strip()
+            if s in ("pass", "met", "compliant", "yes"):
+                return "pass"
+            if s in ("fail", "failed", "unmet", "no") or "non" in s or "not" in s:
+                return "fail"
+            if "partial" in s:
+                return "partial"
+            if "n/a" in s or "applicable" in s:
+                return "not_applicable"
+            return s
+
         for std in data.get("standards", []):
-            s = std.get("overall_status", "")
-            std["overall_status"] = status_map.get(s, s)
+            std["overall_status"] = normalize_status(std.get("overall_status", ""))
             for finding in std.get("findings", []):
-                f = finding.get("status", "")
-                finding["status"] = status_map.get(f, f)
+                finding["status"] = normalize_finding_status(finding.get("status", ""))
 
         return TJCAuditResult.model_validate(data)
 
     def _validate_audit(self, result: TJCAuditResult) -> None:
-        expected_standards = {"CTS.01", "CTS.02", "CTS.03", "CTS.04", "CTS.05"}
+        expected_standards = {"CTS.02", "CTS.03", "CTS.04", "CTS.06"}
         found_standards = {s.standard_id for s in result.standards}
 
         missing = expected_standards - found_standards

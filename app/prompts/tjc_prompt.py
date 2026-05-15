@@ -41,14 +41,27 @@ about the individual's perception of needs and goals; physical health; \
 psychological, social, spiritual, and cultural factors; strengths; and \
 risk factors.
 
+CTS.02.01.05: Physical health screening.
+  EP 1: Follows written physical health screening process to determine \
+whether individual needs a medical history and physical examination.
+
 CTS.02.01.09: Screens all individuals for physical pain.
   EP 1: Screens to identify those for whom a pain assessment is indicated.
+  EP 2: Individuals for whom a physical pain assessment is indicated are \
+either assessed and treated by the organization or referred for assessment.
 
 CTS.02.01.11: Screens all individuals for nutritional status.
   EP 1: Screens to identify those for whom a nutritional assessment is indicated.
+  EP 2: Individuals for whom a nutritional assessment is indicated are \
+either assessed and treated by the organization or referred.
+  EP 3: For organizations that assess nutritional status, the assessment \
+identifies those who may be at moderate or high nutritional risk.
 
 CTS.02.01.15: Screens for legal issues as relevant.
   EP 1: Identifies individuals for whom a legal assessment is indicated.
+  EP 3: For organizations that assess legal status, information collected \
+includes at least: legal history, current legal status, pending charges, \
+probation/parole status, and legal issues affecting treatment.
 
 CTS.02.02.01: Collects assessment data on each individual.
   EP 1: Collects information about the individual's needs, strengths, \
@@ -78,6 +91,9 @@ CTS.02.03.07 (SUD): Assessment includes history of addictive behaviors.
 addictive behaviors including: age of onset, method of acquiring substance, \
 duration, patterns of use (continuous/episodic/binge), frequency, amounts, \
 and route of substance taken.
+  EP 2: Assessment includes: consequences of substance use, physical \
+problems related to use, family substance use history, spirituality \
+and cultural factors, readiness to change, current living arrangements.
   EP 7: Assessments contain: previous care/treatment/services, response \
 to previous treatment, current risks and history of risks related to \
 substance use, relapse history, acute intoxication/withdrawal potential, \
@@ -162,10 +178,14 @@ emotional barriers, motivation, cognitive limitations, communication barriers.
 nutrition, safe/effective use of medical equipment, pain management, \
 habilitation/rehabilitation techniques, community resources, how to \
 obtain further treatment, and responsibilities in care.
+  EP 5: Content of education presented in an understandable manner.
+  EP 7: The individual's comprehension of the education provided is evaluated.
 
 CTS.04.02.33 (SUD): Evidence-based OUD treatment.
   EP 1: Offers individuals with OUD medication to treat opioid use disorder \
 (MOUD) as part of mutually agreed treatment plan.
+  EP 2: If providing a referral for MOUD, the organization coordinates care \
+and confirms initiation and continuation of medication.
   EP 3: If initiating MOUD, informs individual about dangers of abrupt \
 discontinuation.
 
@@ -190,6 +210,8 @@ CTS.06.02.03: Discharge decisions based on assessed needs.
   EP 1: Identifies physical and psychosocial needs for continuing care.
   EP 2: Individuals told in timely manner of need to plan for discharge.
   EP 3: Planning involves the individual, family, and staff.
+  EP 4: When transferred, information provided includes: reason for transfer, \
+individual's physical/psychosocial needs, and summary of care provided.
   EP 5: Discusses discharge plans with individual and family.
   EP 6: Discharge information provided includes: diagnoses, treatment \
 course, medication reconciliation, aftercare plans.
@@ -224,18 +246,90 @@ individuals.
 for individuals at risk for suicide.
 
 ══════════════════════════════════════════
+RI — RIGHTS AND RESPONSIBILITIES
+══════════════════════════════════════════
+
+RI.01.01.01: Organization respects the rights of the individual served.
+  EP 2: Individual informed of their rights (signed acknowledgment in chart).
+  EP 3: If disoriented at entry, re-informed when able to understand.
+  EP 6: Respects cultural and personal values, beliefs, and preferences.
+
+RI.01.01.03: Right to receive information in understandable manner.
+  EP 1: Information provided tailored to individual's language and ability.
+  EP 2: Interpreting and translation services provided as necessary.
+  EP 3: Communication accommodations for vision, speech, hearing, or \
+cognitive impairments.
+
+RI.01.02.01: Right to collaborate in care decisions.
+  EP 1: Individual involved in making decisions about their care.
+  EP 4: Right to refuse care documented; individual informed of consequences.
+
+RI.01.03.01: Informed consent.
+  EP 2: Informed consent process documented, including discussion of: \
+proposed care/services, goals, benefits, risks, and reasonable alternatives.
+
+RI.01.04.01: Right to know staff responsible for care.
+  EP 1: Individual informed of name of primary staff member and other \
+staff providing care.
+
+RI.01.06.03: Freedom from abuse, neglect, exploitation.
+  EP 1: Organization determines how to protect from neglect, exploitation, abuse.
+  EP 2: All allegations evaluated and documented.
+  EP 3: Reports to appropriate authorities documented.
+
+══════════════════════════════════════════
 RC — RECORD OF CARE
 ══════════════════════════════════════════
 
 RC.01.01.01: Complete and accurate clinical records.
-  EP 1: Organization defines components of a complete record.
-  EP 5: Record includes required clinical content.
+  EP 5: Record includes required clinical content: information supporting \
+diagnosis, justifying care provided, documenting course and results.
   EP 6: Uses standardized formats.
   EP 7: All entries dated.
 
+RC.01.02.01: Entries authenticated.
+  EP 3: Author of each entry identified.
+  EP 4: Entry authenticated by author (signature, electronic, or initials \
+with credentials).
+
 RC.01.03.01: Timely documentation.
-  EP 1: Organization defines time frame for record completion.
   EP 2: Follows written policy requiring timely entry.
+
+RC.02.01.01: Record contains required demographics and clinical information.
+  EP 1: Demographics include: name, address, DOB, sex, family/representative \
+contact info, preferred language, special communication needs.
+  EP 4: Additional information as appropriate: advance directives, informed \
+consent, consent for admission, documentation of family involvement, \
+unusual occurrences (complications, accidents, injuries).
+
+RC.02.04.01: Discharge information in record.
+  EP 3: Discharge summary includes: reason for acceptance, care/services \
+provided, condition at discharge, information given to patient/family \
+(written instructions, medications, follow-up care).
+
+══════════════════════════════════════════
+NPSG.03 — MEDICATION SAFETY
+══════════════════════════════════════════
+
+NPSG.03.06.01: Maintain and communicate accurate medication information.
+  EP 1: Obtain and/or update current medication list at first contact and \
+when medications change. Includes scheduled and as-needed medications.
+  EP 2: Define types of medication information collected (name, dose, route, \
+frequency, purpose).
+  EP 4: Provide written medication information to individual at end of \
+encounter or discharge.
+  EP 5: Explain importance of managing medication information to individual.
+
+══════════════════════════════════════════
+NPSG.16 — HEALTH EQUITY
+══════════════════════════════════════════
+
+NPSG.16.01.01: Improving health outcomes for all individuals served.
+  EP 2: Assess health-related social needs (HRSNs) and provide information \
+about community resources. Examples: access to transportation, difficulty \
+paying for prescriptions, food insecurity, housing insecurity.
+  EP 3: Collect demographic data (race, ethnicity, preferred language, \
+gender identity, disability status) to identify disparities.
 
 ══════════════════════════════════════════
 MM — MEDICATION MANAGEMENT
@@ -244,7 +338,19 @@ MM — MEDICATION MANAGEMENT
 MM.01.01.01: Medication management planning.
   EP 1: Staff in medication management process have access to: age, sex, \
 diagnoses/conditions, allergies, sensitivities, current medications, \
-height/weight when necessary, drug/alcohol use, pregnancy/lactation info."""
+height/weight when necessary, drug/alcohol use, pregnancy/lactation info.
+
+MM.04.01.01: Clear and accurate medication orders.
+  EP 9: Diagnosis, condition, or indication exists for each medication ordered.
+
+MM.07.01.01: Monitoring for medication effects.
+  EP 1: Monitor side effects and effectiveness as reported by individual \
+or family.
+  EP 2: Monitor response based on clinical record and individual's response.
+
+MM.07.01.03: Response to adverse medication events.
+  EP 1: Organization follows process to respond to adverse medication events; \
+documented with actions taken."""
 
 
 TJC_THINKING_PROMPT = """\
@@ -265,6 +371,7 @@ SECTION 1: SCREENING (CTS.02.01)
   Within required timeframes? What information was collected about \
   perception of needs, physical, psychological, social, spiritual, \
   cultural factors, strengths, and risk?
+- CTS.02.01.05: Was a physical health screening performed?
 - CTS.02.01.09: Was physical pain screened?
 - CTS.02.01.11: Was nutritional status screened?
 - CTS.02.01.15: Were legal issues screened?
@@ -278,6 +385,9 @@ SECTION 2: ASSESSMENT (CTS.02.02 - CTS.02.03)
 - CTS.02.03.07 EP 1: Does the SUD history include ALL required elements: \
   age of onset, method of acquiring, duration, patterns of use, frequency, \
   amounts, and route for each substance?
+- CTS.02.03.07 EP 2: Does assessment include: consequences of substance use, \
+  physical problems, family substance use history, spirituality/cultural \
+  factors, readiness to change, current living arrangements?
 - CTS.02.03.07 EP 7: Does assessment include: previous treatment, response \
   to previous treatment, relapse history, intoxication/withdrawal potential, \
   readiness to change, current living arrangements?
@@ -313,16 +423,53 @@ SECTION 6: PATIENT SAFETY (NPSG.15.01.01)
 - Is there a safety/mitigation plan for at-risk individuals?
 - Is there follow-up/reassessment of suicide risk?
 
-SECTION 7: RECORD QUALITY (RC)
-- Are all entries dated and signed?
-- Is documentation timely?
-- Does the record support the diagnoses?
+SECTION 7: RIGHTS AND RESPONSIBILITIES (RI)
+- RI.01.01.01: Is there evidence the individual was informed of their rights? \
+  Signed acknowledgment in chart?
+- RI.01.01.03: Is preferred language documented? Interpreter services used \
+  if needed? Communication accommodations for impairments?
+- RI.01.02.01: Is there evidence the individual was involved in care decisions? \
+  Any treatment refusal documented with consequences explained?
+- RI.01.03.01: Is informed consent documented? Does it cover proposed \
+  care, goals, benefits, risks, and alternatives?
+- RI.01.06.03: Is abuse/neglect/exploitation screening documented?
+
+SECTION 8: RECORD QUALITY (RC)
+- RC.01.01.01: Does the record support the diagnoses? Justify care provided?
+- RC.01.02.01: Are all entries authenticated (signed with credentials)?
+- RC.01.03.01: Is documentation timely?
+- RC.02.01.01: Are demographics complete (name, DOB, sex, language, \
+  family contact, communication needs)?
+- RC.02.04.01: Does discharge summary include: reason for acceptance, \
+  care provided, condition at discharge, written instructions, \
+  medications, follow-up care?
+
+SECTION 9: MEDICATION SAFETY (NPSG.03, MM)
+- NPSG.03.06.01: Is there a current medication list? Updated when meds change? \
+  Written medication information provided at discharge?
+- MM.01.01.01: Are allergies, current meds, drug/alcohol use documented \
+  and accessible?
+- MM.04.01.01: Does each medication order have a documented indication?
+- MM.07.01.01: Are medication side effects and effectiveness monitored?
+
+SECTION 10: HEALTH EQUITY (NPSG.16)
+- NPSG.16.01.01 EP 2: Are health-related social needs assessed? \
+  (housing, transportation, food security, ability to pay for meds)
+- NPSG.16.01.01 EP 3: Are race, ethnicity, preferred language, gender \
+  identity documented?
 
 For each finding, state: PASS, FAIL, or PARTIAL with specific evidence."""
 
 
 TJC_STRUCTURED_PROMPT = """\
 Based on your compliance analysis, produce the final structured audit report.
+
+IMPORTANT — USE ONLY THESE EXACT STATUS STRINGS:
+  For overall_status: "compliant", "non_compliant", or "partial"
+  For finding status: "pass", "fail", or "partial"
+  For severity: "critical", "major", or "minor"
+Do NOT use any other values like "partially-compliant", "non-compliant", \
+"partial_compliance", etc. Use ONLY the exact strings listed above.
 
 Respond with ONLY valid JSON matching this exact structure:
 {{
@@ -357,7 +504,7 @@ Respond with ONLY valid JSON matching this exact structure:
       "element": "EP 2",
       "severity": "major",
       "description": "Goals not in patient's own words",
-      "impact": "Accreditation risk — treatment planning has 61.69% noncompliance rate"
+      "impact": "Accreditation risk"
     }}
   ],
   "recommendations": [

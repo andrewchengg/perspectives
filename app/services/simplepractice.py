@@ -167,20 +167,17 @@ class SimplePracticeExtractor:
         self,
         email: str,
         password: str,
-        client_name: str,
+        client_name: str | None = None,
         totp_secret: str | None = None,
-    ) -> PatientExtraction:
+    ) -> list["PatientExtraction"]:
         """
-        Full extraction pipeline: login → export → download → parse.
+        Full extraction pipeline: login → export → download → parse ALL clients.
 
-        Args:
-            email: SimplePractice admin email
-            password: SimplePractice admin password
-            client_name: Name of the client to export (e.g. "Jack Smith")
-            totp_secret: Optional TOTP secret for 2FA
+        If client_name is provided, returns only that client.
+        If None, discovers and returns all clients in the export.
         """
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
+            browser = await p.chromium.launch(headless=False)
             context = await browser.new_context(
                 accept_downloads=True,
                 user_agent=(
@@ -196,14 +193,54 @@ class SimplePracticeExtractor:
                 await self._login(page, email, password, totp_secret)
 
                 # Step 2: Navigate to data export and trigger export
-                export_path = await self._trigger_export(page, client_name)
+                export_path = await self._trigger_export(page, client_name or "all")
 
-                # Step 3: Parse the exported files
-                extraction = self._parse_export(export_path, client_name)
-
-                return extraction
+                # Step 3: Discover all clients and parse each
+                if client_name:
+                    extraction = self._parse_export(export_path, client_name)
+                    return [extraction]
+                else:
+                    return self._parse_all_clients(export_path)
             finally:
                 await browser.close()
+
+    def _discover_clients(self, export_path: Path) -> list[str]:
+        """Discover all client names from the export directory structure."""
+        clients = set()
+
+        # Check Client records/Medical Records/{Name}/
+        for medical_dir in export_path.rglob("Medical Records"):
+            if medical_dir.is_dir():
+                for child in medical_dir.iterdir():
+                    if child.is_dir() and list(child.glob("*.pdf")):
+                        clients.add(child.name)
+
+        # Check Psychotherapy Notes/{Name}/
+        for psych_dir in export_path.rglob("Psychotherapy Notes"):
+            if psych_dir.is_dir():
+                for child in psych_dir.iterdir():
+                    if child.is_dir() and list(child.glob("*.pdf")):
+                        clients.add(child.name)
+
+        logger.info("Discovered %d clients: %s", len(clients), list(clients))
+        return sorted(clients)
+
+    def _parse_all_clients(self, export_path: Path) -> list["PatientExtraction"]:
+        """Parse all clients found in the export."""
+        clients = self._discover_clients(export_path)
+        extractions = []
+
+        for client_name in clients:
+            try:
+                extraction = self._parse_export(export_path, client_name)
+                extractions.append(extraction)
+                logger.info("Parsed %s: assessment=%d chars, notes=%d",
+                            client_name, len(extraction.assessment.raw_text),
+                            len(extraction.progress_notes))
+            except Exception as e:
+                logger.error("Failed to parse client '%s': %s", client_name, e)
+
+        return extractions
 
     async def _login(
         self,
@@ -225,11 +262,25 @@ class SimplePracticeExtractor:
         # Wait for SAML redirect back to secure.simplepractice.com
         # The login posts to account.simplepractice.com, which returns a
         # SAMLResponse that redirects to secure.simplepractice.com
-        try:
-            await page.wait_for_url("**/secure.simplepractice.com/**", timeout=30000)
-        except Exception:
-            # May still be on account page (2FA, error, slow redirect)
-            await page.wait_for_load_state("networkidle", timeout=15000)
+        # Poll for up to 45 seconds since SAML can be slow
+        for attempt in range(45):
+            await page.wait_for_timeout(1000)
+            current = page.url
+            logger.info("Login redirect check #%d: %s", attempt + 1, current[:80])
+            if "secure.simplepractice.com" in current:
+                break
+            # Check for login error messages
+            error_el = page.locator(".alert-danger, .error-message, .flash-error")
+            if await error_el.count() > 0:
+                error_text = await error_el.first.text_content()
+                raise RuntimeError(f"Login error: {error_text}")
+        else:
+            # Take screenshot for debugging
+            await page.screenshot(path="/tmp/sp_login_failed.png", full_page=True)
+            raise RuntimeError(
+                f"Login failed: SAML redirect did not complete after 45s. "
+                f"Current URL: {page.url}. Screenshot: /tmp/sp_login_failed.png"
+            )
 
         # Handle 2FA if needed
         if "verification" in page.url.lower() or "two_factor" in page.url.lower():
@@ -245,10 +296,6 @@ class SimplePracticeExtractor:
                     "2FA required but no totp_secret provided. "
                     "Disable 2FA or provide the TOTP secret."
                 )
-
-        # Verify login succeeded
-        if "secure.simplepractice.com" not in page.url:
-            raise RuntimeError(f"Login failed. Current URL: {page.url}")
 
         logger.info("Login successful.")
 
@@ -281,13 +328,13 @@ class SimplePracticeExtractor:
         except RuntimeError:
             pass  # No popup — continue
 
-        # Check if there's already a "Ready for download" export
+        # Count existing "Ready for download" buttons BEFORE triggering new export
         try:
-            ready_btn = await self._resilient_find(page, "ready_for_download")
-            logger.info("Found existing export ready for download!")
-            return await self._download_export(page, ready_btn.first)
+            existing_ready = await self._resilient_find(page, "ready_for_download")
+            ready_count_before = await existing_ready.count()
         except RuntimeError:
-            logger.info("No existing export found. Triggering new export...")
+            ready_count_before = 0
+        logger.info("Found %d existing ready exports. Triggering fresh export...", ready_count_before)
 
         # Step A: Click "Start export"
         logger.info("Clicking 'Start export'...")
@@ -317,8 +364,8 @@ class SimplePracticeExtractor:
         await export_locator.last.click(timeout=10000)
         await page.wait_for_timeout(3000)
 
-        # Step F: Poll until "Ready for download" appears
-        logger.info("Waiting for export to generate...")
+        # Step F: Poll until there's one MORE "Ready" button than before (= our new export)
+        logger.info("Waiting for new export to generate (had %d ready before)...", ready_count_before)
         max_wait = 300
         elapsed = 0
         poll_interval = 10
@@ -336,10 +383,15 @@ class SimplePracticeExtractor:
 
             try:
                 ready_btn = await self._resilient_find(page, "ready_for_download")
-                logger.info("Export ready after %d seconds.", elapsed)
-                return await self._download_export(page, ready_btn.first)
+                ready_count_now = await ready_btn.count()
+                if ready_count_now > ready_count_before:
+                    logger.info("New export ready after %d seconds! (%d -> %d ready)", elapsed, ready_count_before, ready_count_now)
+                    # Download the FIRST one (newest, at top of page)
+                    return await self._download_export(page, ready_btn.first)
+                else:
+                    logger.info("Still waiting... %d ready (need > %d) (%ds elapsed)", ready_count_now, ready_count_before, elapsed)
             except RuntimeError:
-                logger.info("Export not ready yet (%ds elapsed)...", elapsed)
+                logger.info("No ready buttons found (%ds elapsed)...", elapsed)
 
         raise RuntimeError(f"Export did not complete within {max_wait} seconds")
 
@@ -364,17 +416,26 @@ class SimplePracticeExtractor:
 
     def _parse_export(self, export_path: Path, client_name: str) -> PatientExtraction:
         """Parse an exported SimplePractice directory into structured data."""
-        # Find the client's records directory
-        records_dir = self._find_client_dir(export_path, client_name)
+        # Find ALL directories for this client (Medical Records + Psychotherapy Notes + Stored docs)
+        client_dirs = self._find_client_dirs(export_path, client_name)
 
-        if not records_dir:
+        if not client_dirs:
+            # List what we DID find for debugging
+            all_dirs = [str(d) for d in export_path.rglob("*") if d.is_dir()]
             raise RuntimeError(
-                f"Could not find records for '{client_name}' in {export_path}"
+                f"Could not find records for '{client_name}' in {export_path}. "
+                f"Directories found: {all_dirs[:10]}"
             )
 
-        # Parse all PDFs in the directory
-        pdf_files = sorted(records_dir.glob("*.pdf"))
-        logger.info("Found %d PDF files for %s", len(pdf_files), client_name)
+        # Collect PDFs from ALL matching directories
+        pdf_files = []
+        for d in client_dirs:
+            pdfs = sorted(d.glob("*.pdf"))
+            logger.info("Found %d PDFs in %s", len(pdfs), d)
+            pdf_files.extend(pdfs)
+
+        logger.info("Total %d PDF files for %s across %d directories",
+                     len(pdf_files), client_name, len(client_dirs))
 
         assessment = None
         intake_questionnaire = None
@@ -388,18 +449,49 @@ class SimplePracticeExtractor:
                 logger.warning("Empty PDF: %s", pdf_path.name)
                 continue
 
-            if "biopsychosocial" in filename or "assessment" in filename:
+            # Always check content FIRST — SP may label a BPS as "Progress Note"
+            text_lower = text[:1000].lower()
+            is_bps_content = any(kw in text_lower for kw in [
+                "biopsychosocial", "presenting problem", "history of presenting problem",
+                "chemical use history", "substance use history", "signs and symptoms",
+                "childhood/adolescent history", "counseling/prior treatment",
+            ])
+
+            if is_bps_content and not assessment:
+                # This is a BPS regardless of filename
+                logger.info("Detected BPS assessment by content: %s", pdf_path.name)
                 assessment = self._parse_assessment_pdf(text, pdf_path.name)
+            elif "biopsychosocial" in filename or ("assessment" in filename and "questionnaire" not in filename):
+                if not assessment:
+                    assessment = self._parse_assessment_pdf(text, pdf_path.name)
             elif "questionnaire" in filename or "intake" in filename:
                 intake_questionnaire = text
-            elif "progress note" in filename:
+            elif "progress note" in filename or "psychotherapy note" in filename or "chart note" in filename:
                 note = self._parse_progress_note_pdf(text, pdf_path.name)
                 if note:
                     progress_notes.append(note)
+            else:
+                # Check content for SOAP/DAP patterns
+                if any(kw in text_lower for kw in ["subjective", "objective", "plan"]):
+                    logger.info("Detected progress note by content: %s", pdf_path.name)
+                    note = self._parse_progress_note_pdf(text, pdf_path.name)
+                    if note:
+                        progress_notes.append(note)
+                else:
+                    logger.warning("Could not classify PDF: %s — treating as supplemental", pdf_path.name)
+                    if not intake_questionnaire:
+                        intake_questionnaire = text
 
-        # Extract demographics from BPS header or intake questionnaire
+        # Collect all raw text for demographics extraction
+        all_raw_texts = []
+        for pdf_path in pdf_files:
+            text = self._extract_pdf_text(pdf_path)
+            if text.strip():
+                all_raw_texts.append(text)
+
+        # Extract demographics from all available text
         demographics = self._extract_demographics(
-            assessment, intake_questionnaire, client_name
+            assessment, intake_questionnaire, client_name, all_raw_texts
         )
 
         # If we have an intake questionnaire, append it to the assessment raw text
@@ -413,8 +505,23 @@ class SimplePracticeExtractor:
                 }
             )
 
+        # If no BPS found by filename or content, try using the longest PDF as assessment
         if not assessment:
-            raise RuntimeError("No BPS assessment found in export")
+            all_texts = []
+            for pdf_path in pdf_files:
+                text = self._extract_pdf_text(pdf_path)
+                if text.strip():
+                    all_texts.append((pdf_path, text))
+            if all_texts:
+                # Use the longest document as the assessment
+                longest = max(all_texts, key=lambda x: len(x[1]))
+                logger.warning(
+                    "No BPS found by name/content — using longest PDF as assessment: %s (%d chars)",
+                    longest[0].name, len(longest[1]),
+                )
+                assessment = self._parse_assessment_pdf(longest[1], longest[0].name)
+            else:
+                raise RuntimeError("No BPS assessment found in export — no PDFs contain clinical content")
 
         progress_notes.sort(key=lambda n: n.note_date)
 
@@ -428,20 +535,38 @@ class SimplePracticeExtractor:
             ),
         )
 
-    def _find_client_dir(self, export_path: Path, client_name: str) -> Path | None:
-        """Find the client's records directory in the export."""
-        # SimplePractice export structure:
-        # Export.../Client records/Medical Records/Jack Smith/
+    def _find_client_dirs(self, export_path: Path, client_name: str) -> list[Path]:
+        """Find ALL directories for this client in the export.
+
+        SimplePractice splits files across multiple locations:
+        - Client records/Medical Records/{Name}/  (progress notes, assessments, questionnaires)
+        - Psychotherapy Notes/{Name}/  (psychotherapy notes, separate per HIPAA)
+        - Client records/Stored documents/{Name}/  (consent forms, etc.)
+        """
+        dirs = []
+        name_lower = client_name.lower()
+
+        # Find all directories matching client name
         for dirpath in export_path.rglob("*"):
-            if dirpath.is_dir() and client_name.lower() in dirpath.name.lower():
-                return dirpath
+            if dirpath.is_dir() and name_lower in dirpath.name.lower():
+                # Only include dirs that have PDFs
+                if list(dirpath.glob("*.pdf")):
+                    dirs.append(dirpath)
+                    logger.info("Found client directory: %s (%d PDFs)",
+                                dirpath, len(list(dirpath.glob("*.pdf"))))
+
+        if dirs:
+            return dirs
 
         # Fallback: look for any directory with PDFs
+        logger.warning("No directory matching '%s' found — searching all PDF directories", client_name)
         for dirpath in export_path.rglob("*"):
             if dirpath.is_dir() and list(dirpath.glob("*.pdf")):
-                return dirpath
+                # Skip billing/invoice directories
+                if "billing" not in str(dirpath).lower() and "invoice" not in str(dirpath).lower():
+                    dirs.append(dirpath)
 
-        return None
+        return dirs
 
     def _extract_pdf_text(self, pdf_path: Path) -> str:
         """Extract all text from a PDF using pdfplumber."""
@@ -591,30 +716,73 @@ class SimplePracticeExtractor:
         assessment: AssessmentData | None,
         intake_text: str | None,
         client_name: str,
+        all_texts: list[str] | None = None,
     ) -> PatientDemographics:
-        """Extract patient demographics from available data."""
+        """Extract patient demographics from available data.
+
+        Searches ALL available text (assessment, intake, progress notes)
+        for demographics since SP may label the BPS as a progress note.
+        """
         name_parts = client_name.split(" ", 1)
         first_name = name_parts[0] if name_parts else client_name
         last_name = name_parts[1] if len(name_parts) > 1 else ""
 
-        # Try to get DOB from assessment
+        # Search all available text for DOB
         dob = date(2000, 1, 1)
+        search_texts = []
         if assessment:
-            dob_match = re.search(r"DOB:\s*(\d{2}/\d{2}/\d{4})", assessment.raw_text)
+            search_texts.append(assessment.raw_text)
+        if intake_text:
+            search_texts.append(intake_text)
+        if all_texts:
+            search_texts.extend(all_texts)
+
+        for text in search_texts:
+            dob_match = re.search(r"DOB:\s*(\d{2}/\d{2}/\d{4})", text)
             if dob_match:
                 try:
                     dob = datetime.strptime(dob_match.group(1), "%m/%d/%Y").date()
+                    break
                 except ValueError:
-                    pass
+                    continue
+
+        # Search all text for gender
+        gender = "Unknown"
+        for text in search_texts:
+            # Look for explicit age-gender pattern first (e.g., "37-year-old female")
+            age_gender = re.search(r"\d+-year-old\s+(male|female)", text.lower())
+            if age_gender:
+                gender = age_gender.group(1).capitalize()
+                break
+            # Look for Sex/Gender field
+            sex_match = re.search(r"(?:Sex|Gender):\s*(Male|Female|M|F)", text, re.IGNORECASE)
+            if sex_match:
+                val = sex_match.group(1).upper()
+                gender = "Male" if val in ("M", "MALE") else "Female"
+                break
+
+        if gender == "Unknown":
+            gender = self._extract_gender(assessment, intake_text)
+
+        # Try to find admission date from text
+        admission = date.today()
+        for text in search_texts:
+            admit_match = re.search(r"(?:Admission|Admitted|admission date)[:\s]*(\d{2}/\d{2}/\d{4})", text, re.IGNORECASE)
+            if admit_match:
+                try:
+                    admission = datetime.strptime(admit_match.group(1), "%m/%d/%Y").date()
+                    break
+                except ValueError:
+                    continue
 
         return PatientDemographics(
             id=client_name.lower().replace(" ", "_"),
             first_name=first_name,
             last_name=last_name,
             date_of_birth=dob,
-            gender=self._extract_gender(assessment, intake_text),
+            gender=gender,
             primary_language="English",
-            admission_date=date.today(),
+            admission_date=admission,
             diagnoses=assessment.diagnoses if assessment else [],
         )
 

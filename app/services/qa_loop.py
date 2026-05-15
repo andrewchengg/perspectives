@@ -635,6 +635,10 @@ async def run_qa_agent_asam(
             logger.info("QA Agent [ASAM] — Reconstructing evaluation with %d corrections", len(newly_fixed) + len(newly_unsupported))
             evaluation = await reconstruct_asam(llm, source_doc, evaluation, claims)
 
+            # Re-run algorithmic LOC determination on corrected ratings
+            logger.info("QA Agent [ASAM] — Re-running algorithmic LOC after corrections")
+            evaluation = engine._apply_algorithmic_loc_to_evaluation(evaluation)
+
     # --- Final tally + linked evidence ---
     final_claims = decompose_asam(evaluation)
     for claim in final_claims:

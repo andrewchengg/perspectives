@@ -1,7 +1,5 @@
 import logging
 from datetime import datetime, timezone
-from uuid import UUID
-
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy import select
@@ -33,28 +31,21 @@ router = APIRouter()
 class SPExtractionRequest(BaseModel):
     """Request body for programmatic SimplePractice extraction."""
 
-    client_name: str  # Client name as it appears in SimplePractice (e.g. "Jack Smith")
+    client_name: str | None = None  # If None, extracts ALL clients
     email: str | None = None  # Falls back to SP_EMAIL env var
     password: str | None = None  # Falls back to SP_PASSWORD env var
     totp_secret: str | None = None  # Optional TOTP secret for 2FA
 
 
-@router.post("/extract", response_model=PatientExtraction)
+@router.post("/extract")
 async def extract_from_simplepractice(
     request: SPExtractionRequest,
     db: AsyncSession = Depends(get_db),
 ):
     """Programmatically extract patient data from SimplePractice.
 
-    This endpoint:
-    1. Logs into SimplePractice using admin credentials (via headless browser)
-    2. Navigates to Settings > Practice > Data Export
-    3. Triggers a single-client "Sessions" export
-    4. Downloads the ZIP file
-    5. Parses CSVs (demographics) and PDFs (clinical notes) with pdfplumber
-    6. Returns structured JSON and persists to local database
-
-    In production, this runs inside a Docker container / cloud VM.
+    If client_name is provided, extracts just that client.
+    If omitted, discovers and extracts ALL clients in the practice.
     """
     email = request.email or settings.sp_email
     password = request.password or settings.sp_password
@@ -68,16 +59,28 @@ async def extract_from_simplepractice(
 
     extractor = SimplePracticeExtractor()
     try:
-        extraction = await extractor.extract(
+        extractions = await extractor.extract(
             email=email,
             password=password,
             client_name=request.client_name,
             totp_secret=request.totp_secret,
         )
 
-        await _persist_extraction(db, extraction)
-        return extraction
+        for extraction in extractions:
+            await _persist_extraction(db, extraction)
 
+        if not extractions:
+            raise HTTPException(status_code=404, detail="No patients found in export")
+
+        # Return all patients — UI will add each to the sidebar
+        if len(extractions) == 1:
+            return extractions[0]
+        else:
+            # Return list of all extracted patients
+            return [e.model_dump() for e in extractions]
+
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error("SimplePractice extraction failed: %s", e)
         raise HTTPException(status_code=500, detail=f"Extraction failed: {e}")
@@ -113,12 +116,85 @@ async def parse_local_export(
         raise HTTPException(status_code=500, detail=f"Parsing failed: {e}")
 
 
+# --- Structure raw assessment text via LLM ---
+
+
+class StructureRequest(BaseModel):
+    raw_text: str
+
+
+@router.post("/structure-assessment")
+async def structure_assessment(request: StructureRequest):
+    """Use Haiku to parse raw assessment text into clean labeled sections."""
+    from app.services.llm_client import LLMClient
+
+    llm = LLMClient()
+    prompt = f"""\
+Split the following clinical assessment document into clearly labeled sections.
+Return a JSON array where each element has:
+- "title": the section name (e.g. "Presenting Problem", "Substance Use History", "Intake Questionnaire")
+- "body": the full text content of that section
+
+Rules:
+- Preserve ALL text content exactly as written — do not summarize or omit anything
+- Merge numbered headers with their content (e.g. "1. Presenting Problem" becomes title "Presenting Problem")
+- If there is an intake questionnaire section, make it its own section titled "Intake Questionnaire"
+- Keep sub-headers within the body text (e.g. "Strengths:", "Weaknesses:", "Stressors:")
+- Remove page footers like "Created on ... Page X of Y" or "Completed on ..."
+- Remove duplicate content if the same section appears twice
+
+DOCUMENT:
+{request.raw_text}
+
+Respond with ONLY the JSON array, no markdown fences."""
+
+    try:
+        raw = await llm.complete(
+            system="You are a clinical document parser. Return valid JSON only.",
+            user=prompt,
+            max_tokens=8000,
+            model="claude-haiku-4-5-20251001",
+        )
+        import json
+        text = raw.strip()
+        if text.startswith("```"):
+            text = text.split("\n", 1)[1]
+        if text.endswith("```"):
+            text = text.rsplit("```", 1)[0]
+        sections = json.loads(text.strip())
+        return {"sections": sections}
+    except Exception as e:
+        logger.error("Assessment structuring failed: %s", e)
+        raise HTTPException(status_code=500, detail=f"Structuring failed: {e}")
+
+
 # --- Read extracted data from database ---
+
+
+@router.get("/patients")
+async def list_patients(db: AsyncSession = Depends(get_db)):
+    """List all patients in the database (id, name, dob, note count)."""
+    result = await db.execute(
+        select(Patient).options(
+            selectinload(Patient.progress_notes),
+        )
+    )
+    patients = result.scalars().all()
+    return [
+        {
+            "id": str(p.id),
+            "first_name": p.first_name,
+            "last_name": p.last_name,
+            "date_of_birth": str(p.date_of_birth),
+            "note_count": len(p.progress_notes),
+        }
+        for p in patients
+    ]
 
 
 @router.get("/patients/{patient_id}/extract", response_model=PatientExtraction)
 async def get_patient_data(
-    patient_id: UUID,
+    patient_id: str,
     db: AsyncSession = Depends(get_db),
 ):
     """Retrieve previously extracted patient data from the database."""
@@ -230,10 +306,11 @@ async def _persist_extraction(
 
     if existing:
         logger.info(
-            "Patient %s %s already exists, skipping persist.",
+            "Patient %s %s already exists, updating ID.",
             extraction.patient.first_name,
             extraction.patient.last_name,
         )
+        extraction.patient.id = str(existing.id)
         return
 
     patient = PatientModel(
@@ -249,6 +326,9 @@ async def _persist_extraction(
     )
     db.add(patient)
     await db.flush()
+
+    # Update extraction with the DB-generated UUID so the UI gets the right ID
+    extraction.patient.id = str(patient.id)
 
     a = extraction.assessment
     assessment = AssessmentModel(

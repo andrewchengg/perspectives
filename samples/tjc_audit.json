@@ -1,0 +1,405 @@
+{
+    "patient_id": "aff31d6d-1caf-46d8-ba6c-3f9ad28d5283",
+    "audited_at": "2026-05-14T05:11:28.226102+00:00",
+    "standards": [
+        {
+            "standard_id": "CTS.02.01.01",
+            "standard_name": "Screening for risk of imminent harm",
+            "overall_status": "partial",
+            "findings": [
+                {
+                    "element": "CTS.02.01.01 EP 1",
+                    "description": "Screening procedure determines need for immediate intervention",
+                    "status": "partial",
+                    "finding": "Brief denial statements documented but no validated screening tool or formal assessment procedure",
+                    "citations": [
+                        {
+                            "source": "Progress Note 5/7",
+                            "text": "Denies suicidal or homicidal ideation",
+                            "relevance": "Shows screening occurred but lacks structured methodology"
+                        }
+                    ],
+                    "remediation": "Implement validated suicide screening tool and document assessment procedure"
+                },
+                {
+                    "element": "CTS.02.01.01 EP 2",
+                    "description": "Organization follows response process for identified risk",
+                    "status": "fail",
+                    "finding": "No documentation of organizational response process when risk is identified",
+                    "citations": [],
+                    "remediation": "Document organizational risk response procedures and staff training"
+                }
+            ],
+            "compliance_percentage": 25.0
+        },
+        {
+            "standard_id": "CTS.02.01.03",
+            "standard_name": "Screenings and assessments performed per policy",
+            "overall_status": "partial",
+            "findings": [
+                {
+                    "element": "CTS.02.01.03 EP 1",
+                    "description": "Assessment conducted per organizational policy",
+                    "status": "partial",
+                    "finding": "Assessment conducted but no reference to organizational policy documented",
+                    "citations": [
+                        {
+                            "source": "BPS Intake",
+                            "text": "Biopsychosocial assessment completed",
+                            "relevance": "Shows assessment occurred but lacks policy reference"
+                        }
+                    ],
+                    "remediation": "Reference specific organizational assessment policies in documentation"
+                },
+                {
+                    "element": "CTS.02.01.03 EP 3",
+                    "description": "Collects comprehensive screening information",
+                    "status": "partial",
+                    "finding": "Physical health, spiritual, and cultural factors not adequately documented",
+                    "citations": [
+                        {
+                            "source": "BPS Intake",
+                            "text": "Patient acknowledges drinking is 'probably a problem'",
+                            "relevance": "Shows individual perception documented but lacks comprehensive screening"
+                        }
+                    ],
+                    "remediation": "Implement comprehensive screening protocol including all required domains"
+                }
+            ],
+            "compliance_percentage": 40.0
+        },
+        {
+            "standard_id": "CTS.02.01.09",
+            "standard_name": "Screens all individuals for physical pain",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.02.01.09 EP 1",
+                    "description": "Screens to identify need for pain assessment",
+                    "status": "fail",
+                    "finding": "No documentation of physical pain screening anywhere in record",
+                    "citations": [],
+                    "remediation": "Implement mandatory pain screening protocol for all admissions"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "CTS.02.01.11",
+            "standard_name": "Screens all individuals for nutritional status",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.02.01.11 EP 1",
+                    "description": "Screens to identify need for nutritional assessment",
+                    "status": "fail",
+                    "finding": "No documentation of nutritional screening or assessment",
+                    "citations": [],
+                    "remediation": "Develop and implement nutritional screening protocol"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "CTS.02.02.01",
+            "standard_name": "Collects assessment data on each individual",
+            "overall_status": "partial",
+            "findings": [
+                {
+                    "element": "CTS.02.02.01 EP 5",
+                    "description": "Mental status evaluation conducted when indicated",
+                    "status": "fail",
+                    "finding": "Mental Status Exam explicitly not documented",
+                    "citations": [
+                        {
+                            "source": "BPS Intake",
+                            "text": "Mental Status Exam: Not documented",
+                            "relevance": "Explicitly states required examination not completed"
+                        }
+                    ],
+                    "remediation": "Complete and document mental status examination for all patients"
+                },
+                {
+                    "element": "CTS.02.02.01 EP 6",
+                    "description": "Family members invited to participate in assessment",
+                    "status": "fail",
+                    "finding": "No documentation that family members were invited to participate",
+                    "citations": [],
+                    "remediation": "Document family invitation and participation in assessment process"
+                }
+            ],
+            "compliance_percentage": 33.0
+        },
+        {
+            "standard_id": "CTS.02.02.05",
+            "standard_name": "Identifies individuals who may have experienced trauma",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.02.02.05 EP 2",
+                    "description": "Identifies trauma during initial screening and ongoing",
+                    "status": "fail",
+                    "finding": "No documentation of trauma, abuse, neglect, or exploitation screening",
+                    "citations": [],
+                    "remediation": "Implement trauma screening protocol using validated tools"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "CTS.02.03.13",
+            "standard_name": "Individual placed in appropriate level of care",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.02.03.13 EP 1",
+                    "description": "Uses evidence-based multidimensional assessment for LOC placement",
+                    "status": "fail",
+                    "finding": "No documentation of ASAM Criteria, LOCUS, or other evidence-based assessment tool",
+                    "citations": [],
+                    "remediation": "Implement ASAM Criteria or equivalent evidence-based LOC assessment"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "CTS.03.01.03",
+            "standard_name": "Plan reflects assessed needs, strengths, preferences, goals",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.03.01.03 EP 2",
+                    "description": "Goals expressed in individual's words and build on strengths",
+                    "status": "fail",
+                    "finding": "No formal treatment plan documented; goals not in patient's own words",
+                    "citations": [
+                        {
+                            "source": "Progress Note 5/7",
+                            "text": "get it under control",
+                            "relevance": "Patient's words mentioned but not formalized into treatment goals"
+                        }
+                    ],
+                    "remediation": "Develop formal treatment plan with goals in patient's language"
+                },
+                {
+                    "element": "CTS.03.01.03 EP 14",
+                    "description": "Plan developed at time of admission",
+                    "status": "fail",
+                    "finding": "No formal treatment plan documented at admission or in subsequent notes",
+                    "citations": [],
+                    "remediation": "Establish policy requiring treatment plan completion within 24-48 hours of admission"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "CTS.04.01.03",
+            "standard_name": "Individual receives education specific to needs",
+            "overall_status": "partial",
+            "findings": [
+                {
+                    "element": "CTS.04.01.03 EP 1-7",
+                    "description": "Education based on needs with comprehension evaluation",
+                    "status": "partial",
+                    "finding": "Some psychoeducation documented but missing learning needs assessment and comprehension evaluation",
+                    "citations": [
+                        {
+                            "source": "Progress Note 5/7",
+                            "text": "Introduce psychoeducation on alcohol withdrawal and health consequences",
+                            "relevance": "Shows education provided but lacks comprehensive approach"
+                        }
+                    ],
+                    "remediation": "Implement comprehensive patient education protocol with needs assessment"
+                }
+            ],
+            "compliance_percentage": 40.0
+        },
+        {
+            "standard_id": "CTS.06.02.01",
+            "standard_name": "Continuity maintained at transfer/discharge",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "CTS.06.02.01 EP 1",
+                    "description": "Process for addressing continuity after discharge",
+                    "status": "fail",
+                    "finding": "No discharge planning documentation or continuity process documented",
+                    "citations": [],
+                    "remediation": "Develop and implement discharge planning protocol initiated at admission"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "NPSG.15.01.01",
+            "standard_name": "Reduce the risk for suicide",
+            "overall_status": "non_compliant",
+            "findings": [
+                {
+                    "element": "NPSG.15.01.01 EP 2",
+                    "description": "Screen ALL individuals using validated tool",
+                    "status": "fail",
+                    "finding": "No validated suicide screening tool documented, only brief denial statements",
+                    "citations": [
+                        {
+                            "source": "Progress Note 5/8",
+                            "text": "Denies suicidal or homicidal ideation",
+                            "relevance": "Shows screening occurred but not with validated instrument"
+                        }
+                    ],
+                    "remediation": "Implement validated suicide screening tool for all patients"
+                },
+                {
+                    "element": "NPSG.15.01.01 EP 4",
+                    "description": "Document risk level and mitigation plan",
+                    "status": "fail",
+                    "finding": "No overall suicide risk level or mitigation plan documented",
+                    "citations": [],
+                    "remediation": "Document formal risk assessment with specific mitigation strategies"
+                }
+            ],
+            "compliance_percentage": 0.0
+        },
+        {
+            "standard_id": "RC.01.01.01",
+            "standard_name": "Complete and accurate clinical records",
+            "overall_status": "partial",
+            "findings": [
+                {
+                    "element": "RC.01.01.01 EP 5",
+                    "description": "Record includes required clinical content",
+                    "status": "partial",
+                    "finding": "Some required content present but missing key assessments and treatment plan",
+                    "citations": [
+                        {
+                            "source": "BPS Intake",
+                            "text": "Mental Status Exam: Not documented",
+                            "relevance": "Shows missing required clinical content"
+                        }
+                    ],
+                    "remediation": "Ensure all required clinical content is documented per organizational policy"
+                }
+            ],
+            "compliance_percentage": 60.0
+        }
+    ],
+    "overall_compliance_percentage": 23.5,
+    "critical_gaps": [
+        {
+            "standard": "NPSG.15.01.01",
+            "element": "EP 2",
+            "severity": "critical",
+            "description": "No validated suicide screening tool used",
+            "impact": "Patient safety risk - failure to identify suicidal patients"
+        },
+        {
+            "standard": "CTS.03.01.03",
+            "element": "EP 14",
+            "severity": "critical",
+            "description": "No formal treatment plan documented",
+            "impact": "Fundamental treatment planning failure affecting patient care"
+        },
+        {
+            "standard": "CTS.02.02.01",
+            "element": "EP 5",
+            "severity": "major",
+            "description": "Mental status examination not completed",
+            "impact": "Missing critical clinical assessment data"
+        },
+        {
+            "standard": "CTS.02.02.05",
+            "element": "EP 2",
+            "severity": "major",
+            "description": "No trauma screening conducted",
+            "impact": "Failure to identify trauma-informed care needs"
+        },
+        {
+            "standard": "CTS.02.03.13",
+            "element": "EP 1",
+            "severity": "major",
+            "description": "No evidence-based level of care assessment",
+            "impact": "Inappropriate placement risk affecting treatment outcomes"
+        }
+    ],
+    "recommendations": [
+        "Immediately implement validated suicide screening protocol with risk assessment and mitigation planning",
+        "Establish mandatory treatment planning process within 24-48 hours of admission with patient-centered goals",
+        "Complete mental status examinations for all patients as part of comprehensive assessment",
+        "Implement trauma-informed screening protocols using validated instruments",
+        "Adopt ASAM Criteria or equivalent evidence-based level of care assessment tools",
+        "Develop comprehensive discharge planning process initiated at admission",
+        "Establish pain and nutritional screening protocols for all admissions",
+        "Create patient education protocols with learning needs assessment and comprehension evaluation"
+    ],
+    "audit_summary": "This audit reveals significant non-compliance with Joint Commission standards, with an overall compliance rate of 23.5%. Critical deficiencies exist in patient safety (suicide screening), treatment planning, comprehensive assessments, and continuity of care. The organization lacks fundamental documentation requirements including formal treatment plans, mental status examinations, trauma screening, and evidence-based level of care assessments. Immediate corrective action is required to address patient safety risks and prevent accreditation jeopardy. A comprehensive quality improvement initiative must be implemented with 30-day re-audit recommended.",
+    "qa_validation": {
+        "valid": false,
+        "citation_issues": [
+            {
+                "type": "citation_not_found",
+                "standard": "CTS.02.01.01",
+                "element": "CTS.02.01.01 EP 1",
+                "cited_text": "Denies suicidal or homicidal ideation",
+                "source": "Progress Note 5/7"
+            },
+            {
+                "type": "citation_not_found",
+                "standard": "CTS.02.01.03",
+                "element": "CTS.02.01.03 EP 1",
+                "cited_text": "Biopsychosocial assessment completed",
+                "source": "BPS Intake"
+            },
+            {
+                "type": "citation_not_found",
+                "standard": "CTS.02.01.03",
+                "element": "CTS.02.01.03 EP 3",
+                "cited_text": "Patient acknowledges drinking is 'probably a problem'",
+                "source": "BPS Intake"
+            },
+            {
+                "type": "citation_not_found",
+                "standard": "CTS.02.02.01",
+                "element": "CTS.02.02.01 EP 5",
+                "cited_text": "Mental Status Exam: Not documented",
+                "source": "BPS Intake"
+            },
+            {
+                "type": "citation_not_found",
+                "standard": "NPSG.15.01.01",
+                "element": "NPSG.15.01.01 EP 2",
+                "cited_text": "Denies suicidal or homicidal ideation",
+                "source": "Progress Note 5/8"
+            },
+            {
+                "type": "citation_not_found",
+                "standard": "RC.01.01.01",
+                "element": "RC.01.01.01 EP 5",
+                "cited_text": "Mental Status Exam: Not documented",
+                "source": "BPS Intake"
+            }
+        ],
+        "llm_validation": {
+            "false_failures": [
+                "CTS.02.02.01 EP 6 - Family members invited to participate in assessment: Documentation shows patient's mother lives out of state and maintains phone contact, and one close friend is aware of drinking concerns. While formal invitation isn't documented, family circumstances and participation are addressed.",
+                "CTS.02.02.05 EP 2 - Trauma screening: The biopsychosocial assessment explicitly states 'Denies any history of physical, sexual, or emotional abuse' in the childhood/adolescent history section, indicating trauma screening was conducted."
+            ],
+            "false_passes": [
+                "CTS.02.01.01 EP 1 should be marked as 'fail' not 'partial': Multiple suicide risk assessments are documented across sessions (5/7, 5/8, 5/9 SOAP/DAP notes all contain 'Denies suicidal or homicidal ideation'), showing systematic screening occurred.",
+                "CTS.02.01.03 EP 3 should be marked as 'pass' not 'partial': The biopsychosocial assessment is comprehensive, covering all required domains including physical health (hypertension, liver enzymes, gastritis), spiritual (explicitly assessed), and cultural factors (explicitly noted for further assessment)."
+            ],
+            "hallucinated_citations": [
+                "The citation 'Mental Status Exam: Not documented' does not exist in the provided documentation. The biopsychosocial assessment does not contain this explicit statement."
+            ],
+            "missed_issues": [
+                "Inconsistent vital signs documentation across sessions without clear protocols",
+                "CIWA-Ar scores documented but no evidence of formal CIWA protocol implementation",
+                "Multiple assessment tools used (GAD-7, PHQ-9, AUDIT, BAM) but no documentation of organizational policies governing their use",
+                "Treatment planning shows level of care decisions but lacks documentation of formal level of care criteria assessment",
+                "Medication management coordination with PCP documented but no evidence of formal medication reconciliation process"
+            ],
+            "overall_quality": "acceptable",
+            "issues_summary": "The audit contains several false failures where documentation actually exists, one hallucinated citation, and missed some legitimate compliance gaps around formal protocols and policies. The review was overly strict in some areas while missing procedural documentation issues."
+        },
+        "validated_at": "2026-05-14T05:11:42.281565+00:00"
+    }
+}

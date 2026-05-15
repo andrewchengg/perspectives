@@ -257,7 +257,7 @@ def check_negation_flips(source_doc: str, generated_text: str) -> list[dict]:
 # ============================================================================
 
 REQUIRED_ASAM_DIMENSIONS = {1, 2, 3, 4, 5}  # D6 is separate (dimension_6_notes)
-REQUIRED_TJC_STANDARDS = {"CTS.01", "CTS.02", "CTS.03", "CTS.04", "CTS.05"}
+REQUIRED_TJC_STANDARDS = {"CTS.02", "CTS.03", "CTS.04", "CTS.06"}
 
 
 def check_completeness_asam(evaluation: ASAMEvaluation) -> list[dict]:

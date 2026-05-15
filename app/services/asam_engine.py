@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from app.prompts.asam_prompt import ASAM_STRUCTURED_PROMPT, ASAM_SYSTEM_PROMPT, ASAM_THINKING_PROMPT
 from app.schemas.asam import ASAMEvaluation
 from app.schemas.patient import PatientExtraction
+from app.services.asam_flowchart import SubdimensionResult, determine_loc
 from app.services.llm_client import LLMClient
 
 logger = logging.getLogger(__name__)
@@ -16,6 +17,26 @@ VALID_LEVELS = {
     "4", "4_PSYCH",
 }
 
+LEVEL_NAMES = {
+    "1.5": "Outpatient Services",
+    "1.5_COE": "Outpatient Services, Co-occurring Enhanced",
+    "1.7": "Medically Monitored Outpatient",
+    "1.7_COE": "Medically Monitored Outpatient, Co-occurring Enhanced",
+    "2.1": "Intensive Outpatient Services",
+    "2.5": "Partial Hospitalization Services",
+    "2.5_COE": "Partial Hospitalization, Co-occurring Enhanced",
+    "2.7": "Medically Monitored Intensive Outpatient",
+    "2.7_COE": "Medically Monitored Intensive Outpatient, Co-occurring Enhanced",
+    "3.1": "Clinically Managed Low-Intensity Residential",
+    "3.5": "Clinically Managed High-Intensity Residential",
+    "3.5_COE": "Clinically Managed High-Intensity Residential, Co-occurring Enhanced",
+    "3.7": "Medically Monitored Intensive Inpatient",
+    "3.7_BIO": "Medically Monitored Intensive Inpatient, Biomedical Enhanced",
+    "3.7_COE": "Medically Monitored Intensive Inpatient, Co-occurring Enhanced",
+    "4": "Medically Managed Intensive Inpatient",
+    "4_PSYCH": "Medically Managed Inpatient Psychiatric",
+}
+
 
 class ASAMEngine:
     def __init__(self, llm_client: LLMClient):
@@ -24,14 +45,14 @@ class ASAMEngine:
     async def evaluate(self, extraction: PatientExtraction) -> ASAMEvaluation:
         clinical_document = self._compile_clinical_document(extraction)
 
-        # Pass 1: Clinical reasoning (think through each dimension)
+        # Pass 1: LLM assigns risk codes per subdimension (clinical reasoning)
         thinking_prompt = ASAM_THINKING_PROMPT.format(clinical_document=clinical_document)
         reasoning = await self._llm.complete(
             system=ASAM_SYSTEM_PROMPT,
             user=thinking_prompt,
         )
 
-        # Pass 2: Structured output (format the analysis as JSON)
+        # Pass 2: LLM outputs structured JSON with risk codes + citations
         structured_prompt = (
             f"Here is your clinical analysis:\n\n{reasoning}\n\n"
             f"{ASAM_STRUCTURED_PROMPT}"
@@ -42,7 +63,102 @@ class ASAMEngine:
         )
 
         evaluation = self._parse_response(raw_json, extraction.patient.id)
-        self._validate_consistency(evaluation)
+
+        # Pass 3: ALGORITHM determines LOC from the LLM's risk codes
+        # This is the key change — the algorithm DRIVES the recommendation,
+        # not the LLM. The LLM's job is subdimensional assessment only.
+        algorithmic_loc = self._apply_algorithmic_loc(evaluation)
+
+        # Log if LLM and algorithm disagree (for transparency)
+        llm_level = evaluation.recommended_level
+        if algorithmic_loc.level != llm_level:
+            logger.info(
+                "Algorithm overriding LLM recommendation: LLM said %s, algorithm says %s. "
+                "Using algorithm result. Rationale: %s",
+                llm_level, algorithmic_loc.level, algorithmic_loc.rationale,
+            )
+
+        # Override LLM's recommendation with algorithmic result
+        evaluation.recommended_level = algorithmic_loc.level
+        evaluation.recommended_level_name = LEVEL_NAMES.get(
+            algorithmic_loc.level, f"Level {algorithmic_loc.level}"
+        )
+
+        # Add recovery residence flag if indicated
+        if algorithmic_loc.recovery_residence:
+            evaluation.recommended_level_name += " + Recovery Residence"
+
+        # Store the determination steps from the algorithm
+        evaluation.loc_determination_steps = [
+            {"step": s["step"], "description": s.get("rationale", ""), "result": s["result"]}
+            for s in algorithmic_loc.steps
+        ]
+
+        # Update the level rationale to reflect algorithmic determination
+        evaluation.level_rationale = (
+            f"Algorithmically determined: {algorithmic_loc.rationale}"
+            + (f" (LLM had suggested {llm_level})" if llm_level != algorithmic_loc.level else "")
+        )
+
+        # Validate citations exist
+        self._validate_citations(evaluation)
+
+        return evaluation
+
+    def _apply_algorithmic_loc(self, evaluation: ASAMEvaluation):
+        """Extract subdimension results and run the rule-based LOC flowchart."""
+        subdim_results = []
+        for dim in evaluation.dimensions:
+            for subdim in dim.subdimensions:
+                subdim_results.append(
+                    SubdimensionResult(
+                        dimension=dim.dimension_number,
+                        subdimension=subdim.name,
+                        risk_code=subdim.risk_rating_code,
+                        minimum_level=subdim.minimum_level,
+                    )
+                )
+
+        if not subdim_results:
+            logger.warning("No subdimension results found — cannot determine LOC algorithmically")
+            from app.services.asam_flowchart import LOCRecommendation
+            return LOCRecommendation(
+                level=evaluation.recommended_level,
+                name=evaluation.recommended_level_name,
+                coe=False, recovery_residence=False,
+                rationale="Fallback: no subdimension data for algorithmic determination.",
+            )
+
+        return determine_loc(subdim_results)
+
+    def _apply_algorithmic_loc_to_evaluation(self, evaluation: ASAMEvaluation) -> ASAMEvaluation:
+        """Re-run algorithmic LOC on an evaluation and update it in place.
+        Used by QA loop after corrections change subdimension ratings."""
+        algorithmic_loc = self._apply_algorithmic_loc(evaluation)
+        old_level = evaluation.recommended_level
+
+        evaluation.recommended_level = algorithmic_loc.level
+        evaluation.recommended_level_name = LEVEL_NAMES.get(
+            algorithmic_loc.level, f"Level {algorithmic_loc.level}"
+        )
+        if algorithmic_loc.recovery_residence:
+            evaluation.recommended_level_name += " + Recovery Residence"
+
+        evaluation.loc_determination_steps = [
+            {"step": s["step"], "description": s.get("rationale", ""), "result": s["result"]}
+            for s in algorithmic_loc.steps
+        ]
+        evaluation.level_rationale = (
+            f"Algorithmically determined after QA corrections: {algorithmic_loc.rationale}"
+            + (f" (changed from {old_level})" if old_level != algorithmic_loc.level else "")
+        )
+
+        if old_level != algorithmic_loc.level:
+            logger.info(
+                "QA corrections changed LOC: %s → %s. Rationale: %s",
+                old_level, algorithmic_loc.level, algorithmic_loc.rationale,
+            )
+
         return evaluation
 
     def _compile_clinical_document(self, extraction: PatientExtraction) -> str:
@@ -100,41 +216,8 @@ class ASAMEngine:
         data["evaluated_at"] = datetime.now(timezone.utc).isoformat()
         return ASAMEvaluation.model_validate(data)
 
-    def _validate_consistency(self, evaluation: ASAMEvaluation) -> None:
-        if evaluation.recommended_level not in VALID_LEVELS:
-            logger.warning(
-                "ASAM level %s is not a valid 4th edition level. Valid: %s",
-                evaluation.recommended_level,
-                VALID_LEVELS,
-            )
-
-        # Run the rule-based flowchart as a consistency check
-        from app.services.asam_flowchart import SubdimensionResult, determine_loc
-
-        subdim_results = []
-        for dim in evaluation.dimensions:
-            for subdim in dim.subdimensions:
-                subdim_results.append(
-                    SubdimensionResult(
-                        dimension=dim.dimension_number,
-                        subdimension=subdim.name,
-                        risk_code=subdim.risk_rating_code,
-                        minimum_level=subdim.minimum_level,
-                    )
-                )
-
-        if subdim_results:
-            algorithmic = determine_loc(subdim_results)
-            if algorithmic.level != evaluation.recommended_level:
-                logger.warning(
-                    "LLM recommended Level %s but flowchart algorithm suggests Level %s. "
-                    "Algorithm rationale: %s",
-                    evaluation.recommended_level,
-                    algorithmic.level,
-                    algorithmic.rationale,
-                )
-
-        # Check citations exist for every subdimension
+    def _validate_citations(self, evaluation: ASAMEvaluation) -> None:
+        """Warn if any subdimension is missing citations."""
         for dim in evaluation.dimensions:
             for subdim in dim.subdimensions:
                 if not subdim.citations:

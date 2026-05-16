@@ -92,45 +92,94 @@ class TJCEngine:
         data["patient_id"] = patient_id
         data["audited_at"] = datetime.now(timezone.utc).isoformat()
 
-        # Normalize LLM output — fuzzy match status values
-        def normalize_status(s: str) -> str:
-            s = s.lower().strip()
-            if s in ("compliant", "pass", "met"):
-                return "compliant"
-            if "non" in s or "fail" in s or "not" in s or "unmet" in s:
-                return "non_compliant"
-            if "partial" in s:
-                return "partial"
-            if "n/a" in s or "applicable" in s:
-                return "not_applicable"
-            return s
+        # Normalize EP scores and statuses from LLM output
+        def normalize_score(finding: dict) -> int:
+            """Normalize to official 0/1/2 scale."""
+            # If LLM provided a score field, use it
+            score = finding.get("score")
+            if score is not None:
+                try:
+                    s = int(score)
+                    if s in (0, 1, 2):
+                        return s
+                except (ValueError, TypeError):
+                    pass
 
-        def normalize_finding_status(s: str) -> str:
-            s = s.lower().strip()
-            if s in ("pass", "met", "compliant", "yes"):
-                return "pass"
-            if s in ("fail", "failed", "unmet", "no") or "non" in s or "not" in s:
-                return "fail"
-            if "partial" in s:
-                return "partial"
-            if "n/a" in s or "applicable" in s:
-                return "not_applicable"
-            return s
+            # Fall back to status field
+            status = str(finding.get("status", "")).lower().strip()
+            if status in ("pass", "satisfactory", "met", "compliant", "2"):
+                return 2
+            if status in ("partial", "1"):
+                return 1
+            if status in ("fail", "insufficient", "failed", "unmet", "0") or "non" in status or "not" in status:
+                return 0
+            return 0  # default to insufficient if unclear
+
+        def score_to_status(score: int) -> str:
+            return {2: "satisfactory", 1: "partial", 0: "insufficient"}.get(score, "insufficient")
 
         for std in data.get("standards", []):
-            std["overall_status"] = normalize_status(std.get("overall_status", ""))
             for finding in std.get("findings", []):
-                finding["status"] = normalize_finding_status(finding.get("status", ""))
+                score = normalize_score(finding)
+                finding["score"] = score
+                finding["status"] = score_to_status(score)
+
+                # Ensure SAFER rating exists for non-compliant EPs
+                if score < 2 and not finding.get("safer"):
+                    finding["safer"] = {
+                        "likelihood": "moderate",
+                        "scope": "limited",
+                    }
+                elif score == 2:
+                    finding["safer"] = None
+
+                # Clear citations for score 0 (absence is the finding)
+                if score == 0:
+                    finding["citations"] = []
+
+            # Apply official TJC standard-level compliance rules
+            self._apply_standard_compliance(std)
 
         return TJCAuditResult.model_validate(data)
 
-    def _validate_audit(self, result: TJCAuditResult) -> None:
-        expected_standards = {"CTS.02", "CTS.03", "CTS.04", "CTS.06"}
-        found_standards = {s.standard_id for s in result.standards}
+    def _apply_standard_compliance(self, std: dict) -> None:
+        """Apply official TJC standard-level compliance determination.
 
-        missing = expected_standards - found_standards
-        if missing:
-            logger.warning("Audit missing standards: %s", missing)
+        Rules (from TJC accreditation manual):
+        1. Any single EP scored (0) → entire standard is non_compliant
+        2. If 35% or more of EPs scored (1) → standard is non_compliant
+        3. Otherwise → standard is compliant
+        """
+        findings = std.get("findings", [])
+        if not findings:
+            std["overall_status"] = "non_compliant"
+            std["compliance_percentage"] = 0.0
+            return
+
+        total = len(findings)
+        score_2_count = sum(1 for f in findings if f.get("score") == 2)
+        score_1_count = sum(1 for f in findings if f.get("score") == 1)
+        score_0_count = sum(1 for f in findings if f.get("score") == 0)
+
+        # Compliance percentage = fully compliant EPs / total
+        std["compliance_percentage"] = round((score_2_count / total) * 100, 1)
+
+        # Rule 1: Any EP at 0 → non-compliant
+        if score_0_count > 0:
+            std["overall_status"] = "non_compliant"
+            return
+
+        # Rule 2: 35%+ of EPs at 1 → non-compliant
+        if total > 0 and (score_1_count / total) >= 0.35:
+            std["overall_status"] = "non_compliant"
+            return
+
+        std["overall_status"] = "compliant"
+
+    def _validate_audit(self, result: TJCAuditResult) -> None:
+        """Post-processing: recalculate overall compliance and validate."""
+        total_findings = 0
+        total_score_2 = 0
 
         for standard in result.standards:
             if not standard.findings:
@@ -139,14 +188,13 @@ class TJCEngine:
                     standard.standard_id,
                 )
 
-            fail_count = sum(1 for f in standard.findings if f.status == "fail")
-            total = len(standard.findings)
-            if total > 0:
-                calculated_pct = ((total - fail_count) / total) * 100
-                if abs(calculated_pct - standard.compliance_percentage) > 10:
-                    logger.warning(
-                        "Standard %s: reported compliance %.1f%% but calculated %.1f%%",
-                        standard.standard_id,
-                        standard.compliance_percentage,
-                        calculated_pct,
-                    )
+            for f in standard.findings:
+                total_findings += 1
+                if f.score == 2:
+                    total_score_2 += 1
+
+        # Recalculate overall compliance
+        if total_findings > 0:
+            result.overall_compliance_percentage = round(
+                (total_score_2 / total_findings) * 100, 1
+            )

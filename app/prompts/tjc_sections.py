@@ -15,13 +15,65 @@ TJC_SECTION_SYSTEM = """\
 You are a Joint Commission (TJC) compliance auditor for behavioral health \
 substance use disorder (SUD) treatment programs.
 
-CRITICAL AUDIT PRINCIPLE: "Not documented = not done." If documentation \
-is absent, that IS the finding. Do not assume something was done verbally.
-
 Source: Joint Commission Public Standards Database, March 2026 edition.
+Scoring: Official TJC EP Scoring Scale + SAFER Matrix (effective Jan 2017).
 
 You will audit a patient's clinical documentation against SPECIFIC standards \
 and Elements of Performance (EPs). For EVERY EP listed, you MUST produce a finding.
+
+═══ OFFICIAL TJC SCORING METHODOLOGY ═══
+
+Each EP is scored on the official 3-point scale:
+
+  (2) SATISFACTORY COMPLIANCE — The EP requirement is fully met. \
+      Documentation directly addresses what the EP requires.
+  (1) PARTIAL COMPLIANCE — The requirement is partially met. Some relevant \
+      content exists but is incomplete, scattered across documents, or \
+      missing key elements the EP specifically requires.
+  (0) INSUFFICIENT COMPLIANCE — The requirement is not met. The required \
+      information is completely absent from all documents, or what exists \
+      does not address the EP's requirements at all.
+
+STANDARD-LEVEL COMPLIANCE (apply AFTER scoring all EPs):
+  - Any single EP scored (0) → the ENTIRE standard is "non_compliant"
+  - If 35% or more of a standard's EPs score (1) → standard is "non_compliant"
+  - Otherwise → standard is "compliant"
+
+SAFER MATRIX — For each EP scored (0) or (1), classify the risk:
+  Likelihood to harm (how likely noncompliance could lead to patient harm):
+    "high" — Could directly lead to harm; harm is probable
+    "moderate" — Could contribute to harm under certain conditions
+    "low" — Undermines safety but unlikely to directly cause harm
+  Scope (how widespread is the noncompliance):
+    "widespread" — Systemic/organizational failure
+    "pattern" — Affects multiple patients or represents process variation
+    "limited" — Isolated occurrence, not representative of routine practice
+
+═══ CRITICAL AUDIT RULES ═══
+
+1. "Not documented = not done." If documentation is absent, that IS the finding.
+
+2. SEARCH THE ENTIRE CHART before scoring any EP as (0). Patient goals, \
+   screenings, and clinical information may appear ANYWHERE — in progress notes, \
+   assessment narratives, intake questionnaires, or clinician observations. \
+   A formal standalone document is NOT required for the CONTENT to exist. \
+   If content exists but is incomplete → score (1), not (0).
+
+3. CITATION RULES:
+   - For score (2): cite the EXACT text that demonstrates full compliance.
+   - For score (1): cite what WAS found, then explain what is missing or incomplete.
+   - For score (0): use an empty citations array []. The absence of evidence \
+     IS the finding — do not cite tangentially related text.
+
+4. DO NOT confuse these:
+   - "Medical history is documented" ≠ "A physical health screening was performed"
+   - "Clinician discussed coping skills" ≠ "Formal patient education was provided"
+   - "Patient mentioned a goal" ≠ "Treatment plan contains goals in patient's words"
+   - "Medication is listed" ≠ "Medication reconciliation was completed"
+   - "Referral was mentioned in notes" ≠ "Referral was documented with follow-up"
+
+5. Be PRECISE in your findings. Instead of "Not documented", explain exactly \
+   what you searched for and where you looked.
 
 Respond with ONLY valid JSON — no markdown fences, no extra text."""
 
@@ -33,12 +85,13 @@ OUTPUT FORMAT — respond with ONLY this JSON structure:
     {{
       "standard_id": "CTS.XX.XX.XX",
       "standard_name": "Name of the standard",
-      "overall_status": "compliant" | "non_compliant" | "partial",
+      "overall_status": "compliant" | "non_compliant",
       "findings": [
         {{
           "element": "CTS.XX.XX.XX EP N",
           "description": "What this EP requires",
-          "status": "pass" | "fail" | "partial",
+          "score": 2 | 1 | 0,
+          "status": "satisfactory" | "partial" | "insufficient",
           "finding": "Specific finding with evidence or gap description",
           "citations": [
             {{
@@ -47,7 +100,11 @@ OUTPUT FORMAT — respond with ONLY this JSON structure:
               "relevance": "why this demonstrates compliance or gap"
             }}
           ],
-          "remediation": "Specific actionable fix" or null if pass
+          "safer": {{
+            "likelihood": "high" | "moderate" | "low",
+            "scope": "widespread" | "pattern" | "limited"
+          }} or null if score is 2,
+          "remediation": "Specific actionable fix" or null if score is 2
         }}
       ],
       "compliance_percentage": 75.0
@@ -57,10 +114,17 @@ OUTPUT FORMAT — respond with ONLY this JSON structure:
 
 RULES:
 - You MUST produce a finding for EVERY EP listed — do NOT skip any
-- Citations must be EXACT verbatim text from the document
-- If documentation is absent, status is "fail" and cite what IS documented (or state "Not documented")
-- compliance_percentage = (pass count / total findings) * 100
-- overall_status: all pass = "compliant", all fail = "non_compliant", mixed = "partial"
+- Citations must be EXACT verbatim text copy-pasted from the document
+- Score: 2 = satisfactory, 1 = partial, 0 = insufficient
+- For score 0: use empty citations [] — do NOT cite unrelated text
+- For score 1: cite what exists, explain what is incomplete
+- For score 2: cite the specific evidence that satisfies the EP
+- "safer" field is REQUIRED for scores 0 and 1, null for score 2
+- compliance_percentage = ((count of score 2) / total findings) * 100
+- overall_status rules:
+    Any EP scored 0 → "non_compliant"
+    35% or more EPs scored 1 → "non_compliant"
+    Otherwise → "compliant"
 """
 
 # --- Section definitions (verbatim EP text) ---
@@ -215,8 +279,8 @@ NPSG.15.01.01: Reduce the risk for suicide.
   EP 6: Follow written policies and procedures for counseling and follow-up care at discharge for individuals served identified as at risk for suicide.""",
     },
     {
-        "id": "rights_records_meds",
-        "name": "Rights (RI) + Records (RC) + Medications (NPSG.03, MM) + Equity (NPSG.16)",
+        "id": "patient_rights",
+        "name": "Patient Rights (RI)",
         "standards": """\
 RI.01.01.01: The organization respects the rights of the individual served.
   EP 2: The organization informs the individual served of the individual's rights.
@@ -236,8 +300,12 @@ RI.01.03.01: The organization honors the right of the individual served to give 
   EP 2: The informed consent process includes a discussion about the following: The proposed care, treatment, or services for the individual served; The goals and potential benefits and risks of the proposed care, treatment, or services; Reasonable alternatives to the individual's proposed care, treatment, or services. The discussion encompasses risks and benefits related to the alternatives and the risks related to not receiving the proposed care, treatment, or services.
 
 RI.01.04.01: The organization respects the right of the individual served to receive information about the staff responsible for the individual's care, treatment, or services.
-  EP 1: The organization informs the individual served of the following: The name of the staff member who has primary responsibility for the individual's care, treatment, or services; The name of the staff member(s) who will provide the individual's care, treatment, or services.
-
+  EP 1: The organization informs the individual served of the following: The name of the staff member who has primary responsibility for the individual's care, treatment, or services; The name of the staff member(s) who will provide the individual's care, treatment, or services.""",
+    },
+    {
+        "id": "records",
+        "name": "Record of Care (RC)",
+        "standards": """\
 RC.01.01.01: The organization maintains complete and accurate clinical/case records.
   EP 5: The clinical/case record includes the following: Information needed to support the diagnosis or condition of the individual served; Information needed to justify the care, treatment, or services provided to the individual served; Information that documents the course and result of the care, treatment, or services provided to the individual served; Information about the care, treatment, or services provided to the individual served that promotes continuity among staff and providers.
   EP 6: The organization uses standardized formats to document the care, treatment, or services it provides to individuals served.
@@ -255,8 +323,12 @@ RC.02.01.01: The clinical/case record contains information that reflects the car
   EP 4: As needed to provide care, treatment, or services, the clinical/case record contains the following additional information: Any advance directives; Any informed consent; Any documentation of protective services; Any documentation of consent by the individual served, family, or guardian for admission; care, treatment, or services; evaluation; continuing care; or research; Any records of communication with the individual served, such as telephone calls or e-mail; Any documentation of involvement in care, treatment, or services by the individual served and, when necessary, their family; Any information on unusual occurrences, such as complications; accidents or injuries to the individual served; procedures that place the individual served at risk or cause pain; other illnesses or conditions that affect care, treatment, or services; or the death of the individual served; Any indications for and episodes of special procedures.
 
 RC.02.04.01: The clinical/case record of the individual served contains discharge information.
-  EP 3: The clinical/case record contains the following: A concise discharge summary that includes the reason(s) for acceptance for care, treatment, or services; The care, treatment, or services provided; The condition at discharge of the individual served; Information provided to the individual served and their family (for example, written discharge instructions; medication taken by the individual; follow-up care, treatment, or services).
-
+  EP 3: The clinical/case record contains the following: A concise discharge summary that includes the reason(s) for acceptance for care, treatment, or services; The care, treatment, or services provided; The condition at discharge of the individual served; Information provided to the individual served and their family (for example, written discharge instructions; medication taken by the individual; follow-up care, treatment, or services).""",
+    },
+    {
+        "id": "medications",
+        "name": "Medication Management (MM, NPSG.03) + Health Equity (NPSG.16)",
+        "standards": """\
 NPSG.03.06.01: Maintain and communicate accurate medication information for the individual served.
   EP 1: Obtain and/or update information on the medications the individual served is currently taking. This information is documented in a list or other format that is useful to those who manage medications.
   EP 2: Define the types of medication information (for example, name, dose, route, frequency, purpose) to be collected in non-24-hour settings based on situations of individuals served and characteristics of different settings.

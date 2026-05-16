@@ -9,6 +9,7 @@ import asyncio
 import json
 import logging
 from collections.abc import AsyncGenerator
+from datetime import datetime, timezone
 
 from app.schemas.patient import PatientExtraction
 from app.services.llm_client import LLMClient
@@ -206,6 +207,12 @@ async def stream_qa_agent_asam(
         logger.error("Failed to parse streamed ASAM response: %s", e)
         yield _sse("tool_result", {"tool": "llm_call", "result": f"Parse error: {e}"})
         return
+
+    # Apply algorithmic LOC determination (overrides LLM if inconsistent)
+    try:
+        evaluation = engine._apply_algorithmic_loc_to_evaluation(evaluation)
+    except Exception as e:
+        logger.warning("Algorithmic LOC check failed: %s — using LLM recommendation", e)
 
     yield _sse("tool_result", {
         "tool": "llm_call",
@@ -458,7 +465,7 @@ async def stream_qa_agent_tjc(
 
     yield _sse("agent_start", {
         "message": "TJC Orchestrator initialized",
-        "detail": f"Auditing {len(expected_ids)} standards across {len(SECTIONS)} sections",
+        "detail": f"Auditing {len(SECTIONS)} sections with {sum(s['standards'].count('EP ') for s in SECTIONS)} EPs",
     })
     await asyncio.sleep(0)
 
@@ -510,7 +517,7 @@ async def stream_qa_agent_tjc(
             n_findings = sum(len(std.get("findings", [])) for std in stds)
             yield _sse("tool_result", {
                 "tool": "audit_section",
-                "result": f"{section_name}: {len(stds)} standards, {n_findings} findings",
+                "result": f"{section_name}: {n_findings} EPs evaluated",
             })
         except Exception as e:
             logger.error("Failed to parse section %s: %s", section_id, e)
@@ -624,10 +631,11 @@ OUTPUT FORMAT — respond with ONLY valid JSON:
             seen.add(sid)
             deduped.append(std)
 
-    # Calculate overall compliance
+    # Calculate overall compliance (score 2 = satisfactory = fully compliant)
     total_findings = sum(len(s.get("findings", [])) for s in deduped)
     pass_findings = sum(
-        sum(1 for f in s.get("findings", []) if f.get("status") == "pass")
+        sum(1 for f in s.get("findings", [])
+            if f.get("score") == 2 or f.get("status") in ("pass", "satisfactory"))
         for s in deduped
     )
     overall_pct = (pass_findings / total_findings * 100) if total_findings > 0 else 0
@@ -650,14 +658,13 @@ OUTPUT FORMAT — respond with ONLY valid JSON:
 
     audit_data = {
         "patient_id": extraction.patient.id,
-        "audited_at": json.dumps(None),
+        "audited_at": datetime.now(timezone.utc).isoformat(),
         "standards": deduped,
         "overall_compliance_percentage": round(overall_pct, 1),
         "critical_gaps": critical_gaps[:20],
         "recommendations": recommendations[:15],
-        "audit_summary": f"Audit of {len(deduped)} standards ({total_findings} EPs). "
-                         f"Overall compliance: {overall_pct:.1f}%. "
-                         f"Coverage: {len(completed_ids)}/{len(expected_ids)} standards.",
+        "audit_summary": f"Audit of {total_findings} EPs across {len(SECTIONS)} sections. "
+                         f"Overall compliance: {overall_pct:.1f}%.",
     }
 
     try:
@@ -670,7 +677,7 @@ OUTPUT FORMAT — respond with ONLY valid JSON:
     pct = audit.overall_compliance_percentage
     yield _sse("tool_result", {
         "tool": "assemble",
-        "result": f"Audit complete — {pct:.1f}% compliance, {len(deduped)} standards, {total_findings} findings",
+        "result": f"Audit complete — {pct:.1f}% compliance, {total_findings} EPs evaluated across {len(SECTIONS)} sections",
     })
 
     yield _sse("initial_result", {"audit": audit.model_dump()})

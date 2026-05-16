@@ -2,7 +2,8 @@
 ASAM Level of Care Determination — 4th Edition (Official)
 
 Based on The ASAM Criteria, Fourth Edition, Volume 1: Adults.
-Level of Care Determination Rules (pp 279-281).
+Level of Care Assessment Guide, pp 279-281.
+Risk Rating Forms from official ASAM LOC Assessment Guide v4.1.0.0.
 
 The 4th Edition uses a TOP-DOWN DEDUCTIVE approach:
 1. Each subdimension maps to a minimum level of care code
@@ -37,35 +38,105 @@ LEVEL_HIERARCHY = [
     "1.7",
     "1.5_COE",
     "1.5",
+    "RR",  # Recovery Residence (not a level but a modifier)
 ]
 
-# Map risk rating codes to minimum levels
-RISK_CODE_TO_LEVEL = {
-    # Dimension 1
-    "4": "4",
-    "3B": "3.7_BIO",
-    "3A": "3.7",
-    "2": "2.7",
-    "1": "1.7",
-    "C": "3.7",
-    "B": "2.7",
-    "A": "1.7",
-    # Dimension 3 psychiatric
-    "3B_COE": "3.7_COE",
-    "3A_COE": "3.5_COE",
-    "2B_COE": "2.7_COE",
-    "2A_COE": "2.5_COE",
-    "1C_COE": "1.7_COE",
-    "1B": "1.7",
-    "1A_COE": "1.5_COE",
-    "1Z_COE": "1.5_COE",
-    # Dimension 4
-    "E": "3.5",
-    "D": "3.1",
-    # already have C, B, A above but for D4 they map differently
-    # Dimension 5
-    # D, C, B, A map to residential levels
+# ── Dimension-aware risk code to minimum level mappings ──
+# Source: ASAM LOC Assessment Guide v4.1.0.0, Risk Rating Forms (pp 7, 10, 13, 15, 17)
+
+# Dimension 1: Intoxication, Withdrawal, and Addiction Medications
+D1_INTOXICATION = {
+    "4": "4", "3B": "3.7_BIO", "3A": "3.7", "2": "2.7", "ANY": "ANY", "0": "0",
 }
+D1_WITHDRAWAL = {
+    "4": "4", "3B": "3.7_BIO", "3A": "3.7", "2": "2.7", "1": "1.7",
+    "EVAL": "EVAL", "0": "0",
+}
+D1_ADDICTION_MEDS = {
+    "C": "3.7", "B": "2.7", "A": "1.7", "EVAL": "EVAL", "ANY": "ANY", "MOUD-C": "MOUD-C",
+}
+
+# Dimension 2: Biomedical Conditions
+D2_PHYSICAL = {
+    "4": "4", "3B": "3.7_BIO", "3A": "3.7", "2": "2.7", "1": "1.7", "ANY": "ANY", "0": "0",
+}
+D2_PREGNANCY = {
+    "4": "4", "3": "3.7", "2": "2.7", "1": "1.7", "ANY": "ANY", "0": "0",
+}
+
+# Dimension 3: Psychiatric and Cognitive Conditions
+D3_PSYCHIATRIC = {
+    "4": "4_PSYCH", "3B": "3.7_COE", "3A": "3.5_COE", "2B": "2.7_COE",
+    "2A": "2.5_COE", "1C": "1.7_COE", "1B": "1.7", "1A": "1.5_COE",
+    "ANY": "ANY", "0": "0",
+}
+D3_PERSISTENT_DISABILITY = {
+    "1Z": "1.5_COE", "ANY": "ANY", "0": "0",
+}
+
+# Dimension 4: Substance Use-Related Risks
+D4_RISKY_USE = {
+    "E": "3.5", "D": "3.1", "C": "2.5", "B": "2.1", "A": "1.5",
+}
+D4_RISKY_BEHAVIORS = {
+    "E": "3.5", "D": "3.1", "C": "2.5", "B": "2.1", "A": "1.5", "0": "0",
+}
+
+# Dimension 5: Recovery Environment Interactions
+D5_FUNCTIONING = {
+    "D": "3.5", "C": "3.1", "B": "2.5", "A": "2.1", "ANY": "ANY", "0": "0",
+}
+D5_SAFETY = {
+    "A": "RR", "0": "0",
+}
+D5_SUPPORT = {
+    "B": "3.1", "A": "RR", "ANY": "ANY", "0": "0",
+}
+
+# Map (dimension, subdimension_name_keyword) to the correct lookup table
+# Used to resolve risk codes when we know which dimension/subdimension they belong to
+SUBDIM_MAPPINGS = {
+    (1, "intoxication"): D1_INTOXICATION,
+    (1, "withdrawal"): D1_WITHDRAWAL,
+    (1, "addiction"): D1_ADDICTION_MEDS,
+    (1, "medication"): D1_ADDICTION_MEDS,
+    (2, "physical"): D2_PHYSICAL,
+    (2, "health"): D2_PHYSICAL,
+    (2, "pregnancy"): D2_PREGNANCY,
+    (3, "psychiatric"): D3_PSYCHIATRIC,
+    (3, "active"): D3_PSYCHIATRIC,
+    (3, "persistent"): D3_PERSISTENT_DISABILITY,
+    (3, "disability"): D3_PERSISTENT_DISABILITY,
+    (4, "substance"): D4_RISKY_USE,
+    (4, "risky_use"): D4_RISKY_USE,
+    (4, "use"): D4_RISKY_USE,
+    (4, "behavior"): D4_RISKY_BEHAVIORS,
+    (4, "risky_behavior"): D4_RISKY_BEHAVIORS,
+    (5, "function"): D5_FUNCTIONING,
+    (5, "ability"): D5_FUNCTIONING,
+    (5, "safety"): D5_SAFETY,
+    (5, "support"): D5_SUPPORT,
+}
+
+
+def resolve_minimum_level(dimension: int, subdimension_name: str, risk_code: str) -> str:
+    """Resolve a risk code to its minimum level using dimension-aware mappings."""
+    code = risk_code.upper().strip()
+    name_lower = subdimension_name.lower()
+
+    # Find the matching lookup table
+    for (dim, keyword), table in SUBDIM_MAPPINGS.items():
+        if dim == dimension and keyword in name_lower:
+            if code in table:
+                return table[code]
+
+    # Fallback: try to parse the minimum_level string directly
+    # (LLM sometimes outputs "Minimum Level 2.5" instead of a risk code)
+    logger.warning(
+        "No mapping found for D%d/%s code=%s — will use LLM's minimum_level",
+        dimension, subdimension_name, risk_code,
+    )
+    return code
 
 
 @dataclass
@@ -86,12 +157,33 @@ class LOCRecommendation:
     steps: list[dict] = field(default_factory=list)
 
 
+LEVEL_NAMES = {
+    "4": "Medically Managed Intensive Inpatient",
+    "4_PSYCH": "Medically Managed Inpatient Psychiatric",
+    "3.7_BIO": "Medically Monitored Intensive Inpatient (BIO)",
+    "3.7_COE": "Medically Monitored Intensive Inpatient (COE)",
+    "3.7": "Medically Monitored Intensive Inpatient",
+    "3.5_COE": "Clinically Managed High-Intensity Residential (COE)",
+    "3.5": "Clinically Managed High-Intensity Residential",
+    "3.1": "Clinically Managed Low-Intensity Residential",
+    "2.7_COE": "Medically Monitored Intensive Outpatient (COE)",
+    "2.7": "Medically Monitored Intensive Outpatient",
+    "2.5_COE": "Partial Hospitalization, Co-occurring Enhanced",
+    "2.5": "Partial Hospitalization Services",
+    "2.1": "Intensive Outpatient Services",
+    "1.7_COE": "Medically Monitored Outpatient (COE)",
+    "1.7": "Medically Monitored Outpatient",
+    "1.5_COE": "Outpatient Services, Co-occurring Enhanced",
+    "1.5": "Outpatient Services",
+}
+
+
 def _level_rank(level: str) -> int:
     """Return rank of a level (lower = more intensive)."""
     try:
         return LEVEL_HIERARCHY.index(level)
     except ValueError:
-        return len(LEVEL_HIERARCHY)  # unknown levels rank lowest
+        return len(LEVEL_HIERARCHY)
 
 
 def _is_medically_managed(level: str) -> bool:
@@ -120,7 +212,8 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
     Top-down approach: start at Level 4, work down.
     """
     steps = []
-    minimum_levels = [r.minimum_level for r in subdimension_results if r.minimum_level not in ("ANY", "0", "EVAL", "MOUD-C")]
+    skip = {"ANY", "0", "EVAL", "MOUD-C", "RR"}
+    minimum_levels = [r.minimum_level for r in subdimension_results if r.minimum_level not in skip]
 
     if not minimum_levels:
         return LOCRecommendation(
@@ -133,6 +226,7 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
         )
 
     has_coe = any(_is_coe(lvl) for lvl in minimum_levels)
+    rr_needed = any(r.minimum_level == "RR" for r in subdimension_results)
 
     # Step 1: Level 4 / 4 Psychiatric
     has_level_4 = any(lvl == "4" for lvl in minimum_levels)
@@ -165,15 +259,17 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
         if needs_level_3:
             level = "3.7_BIO" if has_3_7_bio else "3.7"
             steps.append({"step": 2, "result": f"Level {level} indicated", "rationale": "Medically managed + Level 3 need"})
-            return LOCRecommendation(level=level, name="Medically Monitored Intensive Inpatient", coe=has_coe, recovery_residence=False,
+            return LOCRecommendation(level=level, name=LEVEL_NAMES.get(level, level), coe=has_coe, recovery_residence=rr_needed,
                                      rationale="Requires medically managed care AND Level 3 services.", steps=steps)
         elif needs_level_2:
-            steps.append({"step": 2, "result": "Level 2.7 indicated", "rationale": "Medically managed + Level 2 need"})
-            return LOCRecommendation(level="2.7", name="Medically Monitored Intensive Outpatient", coe=has_coe, recovery_residence=False,
+            level = "2.7_COE" if has_coe else "2.7"
+            steps.append({"step": 2, "result": f"Level {level} indicated", "rationale": "Medically managed + Level 2 need"})
+            return LOCRecommendation(level=level, name=LEVEL_NAMES.get(level, level), coe=has_coe, recovery_residence=rr_needed,
                                      rationale="Requires medically managed care AND Level 2 services.", steps=steps)
         else:
-            steps.append({"step": 2, "result": "Level 1.7 indicated", "rationale": "Medically managed, no Level 2/3 need"})
-            return LOCRecommendation(level="1.7", name="Medically Monitored Outpatient", coe=has_coe, recovery_residence=False,
+            level = "1.7_COE" if has_coe else "1.7"
+            steps.append({"step": 2, "result": f"Level {level} indicated", "rationale": "Medically managed, no Level 2/3 need"})
+            return LOCRecommendation(level=level, name=LEVEL_NAMES.get(level, level), coe=has_coe, recovery_residence=rr_needed,
                                      rationale="Requires medically managed care but no Level 2 or 3 services.", steps=steps)
 
     steps.append({"step": 2, "result": "Not indicated"})
@@ -182,18 +278,17 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
     needs_residential = any(_is_residential(lvl) for lvl in minimum_levels)
     if needs_residential:
         needs_3_5 = any(lvl.startswith("3.5") for lvl in minimum_levels)
-        # Also: any subdimension requiring minimum Level 2.5 bumps to 3.5
         needs_2_5_plus = any(lvl.startswith("2.5") for lvl in minimum_levels)
 
         if needs_3_5 or needs_2_5_plus:
             level = "3.5_COE" if has_coe else "3.5"
             steps.append({"step": 3, "result": f"Level {level} indicated"})
-            return LOCRecommendation(level=level, name="Clinically Managed High-Intensity Residential", coe=has_coe, recovery_residence=False,
+            return LOCRecommendation(level=level, name=LEVEL_NAMES.get(level, level), coe=has_coe, recovery_residence=rr_needed,
                                      rationale="Requires residential care with high clinical intensity.", steps=steps)
         else:
             level = "3.1"
             steps.append({"step": 3, "result": "Level 3.1 indicated"})
-            return LOCRecommendation(level=level, name="Clinically Managed Low-Intensity Residential", coe=False, recovery_residence=False,
+            return LOCRecommendation(level=level, name=LEVEL_NAMES.get(level, level), coe=False, recovery_residence=rr_needed,
                                      rationale="Requires residential structure but not high-intensity clinical.", steps=steps)
 
     steps.append({"step": 3, "result": "Not indicated"})
@@ -206,7 +301,6 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
 
         # COE overlay
         if has_coe and base in ("2.1", "1.5"):
-            # 2.1 + COE → 2.5 COE, per the rules
             if base == "2.1":
                 base = "2.5"
             level = f"{base}_COE"
@@ -215,22 +309,11 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
         else:
             level = base
 
-        names = {
-            "2.5": "Partial Hospitalization Services",
-            "2.5_COE": "Partial Hospitalization, Co-occurring Enhanced",
-            "2.1": "Intensive Outpatient Services",
-            "1.5": "Outpatient Services",
-            "1.5_COE": "Outpatient Services, Co-occurring Enhanced",
-        }
         steps.append({"step": 4, "result": f"Level {level} indicated"})
-
-        # Step 6: Recovery Residence check
-        rr_needed = any(r.minimum_level.startswith("RR") or (r.dimension == 5 and r.minimum_level == "A")
-                        for r in subdimension_results)
 
         return LOCRecommendation(
             level=level,
-            name=names.get(level, f"Level {level}"),
+            name=LEVEL_NAMES.get(level, f"Level {level}"),
             coe=has_coe,
             recovery_residence=rr_needed,
             rationale=f"Most intensive outpatient level indicated is {level}.",
@@ -242,7 +325,7 @@ def determine_loc(subdimension_results: list[SubdimensionResult]) -> LOCRecommen
         level="1.5",
         name="Outpatient Services",
         coe=False,
-        recovery_residence=False,
+        recovery_residence=rr_needed,
         rationale="No subdimension indicates need above Level 1.5.",
         steps=steps,
     )

@@ -351,12 +351,28 @@ class SimplePracticeExtractor:
         await self._resilient_click(page, "complete_export")
         await page.wait_for_timeout(1000)
 
-        # Step D: Uncheck password if checked
-        checkbox = page.locator('input[type="checkbox"]')
-        if await checkbox.count() > 0:
-            if await checkbox.first.is_checked():
-                await checkbox.first.uncheck()
-                await page.wait_for_timeout(500)
+        # Step D: Uncheck ALL checkboxes (password protect, etc.)
+        logger.info("Unchecking any password/protection checkboxes...")
+        checkboxes = page.locator('input[type="checkbox"]')
+        count = await checkboxes.count()
+        for i in range(count):
+            cb = checkboxes.nth(i)
+            if await cb.is_checked():
+                logger.info("Unchecking checkbox %d", i)
+                await cb.uncheck()
+                await page.wait_for_timeout(300)
+        # Also try clicking any toggle/switch that might be password protection
+        password_toggle = page.locator('text="Password protect"').locator('..').locator('input, .toggle, .switch')
+        if await password_toggle.count() > 0:
+            for i in range(await password_toggle.count()):
+                el = password_toggle.nth(i)
+                try:
+                    if await el.is_checked():
+                        await el.uncheck()
+                        logger.info("Unchecked password toggle")
+                except Exception:
+                    pass
+        await page.wait_for_timeout(500)
 
         # Step E: Click "Export"
         logger.info("Clicking 'Export'...")

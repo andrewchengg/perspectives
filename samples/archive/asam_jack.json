@@ -1,0 +1,364 @@
+{
+  "evaluation": {
+    "patient_id": "d3fd4bb8-0cc6-470c-857e-4df1866c1174",
+    "evaluated_at": "2026-05-15 23:54:30.179259+00:00",
+    "dimensions": [
+      {
+        "dimension_number": 1,
+        "dimension_name": "Acute Intoxication and/or Withdrawal Potential",
+        "subdimensions": [
+          {
+            "name": "Intoxication and Associated Risks",
+            "risk_rating_code": "0",
+            "minimum_level": "No Specific Needs",
+            "rationale": "No evidence of current intoxication. Patient alert and oriented during assessment sessions.",
+            "citations": [
+              {
+                "source": "Progress Note",
+                "text": "Patient arrived on time for his appointment, alert and oriented x4",
+                "relevance": "Demonstrates absence of current intoxication"
+              }
+            ]
+          },
+          {
+            "name": "Withdrawal and Associated Risks",
+            "risk_rating_code": "1",
+            "minimum_level": "Minimum Level 1.7",
+            "rationale": "Mild withdrawal symptoms with CIWA-Ar scores trending downward from 8 to 4. Daily alcohol use indicates physiological dependence requiring medical monitoring.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "CIWA-Ar scores: 8 \u2192 5 \u2192 4 (trending downward, mild withdrawal)",
+                "relevance": "Indicates mild but manageable withdrawal requiring medical monitoring"
+              },
+              {
+                "source": "Assessment",
+                "text": "mild hand tremors in the mornings that resolve after his first drink",
+                "relevance": "Evidence of physiological withdrawal symptoms"
+              },
+              {
+                "source": "Assessment",
+                "text": "Current withdrawal risk appears manageable in an outpatient setting based on CIWA-Ar score and absence of seizure history",
+                "relevance": "Clinical assessment supports outpatient medical monitoring"
+              }
+            ]
+          },
+          {
+            "name": "Addiction Medication Needs",
+            "risk_rating_code": "EVAL",
+            "minimum_level": "Prompt Evaluation",
+            "rationale": "Naltrexone evaluation identified as needed but not yet completed. Requires prompt medical assessment.",
+            "citations": [
+              {
+                "source": "Progress Note",
+                "text": "Refer to PCP for medical evaluation of withdrawal risk and consideration of naltrexone",
+                "relevance": "Indicates need for addiction medication evaluation"
+              },
+              {
+                "source": "Progress Note",
+                "text": "has now scheduled an appointment with his PCP for next week to discuss naltrexone",
+                "relevance": "Shows evaluation in progress but not completed"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Mild alcohol withdrawal symptoms",
+          "Daily use pattern indicating dependence",
+          "Need for naltrexone evaluation"
+        ]
+      },
+      {
+        "dimension_number": 2,
+        "dimension_name": "Biomedical Conditions and Complications",
+        "subdimensions": [
+          {
+            "name": "Physical Health Concerns",
+            "risk_rating_code": "1",
+            "minimum_level": "Minimum Level 1.7",
+            "rationale": "Multiple alcohol-related medical issues requiring monitoring including hypertension, elevated liver enzymes, and gastritis.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "Hypertension managed with lisinopril 10mg daily",
+                "relevance": "Chronic condition requiring medical monitoring"
+              },
+              {
+                "source": "Assessment",
+                "text": "Elevated liver enzymes (GGT, AST) noted at last PCP visit",
+                "relevance": "Alcohol-related liver impact requiring monitoring"
+              },
+              {
+                "source": "Vital Signs",
+                "text": "Vital signs: BP 142/88, HR 86, temp 98.4F",
+                "relevance": "Elevated blood pressure readings"
+              },
+              {
+                "source": "Assessment",
+                "text": "Mild gastritis, possibly alcohol-related",
+                "relevance": "Additional medical complication from alcohol use"
+              }
+            ]
+          },
+          {
+            "name": "Pregnancy-related Concerns",
+            "risk_rating_code": "0",
+            "minimum_level": "No Specific Needs",
+            "rationale": "Patient is male - not applicable.",
+            "citations": [
+              {
+                "source": "Demographics",
+                "text": "DOB: 1994-04-03, Gender: Male",
+                "relevance": "Male patient - pregnancy concerns not applicable"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Alcohol-related liver enzyme elevation",
+          "Hypertension",
+          "Gastritis"
+        ]
+      },
+      {
+        "dimension_number": 3,
+        "dimension_name": "Emotional, Behavioral, or Cognitive Conditions",
+        "subdimensions": [
+          {
+            "name": "Active Psychiatric Symptoms",
+            "risk_rating_code": "1A",
+            "minimum_level": "Minimum Level 1.5 COE",
+            "rationale": "Moderate depression and anxiety symptoms requiring skilled mental health interventions but not psychiatric medication management.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "PHQ-9: 12 (moderate depression), GAD-7: 14 (moderate anxiety)",
+                "relevance": "Standardized measures indicate moderate psychiatric symptoms"
+              },
+              {
+                "source": "Assessment",
+                "text": "Co-occurring anxiety and depressive symptoms are present and likely exacerbated by ongoing alcohol use",
+                "relevance": "Clinical assessment of psychiatric comorbidity"
+              },
+              {
+                "source": "Progress Note",
+                "text": "persistent worry, low mood, anhedonia, irritability",
+                "relevance": "Specific psychiatric symptoms documented"
+              },
+              {
+                "source": "Progress Note",
+                "text": "affect was labile, shifting between frustration and remorse",
+                "relevance": "Observable mood symptoms during assessment"
+              }
+            ]
+          },
+          {
+            "name": "Persistent Disability",
+            "risk_rating_code": "0",
+            "minimum_level": "No Specific Needs",
+            "rationale": "No cognitive or mental health-related disabilities requiring individualized staff attention for treatment participation.",
+            "citations": [
+              {
+                "source": "Progress Note",
+                "text": "Patient arrived on time for his appointment, alert and oriented x4",
+                "relevance": "Demonstrates intact cognitive functioning and ability to participate in treatment"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Moderate depression and anxiety",
+          "Labile mood",
+          "Co-occurring psychiatric symptoms"
+        ]
+      },
+      {
+        "dimension_number": 4,
+        "dimension_name": "Substance Use-Related Risks",
+        "subdimensions": [
+          {
+            "name": "Likelihood of Engaging in Risky Substance Use",
+            "risk_rating_code": "C",
+            "minimum_level": "Minimum Level 2.5",
+            "rationale": "Recent relapse with ongoing daily use and identified triggers. High risk for continued substance use without intensive intervention.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "drinking 5-7 drinks per day over the past week with no days of abstinence",
+                "relevance": "Current heavy daily use pattern"
+              },
+              {
+                "source": "Progress Note",
+                "text": "Patient reports a \"bad night\" on May 8, stating he received a text from his ex-partner which triggered intense emotional",
+                "relevance": "Recent relapse episode demonstrating high risk"
+              },
+              {
+                "source": "Assessment",
+                "text": "Evening isolation and boredom are identified as high-risk triggers",
+                "relevance": "Identified environmental triggers for substance use"
+              }
+            ]
+          },
+          {
+            "name": "Likelihood of Engaging in Risky SUD-related Behaviors",
+            "risk_rating_code": "B",
+            "minimum_level": "Minimum Level 2.1",
+            "rationale": "Work performance impairment due to alcohol use but no high-risk behaviors like DUI or violence documented.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "tardiness to work approximately twice per week due to hangovers, difficulty concentrating on tasks",
+                "relevance": "Occupational impairment from alcohol use"
+              },
+              {
+                "source": "Progress Note",
+                "text": "was late to work twice last week due to hangovers",
+                "relevance": "Recent specific examples of work impact"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Recent relapse episode",
+          "Daily alcohol use",
+          "Work performance deterioration",
+          "Identified triggers"
+        ]
+      },
+      {
+        "dimension_number": 5,
+        "dimension_name": "Recovery Environment Interactions",
+        "subdimensions": [
+          {
+            "name": "Ability to Function Effectively in Current Environment",
+            "risk_rating_code": "A",
+            "minimum_level": "Minimum Level 2.1",
+            "rationale": "Functional impairment in work performance with documented tardiness and concentration difficulties, though maintains basic self-care.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "tardiness to work approximately twice per week due to hangovers, difficulty concentrating on tasks",
+                "relevance": "Specific functional impairments in occupational setting"
+              },
+              {
+                "source": "Assessment",
+                "text": "Occupational functioning is beginning to deteriorate",
+                "relevance": "Clinical assessment of declining function"
+              }
+            ]
+          },
+          {
+            "name": "Safety in Current Environment",
+            "risk_rating_code": "0",
+            "minimum_level": "No Specific Needs",
+            "rationale": "No safety concerns, abuse, neglect, or homelessness identified in documentation.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "I live alone in a one-bedroom apartment. Lease is stable.",
+                "relevance": "Stable housing situation with no safety concerns noted"
+              }
+            ]
+          },
+          {
+            "name": "Support in Current Environment",
+            "risk_rating_code": "ANY",
+            "minimum_level": "Any Level of Care",
+            "rationale": "Limited but present support system. Mother provides long-distance support and has one local friend. Environment not actively undermining recovery.",
+            "citations": [
+              {
+                "source": "Assessment",
+                "text": "Maintains phone contact with mother who lives out of state. Has one close friend in the area",
+                "relevance": "Identifies available support network"
+              },
+              {
+                "source": "Assessment",
+                "text": "Limited local support network. Socially isolated since breakup",
+                "relevance": "Acknowledges limitations but some support exists"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Work performance deterioration",
+          "Limited but present support system",
+          "Social isolation"
+        ]
+      },
+      {
+        "dimension_number": 6,
+        "dimension_name": "Level of Care Selection",
+        "subdimensions": [
+          {
+            "name": "Patient Willingness and Ability",
+            "risk_rating_code": "ANY",
+            "minimum_level": "Any Level of Care",
+            "rationale": "Patient currently engaged in Level 2.1 IOP with good attendance. May need discussion about step-up to more intensive care.",
+            "citations": [
+              {
+                "source": "Progress Note",
+                "text": "demonstrating early engagement with treatment",
+                "relevance": "Shows patient willingness to participate in treatment"
+              },
+              {
+                "source": "Assessment",
+                "text": "Current level of care (Level 2.1 IOP) remains appropriate",
+                "relevance": "Clinical team's current assessment of patient engagement"
+              }
+            ]
+          }
+        ],
+        "key_factors": [
+          "Current engagement in IOP",
+          "Demonstrated treatment compliance"
+        ]
+      }
+    ],
+    "loc_determination_steps": [
+      {
+        "step": 1,
+        "description": "",
+        "result": "Not indicated",
+        "rationale": ""
+      },
+      {
+        "step": 2,
+        "description": "Medically managed + Level 2 need",
+        "result": "Level 2.7_COE indicated",
+        "rationale": ""
+      }
+    ],
+    "recommended_level": "2.7_COE",
+    "recommended_level_name": "Medically Monitored Intensive Outpatient, Co-occurring Enhanced",
+    "coe_indicated": true,
+    "recovery_residence_indicated": false,
+    "level_rationale": "Algorithmically determined after QA corrections: Requires medically managed care AND Level 2 services. (changed from 2.5 COE)",
+    "dimension_6_notes": "Patient is currently engaged in Level 2.1 IOP and 'demonstrating early engagement with treatment.' Clinical team notes 'Current level of care (Level 2.1 IOP) remains appropriate.' There is a discrepancy between the recommended Level 2.5 COE and current Level 2.1 IOP that should be discussed with the patient, particularly given his recent relapse and need for more intensive support during this critical period.",
+    "clinical_summary": "35-year-old male with alcohol use disorder presenting with mild withdrawal symptoms, recent relapse, moderate depression/anxiety, and alcohol-related medical complications. Currently engaged in IOP but recent relapse and ongoing daily use indicate need for step-up to more intensive care with integrated medical and psychiatric services.",
+    "alternative_levels": [
+      {
+        "level": "2.1",
+        "name": "Intensive Outpatient Services",
+        "reason_not_recommended": "Current level but insufficient intensity given recent relapse and high likelihood of continued risky substance use (Dimension 4A requiring Level 2.5)"
+      },
+      {
+        "level": "1.7",
+        "name": "Medically Monitored Outpatient",
+        "reason_not_recommended": "Addresses medical monitoring needs but lacks intensity for substance use risk and does not provide needed skilled mental health interventions"
+      },
+      {
+        "level": "3.5 COE",
+        "name": "Clinically Managed High-Intensity Residential, Co-occurring Enhanced",
+        "reason_not_recommended": "More intensive than needed - patient has stable housing and some environmental support, no indication for residential care"
+      }
+    ]
+  },
+  "accuracy": 1.0,
+  "claims": {
+    "total": 42,
+    "verified": 42,
+    "fixed": 0,
+    "unsupported": 0,
+    "failed": 0
+  }
+}

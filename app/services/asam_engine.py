@@ -105,17 +105,49 @@ class ASAMEngine:
 
         return evaluation
 
+    @staticmethod
+    def _normalize_minimum_level(dim: int, subdim_name: str, risk_code: str, min_level_str: str) -> str:
+        """Normalize LLM's minimum_level string to a flowchart-compatible level code."""
+        from app.services.asam_flowchart import resolve_minimum_level
+        s = min_level_str.strip()
+
+        # Try to extract level from strings like "Minimum Level 2.5" or "Min. Level 3.7 COE"
+        import re
+        m = re.search(r'(?:Level\s+)?(\d\.\d(?:\s*(?:COE|BIO))?)', s, re.IGNORECASE)
+        if m:
+            return m.group(1).upper().replace(" ", "_")
+
+        # Common LLM outputs
+        lower = s.lower()
+        if "no specific" in lower or lower == "0":
+            return "0"
+        if "any level" in lower or lower == "any":
+            return "ANY"
+        if "moud" in lower:
+            return "MOUD-C"
+        if "recovery residence" in lower:
+            return "RR"
+        if "evaluation" in lower or "eval" in lower:
+            return "EVAL"
+
+        # Fall back to dimension-aware resolution from risk code
+        return resolve_minimum_level(dim, subdim_name, risk_code)
+
     def _apply_algorithmic_loc(self, evaluation: ASAMEvaluation):
         """Extract subdimension results and run the rule-based LOC flowchart."""
         subdim_results = []
         for dim in evaluation.dimensions:
             for subdim in dim.subdimensions:
+                normalized = self._normalize_minimum_level(
+                    dim.dimension_number, subdim.name,
+                    subdim.risk_rating_code, subdim.minimum_level,
+                )
                 subdim_results.append(
                     SubdimensionResult(
                         dimension=dim.dimension_number,
                         subdimension=subdim.name,
                         risk_code=subdim.risk_rating_code,
-                        minimum_level=subdim.minimum_level,
+                        minimum_level=normalized,
                     )
                 )
 

@@ -13,7 +13,6 @@ from app.db.database import get_db
 from app.db.models import TJCAudit as TJCAuditModel
 from app.schemas.tjc import TJCAuditResult
 from app.services.llm_client import LLMClient
-from app.services.qa_loop import run_qa_agent_tjc
 from app.services.qa_stream import stream_qa_agent_tjc
 
 logger = logging.getLogger(__name__)
@@ -40,32 +39,6 @@ async def _save_tjc(db: AsyncSession, patient_id: str, result: dict, raw_respons
     db.add(db_audit)
     await db.commit()
     logger.info("Saved TJC audit for patient %s (accuracy=%.1f%%)", patient_id, result["accuracy"] * 100)
-
-
-@router.post("/patients/{patient_id}/tjc-audit")
-async def audit_tjc(
-    patient_id: str,
-    db: AsyncSession = Depends(get_db),
-    llm: LLMClient = Depends(get_llm_client),
-):
-    """Audit patient docs against TJC CTS standards with agentic QA loop."""
-    extraction = await get_patient_data(patient_id, db)
-    result = await run_qa_agent_tjc(llm, extraction)
-
-    await _save_tjc(db, patient_id, result, llm.last_raw_response)
-
-    return {
-        **result["audit"],
-        "source_document": result["source_document"],
-        "linked_evidence": result["linked_evidence"],
-        "qa_agent": {
-            "accuracy": result["accuracy"],
-            "iterations": result["iterations"],
-            "claims": result["claims"],
-            "trace": result["trace"],
-            "unresolved_claims": result["final_claims"],
-        },
-    }
 
 
 @router.post("/patients/{patient_id}/tjc-audit/stream")

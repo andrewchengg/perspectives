@@ -1,0 +1,2492 @@
+{
+  "audit": {
+    "patient_id": "9353ec04-8d9d-4e56-a7a7-b54260041cd6",
+    "audited_at": "2026-05-15 23:52:01.717085+00:00",
+    "standards": [
+      {
+        "standard_id": "RI.01.01.01",
+        "standard_name": "The organization respects the rights of the individual served",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RI.01.01.01 EP 2",
+            "description": "The organization informs the individual served of the individual's rights",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation found throughout the entire clinical record indicating that patient rights were communicated to the patient. Searched biopsychosocial assessment, all progress notes, and admission documentation - no evidence of rights information being provided.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document that patient rights were provided and explained to patient, including receipt of written rights information"
+          },
+          {
+            "element": "RI.01.01.01 EP 3",
+            "description": "If an individual served is disoriented or lacks capacity to understand rights at the time of entry, they are informed again when they are able to understand",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Patient presented with cognitive impairment and confusion at admission (BAC 0.31, CIWA-Ar 18, intermittent confusion regarding timeline) but no documentation shows rights were re-communicated once orientation and cognition improved.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Develop process to re-inform patients of rights when capacity is restored; document when rights were re-communicated after cognitive clearing"
+          },
+          {
+            "element": "RI.01.01.01 EP 6",
+            "description": "The organization respects the cultural and personal values, beliefs, and preferences of the individual served",
+            "score": 1,
+            "status": "partial",
+            "finding": "Assessment includes some cultural information but is incomplete. Spiritual/cultural assessment documents loss of faith and Catholic upbringing but fails to explore cultural preferences related to treatment approach or other cultural values that should inform care planning.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Patient reports loss of faith \u2014 \"I stopped believing in anything a long time ago.\" Beliefs/practices to incorporate into therapy: None identified at this time. Patient was raised Catholic but has no current practice.",
+                "relevance": "Shows some spiritual assessment but lacks comprehensive cultural values exploration"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Complete comprehensive cultural assessment including treatment preferences, cultural practices, dietary needs, and other values that should inform treatment planning"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RI.01.01.03",
+        "standard_name": "The organization respects the right of the individual served to receive information in a manner the individual understands",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RI.01.01.03 EP 1",
+            "description": "The organization provides information to the individual served in a manner tailored to the individual's language and ability to understand",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation indicates that information was provided in a manner tailored to patient's understanding level or that staff assessed comprehension. Patient has cognitive impairments noted but no accommodation strategies documented.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document assessment of patient's comprehension level and communication adaptations made; ensure information is provided at appropriate literacy level"
+          },
+          {
+            "element": "RI.01.01.03 EP 2",
+            "description": "The organization provides interpreting and translation services, as necessary",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Patient's primary language is English and no interpreting services were needed based on documented language preference.",
+            "citations": [
+              {
+                "source": "Patient Demographics",
+                "text": "Language: English",
+                "relevance": "Documents patient's primary language as English, indicating no translation services needed"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "RI.01.01.03 EP 3",
+            "description": "The organization communicates with the individual served who has vision, speech, hearing, or cognitive impairments in a manner that meets the needs of that individual",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Patient has documented cognitive impairments (intermittent confusion, poor concentration, impaired judgment) but no documentation shows communication was adapted to accommodate these cognitive limitations.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document communication adaptations made for patients with cognitive impairments; ensure information delivery accounts for concentration and comprehension limitations"
+          }
+        ],
+        "compliance_percentage": 33.3
+      },
+      {
+        "standard_id": "RI.01.02.01",
+        "standard_name": "The organization respects the right of the individual served to collaborate in decisions about their care, treatment, or services",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RI.01.02.01 EP 1",
+            "description": "The organization involves the individual served in making decisions about their care, treatment, or services",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some evidence of patient involvement in treatment decisions exists, particularly regarding discharge planning and medication discussions, but formal shared decision-making process is not consistently documented across treatment planning.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Patient tearful but affect notably brighter than previous sessions. Reports she spoke with brother by phone and he reiterated his offer for her to come to Denver: \"He said he'd help me find a job and go to meetings with me.\"",
+                "relevance": "Shows patient involvement in discharge planning decisions"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Denver discharge plan with brother represents the most viable pathway to sustained recovery \u2014 sober environment, family support, geographic distance from boyfriend and using network.",
+                "relevance": "Indicates patient input was considered in discharge planning but doesn't document the collaborative decision-making process"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document systematic involvement of patient in all treatment decisions; establish formal shared decision-making process for treatment planning"
+          },
+          {
+            "element": "RI.01.02.01 EP 4",
+            "description": "The organization respects the right of the individual served or surrogate decision-maker to refuse care, treatment, or services in accordance with law and regulation",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation found regarding patient's right to refuse treatment or how refusals would be handled. No evidence that this right was communicated to the patient.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document patient education regarding right to refuse treatment; establish clear process for handling treatment refusals in accordance with regulations"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RI.01.03.01",
+        "standard_name": "The organization honors the right of the individual served to give or withhold informed consent",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RI.01.03.01 EP 2",
+            "description": "The informed consent process includes a discussion about the proposed care, treatment, or services; goals and potential benefits and risks; reasonable alternatives and risks/benefits of alternatives and not receiving care",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of informed consent process found. No evidence that proposed treatments, goals, benefits, risks, or alternatives were discussed with patient in a formal informed consent process.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "limited"
+            },
+            "remediation": "Implement and document comprehensive informed consent process covering all required elements: proposed treatments, goals, benefits, risks, alternatives, and consequences of refusing treatment"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RI.01.04.01",
+        "standard_name": "The organization respects the right of the individual served to receive information about the staff responsible for the individual's care, treatment, or services",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RI.01.04.01 EP 1",
+            "description": "The organization informs the individual served of the name of the staff member who has primary responsibility for the individual's care and the name of staff members who will provide care",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "While clinician names appear in documentation (andrew c), there is no evidence that the patient was formally informed about who has primary responsibility for care or which staff members would be providing services.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document that patient was informed of primary clinician and treatment team members; establish process to communicate staff roles and responsibilities to patients"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RC.01.01.01",
+        "standard_name": "The organization maintains complete and accurate clinical/case records.",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "RC.01.01.01 EP 5",
+            "description": "The clinical/case record includes information needed to support the diagnosis or condition; justify care, treatment, or services; document the course and result of care; and promote continuity among staff and providers.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Documentation includes comprehensive diagnostic information and treatment justification in the biopsychosocial assessment and progress notes, documenting course of care. However, the record lacks documented results or outcomes of specific treatments provided, and mental status exam is explicitly noted as 'Not documented' which is required for complete diagnostic support.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Patient is a 37-year-old female presenting with severe polysubstance use disorder involving IV fentanyl, alcohol, and benzodiazepines. Admitted following opioid overdose requiring naloxone administration in the ED.",
+                "relevance": "Supports diagnosis and justifies admission for care"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Mental Status Exam: Not documented",
+                "relevance": "Gap in information needed to support diagnosis"
+              },
+              {
+                "source": "DAP Note 2026-05-12",
+                "text": "CIWA discontinued \u2014 scores \u2264 4 for past 5 days. COWS not applicable, patient stable on buprenorphine 16mg SL daily.",
+                "relevance": "Documents course of care and treatment response"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Complete and document mental status examination and document specific treatment outcomes and results"
+          },
+          {
+            "element": "RC.01.01.01 EP 6",
+            "description": "The organization uses standardized formats to document the care, treatment, or services it provides to individuals served.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Documentation uses standardized formats including structured biopsychosocial assessment template with consistent sections, SOAP format progress notes, and DAP format notes with standardized headings.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Presenting Problem: [structured content] 2. Signs and Symptoms (DSM-V-TR based) resulting in impairment(s): [structured categories] Social: Occupational: Affective: Cognitive: Physical:",
+                "relevance": "Demonstrates standardized assessment format with consistent section headers"
+              },
+              {
+                "source": "SOAP Note 2026-05-11",
+                "text": "SUBJECTIVE: OBJECTIVE: ASSESSMENT: PLAN:",
+                "relevance": "Shows standardized SOAP format for progress notes"
+              },
+              {
+                "source": "DAP Note 2026-05-12",
+                "text": "DATA: ASSESSMENT: PLAN:",
+                "relevance": "Shows standardized DAP format for progress notes"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "RC.01.01.01 EP 7",
+            "description": "All entries in the clinical/case record are dated.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "All clinical record entries are properly dated with specific dates provided for each document.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "BIOPSYCHOSOCIAL ASSESSMENT (2026-05-15)",
+                "relevance": "Shows dated entry for assessment"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "PROGRESS NOTE \u2014 SOAP (2026-05-11)",
+                "relevance": "Shows dated entry for progress note"
+              },
+              {
+                "source": "DAP Note",
+                "text": "PROGRESS NOTE \u2014 DAP (2026-05-12)",
+                "relevance": "Shows dated entry for progress note"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 66.7
+      },
+      {
+        "standard_id": "RC.01.02.01",
+        "standard_name": "Entries in the clinical/case record are authenticated.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RC.01.02.01 EP 3",
+            "description": "The author of each clinical/case record entry is identified in the clinical/case record.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Authors are partially identified in the clinical record with 'andrew c' listed as clinician for multiple entries, but the identification lacks complete professional credentials, title, or full name formatting that would constitute complete author identification.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Clinician: andrew c,",
+                "relevance": "Shows partial author identification but incomplete formatting"
+              },
+              {
+                "source": "SOAP Note 2026-05-11",
+                "text": "Clinician: andrew c,",
+                "relevance": "Shows same partial author identification pattern"
+              },
+              {
+                "source": "DAP Note 2026-05-12",
+                "text": "Clinician: andrew c,",
+                "relevance": "Shows consistent but incomplete author identification"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "pattern"
+            },
+            "remediation": "Implement complete author identification including full name, credentials, and title for all clinical entries"
+          },
+          {
+            "element": "RC.01.02.01 EP 4",
+            "description": "Entries in the clinical/case record are authenticated by the author. Information introduced through transcription or dictation is authenticated by the author.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No authentication signatures, electronic signatures, or authentication indicators are present in any of the clinical record entries. The documentation shows author identification but lacks any form of authentication by the authors.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Implement authentication system requiring electronic or written signatures for all clinical record entries"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RC.01.03.01",
+        "standard_name": "Documentation in the clinical/case record is entered in a timely manner.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RC.01.03.01 EP 2",
+            "description": "The organization follows its written policy requiring timely entry of information into the clinical/case record of the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "There is no documentation of the organization's written policy for timely entry of clinical information, nor any evidence that such a policy is being followed. The clinical record does not demonstrate compliance with any stated timeliness requirements.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Establish and document written policy for timely clinical record entry and ensure compliance documentation in patient records"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RC.02.01.01",
+        "standard_name": "The clinical/case record contains information that reflects the care, treatment, or services provided to the individual served.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RC.02.01.01 EP 1",
+            "description": "The clinical/case record contains demographic information: name, address, date of birth, sex, family/legally authorized representative contact information, preferred language and special communication needs.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Record contains patient name, date of birth, gender, and preferred language. However, patient address, family contact information, legally authorized representative information, and special communication needs are not documented.",
+            "citations": [
+              {
+                "source": "Patient Demographics",
+                "text": "Name: Danielle Torres DOB: 1989-04-09, Gender: Female Language: English",
+                "relevance": "Shows partial demographic information present"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Brother (age 39) in Denver is in recovery (3 years sober) and has offered to provide housing post-discharge.",
+                "relevance": "References family member but lacks formal contact information"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "pattern"
+            },
+            "remediation": "Document complete demographic information including patient address, formal family contact information, and assessment of special communication needs"
+          },
+          {
+            "element": "RC.02.01.01 EP 4",
+            "description": "As needed, the clinical/case record contains advance directives, informed consent, protective services documentation, consent documentation, communication records, involvement documentation, unusual occurrences documentation, and special procedures indications.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Record documents some required elements including unusual occurrences (overdose, intimate partner violence), communication with family member (brother), and special procedures (naloxone administration). However, advance directives, informed consent documentation, formal protective services documentation, and admission consent are not documented.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Admitted following opioid overdose requiring naloxone administration in the ED.",
+                "relevance": "Documents unusual occurrence and special procedure"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Current boyfriend is an active substance user and perpetrator of intimate partner violence.",
+                "relevance": "Documents unusual occurrence requiring protective services consideration"
+              },
+              {
+                "source": "DAP Note 2026-05-12",
+                "text": "Brother in Denver remains supportive via phone.",
+                "relevance": "Documents communication with family"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document advance directives status, obtain and document informed consent for treatment, complete formal protective services assessment and documentation"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "RC.02.04.01",
+        "standard_name": "The clinical/case record of the individual served contains discharge information.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "RC.02.04.01 EP 3",
+            "description": "The clinical/case record contains a concise discharge summary including reason for acceptance, care provided, condition at discharge, and information provided to individual and family.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No discharge summary is present in the clinical record. Patient appears to be currently in treatment based on progress notes, but no formal discharge documentation exists.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Complete discharge summary upon patient discharge including all required elements: reason for admission, treatment provided, discharge condition, and discharge instructions"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.04.01.01",
+        "standard_name": "The organization coordinates the care, treatment, or services provided to an individual served as part of the plan for care, treatment, or services and in a manner consistent with the organization's scope of care, treatment, or services.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.04.01.01 EP 1",
+            "description": "The organization coordinates the care, treatment, or services provided through internal resources to an individual served.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Internal coordination is partially documented through care planning across medical, psychiatric, and case management services, but lacks evidence of systematic coordination processes or protocols for ensuring comprehensive care delivery.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Continue individual therapy 2x/week \u2014 next session to focus on safety planning and processing boyfriend's threatening communications 2. Continue Seeking Safety group 3. Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows coordination planning between therapy, case management, and discharge planning services"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with psychiatry re: prazosin titration and antidepressant consideration",
+                "relevance": "Demonstrates coordination between clinical and psychiatric services"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Implement systematic care coordination protocols and document formal coordination meetings or communication processes between internal departments"
+          },
+          {
+            "element": "CTS.04.01.01 EP 5",
+            "description": "When external resources are needed, the organization participates in coordinating care, treatment, or services with these resources.",
+            "score": 1,
+            "status": "partial",
+            "finding": "External coordination is initiated but incomplete. Hepatology consult was ordered but follow-up coordination is not documented. Denver discharge planning shows intent to coordinate with external IOP programs and buprenorphine prescribers but actual coordination has not yet occurred.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Hepatology consult ordered Day 1 but no follow-up documentation in chart",
+                "relevance": "Shows external referral was made but coordination follow-up is absent"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows planning for external coordination but actual coordination not yet documented"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "pattern"
+            },
+            "remediation": "Document follow-up on hepatology consult and complete actual coordination with Denver-area external providers including confirmed appointments and information transfer"
+          },
+          {
+            "element": "CTS.04.01.01 EP 6",
+            "description": "The organization has a process to receive or share relevant information about the individual served to facilitate coordination and continuity when individuals are referred to other care, treatment, or service providers.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of formal processes for information sharing or receiving relevant information from external providers. No evidence of structured information transfer protocols for referrals or coordination activities.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Establish and document formal processes for information sharing with external providers, including standardized transfer forms and protocols for receiving information from referring providers"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.04.01.03",
+        "standard_name": "The individual served receives education and training specific to the individual's needs and abilities consistent with the care, treatment, or services provided.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.04.01.03 EP 1",
+            "description": "Education provided is based on the needs and abilities of the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of formal patient education being provided. While treatment activities are documented, there is no evidence of structured educational content tailored to the patient's specific needs and abilities.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Implement and document formal patient education sessions addressing the patient's specific substance use disorders, trauma history, and medical conditions with content tailored to her abilities"
+          },
+          {
+            "element": "CTS.04.01.03 EP 2",
+            "description": "The assessment of learning needs addresses the individual's cultural and religious beliefs, emotional barriers, desire and motivation to learn, physical or cognitive limitations, and barriers to communication.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal learning needs assessment documented. While some barriers are identified (cognitive impairment, emotional barriers from trauma), there is no systematic assessment of cultural beliefs, motivation to learn, or communication barriers for educational purposes.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Conduct and document formal learning needs assessment addressing cultural/religious beliefs, emotional barriers, motivation to learn, cognitive limitations, and communication barriers"
+          },
+          {
+            "element": "CTS.04.01.03 EP 4",
+            "description": "Based on the assessed needs and abilities of the individual served and the organization's scope of care, treatment, or services, the individual is educated about the following: The plan for care, treatment, or services; Basic health practices and safety; The safe and effective use of medications; Nutrition interventions, modified diets, and oral health, as needed; Habilitation or rehabilitation techniques to help them reach the maximum level of independence possible.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of formal education provided on required topics. While medications are prescribed and nutritional concerns noted, there is no evidence of structured patient education on treatment plan, health practices, medication safety, nutrition, or rehabilitation techniques.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Provide and document comprehensive patient education covering treatment plan, health practices and safety, medication management, nutritional needs, and recovery techniques"
+          },
+          {
+            "element": "CTS.04.01.03 EP 5",
+            "description": "The content of the education provided to the individual served is presented in an understandable manner.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of formal patient education content or methods used to ensure comprehension and accessibility.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Document educational content delivery methods and ensure materials are presented in understandable format appropriate to patient's cognitive abilities and educational level"
+          },
+          {
+            "element": "CTS.04.01.03 EP 7",
+            "description": "The individual's comprehension of the education provided is evaluated.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of evaluation of patient comprehension of educational content provided.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Implement and document formal evaluation methods to assess patient understanding of educational content provided"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.04.02.33",
+        "standard_name": "For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: The organization provides evidence-based treatment for opioid use disorder, including medications for opioid use disorder.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.04.02.33 EP 1",
+            "description": "For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: As indicated by evidence-based practice, the organization offers individuals served who have an opioid use disorder medication to treat opioid use disorder (MOUD) as part of their mutually agreed upon treatment plan. The MOUD can be provided by the organization, through contractual agreement, or through a referral.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Patient with opioid use disorder is receiving buprenorphine as MOUD, demonstrating evidence-based medication treatment is being provided as part of treatment planning.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "COWS not applicable, patient stable on buprenorphine 16mg SL daily",
+                "relevance": "Documents patient is receiving buprenorphine maintenance treatment for opioid use disorder"
+              },
+              {
+                "source": "DAP Note",
+                "text": "COWS not applicable \u2014 stable on buprenorphine 16mg",
+                "relevance": "Confirms ongoing MOUD treatment with buprenorphine"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.04.02.33 EP 2",
+            "description": "For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: If the organization provides a referral for medication to treat opioid use disorder, the organization coordinates their care and confirms initiation and continuation of medication.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Organization is providing MOUD directly rather than through referral, and is coordinating continuation of buprenorphine treatment through discharge planning to ensure continuity.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows coordination to ensure continuation of buprenorphine treatment post-discharge"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.04.02.33 EP 3",
+            "description": "For organizations providing care, treatment, or services for opioid use disorder to individuals with addictions: If the organization initiates medications for opioid use disorder, the organization informs the individual served about the dangers of abrupt discontinuation of treatment if they leave the organization for any reason, including but not limited to requiring a different level of care or transferring to a different facility.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation that the patient was informed about the dangers of abrupt discontinuation of buprenorphine treatment if she leaves the organization or transfers to another facility.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "limited"
+            },
+            "remediation": "Document patient education regarding the risks of abrupt buprenorphine discontinuation and the importance of continuing MOUD treatment during any transitions in care"
+          }
+        ],
+        "compliance_percentage": 66.7
+      },
+      {
+        "standard_id": "CTS.04.03.35",
+        "standard_name": "The organization responds to medical emergencies according to organization policy and procedures.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.04.03.35 EP 8",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization provides information on how to obtain life-saving medication in the case of opioid overdose.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation that the patient was provided information on how to obtain naloxone (Narcan) or other life-saving medication for opioid overdose prevention, despite her history of overdoses and ongoing opioid use disorder.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "limited"
+            },
+            "remediation": "Provide and document education to patient about obtaining naloxone, including sources for acquisition, proper administration, and emergency response procedures for opioid overdose"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "NPSG.03.06.01",
+        "standard_name": "Maintain and communicate accurate medication information for the individual served",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "NPSG.03.06.01 EP 1",
+            "description": "Obtain and/or update information on the medications the individual served is currently taking. This information is documented in a list or other format that is useful to those who manage medications.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Current medications are partially documented but not in a comprehensive list format. Buprenorphine 16mg is mentioned in progress notes, prazosin dosing is referenced, and alprazolam use is documented in substance use history, but there is no consolidated medication list or reconciliation document.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "COWS not applicable, patient stable on buprenorphine 16mg SL daily",
+                "relevance": "Shows current buprenorphine medication"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Nightmares decreased to 2-3 per week from nightly since prazosin increase to 2mg",
+                "relevance": "Shows current prazosin medication"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Create a comprehensive current medication list including all prescribed medications with complete details (name, dose, route, frequency, purpose) in a standardized format accessible to all medication management staff"
+          },
+          {
+            "element": "NPSG.03.06.01 EP 2",
+            "description": "Define the types of medication information (for example, name, dose, route, frequency, purpose) to be collected in non-24-hour settings based on situations of individuals served and characteristics of different settings.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No organizational policy or defined medication information collection requirements are documented anywhere in the clinical record. The required definition of medication information types to be collected is completely absent.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Develop and implement written policy defining specific medication information elements to be collected (name, dose, route, frequency, purpose, allergies, interactions) based on organization's service settings and patient populations"
+          },
+          {
+            "element": "NPSG.03.06.01 EP 4",
+            "description": "For organizations that prescribe medications: Provide the individual served (or family as needed) with written information on the medications the individual should be taking at the end of the encounter (for example, name, dose, route, frequency, purpose).",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation exists of providing written medication information to the patient. While medications are being prescribed (buprenorphine, prazosin), there is no evidence that written medication information was provided to the patient at any encounter.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Implement process to provide written medication information sheets to patients for all prescribed medications, including name, dose, route, frequency, and purpose"
+          },
+          {
+            "element": "NPSG.03.06.01 EP 5",
+            "description": "For organizations that prescribe medications: Explain the importance of managing medication information to the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation exists of explaining the importance of medication information management to the patient. While medication education may have occurred, there is no record of discussing the importance of maintaining accurate medication information.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document patient education regarding the importance of maintaining accurate medication information, including risks of medication errors and importance of sharing complete medication history with all healthcare providers"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "NPSG.16.01.01",
+        "standard_name": "Improving health outcomes for all the individuals served by the organization is a quality and safety priority",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "NPSG.16.01.01 EP 2",
+            "description": "The organization assesses the health-related social needs (HRSNs) of the individual served and provides information about community resources and support services.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Health-related social needs are partially assessed through the biopsychosocial assessment, including housing instability, intimate partner violence, unemployment, and lack of social supports. However, there is no evidence of providing specific information about community resources and support services to address these identified needs.",
+            "citations": [
+              {
+                "source": "BPS Assessment",
+                "text": "Current boyfriend is an active substance user and perpetrator of intimate partner violence. Patient reports he 'doesn't hit me that much anymore but he controls everything.'",
+                "relevance": "Documents assessment of intimate partner violence as health-related social need"
+              },
+              {
+                "source": "BPS Assessment",
+                "text": "Unemployed 18 months, terminated from pharmacy technician position following diversion investigation. Unable to maintain employment due to substance use.",
+                "relevance": "Documents assessment of employment-related social need"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate",
+                "relevance": "Shows some community resource connection for domestic violence"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Complete comprehensive assessment of all health-related social needs and provide written information about specific community resources addressing housing, employment, domestic violence services, food assistance, and other identified social determinants of health"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "MM.01.01.01",
+        "standard_name": "The organization plans its medication management processes",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "MM.01.01.01 EP 1",
+            "description": "For organizations that engage in any aspect of the medication management process: The organization follows a written policy that describes that the following information about the individual served is accessible to staff who participate in the medication management process: Age; Sex; Diagnoses/conditions; Allergies; Sensitivities; Height and weight (when necessary); Drug and alcohol use and abuse; Current medications; Pregnancy and lactation information (when necessary); Any additional information required by the organization.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Most required medication management information is documented but not in a consolidated format accessible to medication management staff. Age, sex, diagnoses, height/weight, and substance use are documented. However, allergies and sensitivities are not documented anywhere in the record, and current medications are scattered across progress notes rather than in an organized list.",
+            "citations": [
+              {
+                "source": "Patient Demographics",
+                "text": "DOB: 1989-04-09, Gender: Female",
+                "relevance": "Provides age and sex information"
+              },
+              {
+                "source": "BPS Assessment",
+                "text": "Patient is underweight (BMI 18.2, weight 112 lbs on admission)",
+                "relevance": "Provides height and weight information"
+              },
+              {
+                "source": "BPS Assessment",
+                "text": "severe polysubstance use disorder involving IV fentanyl, alcohol, and benzodiazepines",
+                "relevance": "Documents drug and alcohol use and abuse"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Implement comprehensive medication management documentation system that consolidates all required information in accessible format, including formal allergy and sensitivity documentation"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "MM.04.01.01",
+        "standard_name": "Medication orders are clear and accurate",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "MM.04.01.01 EP 9",
+            "description": "For organizations that prescribe medications: A diagnosis, condition, or indication for use exists for each medication ordered.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Clear diagnoses and indications exist for prescribed medications. Buprenorphine is indicated for opioid use disorder, and prazosin is indicated for PTSD-related nightmares, both of which are documented diagnoses.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "patient stable on buprenorphine 16mg SL daily",
+                "relevance": "Buprenorphine prescribed for documented opioid use disorder"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Nightmares decreased to 2-3 per week from nightly since prazosin increase to 2mg",
+                "relevance": "Prazosin prescribed for documented PTSD-related nightmares"
+              },
+              {
+                "source": "BPS Assessment",
+                "text": "severe polysubstance use disorder involving IV fentanyl, alcohol, and benzodiazepines. Co-occurring PTSD and Major Depressive Disorder",
+                "relevance": "Documents conditions for which medications are prescribed"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "MM.07.01.01",
+        "standard_name": "The organization monitors individuals served to determine the effects of their medication(s)",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "MM.07.01.01 EP 1",
+            "description": "For organizations that prescribe or administer medications: The organization monitors the side effects and effectiveness of the medications, as reported by the individual served or their family.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Medication effectiveness and patient-reported effects are documented throughout progress notes. Patient reports on prazosin effectiveness for nightmares and appears to be monitored for buprenorphine effectiveness and any adverse effects.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Reports nightmares have decreased since prazosin increase \u2014 'I only wake up 2-3 times a week now instead of every night.'",
+                "relevance": "Documents patient-reported effectiveness of prazosin"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "When asked about appetite, patient states she 'just forgets to eat sometimes' and food doesn't taste right",
+                "relevance": "Documents patient-reported side effects potentially related to medications"
+              },
+              {
+                "source": "DAP Note",
+                "text": "COWS not applicable \u2014 stable on buprenorphine 16mg",
+                "relevance": "Documents effectiveness of buprenorphine for opioid withdrawal"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "MM.07.01.01 EP 2",
+            "description": "For organizations that prescribe or administer medications: The organization monitors the response of the individual served to their medications by taking into account information from the clinical/case record, and the individual's response.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Medication response monitoring incorporates both clinical record information and patient response. Progress notes document clinical indicators (COWS scores, sleep patterns, appetite changes) alongside patient-reported experiences.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "COWS not applicable, patient stable on buprenorphine 16mg SL daily. Cravings 3/10.",
+                "relevance": "Documents clinical monitoring and patient-reported response to buprenorphine"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Nightmares decreased to 2-3 per week from nightly since prazosin increase to 2mg",
+                "relevance": "Documents clinical improvement in documented symptom with medication adjustment"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Weight: 107 lbs (down 5 lbs from admission weight of 112 lbs, BMI approximately 17.5). Patient has eaten less than 50% of meals for past several days",
+                "relevance": "Documents clinical monitoring of potential medication side effects on appetite and weight"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.01.01",
+        "standard_name": "The organization has a screening procedure for the early detection of risk of imminent harm to self or others.",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.01 EP 1",
+            "description": "The screening procedure determines the need for immediate intervention to protect the individual served or others.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "The screening procedure effectively identified immediate intervention needs for suicide risk and intimate partner violence concerns, with ongoing safety monitoring and safety planning documented.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Co-occurring PTSD and Major Depressive Disorder with chronic passive suicidal ideation.",
+                "relevance": "Documents screening identified suicide risk requiring immediate intervention"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "Endorses passive suicidal ideation: \"I think about it but I wouldn't do anything.\"",
+                "relevance": "Shows specific screening for suicidal ideation with assessment of immediate risk"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate.",
+                "relevance": "Demonstrates immediate intervention was implemented for identified IPV safety concerns"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.01.01 EP 2",
+            "description": "The organization follows its process for responding when an immediate risk of harm to self or others is identified.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Organization implemented appropriate responses to identified risks including safety planning for IPV, continuous SI monitoring, and medical monitoring for high-risk withdrawal.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Continue SI monitoring at each clinical contact \u2014 consider formal C-SSRS administration",
+                "relevance": "Shows ongoing process for monitoring identified suicide risk"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate.",
+                "relevance": "Documents specific intervention process for identified IPV safety concerns"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Patient presents with severe polysubstance use disorder requiring ASAM Level 4.0 medically managed intensive inpatient care. Concurrent alcohol and benzodiazepine dependence with seizure history creates high risk for complicated withdrawal requiring medical monitoring.",
+                "relevance": "Shows appropriate level of care determination based on identified medical risks"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.01.03",
+        "standard_name": "The organization performs screenings and assessments as defined by the organization's policy.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.03 EP 1",
+            "description": "The organization assesses each individual served in accordance with organization policy.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Comprehensive biopsychosocial assessment was completed covering all required domains including substance use history, psychiatric history, medical history, social history, family history, and risk assessment.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "=== BIOPSYCHOSOCIAL ASSESSMENT (2026-05-15) === Clinician: andrew c, Type: biopsychosocial_intake",
+                "relevance": "Documents completion of formal biopsychosocial intake assessment"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Presenting Problem: Patient is a 37-year-old female presenting with severe polysubstance use disorder involving IV fentanyl, alcohol, and benzodiazepines.",
+                "relevance": "Shows comprehensive assessment of presenting concerns"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.01.03 EP 2",
+            "description": "The organization conducts each individual's assessment within the time frame specified by the needs of the individual served, organization policy, and law and regulation.",
+            "score": 1,
+            "status": "partial",
+            "finding": "The biopsychosocial assessment was completed on admission date, but several assessment components remain incomplete after 12 days including hepatology consult, formal suicide risk assessment (C-SSRS), cultural assessment, and complete spiritual assessment.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "=== BIOPSYCHOSOCIAL ASSESSMENT (2026-05-15) === Clinician: andrew c, Type: biopsychosocial_intake",
+                "relevance": "Shows initial assessment completed on admission date"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Outstanding items: hepatology consult follow-up not documented, formal suicide risk assessment instrument not administered (C-SSRS recommended), cultural assessment not completed, spiritual assessment incomplete.",
+                "relevance": "Documents multiple assessment components still incomplete after 12 days"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Complete all outstanding assessment components within organization policy timeframes, particularly hepatology consult follow-up and formal suicide risk assessment"
+          },
+          {
+            "element": "CTS.02.01.03 EP 3",
+            "description": "The organization collects information during screenings and/or assessments about the following: The individual's perceptions of their needs, preferences, and goals for care, treatment, or services; When indicated and available, the family's perceptions and preferences for care, treatment, or services.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Patient's perceptions of needs and preferences are documented throughout clinical notes, but formal treatment goals in the patient's own words are not documented. Family perceptions and preferences are not systematically assessed despite available brother who is actively involved in discharge planning.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document formal treatment goals in patient's own words and systematically assess family member's (brother's) perceptions and preferences for treatment given his involvement in discharge planning"
+          }
+        ],
+        "compliance_percentage": 33.3
+      },
+      {
+        "standard_id": "CTS.02.01.05",
+        "standard_name": "Physical health screening.",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.05 EP 1",
+            "description": "For organizations providing care, treatment, or services in non-24-hour settings: The organization follows its written physical health screening process to determine whether an individual served is in need of a medical history and physical examination that is based on the population(s) served and, at a minimum, includes the following: Data to be collected; Time frame for completion of the screening; Screening triggers that indicate the need for a medical history and physical examination.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Comprehensive physical health screening was performed identifying multiple medical concerns requiring ongoing monitoring and consultation. Medical history data collection, vital signs, laboratory studies, and physical examination findings are documented with appropriate follow-up triggered.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Summary of health: Summary of health: Patient is underweight (BMI 18.2, weight 112 lbs on admission). Hepatitis C positive, diagnosed 2023, untreated. Chronic HCV-related liver disease with elevated enzymes (AST 187, ALT 142, GGT 312). Thrombocytopenia (platelets 98K). Mildly elevated serum ammonia (58). Prior DVT right leg (2024). Track marks bilateral antecubital fossae and left hand dorsum from IV drug use.",
+                "relevance": "Documents comprehensive collection of medical history and physical examination findings"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Admission vitals: BP 142/88, HR 92, Temp 98.9F.",
+                "relevance": "Shows vital signs data collection as part of physical health screening"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Hepatology consult ordered Day 1",
+                "relevance": "Demonstrates screening triggered appropriate specialist consultation"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.01.09",
+        "standard_name": "The organization screens all individuals served for physical pain.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.09 EP 1",
+            "description": "The organization screens all individuals served to identify those for whom a physical pain assessment is indicated.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation of systematic pain screening was found in any of the clinical documentation despite patient having multiple medical conditions and history of IV drug use that could be associated with pain.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Implement systematic pain screening for all patients using standardized pain assessment tools and document findings"
+          },
+          {
+            "element": "CTS.02.01.09 EP 2",
+            "description": "Individuals for whom a physical pain assessment is indicated are either assessed and treated by the organization or referred for assessment or treatment.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Since no pain screening was documented, there is no evidence of pain assessment or treatment planning for individuals who may have pain-related needs.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "After implementing pain screening, ensure individuals identified as needing pain assessment receive appropriate evaluation and treatment planning"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.02.01.11",
+        "standard_name": "The organization screens all individuals served for their nutritional status.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.11 EP 1",
+            "description": "The organization screens all individuals served to identify those for whom a nutritional assessment is indicated. At a minimum, the screening includes questions about the following: Food allergies; Weight loss or gain of 10 pounds or more in the last 3 months; Decrease in food intake and/or appetite; Dental problems; Eating habits or behaviors that may be indicators of an eating disorder, such as bingeing or inducing vomiting.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Nutritional concerns are identified and monitored including underweight status, weight loss during treatment, and poor appetite. However, systematic screening for the required elements (food allergies, 10-pound weight changes, dental problems, eating disorder behaviors) is not documented.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Patient is underweight (BMI 18.2, weight 112 lbs on admission)",
+                "relevance": "Documents identification of underweight status as nutritional concern"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Weight: 107 lbs (down 5 lbs from admission weight of 112 lbs, BMI approximately 17.5). Patient has eaten less than 50% of meals for past several days per nursing documentation.",
+                "relevance": "Shows ongoing monitoring of weight loss and decreased food intake"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "When asked about appetite, patient states she \"just forgets to eat sometimes\" and food doesn't taste right.",
+                "relevance": "Documents assessment of appetite changes"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Implement systematic nutritional screening that specifically assesses food allergies, weight changes over 3 months, dental problems, and eating disorder behaviors"
+          },
+          {
+            "element": "CTS.02.01.11 EP 2",
+            "description": "Individuals for whom a nutritional assessment is indicated are either assessed and treated by the organization or referred for assessment or treatment.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Nutritional assessment is indicated and some interventions are documented, but follow-up on dietetics consultation completion is not clearly documented.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Follow up on nutritional concerns \u2014 track meal intake, daily weights, ensure dietetics consult completed",
+                "relevance": "Shows plan for nutritional assessment and monitoring"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Weight loss of 5 lbs in 12 days in an already underweight patient with liver disease is concerning and requires aggressive nutritional follow-up",
+                "relevance": "Documents recognition of need for intensive nutritional intervention"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document completion of dietetics consultation and develop comprehensive nutritional treatment plan for identified concerns"
+          },
+          {
+            "element": "CTS.02.01.11 EP 3",
+            "description": "For organizations that assess nutritional status, the assessment identifies those individuals who may be at moderate or high nutritional risk.",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "The assessment clearly identifies the patient as high nutritional risk based on underweight status, continued weight loss, and underlying liver disease.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Weight loss of 5 lbs in 12 days in an already underweight patient with liver disease is concerning and requires aggressive nutritional follow-up \u2014 may be multifactorial (medication side effects, early sobriety anorexia, depression). This could become a barrier to step-down if not addressed.",
+                "relevance": "Clearly identifies patient as high nutritional risk and recognizes potential impact on treatment progression"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 33.3
+      },
+      {
+        "standard_id": "CTS.02.01.15",
+        "standard_name": "As relevant to care, treatment, or services, the organization screens for the legal issues of the individual served.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.01.15 EP 1",
+            "description": "A screening identifies individuals for whom a legal assessment is indicated, and the individuals who are identified are either assessed by the organization or referred for assessment.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some legal issues are identified including employment termination following diversion investigation, but systematic legal screening is not documented and no formal legal assessment or referral is noted.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Unemployed 18 months, terminated from pharmacy technician position following diversion investigation.",
+                "relevance": "Identifies legal issue related to drug diversion at workplace"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Implement systematic legal screening and provide formal legal assessment or referral for identified issues including diversion investigation"
+          },
+          {
+            "element": "CTS.02.01.15 EP 3",
+            "description": "For organizations that assess the legal status of the individual, the information to be collected includes at least the following: A legal history; A preliminary discussion to determine how much the individual's legal situation will influence their progress in care, treatment, or services, and the urgency of the legal situation; The relationship between the presenting conditions and legal involvement.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal legal assessment was documented that includes legal history, impact on treatment progress, urgency assessment, or relationship between substance use and legal involvement.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Conduct comprehensive legal assessment including legal history, impact on treatment, urgency determination, and connection between substance use and legal issues"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.03.01.01",
+        "standard_name": "The organization bases the planned care, treatment, or services on the needs, strengths, preferences, and goals of the individual served.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.03.01.01 EP 1",
+            "description": "In collaboration with the individual served and, as appropriate, their family, the organization makes care, treatment, or service decisions that are based on information it has collected about the individual's needs, strengths, preferences, and goals.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Assessment documents comprehensive information about needs and strengths, but specific patient preferences and goals are not documented. Care decisions appear to be made based on clinical assessment but collaboration with patient in decision-making is not explicitly documented.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "Strengths: Completed high school. Completed one year of community college in pre-nursing program, demonstrating academic capability. Brother (age 39) in Denver is in recovery (3 years sober) and has offered to provide housing post-discharge.",
+                "relevance": "Documents patient strengths that could inform care planning"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Changes desired: Patient has expressed interest in peer support and recovery community. Stated she wants to 'help people like me someday' and asked about peer support specialist training.",
+                "relevance": "Documents some patient preferences but lacks comprehensive documentation of goals and collaborative decision-making process"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document specific patient preferences and goals in patient's own words, and document the collaborative decision-making process for care planning decisions."
+          },
+          {
+            "element": "CTS.03.01.01 EP 2",
+            "description": "Care, treatment, or service decisions are collaborative and interdisciplinary when more than one discipline is involved in the care, treatment, or services of the individual served.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Multiple disciplines are involved (psychiatry, case management, dietetics, hepatology, DV advocate) but interdisciplinary collaboration and decision-making is not documented. References to coordination exist but formal interdisciplinary care decisions are not evidenced.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows coordination with case management but not collaborative decision-making"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with psychiatry re: prazosin titration and antidepressant consideration",
+                "relevance": "Shows coordination with psychiatry but not interdisciplinary collaborative decisions"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate",
+                "relevance": "Shows multiple disciplines involved but lacks documentation of collaborative decision-making process"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document interdisciplinary team meetings or collaborative decision-making processes that involve multiple disciplines in care planning decisions."
+          },
+          {
+            "element": "CTS.03.01.01 EP 4",
+            "description": "Planning for care, treatment, or services includes interventions and services necessary to meet the identified goals.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal treatment plan with identified goals and corresponding interventions is documented. Progress notes mention various interventions and plans but these are not organized within a structured treatment plan that links interventions to specific identified goals.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop a formal treatment plan that identifies specific patient goals and maps interventions and services to achieve those goals."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.03.01.03",
+        "standard_name": "The organization has a plan for care, treatment, or services that reflects the assessed needs, strengths, preferences, and goals of the individual served.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.03.01.03 EP 1",
+            "description": "The organization develops a plan for care, treatment, or services that reflects the assessed needs, strengths, preferences, and goals of the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal treatment plan document exists. While comprehensive assessment information is available and various treatment activities are documented in progress notes, there is no structured treatment plan that organizes this information into a coherent plan reflecting assessed needs, strengths, preferences, and goals.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop a formal written treatment plan that incorporates assessment findings into a structured plan addressing patient's needs, strengths, preferences, and goals."
+          },
+          {
+            "element": "CTS.03.01.03 EP 2",
+            "description": "The plan for care, treatment, or services includes the following: Goals that are expressed in a manner that captures the individual's words or ideas; Goals that build on the individual's strengths; Factors that support the transition to community integration when identified as a need during assessment; The criteria and process for the individual's expected successful transfer and/or discharge/termination of services, which the organization discusses with the individual.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal treatment plan exists with documented goals in the patient's words, strength-based goals, community integration factors, or discharge criteria. While some patient statements about desires are documented, these are not formatted as formal treatment goals.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Create treatment plan with goals expressed in patient's words, goals that build on identified strengths, community integration planning, and specific discharge criteria discussed with the patient."
+          },
+          {
+            "element": "CTS.03.01.03 EP 3",
+            "description": "The objectives of the plan for care, treatment, or services meet the following criteria: They are based on identified goals; They include identified steps to achieve the goal(s); They are sufficiently specific to assess the progress of the individual served; They are expressed in terms that provide indices of progress.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal treatment objectives exist. Without a treatment plan containing formal goals, there are no objectives that meet the specified criteria for goal-based, specific, measurable objectives with progress indices.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop specific, measurable objectives for each treatment goal that include action steps and progress indicators."
+          },
+          {
+            "element": "CTS.03.01.03 EP 4",
+            "description": "The organization reevaluates and, when necessary, revises the goals and objectives of the plan for care, treatment, or services based on change(s) in the individual's needs, preferences, and goals and the individual's response to care, treatment, or services. If no change(s) occurs, the goals and objectives are reevaluated at a specified time interval established by organization policy.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No treatment plan exists to reevaluate or revise. While progress notes document ongoing assessment and plan modifications, there is no formal treatment plan with goals and objectives that can be systematically reevaluated.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Establish treatment plan with goals and objectives, then implement systematic reevaluation process at specified intervals per organizational policy."
+          },
+          {
+            "element": "CTS.03.01.03 EP 5",
+            "description": "Reasons for deferring a goal, or the objectives leading toward or related to a goal, are documented.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No treatment plan with formal goals exists, therefore there are no documented deferrals or reasons for deferring goals or objectives.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Once treatment plan is established, document any deferrals of goals or objectives with rationale."
+          },
+          {
+            "element": "CTS.03.01.03 EP 6",
+            "description": "The organization provides care, treatment, or services for each individual served according to the plan for care, treatment, or services.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Without a formal treatment plan, it cannot be determined whether care is being provided according to the plan. While various treatment services are documented, they are not clearly linked to a formal plan.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Develop treatment plan and ensure all care, treatment, and services are delivered according to the plan and documented as such."
+          },
+          {
+            "element": "CTS.03.01.03 EP 14",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization develops a plan for care, treatment, or services at the time of admission or entry into care that reflects the assessed needs, strengths, preferences, and goals of the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No treatment plan was developed at admission or entry into care. Patient admitted 2026-05-15 with comprehensive assessment completed same day, but no formal treatment plan document exists reflecting the assessed information in a structured plan format.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop treatment plan at admission that incorporates assessment findings into a formal plan reflecting patient's needs, strengths, preferences, and goals."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.03.01.05",
+        "standard_name": "The plan for care, treatment, or services addresses the family's involvement.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.03.01.05 EP 1",
+            "description": "The family of the individual served is involved in developing the plan for care, treatment, or services upon consent from the individual (if an adult) or in accordance with law and regulation (if a minor), unless such participation is contraindicated. Family participation is documented.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Brother's involvement and support is documented, and there is evidence of family contact and planning discussions. However, formal family involvement in treatment plan development is not documented, nor is patient consent for family involvement or any contraindications to family participation.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows family involvement in discharge planning but not formal treatment plan development"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Reports she spoke with brother by phone and he reiterated his offer for her to come to Denver: 'He said he'd help me find a job and go to meetings with me.'",
+                "relevance": "Documents family support and involvement but not formal participation in treatment planning"
+              },
+              {
+                "source": "BPS Intake",
+                "text": "Brother (age 39) in Denver is in recovery (3 years sober) and has offered to provide housing post-discharge. Brother has expressed willingness to attend meetings with patient and help with employment.",
+                "relevance": "Documents family support but lacks documentation of formal involvement in treatment plan development"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "pattern"
+            },
+            "remediation": "Document patient consent for family involvement, formally involve family in treatment plan development process, and document family participation in care planning."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.03.01.07",
+        "standard_name": "When individuals served need additional care, treatment, or services not offered by the organization, referrals are made and documented in the clinical/case record.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.03.01.07 EP 1",
+            "description": "When the organization does not directly provide care, treatment, or services needed by the individual served, it refers the individual to an outside source. Referrals are documented in the clinical/case record.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some referrals are documented (hepatology consult, DV advocate services) but documentation is incomplete. Hepatology consult was ordered but follow-up documentation is missing. Other needed services like IOP programs and buprenorphine prescribers in Denver are mentioned in planning but formal referrals are not documented.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Hepatology consult ordered Day 1 but no follow-up documentation in chart",
+                "relevance": "Shows referral was made but follow-up documentation is missing"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate",
+                "relevance": "Documents referral to DV advocate services"
+              },
+              {
+                "source": "DAP Note",
+                "text": "identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows planning for referrals but not documentation of actual referrals made"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Complete documentation of all referrals made, including follow-up status, and formally document referrals for IOP and buprenorphine prescribers in Denver."
+          },
+          {
+            "element": "CTS.03.01.07 EP 2",
+            "description": "Concurrent care, treatment, or services provided by an outside source that are integral to meeting goals and objectives are addressed in the plan for care, treatment, or services.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No formal treatment plan exists to address concurrent care from outside sources. While outside services like hepatology and DV advocacy are mentioned in notes, they are not integrated into a formal treatment plan structure.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "widespread"
+            },
+            "remediation": "Develop treatment plan that incorporates concurrent outside services and addresses how they support treatment goals and objectives."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.03.01.09",
+        "standard_name": "The organization assesses the outcomes of care, treatment, or services provided to the individual served.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.03.01.09 EP 1",
+            "description": "The organization uses a standardized tool or instrument to monitor the individual's progress in achieving the individual's care, treatment, or service goals.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some standardized tools are used (PHQ-9, GAD-7, CIWA, COWS) but these are primarily for symptom monitoring rather than goal achievement. No standardized tool specifically monitors progress toward treatment goals, and no formal treatment goals exist to monitor against.",
+            "citations": [
+              {
+                "source": "BPS Intake",
+                "text": "PHQ-9: 18 (moderately severe). GAD-7: 15 (severe)",
+                "relevance": "Documents use of standardized assessment tools"
+              },
+              {
+                "source": "DAP Note",
+                "text": "PHQ-9: 16 (moderately severe, improved from 18 at admission). GAD-7: 14 (severe)",
+                "relevance": "Shows repeated use of standardized tools to monitor symptoms"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "PHQ-9: 14 (moderate, down from 18 at admission). GAD-7: 12 (moderate, down from 15)",
+                "relevance": "Demonstrates ongoing standardized monitoring but not goal-specific progress monitoring"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Implement standardized tool specifically designed to monitor progress toward individual treatment goals, in addition to symptom-specific assessments."
+          },
+          {
+            "element": "CTS.03.01.09 EP 2",
+            "description": "The organization gathers and analyzes the data generated through standardized monitoring, and the results are used to inform the goals and objectives of the individual's plan for care, treatment, or services as needed.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Data from standardized tools is gathered and analyzed (PHQ-9 and GAD-7 scores tracked over time with noted improvements), but this data is not used to inform formal treatment plan goals and objectives since no formal treatment plan exists.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "PHQ-9: 14 (moderate, down from 18 at admission). GAD-7: 12 (moderate, down from 15)",
+                "relevance": "Shows analysis of standardized monitoring data over time"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Patient demonstrating meaningful progress across multiple domains. Medical stability achieved \u2014 withdrawal resolved, vital signs normalized, labs trending favorably",
+                "relevance": "Shows analysis of monitoring data but not connection to formal treatment plan goals"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Use standardized monitoring data to formally revise treatment plan goals and objectives, and document this process."
+          },
+          {
+            "element": "CTS.03.01.09 EP 3",
+            "description": "The organization evaluates the outcomes of care, treatment, or services provided to the population(s) it serves by aggregating and analyzing the data gathered through the standardized monitoring effort.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No documentation exists showing that the organization aggregates and analyzes standardized monitoring data at the population level to evaluate treatment outcomes.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "widespread"
+            },
+            "remediation": "Implement system for aggregating and analyzing standardized monitoring data across the patient population to evaluate program effectiveness."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.06.02.01",
+        "standard_name": "Continuity of care, treatment, or services is maintained when an individual served is transferred or after discharge/termination of care, treatment, or services.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.06.02.01 EP 1",
+            "description": "The organization has a process for addressing the continuity of care, treatment, or services after transfer, discharge, or termination of care, treatment, or services that includes the following: The transfer of responsibility for care, treatment, or services for the individual served; The reason(s) for transfer, discharge, or termination of care, treatment, or services; Mechanisms for internal and external transfer; Identification of the person who has accountability and responsibility for the safety and well-being of the individual served during a transfer.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No organizational process for continuity of care after transfer, discharge, or termination is documented. No policies, procedures, or systematic processes are referenced in the clinical documentation that address transfer of responsibility, reasons for transfer/discharge, transfer mechanisms, or accountability assignment during transfers.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop and document comprehensive organizational policies and procedures for continuity of care that address all required elements: transfer of responsibility, reasons for transfer/discharge, internal and external transfer mechanisms, and accountability assignment."
+          },
+          {
+            "element": "CTS.06.02.01 EP 4",
+            "description": "For programs providing medications for substance use disorders: The discharge planning process addresses referrals for continuing outpatient care after the last dose of medication and the plan for re-entry to treatment if relapse occurs.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Discharge planning includes some elements related to continuing care but is incomplete. Documentation shows coordination for Denver discharge with brother and identification of IOP programs and buprenorphine prescribers, but no specific plan for re-entry to treatment if relapse occurs is documented.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows partial discharge planning for continuing outpatient care but missing relapse re-entry plan"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Complete discharge planning documentation to include specific plan for re-entry to treatment if relapse occurs, including contact information and procedures for accessing services."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.06.02.03",
+        "standard_name": "When an individual served is transferred or discharged or when care, treatment, or services are terminated, the organization bases the decision on the assessed needs of the individual and the organization's capabilities.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.06.02.03 EP 1",
+            "description": "The organization identifies the physical and psychosocial needs for continuing care of the individual served.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some physical and psychosocial needs are documented but identification is incomplete. Physical needs include buprenorphine maintenance, hepatology follow-up, and nutritional concerns. Psychosocial needs include IOP, trauma therapy, and recovery community engagement. However, no comprehensive systematic identification of all continuing care needs is documented.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Denver discharge plan with brother represents the most viable pathway to sustained recovery \u2014 sober environment, family support, geographic distance from boyfriend and using network. However, geographic change alone is insufficient and must be paired with continued treatment (IOP), buprenorphine maintenance, trauma therapy, and recovery community engagement",
+                "relevance": "Shows partial identification of continuing care needs but lacks comprehensive systematic assessment"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Weight loss of 5 lbs in 12 days in an already underweight patient with liver disease is concerning and requires aggressive nutritional follow-up",
+                "relevance": "Identifies specific physical continuing care need"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Conduct and document comprehensive systematic assessment of all physical and psychosocial continuing care needs using standardized process."
+          },
+          {
+            "element": "CTS.06.02.03 EP 2",
+            "description": "Individuals served are told in a timely manner of the need to plan for discharge or transfer to another organization or level of care, treatment, or services.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Patient has been informed of discharge planning as evidenced by her questions about timeline, but documentation does not show timely notification of the need to plan for discharge or transfer to another level of care.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Asked about timeline for discharge and expressed both hope and fear about next steps",
+                "relevance": "Shows patient awareness of discharge planning but no documentation of formal timely notification"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document formal timely notification to patient regarding need to plan for discharge or transfer, including specific timeline and expectations."
+          },
+          {
+            "element": "CTS.06.02.03 EP 3",
+            "description": "Planning for transfer, discharge, or termination of care, treatment, or services involves the individual served, their family, if applicable, and staff.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Planning involves the individual served and some family (brother), but incomplete staff involvement documented. Patient is engaged in planning with brother's support, but no formal multidisciplinary staff involvement in discharge planning is documented.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Patient states she spoke with brother by phone and he reiterated his offer for her to come to Denver: 'He said he'd help me find a job and go to meetings with me.'",
+                "relevance": "Shows patient and family involvement in discharge planning"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows some staff involvement but lacks comprehensive multidisciplinary team documentation"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document formal multidisciplinary team involvement in discharge planning process including all relevant clinical staff."
+          },
+          {
+            "element": "CTS.06.02.03 EP 4",
+            "description": "When the individual served is transferred, information provided to the individual includes the following: The reason they are being transferred; Alternatives to transfer, if any.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No transfer is documented in the provided clinical documentation. Patient remains in treatment and no transfer information is provided.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Not applicable - no transfer documented. If transfer occurs, ensure reason for transfer and alternatives are documented and communicated to patient."
+          },
+          {
+            "element": "CTS.06.02.03 EP 5",
+            "description": "The organization discusses plans for transfer, discharge, or termination of care, treatment, or services, or changes in these plans, with the individual served and, with the individual's consent, their family. If the individual is a child or youth, the organization acts in accordance with law and regulation.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some discussion of discharge plans is documented with the individual served and family member (brother), but no formal documentation of structured discharge planning discussions or consent process for family involvement.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Patient states she spoke with brother by phone and he reiterated his offer for her to come to Denver",
+                "relevance": "Shows informal family involvement in discharge planning discussions"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document formal structured discharge planning discussions with patient and family, including consent process for family involvement."
+          },
+          {
+            "element": "CTS.06.02.03 EP 6",
+            "description": "When the individual served is discharged or care, treatment, or services are terminated, information provided to the individual and, if applicable, their family includes the following: The reason(s) the individual is being discharged or care, treatment, or services are being terminated; The anticipated need for continued care, treatment, or services after discharge or termination of care, treatment, or services.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No discharge has occurred and no discharge information has been provided to the individual or family. Patient remains in treatment with discharge planning in progress but no actual discharge documentation exists.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Not applicable - no discharge documented. When discharge occurs, ensure reasons for discharge and anticipated continuing care needs are documented and communicated to patient and family."
+          },
+          {
+            "element": "CTS.06.02.03 EP 7",
+            "description": "When indicated, the individual served is educated about how to obtain further care, treatment, or services to meet their identified needs.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some education about obtaining further care is documented through case manager coordination to identify services, but no formal patient education about how to access services is documented.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows staff identifying services but no documentation of patient education about access"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document formal patient education about how to access and obtain identified continuing care services."
+          },
+          {
+            "element": "CTS.06.02.03 EP 8",
+            "description": "When indicated and before discharge or termination of care, treatment, or services, the organization arranges for or helps the family arrange for care, treatment, or services needed to meet the needs of the individual served after discharge.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some arrangement of post-discharge services is documented through case manager coordination, but no formal documentation of completed arrangements or family assistance in arranging services.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Coordinate with case manager re: Denver discharge plan \u2014 obtain brother's address, identify IOP programs and buprenorphine prescribers in Denver area",
+                "relevance": "Shows coordination for post-discharge services but no documentation of completed arrangements"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "pattern"
+            },
+            "remediation": "Document completion of arrangements for post-discharge care services and any assistance provided to family in arranging services."
+          },
+          {
+            "element": "CTS.06.02.03 EP 9",
+            "description": "The organization provides the individual served and the individual's family, if applicable, discharge or termination of care, treatment, or services instructions in a form the individual can understand.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No discharge has occurred and no discharge instructions have been provided. No documentation of discharge instructions preparation or consideration of patient's comprehension level.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Not applicable - no discharge documented. When discharge occurs, ensure discharge instructions are provided in form patient can understand."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.06.02.05",
+        "standard_name": "Pertinent information related to care, treatment, or services is exchanged with other providers when an individual served is transferred or discharged or when care, treatment, or services are terminated.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.06.02.05 EP 1",
+            "description": "The organization communicates pertinent information to any organization or provider to which the individual served is transferred or discharged.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No transfer or discharge has occurred and no communication of pertinent information to other providers is documented. No transfer or discharge communication process is evident.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Not applicable - no transfer/discharge documented. Develop process for communicating pertinent information to receiving providers when transfer/discharge occurs."
+          },
+          {
+            "element": "CTS.06.02.05 EP 2",
+            "description": "The information shared includes the following: The reason(s) for transfer, discharge, or termination of care, treatment, or services; Relevant biopsychosocial status at transfer, discharge, or termination of care, treatment, or services; A summary of care, treatment, or services provided and progress made toward goals; Community resources or referrals provided to the individual served.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No transfer or discharge has occurred and no information sharing with other providers is documented. No documentation exists of the specific required information elements being shared with other providers.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Not applicable - no transfer/discharge documented. When transfer/discharge occurs, ensure all required information elements are documented and shared with receiving providers."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "NPSG.15.01.01",
+        "standard_name": "Reduce the risk for suicide.",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "NPSG.15.01.01 EP 1",
+            "description": "The organization conducts an environmental risk assessment that identifies features in the physical environment that could be used to attempt suicide and takes necessary action to minimize the risk(s) (for example, removal of anchor points, door hinges, and hooks that can be used for hanging).",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No environmental risk assessment is documented. No documentation exists of organizational assessment of physical environmental features that could be used for suicide attempts or actions taken to minimize environmental risks.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Conduct and document comprehensive environmental risk assessment identifying suicide risk features in physical environment and document actions taken to minimize risks."
+          },
+          {
+            "element": "NPSG.15.01.01 EP 2",
+            "description": "Screen all individuals served for suicidal ideation using a validated screening tool.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Suicidal ideation is assessed and documented but no validated screening tool is used. Clinical assessment includes questions about suicidal ideation but documentation shows PHQ-9 and GAD-7 rather than suicide-specific validated screening tools.",
+            "citations": [
+              {
+                "source": "SOAP Note",
+                "text": "Endorses passive suicidal ideation: 'I think about it but I wouldn't do anything.'",
+                "relevance": "Shows suicidal ideation assessment but not with validated suicide screening tool"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "No active SI/HI with plan or intent",
+                "relevance": "Documents suicide risk assessment but not use of validated screening tool"
+              },
+              {
+                "source": "DAP Note",
+                "text": "PHQ-9: 16 (moderately severe, improved from 18 at admission). GAD-7: 14 (severe)",
+                "relevance": "Shows use of validated tools but not suicide-specific screening tools"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "pattern"
+            },
+            "remediation": "Implement validated suicide screening tool (such as C-SSRS) for all individuals served rather than relying solely on clinical interview."
+          },
+          {
+            "element": "NPSG.15.01.01 EP 3",
+            "description": "Use an evidence-based process to conduct a suicide assessment of individuals served who have screened positive for suicidal ideation. The assessment directly asks about suicidal ideation, plan, intent, suicidal or self-harm behaviors, risk factors, and protective factors.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Suicide assessment elements are partially documented but not through an evidence-based process. Documentation includes suicidal ideation, lack of plan/intent, and some risk factors, but no formal evidence-based suicide assessment process is used and protective factors are not systematically assessed.",
+            "citations": [
+              {
+                "source": "SOAP Note",
+                "text": "Endorses passive suicidal ideation: 'I think about it but I wouldn't do anything.'",
+                "relevance": "Documents suicidal ideation assessment"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "No active SI/HI with plan or intent",
+                "relevance": "Documents plan and intent assessment"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "When asked about suicidal ideation, patient states: 'Honestly, I still have the thoughts sometimes, like it would be easier to not exist. But I don't want to die. I want to figure out how to live without all this.'",
+                "relevance": "Shows ongoing suicidal ideation assessment but not formal evidence-based process"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "pattern"
+            },
+            "remediation": "Implement evidence-based suicide assessment process (such as C-SSRS) that systematically assesses all required elements including protective factors."
+          },
+          {
+            "element": "NPSG.15.01.01 EP 4",
+            "description": "Document individuals' overall level of risk for suicide and the plan to mitigate the risk for suicide.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some suicide risk level and mitigation is documented but incomplete. Clinical notes indicate chronic passive suicidal ideation with assessment that current presentation suggests lower acute risk, but no formal overall risk level determination or comprehensive mitigation plan is documented.",
+            "citations": [
+              {
+                "source": "DSAP Note",
+                "text": "Passive SI persists but current presentation suggests chronic ideation connected to trauma history and low self-efficacy rather than acute imminent risk",
+                "relevance": "Shows clinical assessment of suicide risk level but not formal risk determination"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Continue SI monitoring at each clinical contact \u2014 consider formal C-SSRS administration",
+                "relevance": "Shows some mitigation planning but incomplete formal plan"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "pattern"
+            },
+            "remediation": "Document formal overall suicide risk level determination and comprehensive suicide risk mitigation plan."
+          },
+          {
+            "element": "NPSG.15.01.01 EP 5",
+            "description": "Follow written policies and procedures addressing the care of individuals served identified as at risk for suicide. At a minimum, these should include the following: Training and competence assessment of staff who care for individuals served at risk for suicide; Guidelines for reassessment; Monitoring individuals served who are at high risk for suicide.",
+            "score": 1,
+            "status": "partial",
+            "finding": "Some elements of suicide risk care are documented but no written policies and procedures are referenced. Clinical monitoring is documented but no organizational policies, staff training documentation, reassessment guidelines, or high-risk monitoring protocols are evident.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Continue SI monitoring at each clinical contact",
+                "relevance": "Shows ongoing monitoring but no reference to written policies and procedures"
+              }
+            ],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop, implement, and reference written policies and procedures for suicide risk care including staff training, reassessment guidelines, and high-risk monitoring protocols."
+          },
+          {
+            "element": "NPSG.15.01.01 EP 6",
+            "description": "Follow written policies and procedures for counseling and follow-up care at discharge for individuals served identified as at risk for suicide.",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "No discharge has occurred and no written policies and procedures for suicide risk counseling and follow-up care at discharge are documented. No organizational policies for suicide risk management at discharge are referenced.",
+            "citations": [],
+            "safer": {
+              "likelihood": "high",
+              "scope": "widespread"
+            },
+            "remediation": "Develop and implement written policies and procedures for suicide risk counseling and follow-up care at discharge for at-risk individuals."
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.02.02.01",
+        "standard_name": "The organization collects assessment data on each individual served",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.02.01 EP 1",
+            "description": "The organization collects information about the individual's needs, strengths, preferences, and goals",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "The biopsychosocial assessment comprehensively documents patient needs, strengths, preferences, and goals across multiple domains including social, occupational, physical, and recovery-related areas.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Strengths/support: Brother (age 39) in Denver is in recovery (3 years sober) and has offered to provide housing post-discharge. Brother has expressed willingness to attend meetings with patient and help with employment.",
+                "relevance": "Documents patient strengths and support systems"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Changes desired: Patient has expressed interest in peer support and recovery community. Stated she wants to 'help people like me someday' and asked about peer support specialist training.",
+                "relevance": "Documents patient preferences and long-term goals"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.02.01 EP 3",
+            "description": "As relevant to care, treatment, or services, the assessment data collected about the individual's emotional and behavioral functioning include at least the following: History of emotional functioning; History of behavioral functioning; Addictive behaviors as a primary or a co-occurring condition(s), including the use of alcohol, other drugs, gambling, or other addictive behaviors by the individual served and family members; Current emotional functioning; Current behavioral functioning",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "The assessment comprehensively covers all required elements of emotional and behavioral functioning history and current status, plus detailed addictive behaviors assessment for both patient and family.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Affective: Persistent depressed mood, anhedonia, tearfulness, severe anxiety, constricted affect. PHQ-9: 18 (moderately severe). GAD-7: 15 (severe).",
+                "relevance": "Documents current emotional functioning with standardized assessments"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Summary of use: Alcohol: onset age 15, current daily use 750mL-1L vodka for past 2 years, morning drinking to prevent withdrawal. Opioids: onset age 22 with prescribed Percocet, transitioned to heroin age 24, IV fentanyl age 28, current use 1-2g IV fentanyl daily. Benzodiazepines: onset age 25, initially prescribed, escalated to 4-6mg alprazolam daily",
+                "relevance": "Documents detailed addictive behaviors history"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Mother: Alcohol use disorder and depression. Father: Deceased at age 49 from liver failure secondary to alcoholism. Brother: In recovery from opioid use disorder, 3 years sober. Extensive family history of substance use disorders across both parental lines.",
+                "relevance": "Documents family addictive behaviors history"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.02.01 EP 4",
+            "description": "The assessment data collected include the individual's short- and long-term personal goal(s)",
+            "score": 1,
+            "status": "partial",
+            "finding": "Long-term goals are documented but short-term personal goals are not clearly identified or documented in the assessment.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Changes desired: Patient has expressed interest in peer support and recovery community. Stated she wants to 'help people like me someday' and asked about peer support specialist training.",
+                "relevance": "Documents long-term career/helping goals"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document specific short-term recovery goals such as housing stability, family reconnection, or immediate treatment objectives in patient's own words"
+          },
+          {
+            "element": "CTS.02.02.01 EP 5",
+            "description": "When indicated, the following evaluations are conducted: Mental status; Psychological; Psychiatric; Intellectual and cognitive functioning",
+            "score": 1,
+            "status": "partial",
+            "finding": "Mental status exam is referenced in progress notes but not formally documented in the biopsychosocial assessment. Psychiatric evaluation appears to have occurred based on medication management but formal psychological or cognitive evaluations are not documented.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Mental Status Exam: Not documented",
+                "relevance": "Explicitly states mental status exam was not documented"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "Patient presents as thin, underweight female appearing older than stated age of 37. Dressed in hospital gown, hygiene fair. Oriented x3, intermittently confused regarding timeline of recent events.",
+                "relevance": "Shows mental status elements are assessed but not formally documented"
+              }
+            ],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Complete formal mental status examination documentation and consider psychological evaluation given trauma history and cognitive symptoms"
+          },
+          {
+            "element": "CTS.02.02.01 EP 6",
+            "description": "Family members are invited to participate in the assessment process as relevant to the care, treatment, or services provided, and the age and preference of the individual served",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "There is no documentation that family members were invited to participate in the assessment process, despite having a supportive brother who could provide relevant information.",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document whether family participation was offered and patient's response, particularly given brother's supportive role and willingness to help with recovery planning"
+          }
+        ],
+        "compliance_percentage": 40.0
+      },
+      {
+        "standard_id": "CTS.02.02.05",
+        "standard_name": "The organization identifies individuals who may have experienced trauma, abuse, neglect, or exploitation",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.02.05 EP 2",
+            "description": "The organization identifies individuals who may have experienced trauma, abuse, neglect, or exploitation during initial screening and assessment and on an ongoing basis",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Patient's trauma history is clearly identified during initial assessment with documentation of childhood abuse, intimate partner violence, and trauma-related symptoms driving substance use.",
+            "citations": [
+              {
+                "source": "SOAP Note",
+                "text": "Reports severe anxiety, persistent nightmares about childhood abuse occurring nightly, and chronic low mood.",
+                "relevance": "Identifies childhood abuse trauma"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Current boyfriend is an active substance user and perpetrator of intimate partner violence. Patient reports he 'doesn't hit me that much anymore but he controls everything.'",
+                "relevance": "Identifies current intimate partner violence"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Patient reports substance use as self-medication for trauma-related symptoms: 'I started using to not feel.'",
+                "relevance": "Links trauma to substance use as presenting problem"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.02.05 EP 3",
+            "description": "The organization assesses the individual who may have experienced trauma, abuse, neglect, or exploitation or refers the individual for such assessment",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Patient is being assessed for trauma through multiple clinical interventions including Seeking Safety group participation, safety planning with DV advocate, and planned EMDR readiness assessment.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "Continue Seeking Safety group",
+                "relevance": "Documents trauma-informed group therapy participation"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "Completed initial safety plan with DV advocate.",
+                "relevance": "Documents specialized IPV assessment and safety planning"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Begin EMDR readiness assessment once withdrawal fully resolved",
+                "relevance": "Documents plan for specialized trauma therapy assessment"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.02.07",
+        "standard_name": "Reassessment",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.02.07 EP 1",
+            "description": "The organization reassesses each individual served, as needed",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Patient is being reassessed regularly through progress notes documenting changes in clinical status, standardized assessments (PHQ-9, GAD-7), and planned treatment plan updates.",
+            "citations": [
+              {
+                "source": "DAP Note",
+                "text": "PHQ-9: 16 (moderately severe, improved from 18 at admission). GAD-7: 14 (severe).",
+                "relevance": "Documents reassessment using standardized tools with comparison to baseline"
+              },
+              {
+                "source": "DSAP Note",
+                "text": "PHQ-9: 14 (moderate, down from 18 at admission). GAD-7: 12 (moderate, down from 15).",
+                "relevance": "Shows ongoing reassessment tracking clinical improvement"
+              },
+              {
+                "source": "DAP Note",
+                "text": "Update treatment plan at scheduled review (04/10) \u2014 add IPV/safety as formal treatment plan problem",
+                "relevance": "Documents planned formal reassessment and treatment plan updates"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.02.09",
+        "standard_name": "The organization has a process to provide medical histories, physical examinations, and diagnostic and laboratory tests",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.02.09 EP 5",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The program collects toxicological specimens in a manner that demonstrates trust and respect while taking reasonable steps to prevent falsification of samples",
+            "score": 1,
+            "status": "partial",
+            "finding": "Toxicological testing was performed (admission UDS documented) but there is no documentation of the collection process, procedures to prevent falsification, or how trust and respect were demonstrated during collection.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Admission UDS positive for fentanyl, oxycodone, benzodiazepines (alprazolam metabolites), and THC.",
+                "relevance": "Documents that toxicological testing occurred"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document the UDS collection process, including measures taken to prevent falsification and how patient dignity was maintained during collection"
+          },
+          {
+            "element": "CTS.02.02.09 EP 15",
+            "description": "For programs providing medications for substance use disorders: When initiating medications for substance use disorders, the program makes certain that medical assessments and testing are done according to current national guidelines established for the treatment being used",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "Patient is receiving buprenorphine 16mg but there is no documentation of pre-initiation medical assessments or testing according to national guidelines (such as baseline QTc, liver function assessment for buprenorphine candidacy, or COWS scoring before induction).",
+            "citations": [],
+            "safer": {
+              "likelihood": "moderate",
+              "scope": "limited"
+            },
+            "remediation": "Document medical assessments performed before buprenorphine initiation including baseline EKG, comprehensive metabolic panel, and COWS assessment per SAMHSA guidelines"
+          }
+        ],
+        "compliance_percentage": 0.0
+      },
+      {
+        "standard_id": "CTS.02.03.07",
+        "standard_name": "For organizations providing care, treatment, or services to individuals with addictions: The assessment includes the individual's history of addictive behaviors",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.03.07 EP 1",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization obtains the individual's history of alcohol use, drug use, nicotine use, and other addictive behaviors. The history includes the following information: Age of onset; Method of acquiring substance; Duration; Patterns of use (for example, continuous, episodic, binge); Frequency, amounts, and route of the substance that is taken",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "Comprehensive substance use history is documented including all required elements for alcohol, opioids, and benzodiazepines with specific details on onset, patterns, frequency, amounts, and routes.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Alcohol: onset age 15, current daily use 750mL-1L vodka for past 2 years, morning drinking to prevent withdrawal. Opioids: onset age 22 with prescribed Percocet, transitioned to heroin age 24, IV fentanyl age 28, current use 1-2g IV fentanyl daily. Benzodiazepines: onset age 25, initially prescribed, escalated to 4-6mg alprazolam daily through multiple prescribers and street sources.",
+                "relevance": "Documents age of onset, patterns, frequency, amounts, and acquisition methods for all substances"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          },
+          {
+            "element": "CTS.02.03.07 EP 2",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The assessment includes the following: Consequences of substance use; Physical problems related to use; Family substance use history; Spirituality and cultural factors; Readiness to change; Current living arrangements",
+            "score": 1,
+            "status": "partial",
+            "finding": "Most required elements are documented including consequences, physical problems, family history, and readiness to change. However, spirituality and cultural factors are inadequately assessed.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Occupational: Unemployed 18 months, terminated from pharmacy technician position following diversion investigation. Unable to maintain employment due to substance use.",
+                "relevance": "Documents consequences of substance use"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Physical: Underweight (BMI 18.2), track marks bilateral antecubital fossae and left hand, elevated liver enzymes (AST 187, ALT 142), thrombocytopenia (platelets 98K), Hepatitis C positive.",
+                "relevance": "Documents physical problems related to use"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Beliefs/practices to incorporate into therapy: None identified at this time. Patient was raised Catholic but has no current practice.",
+                "relevance": "Shows minimal spiritual assessment"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Complete comprehensive cultural assessment and explore spiritual resources that could support recovery, even if patient currently reports no spiritual practices"
+          },
+          {
+            "element": "CTS.02.03.07 EP 7",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: Assessments of the individual served contain information about the following: Previous care, treatment, or services; Response to previous care, treatment, or services; Current risks and history of risks related to substance use; Acute intoxication and/or withdrawal potential; Needs related to medications for substance use disorders",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "All required elements are comprehensively documented including detailed previous treatment history, responses to treatment, current risks, withdrawal assessment, and medication needs.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Five prior treatment episodes: (1) 2021 \u2014 7-day medical detox for alcohol, completed, relapsed within 48 hours. (2) 2022 \u2014 28-day residential for opioids, AMA discharge on day 19 after conflict with staff. (3) 2023 \u2014 IOP for 6 weeks, dropped out citing transportation barriers.",
+                "relevance": "Documents previous treatment and responses"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Two prior overdose events in past 18 months. Has self-administered Narcan twice.",
+                "relevance": "Documents current risks related to substance use"
+              },
+              {
+                "source": "SOAP Note",
+                "text": "CIWA-Ar: 18. COWS: 14. BAC 0.31 in ED.",
+                "relevance": "Documents acute intoxication and withdrawal potential assessment"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 66.7
+      },
+      {
+        "standard_id": "CTS.02.03.13",
+        "standard_name": "For organizations providing care, treatment, or services to individuals with addictions: The individual served is placed in the appropriate level of care",
+        "overall_status": "compliant",
+        "findings": [
+          {
+            "element": "CTS.02.03.13 EP 1",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization uses an evidence-based, multidimensional admission assessment that includes, at a minimum, mental health, medical, and substance-use history for placement of the individual at the appropriate level of care",
+            "score": 2,
+            "status": "satisfactory",
+            "finding": "The assessment comprehensively addresses mental health, medical, and substance use history with appropriate ASAM level 4.0 placement determination based on medical complexity and withdrawal risk.",
+            "citations": [
+              {
+                "source": "SOAP Note",
+                "text": "Patient presents with severe polysubstance use disorder requiring ASAM Level 4.0 medically managed intensive inpatient care. Concurrent alcohol and benzodiazepine dependence with seizure history creates high risk for complicated withdrawal requiring medical monitoring.",
+                "relevance": "Documents evidence-based level of care determination using ASAM criteria"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Co-occurring PTSD and Major Depressive Disorder with chronic passive suicidal ideation.",
+                "relevance": "Documents mental health assessment informing level of care"
+              },
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Chronic HCV-related liver disease with elevated enzymes (AST 187, ALT 142, GGT 312). Thrombocytopenia (platelets 98K). Prior DVT right leg (2024).",
+                "relevance": "Documents medical complexity supporting intensive level of care"
+              }
+            ],
+            "safer": null,
+            "remediation": null
+          }
+        ],
+        "compliance_percentage": 100.0
+      },
+      {
+        "standard_id": "CTS.02.03.15",
+        "standard_name": "For organizations providing care, treatment, or services to individuals with addictions: The organization uses drug testing to promote safety and quality of care",
+        "overall_status": "non_compliant",
+        "findings": [
+          {
+            "element": "CTS.02.03.15 EP 1",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization follows its written policy on performing drug testing",
+            "score": 0,
+            "status": "insufficient",
+            "finding": "While drug testing was performed (admission UDS documented), there is no reference to or documentation of following written policies regarding drug testing procedures.",
+            "citations": [],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document that drug testing was performed according to written organizational policy and reference the specific policy followed"
+          },
+          {
+            "element": "CTS.02.03.15 EP 2",
+            "description": "For organizations providing care, treatment, or services to individuals with addictions: The organization documents in the individual's clinical/case record the reason for drug testing, the results, and actions based on the results",
+            "score": 1,
+            "status": "partial",
+            "finding": "Drug testing results are documented but the specific reason for testing and actions taken based on results are not clearly documented.",
+            "citations": [
+              {
+                "source": "Biopsychosocial Assessment",
+                "text": "Admission UDS positive for fentanyl, oxycodone, benzodiazepines (alprazolam metabolites), and THC. BAC 0.31 on ED presentation.",
+                "relevance": "Documents drug testing results"
+              }
+            ],
+            "safer": {
+              "likelihood": "low",
+              "scope": "limited"
+            },
+            "remediation": "Document the reason for admission drug testing (e.g., standard admission protocol) and any clinical actions taken based on positive results"
+          }
+        ],
+        "compliance_percentage": 0.0
+      }
+    ],
+    "overall_compliance_percentage": 20.2,
+    "critical_gaps": [
+      {
+        "standard": "RI.01.01.01",
+        "element": "RI.01.01.01 EP 2",
+        "severity": "major",
+        "description": "No documentation found throughout the entire clinical record indicating that patient rights were communicated to the patient. Searched biopsychosocial assessment, all progress notes, and admission doc",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.01.01",
+        "element": "RI.01.01.01 EP 3",
+        "severity": "major",
+        "description": "Patient presented with cognitive impairment and confusion at admission (BAC 0.31, CIWA-Ar 18, intermittent confusion regarding timeline) but no documentation shows rights were re-communicated once ori",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.01.03",
+        "element": "RI.01.01.03 EP 1",
+        "severity": "major",
+        "description": "No documentation indicates that information was provided in a manner tailored to patient's understanding level or that staff assessed comprehension. Patient has cognitive impairments noted but no acco",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.01.03",
+        "element": "RI.01.01.03 EP 3",
+        "severity": "major",
+        "description": "Patient has documented cognitive impairments (intermittent confusion, poor concentration, impaired judgment) but no documentation shows communication was adapted to accommodate these cognitive limitat",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.02.01",
+        "element": "RI.01.02.01 EP 4",
+        "severity": "major",
+        "description": "No documentation found regarding patient's right to refuse treatment or how refusals would be handled. No evidence that this right was communicated to the patient.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.03.01",
+        "element": "RI.01.03.01 EP 2",
+        "severity": "high",
+        "description": "No documentation of informed consent process found. No evidence that proposed treatments, goals, benefits, risks, or alternatives were discussed with patient in a formal informed consent process.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RI.01.04.01",
+        "element": "RI.01.04.01 EP 1",
+        "severity": "major",
+        "description": "While clinician names appear in documentation (andrew c), there is no evidence that the patient was formally informed about who has primary responsibility for care or which staff members would be prov",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RC.01.02.01",
+        "element": "RC.01.02.01 EP 4",
+        "severity": "major",
+        "description": "No authentication signatures, electronic signatures, or authentication indicators are present in any of the clinical record entries. The documentation shows author identification but lacks any form of",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RC.01.03.01",
+        "element": "RC.01.03.01 EP 2",
+        "severity": "major",
+        "description": "There is no documentation of the organization's written policy for timely entry of clinical information, nor any evidence that such a policy is being followed. The clinical record does not demonstrate",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "RC.02.04.01",
+        "element": "RC.02.04.01 EP 3",
+        "severity": "major",
+        "description": "No discharge summary is present in the clinical record. Patient appears to be currently in treatment based on progress notes, but no formal discharge documentation exists.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.01",
+        "element": "CTS.04.01.01 EP 6",
+        "severity": "high",
+        "description": "No documentation of formal processes for information sharing or receiving relevant information from external providers. No evidence of structured information transfer protocols for referrals or coordi",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.03",
+        "element": "CTS.04.01.03 EP 1",
+        "severity": "major",
+        "description": "No documentation of formal patient education being provided. While treatment activities are documented, there is no evidence of structured educational content tailored to the patient's specific needs ",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.03",
+        "element": "CTS.04.01.03 EP 2",
+        "severity": "major",
+        "description": "No formal learning needs assessment documented. While some barriers are identified (cognitive impairment, emotional barriers from trauma), there is no systematic assessment of cultural beliefs, motiva",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.03",
+        "element": "CTS.04.01.03 EP 4",
+        "severity": "high",
+        "description": "No documentation of formal education provided on required topics. While medications are prescribed and nutritional concerns noted, there is no evidence of structured patient education on treatment pla",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.03",
+        "element": "CTS.04.01.03 EP 5",
+        "severity": "major",
+        "description": "No documentation of formal patient education content or methods used to ensure comprehension and accessibility.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.01.03",
+        "element": "CTS.04.01.03 EP 7",
+        "severity": "major",
+        "description": "No documentation of evaluation of patient comprehension of educational content provided.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.02.33",
+        "element": "CTS.04.02.33 EP 3",
+        "severity": "high",
+        "description": "No documentation that the patient was informed about the dangers of abrupt discontinuation of buprenorphine treatment if she leaves the organization or transfers to another facility.",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "CTS.04.03.35",
+        "element": "CTS.04.03.35 EP 8",
+        "severity": "high",
+        "description": "No documentation that the patient was provided information on how to obtain naloxone (Narcan) or other life-saving medication for opioid overdose prevention, despite her history of overdoses and ongoi",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "NPSG.03.06.01",
+        "element": "NPSG.03.06.01 EP 2",
+        "severity": "major",
+        "description": "No organizational policy or defined medication information collection requirements are documented anywhere in the clinical record. The required definition of medication information types to be collect",
+        "impact": "Accreditation risk"
+      },
+      {
+        "standard": "NPSG.03.06.01",
+        "element": "NPSG.03.06.01 EP 4",
+        "severity": "major",
+        "description": "No documentation exists of providing written medication information to the patient. While medications are being prescribed (buprenorphine, prazosin), there is no evidence that written medication infor",
+        "impact": "Accreditation risk"
+      }
+    ],
+    "recommendations": [
+      "Document that patient rights were provided and explained to patient, including receipt of written rights information",
+      "Develop process to re-inform patients of rights when capacity is restored; document when rights were re-communicated after cognitive clearing",
+      "Document assessment of patient's comprehension level and communication adaptations made; ensure information is provided at appropriate literacy level",
+      "Document communication adaptations made for patients with cognitive impairments; ensure information delivery accounts for concentration and comprehension limitations",
+      "Document patient education regarding right to refuse treatment; establish clear process for handling treatment refusals in accordance with regulations",
+      "Implement and document comprehensive informed consent process covering all required elements: proposed treatments, goals, benefits, risks, alternatives, and consequences of refusing treatment",
+      "Document that patient was informed of primary clinician and treatment team members; establish process to communicate staff roles and responsibilities to patients",
+      "Implement authentication system requiring electronic or written signatures for all clinical record entries",
+      "Establish and document written policy for timely clinical record entry and ensure compliance documentation in patient records",
+      "Complete discharge summary upon patient discharge including all required elements: reason for admission, treatment provided, discharge condition, and discharge instructions",
+      "Establish and document formal processes for information sharing with external providers, including standardized transfer forms and protocols for receiving information from referring providers",
+      "Implement and document formal patient education sessions addressing the patient's specific substance use disorders, trauma history, and medical conditions with content tailored to her abilities",
+      "Conduct and document formal learning needs assessment addressing cultural/religious beliefs, emotional barriers, motivation to learn, cognitive limitations, and communication barriers",
+      "Provide and document comprehensive patient education covering treatment plan, health practices and safety, medication management, nutritional needs, and recovery techniques",
+      "Document educational content delivery methods and ensure materials are presented in understandable format appropriate to patient's cognitive abilities and educational level"
+    ],
+    "audit_summary": "Audit of 41 standards (104 EPs). 9 standards compliant, 32 non-compliant. EP scores: 21 satisfactory, 37 partial, 46 insufficient. Overall compliance: 20.2%."
+  },
+  "accuracy": 0.983,
+  "claims": {
+    "total": 232,
+    "verified": 228,
+    "fixed": 0,
+    "unsupported": 0,
+    "failed": 4
+  }
+}

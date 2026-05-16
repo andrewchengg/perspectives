@@ -608,7 +608,7 @@ function displayASAM(d) {
   let h = "";
   for (const dim of d.dimensions) {
     h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">D${dim.dimension_number}: ${dim.dimension_name}</span><span class="dimension-toggle open">&#9662;</span></div><div class="dimension-body">`;
-    if (dim.subdimensions)
+    if (dim.subdimensions && dim.subdimensions.length > 0)
       for (const s of dim.subdimensions) {
         h += `<div style="margin:6px 0 2px 10px;font-size:12px;"><span class="risk-code">${s.risk_rating_code}</span> <strong style="color:rgba(255,255,255,0.7);">${s.name}</strong> <span style="color:rgba(255,255,255,0.25);">&rarr; ${s.minimum_level}</span><div style="color:rgba(255,255,255,0.3);margin-top:3px;">${s.rationale.substring(0, 220)}</div>`;
         if (s.citations?.length)
@@ -626,6 +626,14 @@ function displayASAM(d) {
           }
         h += "</div>";
       }
+    else if (dim.dimension_number === 6) {
+      // D6 has no subdimensions — show notes and key factors instead
+      const d6notes = d.dimension_6_notes || "";
+      if (d6notes)
+        h += `<div style="margin:8px 10px;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;">${d6notes}</div>`;
+      if (dim.key_factors?.length)
+        h += `<div style="margin:8px 10px;font-size:12px;color:rgba(255,255,255,0.3);">Key factors: ${dim.key_factors.join(", ")}</div>`;
+    }
     h += "</div></div>";
   }
   document.getElementById("asam-dimensions").innerHTML = h;
@@ -783,7 +791,20 @@ function displayTJC(d) {
     console.error("displayTJC: no data or standards", d);
     return;
   }
-  const p = d.overall_compliance_percentage ?? 0;
+  // Recalculate overall compliance from scores (official TJC methodology)
+  let totalEPs = 0,
+    totalScore = 0;
+  for (const s of d.standards || []) {
+    for (const f of s.findings || []) {
+      totalEPs++;
+      totalScore += f.score ?? 0;
+    }
+  }
+  const maxPossible = totalEPs * 2;
+  const p =
+    maxPossible > 0
+      ? Math.round((totalScore / maxPossible) * 1000) / 10
+      : (d.overall_compliance_percentage ?? 0);
   const c = p >= 80 ? "#6ee7b7" : p >= 50 ? "#fde68a" : "#fca5a5";
   const cb = p >= 80 ? "rgba(52,211,153," : "rgba(248,113,113,";
   document.getElementById("tjc-pct").textContent = p.toFixed(1) + "%";
@@ -793,21 +814,35 @@ function displayTJC(d) {
   document.getElementById("tjc-progress").style.background = c;
   let h = "";
   for (const s of d.standards) {
-    const sc =
-      s.overall_status === "compliant"
-        ? "pass"
-        : s.overall_status === "non_compliant"
-          ? "fail"
-          : "partial";
-    const passCount = s.findings.filter((f) => f.status === "pass").length;
+    const sc = s.overall_status === "compliant" ? "pass" : "fail";
+    // Count by score: 2=satisfactory, 1=partial, 0=insufficient
+    const score2 = s.findings.filter((f) => (f.score ?? 0) === 2).length;
+    const score1 = s.findings.filter((f) => (f.score ?? 0) === 1).length;
+    const score0 = s.findings.filter((f) => (f.score ?? 0) === 0).length;
     const totalCount = s.findings.length;
-    const epLabel = `${passCount}/${totalCount} EPs`;
-    h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${s.standard_id} — ${s.standard_name}</span><div><span class="status status-${sc}">${epLabel}</span> <span class="dimension-toggle open">&#9662;</span></div></div><div class="dimension-body">`;
+    const maxScore = totalCount * 2;
+    const actualScore = score2 * 2 + score1 * 1;
+    const pctScore =
+      maxScore > 0 ? Math.round((actualScore / maxScore) * 100) : 0;
+    const scoreLabel = `${actualScore}/${maxScore}`;
+    h += `<div class="dimension"><div class="dimension-header" onclick="toggleDimension(this)"><span class="dimension-name">${s.standard_id} — ${s.standard_name}</span><div><span class="status status-${sc}">${scoreLabel} (${pctScore}%)</span> <span class="dimension-toggle open">&#9662;</span></div></div><div class="dimension-body">`;
     for (const f of s.findings) {
-      const fc =
-        f.status === "pass" ? "pass" : f.status === "fail" ? "fail" : "partial";
-      h += `<div class="finding finding-${fc}"><strong>${f.element}:</strong> ${f.finding.substring(0, 220)}`;
-      if (f.citations?.length)
+      // Map score to display class
+      const score =
+        f.score ??
+        (f.status === "pass" || f.status === "satisfactory"
+          ? 2
+          : f.status === "partial"
+            ? 1
+            : 0);
+      const fc = score === 2 ? "pass" : score === 1 ? "partial" : "fail";
+      const scoreLabel = score === 2 ? "(2)" : score === 1 ? "(1)" : "(0)";
+      const saferTag = f.safer
+        ? ` <span style="font-size:10px;color:rgba(255,255,255,0.3);">[${f.safer.likelihood}/${f.safer.scope}]</span>`
+        : "";
+      h += `<div class="finding finding-${fc}"><strong>${f.element} ${scoreLabel}:</strong> ${f.finding.substring(0, 220)}${saferTag}`;
+      // Only show linked evidence for score 2 and 1 — score 0 means evidence is absent
+      if (f.citations?.length && score > 0)
         for (const c of f.citations.slice(0, 2)) {
           const ev = findEvidence(c.text);
           const cls = ev ? `evidence-link ${ev.verdict}` : "evidence-link";
@@ -1262,6 +1297,16 @@ function findEvidence(citedText) {
     .toLowerCase()
     .trim()
     .replace(/^["']+|["']+$/g, "");
+  // "Not documented" isn't real evidence — absence of evidence is the finding
+  if (
+    !ct ||
+    ct === "not documented" ||
+    ct === "none" ||
+    ct === "n/a" ||
+    ct === "no documentation" ||
+    ct.startsWith("not documented")
+  )
+    return null;
   return (
     currentLinkedEvidence.find((e) => {
       const et = (e.cited_text || "")

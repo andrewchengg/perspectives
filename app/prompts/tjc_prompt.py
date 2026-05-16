@@ -24,6 +24,17 @@ CRITICAL AUDIT PRINCIPLE: "Not documented = not done." If documentation \
 is absent, that IS the finding. Do not assume something was done verbally.
 
 ══════════════════════════════════════════
+CTS.01 — ENTRY TO CARE
+══════════════════════════════════════════
+
+CTS.01.03.01: Preliminary plan when care initiated before assessment completion.
+  EP 1: Develops a preliminary plan for care when care is initiated prior \
+to completion of the screening and assessment process.
+  EP 2: The preliminary plan focuses on the individual's safety and addresses \
+interventions in response to emergency needs, such as immediate need for \
+placement or danger to self or others.
+
+══════════════════════════════════════════
 CTS.02 — SCREENING AND ASSESSMENT
 ══════════════════════════════════════════
 
@@ -37,9 +48,12 @@ CTS.02.01.03: Screenings and assessments performed per policy.
   EP 2: Assessment conducted within the time frame specified by needs, \
 policy, and law/regulation.
   EP 3: The organization collects information during screenings/assessments \
-about the individual's perception of needs and goals; physical health; \
-psychological, social, spiritual, and cultural factors; strengths; and \
-risk factors.
+about the individual's perceptions of their needs, preferences, and goals \
+for care, treatment, or services; and when indicated and available, the \
+family's perceptions and preferences.
+  EP 5: When relevant, the organization gathers clinical/case information \
+from both inpatient and outpatient providers who have treated the individual. \
+When not possible, documents the reason why.
 
 CTS.02.01.05: Physical health screening.
   EP 1: Follows written physical health screening process to determine \
@@ -76,6 +90,8 @@ CTS.02.02.05: Identifies individuals who may have experienced trauma, \
 abuse, neglect, or exploitation.
   EP 2: Identifies during initial screening/assessment and on an ongoing basis.
   EP 3: Assesses or refers the individual for assessment.
+  EP 5: All cases of alleged or suspected abuse, neglect, or exploitation \
+are reported to appropriate authorities in accordance with policy and law.
 
 CTS.02.02.07: Reassesses individuals as needed.
   EP 1: The organization reassesses each individual served, as needed.
@@ -109,7 +125,6 @@ CTS.02.03.15 (SUD): Drug testing to promote safety and quality.
   EP 1: Follows written policy on performing drug testing.
   EP 2: Documents in clinical record: reason for testing, results, and \
 actions based on results.
-  EP 3: Staff training on drug testing administration and specimen storage.
 
 ══════════════════════════════════════════
 CTS.03 — TREATMENT PLANNING
@@ -158,7 +173,6 @@ CTS.03.01.09: Measurement-based care outcomes.
 achieving care, treatment, or service goals.
   EP 2: Gathers and analyzes data from standardized monitoring. Results \
 used to inform goals and objectives of the plan as needed.
-  EP 3: Evaluates outcomes by aggregating and analyzing monitoring data.
 
 ══════════════════════════════════════════
 CTS.04 — PROVISION OF CARE
@@ -190,9 +204,6 @@ and confirms initiation and continuation of medication.
 discontinuation.
 
 CTS.04.03.35: Medical emergency response.
-  EP 1: Follows written policy for medical emergencies.
-  EP 5 (SUD): Staff trained in CPR, opiate overdose management, medical \
-emergencies, and other relevant techniques.
   EP 8 (SUD): Provides information on how to obtain naloxone for opioid overdose.
 
 ══════════════════════════════════════════
@@ -210,11 +221,11 @@ CTS.06.02.03: Discharge decisions based on assessed needs.
   EP 1: Identifies physical and psychosocial needs for continuing care.
   EP 2: Individuals told in timely manner of need to plan for discharge.
   EP 3: Planning involves the individual, family, and staff.
-  EP 4: When transferred, information provided includes: reason for transfer, \
-individual's physical/psychosocial needs, and summary of care provided.
+  EP 4: When transferred, information provided includes: the reason they \
+are being transferred and alternatives to transfer, if any.
   EP 5: Discusses discharge plans with individual and family.
-  EP 6: Discharge information provided includes: diagnoses, treatment \
-course, medication reconciliation, aftercare plans.
+  EP 6: Discharge information provided includes: reason for discharge, \
+anticipated need for continued care after discharge.
   EP 7: Individual educated about how to obtain further care.
   EP 8: Organization arranges for or helps arrange continuing care.
   EP 9: Discharge instructions provided in form individual can understand.
@@ -284,7 +295,6 @@ RC — RECORD OF CARE
 RC.01.01.01: Complete and accurate clinical records.
   EP 5: Record includes required clinical content: information supporting \
 diagnosis, justifying care provided, documenting course and results.
-  EP 6: Uses standardized formats.
   EP 7: All entries dated.
 
 RC.01.02.01: Entries authenticated.
@@ -364,13 +374,17 @@ Work through each standard section systematically. For EACH EP, either:
 - Quote the specific text that demonstrates compliance, OR
 - State explicitly what is missing or insufficient
 
+SECTION 0: ENTRY TO CARE (CTS.01)
+- CTS.01.03.01: Was a preliminary plan developed when care started before \
+  full assessment completion? Does it focus on safety and emergency needs?
+
 SECTION 1: SCREENING (CTS.02.01)
 - CTS.02.01.01: Is there a screening for risk of harm to self/others? \
   What tool was used? What was the result?
 - CTS.02.01.03: Were screenings/assessments completed per policy? \
-  Within required timeframes? What information was collected about \
-  perception of needs, physical, psychological, social, spiritual, \
-  cultural factors, strengths, and risk?
+  Within required timeframes? Were the individual's perceptions of \
+  needs, preferences, and goals collected? Family perceptions? \
+  Was prior treatment information gathered from other providers?
 - CTS.02.01.05: Was a physical health screening performed?
 - CTS.02.01.09: Was physical pain screened?
 - CTS.02.01.11: Was nutritional status screened?
@@ -380,7 +394,9 @@ SECTION 2: ASSESSMENT (CTS.02.02 - CTS.02.03)
 - CTS.02.02.01: Was comprehensive assessment data collected? \
   Needs, strengths, preferences, goals? Emotional/behavioral functioning? \
   Short/long-term goals? Mental status exam? Family involvement?
-- CTS.02.02.05: Was trauma/abuse/neglect screening done?
+- CTS.02.02.05: Was trauma/abuse/neglect screening done? \
+  If abuse/neglect/exploitation alleged or suspected, was it reported \
+  to appropriate authorities?
 - CTS.02.02.07: Is there evidence of reassessment over time?
 - CTS.02.03.07 EP 1: Does the SUD history include ALL required elements: \
   age of onset, method of acquiring, duration, patterns of use, frequency, \
@@ -414,7 +430,8 @@ SECTION 5: CONTINUITY OF CARE (CTS.06)
 - CTS.06.02.01: Is discharge planning documented? When did it start? \
   (Should be early in treatment, not just at discharge)
 - CTS.06.02.03: Does discharge plan include: continuing care needs, \
-  specific provider referrals, medication reconciliation, instructions?
+  reason for discharge, alternatives to transfer discussed, \
+  specific provider referrals, instructions in understandable form?
 - CTS.06.02.05: Is information exchange with other providers documented?
 
 SECTION 6: PATIENT SAFETY (NPSG.15.01.01)

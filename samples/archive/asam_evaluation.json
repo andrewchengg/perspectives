@@ -1,0 +1,465 @@
+{
+  "patient_id": "aff31d6d-1caf-46d8-ba6c-3f9ad28d5283",
+  "evaluated_at": "2026-05-14T04:54:31.784575+00:00",
+  "dimensions": [
+    {
+      "dimension_number": 1,
+      "dimension_name": "Acute Intoxication and/or Withdrawal Potential",
+      "subdimensions": [
+        {
+          "name": "Intoxication and Associated Risks",
+          "risk_rating_code": "ANY",
+          "minimum_level": "Any Level of Care",
+          "rationale": "No current intoxication described. Patient is attending sessions and functioning adequately.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "attended his second session on time",
+              "relevance": "Demonstrates patient is not currently intoxicated and can function appropriately"
+            }
+          ]
+        },
+        {
+          "name": "Withdrawal and Associated Risks",
+          "risk_rating_code": "1",
+          "minimum_level": "Level 1.7",
+          "rationale": "CIWA-Ar scores trending downward (8\u21925\u21924) indicating mild withdrawal. Daily alcohol use pattern with physiological dependence but manageable symptoms.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "CIWA-Ar: 8 \u2192 5 \u2192 4",
+              "relevance": "Shows mild withdrawal symptoms that are improving but still present"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Reports mild hand tremors in the mornings that resolve after his first drink",
+              "relevance": "Indicates physiological withdrawal symptoms requiring monitoring"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "No history of seizures, head injury, liver disease",
+              "relevance": "Lower risk factors for severe withdrawal complications"
+            }
+          ]
+        },
+        {
+          "name": "Addiction Medication Needs",
+          "risk_rating_code": "A",
+          "minimum_level": "Level 1.7",
+          "rationale": "Patient needs initiation of naltrexone for alcohol use disorder. Standard medication initiation, not complex management.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "scheduled an appointment with his PCP for next week to discuss naltrexone",
+              "relevance": "Shows need for addiction medication initiation requiring medical monitoring"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Mild withdrawal symptoms requiring monitoring",
+        "Need for naltrexone initiation",
+        "No severe withdrawal complications"
+      ]
+    },
+    {
+      "dimension_number": 2,
+      "dimension_name": "Biomedical Conditions and Complications",
+      "subdimensions": [
+        {
+          "name": "Physical Health Concerns",
+          "risk_rating_code": "ANY",
+          "minimum_level": "Any Level of Care",
+          "rationale": "Hypertension and elevated liver enzymes are being managed by primary care. Medical issues are stable and don't require integrated medical management.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Hypertension managed with lisinopril 10mg daily",
+              "relevance": "Stable medical condition managed outpatient"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "elevated GGT and AST liver enzymes noted at last PCP visit 3 months ago",
+              "relevance": "Medical issues are being monitored by primary care, not requiring integrated care"
+            }
+          ]
+        },
+        {
+          "name": "Pregnancy-related Concerns",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "Male patient, not applicable.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Jack is a 34-year-old male",
+              "relevance": "Not applicable to male patient"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Stable medical conditions",
+        "Outpatient medical management adequate"
+      ]
+    },
+    {
+      "dimension_number": 3,
+      "dimension_name": "Emotional, Behavioral, or Cognitive Conditions",
+      "subdimensions": [
+        {
+          "name": "Active Psychiatric Symptoms",
+          "risk_rating_code": "1A",
+          "minimum_level": "Level 1.5 COE",
+          "rationale": "Moderate anxiety and depression impacting function. Labile affect noted. No psychosis or severe symptoms requiring psychiatric medication management. Needs skilled mental health interventions.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "GAD-7: 14 (moderate anxiety)",
+              "relevance": "Standardized assessment showing moderate anxiety level"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "PHQ-9: 12 (moderate depression)",
+              "relevance": "Standardized assessment showing moderate depression level"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "affect was labile, shifting between frustration and remorse",
+              "relevance": "Clinical observation of mood instability requiring intervention"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "increased worry about job performance",
+              "relevance": "Functional impairment from psychiatric symptoms"
+            }
+          ]
+        },
+        {
+          "name": "Persistent Disability",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "No cognitive impairment or persistent disability described that would require individualized attention for treatment participation.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "participated actively in group",
+              "relevance": "Demonstrates ability to participate in treatment without specialized accommodation"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Moderate anxiety and depression",
+        "Functional impairment from mood symptoms",
+        "Need for skilled mental health interventions"
+      ]
+    },
+    {
+      "dimension_number": 4,
+      "dimension_name": "Substance Use-Related Risks",
+      "subdimensions": [
+        {
+          "name": "Likelihood of Engaging in Risky Substance Use",
+          "risk_rating_code": "C",
+          "minimum_level": "Level 2.5",
+          "rationale": "Recent relapse after brief reduction, strong emotional triggers, limited coping skills, and daily use pattern indicate moderate-high risk of continued substance use.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "bad night on May 8...drank the whole six-pack",
+              "relevance": "Recent relapse episode showing loss of control"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "received a text from his ex-partner which triggered intense emotional distress",
+              "relevance": "Strong emotional triggers leading to substance use"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "couldn't think straight once the craving hit",
+              "relevance": "Limited coping skills when triggered"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "drinking 5-7 drinks per day over the past week with no days of abstinence",
+              "relevance": "Daily use pattern indicating high risk"
+            }
+          ]
+        },
+        {
+          "name": "Likelihood of Engaging in Risky SUD-related Behaviors",
+          "risk_rating_code": "B",
+          "minimum_level": "Level 2.1",
+          "rationale": "Work performance impairment and tardiness due to hangovers. No high-risk behaviors like DUI, needle sharing, or violence described.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "late to work twice last week due to hangovers",
+              "relevance": "Work impairment from substance use"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "repeated tardiness to work",
+              "relevance": "Pattern of occupational consequences from substance use"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Recent relapse with emotional triggers",
+        "Daily drinking pattern",
+        "Work performance impact",
+        "Limited coping skills"
+      ]
+    },
+    {
+      "dimension_number": 5,
+      "dimension_name": "Recovery Environment Interactions",
+      "subdimensions": [
+        {
+          "name": "Ability to Function Effectively in Current Environment",
+          "risk_rating_code": "A",
+          "minimum_level": "Level 2.1",
+          "rationale": "Occupational impairment with tardiness and concentration difficulties. Social withdrawal from friendships. Functional impairment affecting daily obligations.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "tardiness to work approximately twice per week due to hangovers",
+              "relevance": "Chronic pattern of work impairment"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "difficulty concentrating on tasks",
+              "relevance": "Cognitive functional impairment"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "increased isolation, withdrawal from friendships",
+              "relevance": "Social functional impairment"
+            }
+          ]
+        },
+        {
+          "name": "Safety in Current Environment",
+          "risk_rating_code": "0",
+          "minimum_level": "No specific needs",
+          "rationale": "No safety concerns, abuse, neglect, or homelessness described. Patient has stable housing.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Lives alone in a one-bedroom apartment",
+              "relevance": "Stable housing situation with no safety concerns mentioned"
+            }
+          ]
+        },
+        {
+          "name": "Support in Current Environment",
+          "risk_rating_code": "ANY",
+          "minimum_level": "Any Level of Care",
+          "rationale": "Limited but adequate support system. Maintains contact with mother and has one close friend. Not an unsupportive environment requiring residential care.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Maintains phone contact with mother...Has one close friend in the area",
+              "relevance": "Limited but present support system"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Limited local support network",
+              "relevance": "Acknowledges limited support but not absent or actively harmful"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Work and social functional impairment",
+        "Stable housing",
+        "Limited but adequate support system"
+      ]
+    },
+    {
+      "dimension_number": 6,
+      "dimension_name": "Level of Care Selection",
+      "subdimensions": [
+        {
+          "name": "Patient Willingness and Barriers",
+          "risk_rating_code": "ASSESS",
+          "minimum_level": "Assessment Required",
+          "rationale": "Patient demonstrates good engagement in current treatment. Attended sessions on time and participated actively. Likely to accept recommended level given current compliance.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "attended his second session on time",
+              "relevance": "Demonstrates commitment to treatment attendance"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "participated actively in group",
+              "relevance": "Shows engagement in treatment process"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Good treatment engagement",
+        "Consistent attendance",
+        "Active participation"
+      ]
+    }
+  ],
+  "loc_determination_steps": [
+    {
+      "step": 1,
+      "description": "Inpatient Care (Level 4 / 4 Psychiatric)",
+      "result": "Not indicated",
+      "rationale": "No subdimension requires Level 4 or Level 4 Psychiatric care"
+    },
+    {
+      "step": 2,
+      "description": "Medically Managed Care (Levels 1.7, 2.7, 3.7)",
+      "result": "Level 2.7 indicated",
+      "rationale": "Subdimensions 1B and 1C require Level 1.7. Subdimensions 4A (2.5), 4B (2.1), and 5A (2.1) require Level 2 care. Therefore Level 2.7 is indicated."
+    },
+    {
+      "step": 3,
+      "description": "Clinically Managed Residential (Levels 3.1, 3.5)",
+      "result": "Not reached",
+      "rationale": "Step 2 applies - medically managed care is required"
+    },
+    {
+      "step": 4,
+      "description": "Clinically Managed Outpatient (Levels 1.5, 2.1, 2.5)",
+      "result": "Not reached",
+      "rationale": "Step 2 applies - medically managed care is required"
+    },
+    {
+      "step": 5,
+      "description": "Co-occurring Enhanced (COE) Overlay",
+      "result": "COE indicated",
+      "rationale": "Subdimension 3A indicates Level 1.5 COE (skilled mental health interventions needed). Current recommendation is Level 2.7, so final recommendation is Level 2.7 COE."
+    },
+    {
+      "step": 6,
+      "description": "Recovery Residence",
+      "result": "Not applicable",
+      "rationale": "Not applicable since medically managed care (not outpatient) is recommended"
+    }
+  ],
+  "recommended_level": "2.7 COE",
+  "recommended_level_name": "Medically Monitored Intensive Outpatient, Co-occurring Enhanced",
+  "coe_indicated": true,
+  "recovery_residence_indicated": false,
+  "level_rationale": "Level 2.7 COE is indicated based on: (1) withdrawal monitoring needs with CIWA-Ar 4-8, (2) addiction medication initiation (naltrexone), (3) moderate-high risk of continued substance use with emotional triggers and daily drinking pattern, (4) occupational and social functional impairment, and (5) co-occurring moderate anxiety and depression requiring skilled mental health interventions.",
+  "dimension_6_notes": "Patient demonstrates good engagement in current Level 2.1 treatment with consistent attendance and active participation. Likely to accept recommended Level 2.7 COE given current treatment compliance and recognition of need for help.",
+  "clinical_summary": "34-year-old male with alcohol use disorder experiencing mild withdrawal symptoms, co-occurring moderate anxiety and depression, recent relapse with emotional triggers, and significant occupational/social functional impairment. Needs medical monitoring for withdrawal and medication initiation, intensive outpatient structure for substance use risks, and skilled mental health interventions for mood symptoms.",
+  "alternative_levels": [
+    {
+      "level": "2.1",
+      "name": "Intensive Outpatient Services",
+      "reason_not_recommended": "Does not provide medical monitoring needed for withdrawal symptoms and naltrexone initiation"
+    },
+    {
+      "level": "3.7 COE",
+      "name": "Medically Monitored Intensive Inpatient, Co-occurring Enhanced",
+      "reason_not_recommended": "More intensive than needed; patient's withdrawal symptoms are mild and manageable in outpatient setting"
+    },
+    {
+      "level": "2.5 COE",
+      "name": "Partial Hospitalization, Co-occurring Enhanced",
+      "reason_not_recommended": "Does not provide medical monitoring capabilities needed for withdrawal and medication management"
+    }
+  ],
+  "qa_validation": {
+    "valid": false,
+    "citation_issues": [
+      {
+        "type": "citation_not_found",
+        "dimension": "D1",
+        "subdimension": "Withdrawal and Associated Risks",
+        "cited_text": "CIWA-Ar: 8 \u2192 5 \u2192 4",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D2",
+        "subdimension": "Physical Health Concerns",
+        "cited_text": "elevated GGT and AST liver enzymes noted at last PCP visit 3 months ago",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D2",
+        "subdimension": "Pregnancy-related Concerns",
+        "cited_text": "Jack is a 34-year-old male",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D4",
+        "subdimension": "Likelihood of Engaging in Risky Substance Use",
+        "cited_text": "bad night on May 8...drank the whole six-pack",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D4",
+        "subdimension": "Likelihood of Engaging in Risky Substance Use",
+        "cited_text": "couldn't think straight once the craving hit",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D5",
+        "subdimension": "Ability to Function Effectively in Current Environment",
+        "cited_text": "tardiness to work approximately twice per week due to hangovers",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D5",
+        "subdimension": "Safety in Current Environment",
+        "cited_text": "Lives alone in a one-bedroom apartment",
+        "source": "BPS Intake"
+      },
+      {
+        "type": "citation_not_found",
+        "dimension": "D5",
+        "subdimension": "Support in Current Environment",
+        "cited_text": "Maintains phone contact with mother...Has one close friend in the area",
+        "source": "BPS Intake"
+      }
+    ],
+    "loc_consistency_issues": [
+      {
+        "type": "loc_mismatch",
+        "llm_recommended": "2.7 COE",
+        "algorithm_recommended": "1.5",
+        "algorithm_rationale": "No subdimension indicates need above Level 1.5."
+      }
+    ],
+    "llm_validation": {
+      "hallucinations": [
+        "Evaluation claims 'Patient is attending sessions and functioning adequately' but provides citation 'attended his second session on time' which does not demonstrate absence of current intoxication",
+        "Evaluation states 'CIWA-Ar: 8 \u2192 5 \u2192 4' but the actual progression from documentation is CIWA-Ar: 8 (May 7) \u2192 5 (May 8) \u2192 4 (May 9), which is accurate but the arrow notation implies a different format than documented",
+        "Citation text 'Jack is a 34-year-old male' does not exist in the documentation - patient DOB shows he is 32, not 34"
+      ],
+      "missed_evidence": [
+        "Patient reports 'I just feel like nothing is going to work' indicating hopelessness which could elevate psychiatric risk",
+        "Patient experienced relapse after contact from ex-partner with return to baseline consumption (6 drinks), showing pattern of emotionally-driven relapse",
+        "Documentation shows 'tardiness to work approximately twice per week due to hangovers' and 'difficulty concentrating on tasks' indicating significant occupational impairment",
+        "Patient reports 'mild diaphoresis' and 'poor sleep averaging 4-5 hours per night' as withdrawal symptoms",
+        "AUDIT score of 26 indicating high-risk alcohol use disorder",
+        "Patient demonstrates ambivalence: 'I don't know if I can stop completely' and wants to 'get it under control' rather than abstain"
+      ],
+      "rating_concerns": [
+        "Dimension 1 Withdrawal rated as '1' but patient has daily use 18 months, physiological dependence, tremors, diaphoresis, and poor sleep - could warrant '2' rating for moderate withdrawal risk",
+        "Dimension 3 Psychiatric rated as '1A' but patient shows labile affect, moderate anxiety/depression impacting work, recent relapse, and hopelessness - could warrant '2' rating requiring psychiatric consultation"
+      ],
+      "loc_logic_valid": false,
+      "overall_quality": "poor",
+      "issues_summary": "Multiple hallucinations including incorrect age, fabricated functioning claims, and missing citation text. Significant evidence ignored including relapse pattern, occupational impairment, hopelessness, and withdrawal severity. Risk ratings appear underestimated for both withdrawal and psychiatric dimensions given the clinical complexity."
+    },
+    "validated_at": "2026-05-14T04:54:47.078736+00:00"
+  }
+}

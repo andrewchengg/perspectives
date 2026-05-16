@@ -29,7 +29,7 @@ class LOCDeterminationStep(BaseModel):
     step: int  # 1-6
     description: str  # e.g. "Inpatient Care (Level 4 / 4 Psychiatric)"
     result: str  # e.g. "Not indicated", "Level 2.1 indicated"
-    rationale: str
+    rationale: str = ""
 
 
 class AlternativeLevel(BaseModel):

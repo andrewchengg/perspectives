@@ -848,7 +848,14 @@ class SimplePracticeExtractor:
                 line_lower = line_stripped.lower()
 
                 # Check if this line IS the header we're looking for
-                if header_lower in line_lower and not capturing:
+                # Must be a standalone header line, not the word appearing mid-sentence
+                # A header line is either: exactly the header word, the header word followed by ":",
+                # or starts with a number + header (like "1. Presenting Problem")
+                is_header_line = (
+                    line_lower.rstrip(":").strip() == header_lower  # exact match: "Plan" or "Plan:"
+                    or re.match(rf"^\d+\.\s*{re.escape(header_lower)}", line_lower)  # "1. Plan"
+                )
+                if is_header_line and not capturing:
                     capturing = True
                     # If header and content are on the same line (after a colon)
                     if ":" in line_stripped:

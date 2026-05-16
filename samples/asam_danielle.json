@@ -1,313 +1,327 @@
 {
-  "evaluation": {
-    "patient_id": "9353ec04-8d9d-4e56-a7a7-b54260041cd6",
-    "evaluated_at": "2026-05-15 19:11:50.561527+00:00",
-    "dimensions": [
-      {
-        "dimension_number": 1,
-        "dimension_name": "Acute Intoxication and/or Withdrawal Potential",
-        "subdimensions": [
-          {
-            "name": "Intoxication and Associated Risks",
-            "risk_rating_code": "0",
-            "minimum_level": "No Specific Needs",
-            "rationale": "Patient is on Day 12 of treatment with no evidence of current intoxication",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "CIWA discontinued \u2014 scores \u2264 4 for past 5 days",
-                "relevance": "Confirms absence of intoxication or acute alcohol withdrawal symptoms"
-              }
-            ]
-          },
-          {
-            "name": "Withdrawal and Associated Risks",
-            "risk_rating_code": "0",
-            "minimum_level": "No Specific Needs",
-            "rationale": "Withdrawal management completed successfully with stable status",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "CIWA scores have been below 10 for past 48 hours",
-                "relevance": "Demonstrates successful completion of withdrawal management"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "Librium taper completed",
-                "relevance": "Medical withdrawal protocol completed"
-              }
-            ]
-          },
-          {
-            "name": "Addiction Medication Needs",
-            "risk_rating_code": "MOUD-C",
-            "minimum_level": "MOUD Continuation",
-            "rationale": "Patient requires continuation of established buprenorphine therapy for opioid use disorder",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "stable on buprenorphine 16mg SL daily",
-                "relevance": "Established MOUD therapy requiring continuation"
-              }
-            ]
-          }
-        ],
-        "key_factors": [
-          "Completed withdrawal management",
-          "Stable on buprenorphine",
-          "No acute intoxication"
-        ]
-      },
-      {
-        "dimension_number": 2,
-        "dimension_name": "Biomedical Conditions and Complications",
-        "subdimensions": [
-          {
-            "name": "Physical Health Concerns",
-            "risk_rating_code": "1",
-            "minimum_level": "Minimum Level 1.7",
-            "rationale": "Multiple serious medical conditions requiring ongoing monitoring including liver disease, concerning weight loss, and infectious disease",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "elevated liver enzymes (AST 187, ALT 142)",
-                "relevance": "Chronic liver disease requiring medical monitoring"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "Weight: 107 lbs (down 5 lbs from admission weight of 112 lbs, BMI approximately 17.5)",
-                "relevance": "Concerning weight loss and underweight status"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "Hepatitis C positive, untreated",
-                "relevance": "Infectious disease requiring medical management"
-              }
-            ]
-          },
-          {
-            "name": "Pregnancy-related Concerns",
-            "risk_rating_code": "0",
-            "minimum_level": "No Specific Needs",
-            "rationale": "No pregnancy-related information documented in available clinical materials",
-            "citations": []
-          }
-        ],
-        "key_factors": [
-          "Chronic liver disease",
-          "Significant weight loss",
-          "Untreated Hepatitis C",
-          "Thrombocytopenia"
-        ]
-      },
-      {
-        "dimension_number": 3,
-        "dimension_name": "Emotional, Behavioral, or Cognitive Conditions",
-        "subdimensions": [
-          {
-            "name": "Active Psychiatric Symptoms",
-            "risk_rating_code": "2A",
-            "minimum_level": "Minimum Level 2.5 COE",
-            "rationale": "Active PTSD, moderate depression, anxiety, and passive suicidal ideation requiring skilled mental health interventions",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "PHQ-9: 14 (moderate)",
-                "relevance": "Moderate depression requiring treatment"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "GAD-7: 12 (moderate)",
-                "relevance": "Moderate anxiety requiring treatment"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "I still have the thoughts sometimes, like it would be easier to not exist",
-                "relevance": "Passive suicidal ideation requiring monitoring and intervention"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "nightmares decreased to 2-3 per week from nightly",
-                "relevance": "Active PTSD symptoms requiring trauma-informed treatment"
-              }
-            ]
-          },
-          {
-            "name": "Persistent Disability",
-            "risk_rating_code": "0",
-            "minimum_level": "No Specific Needs",
-            "rationale": "No significant cognitive impairment affecting treatment participation",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "Cognitive: Orientation improved to x4. Concentration improving but still impaired.",
-                "relevance": "Cognitive function adequate for treatment participation"
-              }
-            ]
-          }
-        ],
-        "key_factors": [
-          "PTSD with ongoing symptoms",
-          "Moderate depression and anxiety",
-          "Passive suicidal ideation",
-          "Need for trauma therapy"
-        ]
-      },
-      {
-        "dimension_number": 4,
-        "dimension_name": "Substance Use-Related Risks",
-        "subdimensions": [
-          {
-            "name": "Likelihood of Engaging in Risky Substance Use",
-            "risk_rating_code": "C",
-            "minimum_level": "Minimum Level 2.5",
-            "rationale": "High relapse risk due to pattern of relapse in triggering environment and severe polysubstance use history",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "Patient identifies return to boyfriend's environment as primary driver of all prior relapses",
-                "relevance": "Identified major relapse trigger requiring intensive intervention"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "IV fentanyl 1-2g daily, drinking approximately 750mL-1L vodka daily, and taking 4-6mg alprazolam daily",
-                "relevance": "Severe polysubstance use pattern indicating high relapse consequences"
-              }
-            ]
-          },
-          {
-            "name": "Likelihood of Engaging in Risky SUD-related Behaviors",
-            "risk_rating_code": "C",
-            "minimum_level": "Minimum Level 2.5",
-            "rationale": "History of high-risk behaviors including IV drug use and exposure to intimate partner violence in substance use context",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "boyfriend who is an active user and perpetrator of intimate partner violence",
-                "relevance": "Exposure to violence in substance use environment"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "Two prior overdose events in past 18 months",
-                "relevance": "History of life-threatening substance use consequences"
-              }
-            ]
-          }
-        ],
-        "key_factors": [
-          "Five prior treatment episodes",
-          "Pattern of relapse to triggering environment",
-          "IV drug use history",
-          "Multiple overdose events"
-        ]
-      },
-      {
-        "dimension_number": 5,
-        "dimension_name": "Recovery Environment Interactions",
-        "subdimensions": [
-          {
-            "name": "Ability to Function Effectively in Current Environment",
-            "risk_rating_code": "B",
-            "minimum_level": "Minimum Level 2.5",
-            "rationale": "Significant functional impairment with inability to maintain employment due to substance use",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "Unable to maintain employment due to substance use",
-                "relevance": "Major functional impairment affecting basic life obligations"
-              },
-              {
-                "source": "BPS Intake",
-                "text": "Unemployed 18 months",
-                "relevance": "Extended period of unemployment related to substance use"
-              }
-            ]
-          },
-          {
-            "name": "Safety in Current Environment",
-            "risk_rating_code": "A",
-            "minimum_level": "Minimum Recovery Residence",
-            "rationale": "Current environment involves intimate partner violence and active substance use",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "Current boyfriend is an active substance user and perpetrator of intimate partner violence",
-                "relevance": "Unsafe living situation requiring environmental change"
-              }
-            ]
-          },
-          {
-            "name": "Support in Current Environment",
-            "risk_rating_code": "ANY",
-            "minimum_level": "Any Level of Care",
-            "rationale": "Supportive sober environment available through brother in Denver",
-            "citations": [
-              {
-                "source": "BPS Intake",
-                "text": "Brother in recovery (3 years sober) and has offered to provide housing post-discharge",
-                "relevance": "Supportive sober housing option available"
-              }
-            ]
-          }
-        ],
-        "key_factors": [
-          "Intimate partner violence exposure",
-          "Unemployment and functional impairment",
-          "Supportive family member available",
-          "Need for environmental change"
-        ]
-      },
-      {
-        "dimension_number": 6,
-        "dimension_name": "Level of Care Selection",
-        "subdimensions": [],
-        "key_factors": [
-          "Patient engagement in treatment planning",
-          "Motivation for recovery",
-          "Acceptance of Denver relocation plan"
-        ]
-      }
-    ],
-    "loc_determination_steps": [
-      {
-        "step": 1,
-        "description": "",
-        "result": "Not indicated",
-        "rationale": ""
-      },
-      {
-        "step": 2,
-        "description": "Medically managed + Level 2 need",
-        "result": "Level 2.7_COE indicated",
-        "rationale": ""
-      }
-    ],
-    "recommended_level": "2.7_COE",
-    "recommended_level_name": "Medically Monitored Intensive Outpatient, Co-occurring Enhanced + Recovery Residence",
-    "coe_indicated": true,
-    "recovery_residence_indicated": true,
-    "level_rationale": "Algorithmically determined after QA corrections: Requires medically managed care AND Level 2 services. (changed from 2.7 COE)",
-    "dimension_6_notes": "Patient appears willing and motivated, actively engaged in treatment planning and accepting of Denver relocation plan with brother's support",
-    "clinical_summary": "28-year-old female with severe polysubstance use disorder, PTSD, depression, and multiple medical complications including liver disease. Currently stable on buprenorphine with completed withdrawal management but requires intensive medical and psychiatric support with environmental change to supportive sober housing.",
-    "alternative_levels": [
-      {
-        "level": "3.5 COE",
-        "name": "Clinically Managed High-Intensity Residential, Co-occurring Enhanced",
-        "reason_not_recommended": "Medical monitoring needs require medically managed level of care rather than clinically managed residential"
-      },
-      {
-        "level": "2.5 COE",
-        "name": "Partial Hospitalization, Co-occurring Enhanced",
-        "reason_not_recommended": "Medical complications and MOUD continuation require medically monitored level with integrated medical management"
-      }
-    ]
-  },
-  "accuracy": 1.0,
-  "claims": {
-    "total": 33,
-    "verified": 33,
-    "fixed": 0,
-    "unsupported": 0,
-    "failed": 0
-  }
+  "patient_id": "34358051-dd45-47f0-b085-5c594f934a14",
+  "evaluated_at": "2026-05-16 01:33:38.054988+00:00",
+  "dimensions": [
+    {
+      "dimension_number": 1,
+      "dimension_name": "Acute Intoxication and/or Withdrawal Potential",
+      "subdimensions": [
+        {
+          "name": "Intoxication and Associated Risks",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "Patient is on Day 12 of treatment with no current intoxication. Medically stable with withdrawal resolved.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "Patient is on Day 12 of treatment, withdrawal resolved, medically stable",
+              "relevance": "Demonstrates absence of current intoxication risks"
+            }
+          ]
+        },
+        {
+          "name": "Withdrawal and Associated Risks",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "Withdrawal episode has resolved. Patient stable on buprenorphine with no ongoing withdrawal symptoms.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "CIWA discontinued \u2014 scores \u2264 4 for past 5 days. COWS not applicable, patient stable on buprenorphine 16mg",
+              "relevance": "Confirms withdrawal has resolved and patient is stabilized"
+            }
+          ]
+        },
+        {
+          "name": "Addiction Medication Needs",
+          "risk_rating_code": "MOUD-C",
+          "minimum_level": "MOUD Continuation",
+          "rationale": "Patient is stabilized on buprenorphine 16mg daily and requires continuation with appropriate prescriber transfer.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "stable on buprenorphine 16mg SL daily",
+              "relevance": "Demonstrates need for MOUD continuation with prescriber transition"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Withdrawal resolved",
+        "Medically stable",
+        "MOUD continuation needed"
+      ]
+    },
+    {
+      "dimension_number": 2,
+      "dimension_name": "Biomedical Conditions and Complications",
+      "subdimensions": [
+        {
+          "name": "Physical Health Concerns",
+          "risk_rating_code": "1",
+          "minimum_level": "Minimum Level 1.7",
+          "rationale": "Multiple serious medical conditions requiring ongoing monitoring including untreated Hepatitis C, liver disease, thrombocytopenia, and significant weight loss with poor nutrition.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "chronic HCV-related liver disease with elevated enzymes (AST 187, ALT 142, GGT 312)",
+              "relevance": "Indicates significant liver dysfunction requiring medical monitoring"
+            },
+            {
+              "source": "DSAP Note",
+              "text": "Weight: 107 lbs (down 5 lbs from admission weight of 112 lbs, BMI approximately 17.5)",
+              "relevance": "Shows ongoing weight loss and undernutrition requiring medical attention"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Patient has eaten less than 50% of meals for past several days",
+              "relevance": "Demonstrates ongoing nutritional concerns requiring monitoring"
+            }
+          ]
+        },
+        {
+          "name": "Pregnancy-related Concerns",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "No pregnancy-related information documented in available clinical records.",
+          "citations": []
+        }
+      ],
+      "key_factors": [
+        "Hepatitis C with liver disease",
+        "Thrombocytopenia",
+        "Significant weight loss",
+        "Poor nutritional intake"
+      ]
+    },
+    {
+      "dimension_number": 3,
+      "dimension_name": "Emotional, Behavioral, or Cognitive Conditions",
+      "subdimensions": [
+        {
+          "name": "Active Psychiatric Symptoms",
+          "risk_rating_code": "2A",
+          "minimum_level": "Minimum Level 2.5 COE",
+          "rationale": "Moderate psychiatric symptoms with PTSD and Major Depressive Disorder requiring skilled mental health interventions. Patient is actively engaged in trauma treatment.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "PHQ-9: 14 (moderate, down from 18 at admission). GAD-7: 12 (moderate, down from 15)",
+              "relevance": "Indicates moderate depression and anxiety requiring skilled intervention"
+            },
+            {
+              "source": "SOAP Note",
+              "text": "Co-occurring PTSD and Major Depressive Disorder with chronic passive suicidal ideation",
+              "relevance": "Shows significant psychiatric comorbidity requiring specialized treatment"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "begin EMDR psychoeducation phase in next session",
+              "relevance": "Demonstrates active engagement in trauma-focused treatment"
+            }
+          ]
+        },
+        {
+          "name": "Persistent Disability",
+          "risk_rating_code": "0",
+          "minimum_level": "No Specific Needs",
+          "rationale": "While patient has trauma symptoms, she demonstrates good engagement and participation without needing individualized staff attention.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "attending 100% of scheduled groups",
+              "relevance": "Shows ability to participate effectively without individualized support"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "PTSD and Major Depression",
+        "Moderate symptom severity",
+        "Trauma treatment engagement",
+        "Passive suicidal ideation"
+      ]
+    },
+    {
+      "dimension_number": 4,
+      "dimension_name": "Substance Use-Related Risks",
+      "subdimensions": [
+        {
+          "name": "Likelihood of Engaging in Risky Substance Use",
+          "risk_rating_code": "C",
+          "minimum_level": "Minimum Level 2.5",
+          "rationale": "Patient has severe polysubstance use disorder with pattern of relapse, but showing emerging insight and motivation. Environmental change to Denver provides protective factor.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Patient identifies return to boyfriend's environment as primary driver of all prior relapses",
+              "relevance": "Shows insight into relapse triggers"
+            },
+            {
+              "source": "DSAP Note",
+              "text": "12 consecutive days of abstinence \u2014 patient reports this is longest since age 22",
+              "relevance": "Indicates severity of addiction but current positive trajectory"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Psychological engagement is the strongest of any prior treatment episode",
+              "relevance": "Shows improved motivation and treatment engagement"
+            }
+          ]
+        },
+        {
+          "name": "Likelihood of Engaging in Risky SUD-related Behaviors",
+          "risk_rating_code": "C",
+          "minimum_level": "Minimum Level 2.5",
+          "rationale": "History of high-risk behaviors including IV drug use and overdoses that could recur without adequate support and structure.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "IV fentanyl used whenever available, 1-2g daily",
+              "relevance": "Demonstrates history of extremely high-risk substance use behavior"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Two prior overdose events in the past 18 months",
+              "relevance": "Shows pattern of life-threatening risky behaviors"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Severe polysubstance use disorder",
+        "History of overdoses",
+        "Pattern of relapse",
+        "Emerging insight and motivation"
+      ]
+    },
+    {
+      "dimension_number": 5,
+      "dimension_name": "Recovery Environment Interactions",
+      "subdimensions": [
+        {
+          "name": "Ability to Function Effectively in Current Environment",
+          "risk_rating_code": "ANY",
+          "minimum_level": "Any Level of Care",
+          "rationale": "Patient demonstrates functional capacity when in supportive environment, attending all groups and actively participating.",
+          "citations": [
+            {
+              "source": "DSAP Note",
+              "text": "attending 100% of scheduled groups",
+              "relevance": "Shows good functional capacity in supportive treatment environment"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "actively participating in groups, developing therapeutic alliance",
+              "relevance": "Demonstrates ability to engage effectively when environment is supportive"
+            }
+          ]
+        },
+        {
+          "name": "Safety in Current Environment",
+          "risk_rating_code": "A",
+          "minimum_level": "Minimum Recovery Residence",
+          "rationale": "Current environment is unsafe due to intimate partner violence from boyfriend who continues to contact patient.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Current boyfriend is an active substance user and perpetrator of intimate partner violence",
+              "relevance": "Indicates ongoing safety risk in current living situation"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Boyfriend has been texting since admission with alternating messages of affection and manipulation",
+              "relevance": "Shows continued unsafe contact and manipulation"
+            }
+          ]
+        },
+        {
+          "name": "Support in Current Environment",
+          "risk_rating_code": "A",
+          "minimum_level": "Minimum Recovery Residence",
+          "rationale": "Current environment lacks recovery support and contains active triggers through boyfriend's using network. Denver plan with brother provides recovery-supportive alternative.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Only significant relationship is with boyfriend who is an active user and perpetrator of intimate partner violence",
+              "relevance": "Shows lack of recovery-supportive relationships in current environment"
+            },
+            {
+              "source": "BPS Intake",
+              "text": "Social connections are primarily through boyfriend and his using network",
+              "relevance": "Indicates environment filled with substance use triggers"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Intimate partner violence",
+        "Unsafe current environment",
+        "Lack of recovery support",
+        "Brother in Denver offering support"
+      ]
+    },
+    {
+      "dimension_number": 6,
+      "dimension_name": "Level of Care Selection",
+      "subdimensions": [
+        {
+          "name": "Patient Willingness and Ability",
+          "risk_rating_code": "ANY",
+          "minimum_level": "Any Level of Care",
+          "rationale": "Patient demonstrates good engagement and willingness to participate in treatment. Denver plan represents patient's preferred option.",
+          "citations": [
+            {
+              "source": "BPS Intake",
+              "text": "Asked about timeline for discharge and expressed both hope and fear about next steps",
+              "relevance": "Shows patient engagement and realistic assessment of transition needs"
+            }
+          ]
+        }
+      ],
+      "key_factors": [
+        "Good treatment engagement",
+        "Motivated for recovery",
+        "Realistic about challenges"
+      ]
+    }
+  ],
+  "loc_determination_steps": [
+    {
+      "step": 1,
+      "description": "Inpatient Care (Level 4 / 4 Psychiatric)",
+      "result": "Not indicated",
+      "rationale": "No subdimension requires Level 4 or Level 4 Psychiatric care"
+    },
+    {
+      "step": 2,
+      "description": "Medically Managed Care (Levels 1.7, 2.7, 3.7)",
+      "result": "Level 2.7 COE indicated",
+      "rationale": "D2 Physical Health requires minimum Level 1.7 (medically managed). D4 Substance Use Risks requires minimum Level 2.5 (Level 2 need). Medically managed + Level 2 = Level 2.7. COE indicated by D3 Active Psychiatric Symptoms (2A). Recovery Residence indicated by D5 Safety (A)."
+    }
+  ],
+  "recommended_level": "2.7_COE",
+  "recommended_level_name": "Medically Monitored Intensive Outpatient, Co-occurring Enhanced + Recovery Residence",
+  "coe_indicated": true,
+  "recovery_residence_indicated": true,
+  "level_rationale": "Algorithmically determined after QA corrections: Requires medically managed care AND Level 2 services. (changed from 2.7 COE)",
+  "dimension_6_notes": "Patient demonstrates good engagement and willingness to participate. Denver plan with brother represents patient's preferred and most viable option. No apparent barriers to accepting recommended level.",
+  "clinical_summary": "37-year-old female with severe polysubstance use disorder, PTSD, and Major Depression, stabilized after overdose and polysubstance withdrawal. Currently has untreated Hepatitis C with liver disease, nutritional concerns, and chronic passive suicidal ideation. Patient shows strong treatment engagement and insight into relapse triggers. Current environment is unsafe due to intimate partner violence. Denver relocation plan with supportive brother provides recovery-oriented environment.",
+  "alternative_levels": [
+    {
+      "level": "3.7 COE",
+      "name": "Medically Monitored Intensive Inpatient, Co-occurring Enhanced",
+      "reason_not_recommended": "Medical conditions are stable and do not require inpatient level medical monitoring. Patient is medically stable on buprenorphine."
+    },
+    {
+      "level": "2.5 COE",
+      "name": "Partial Hospitalization, Co-occurring Enhanced",
+      "reason_not_recommended": "Does not provide the medical monitoring component required for liver disease, nutritional concerns, and MOUD management."
+    },
+    {
+      "level": "1.7 COE",
+      "name": "Medically Monitored Outpatient, Co-occurring Enhanced",
+      "reason_not_recommended": "Does not provide intensive level of care needed for significant substance use risks and moderate psychiatric symptoms."
+    }
+  ]
 }
